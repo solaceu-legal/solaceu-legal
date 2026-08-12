@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — SolaceU</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 32px 20px 80px; color: #2A2119; line-height: 1.6; background: #FBF6F1; }
+  h1 { font-size: 28px; margin-bottom: 4px; }
+  .updated { color: #8A7A6C; font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 20px; margin-top: 36px; color: #A85D3B; }
+  h3 { font-size: 16px; margin-top: 20px; }
+  p, li { font-size: 15px; }
+  ul { padding-left: 22px; }
+  .callout { background: #F1E7DE; border-left: 4px solid #A85D3B; padding: 14px 16px; border-radius: 6px; margin: 16px 0; }
+  a { color: #A85D3B; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #E5D9CC; vertical-align: top; }
+  th { color: #8A7A6C; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<h1>Privacy Policy</h1>
+<p class="updated">Effective date: [FILL IN LAUNCH DATE] · Last updated: [FILL IN DATE]</p>
+
+<p>SolaceU ("SolaceU," "we," "us," or "our") provides an AI-powered emotional companionship app (the "App"). This Privacy Policy explains what information we collect, how we use it, and the choices you have. By using SolaceU, you agree to the practices described here.</p>
+
+<div class="callout">
+<strong>The short version:</strong> Your conversations and mood entries are stored on your device, not in a cloud account. <strong>We do not sell your data, we do not share it for advertising purposes, and we do not embed any third-party advertising, analytics, or tracking SDKs in this App.</strong> Message content is sent to our server and our AI provider only to generate a response to you, and is not stored long-term unless you submit a Report.
+</div>
+
+<h2>1. Who we are</h2>
+<p>SolaceU is developed and operated by [YOUR LEGAL NAME OR COMPANY NAME]. If you have questions about this policy or your data, contact us at <a href="mailto:privacy@solaceu.app">privacy@solaceu.app</a>.</p>
+
+<h2>2. Information we collect</h2>
+
+<h3>2.1 Account information</h3>
+<p>When you sign in with "Sign in with Apple," Apple provides us with a unique, anonymized identifier for your account. We do not request or receive your name or email address through this process. This identifier is stored securely on your device (in the iOS Keychain).</p>
+
+<h3>2.2 Conversations and mood entries</h3>
+<p>The messages you send, the AI's replies, and your mood check-in entries are stored locally on your device using Apple's SwiftData framework. We do not maintain a cloud copy of your conversation history or mood data at this time.</p>
+<p>When you send a message, the text of that message (along with your recent conversation history, limited to your last 10 messages, to maintain context) is transmitted to our server and then to our AI language model provider (see Section 5) solely to generate a reply. This content is not permanently stored on our server. Our server also performs automated, in-memory keyword screening on your message to detect possible signs of self-harm or crisis, in order to provide you with appropriate crisis resources — this screening happens transiently and is not itself stored.</p>
+
+<h3>2.3 Voice input</h3>
+<p>If you use voice input, your speech is processed using Apple's on-device Speech Recognition framework to convert it to text. Depending on your device and language settings, this processing may occur entirely on your device or, where on-device recognition is unavailable, may be sent to Apple's servers for transcription, subject to Apple's own privacy practices.</p>
+
+<h3>2.4 Report submissions</h3>
+<p>If you use the "Report" feature to flag an AI reply, we collect and store the flagged message content, your selected reason, and any note you provide, in order to review the report and improve the App's safety systems. Report submissions are retained on our server for this purpose.</p>
+
+<h3>2.5 Subscription and purchase information</h3>
+<p>Subscriptions are processed entirely through Apple's App Store (StoreKit). We do not receive or store your payment information (such as card numbers). We only receive confirmation from Apple of your subscription status (active, expired, etc.) in order to unlock Premium features on your device.</p>
+
+<h3>2.6 Automatically collected technical information</h3>
+<p>Our server may log limited technical information for security and debugging purposes, such as timestamps and error details. We do not use this information to build advertising profiles.</p>
+
+<h2>3. Third-party SDKs and services</h2>
+<p>SolaceU does <strong>not</strong> include any third-party advertising SDKs, analytics/tracking SDKs, or crash-reporting SDKs. The only external frameworks the App uses are Apple's own first-party frameworks: <em>Sign in with Apple</em> (authentication), <em>StoreKit</em> (subscriptions), and the <em>Speech</em> framework (voice input) — each governed by Apple's own privacy practices, not a separate third-party vendor. The only outside service the App relies on is our own backend server's connection to our AI language model provider, described in Section 5 below.</p>
+
+<h2>4. How we use your information</h2>
+<ul>
+<li>To generate AI responses to your messages</li>
+<li>To detect potential crisis situations and surface relevant support resources</li>
+<li>To let you pick up your conversations and mood history on the same device</li>
+<li>To verify your subscription status and provide Premium features</li>
+<li>To review content you report, and to maintain the safety and integrity of the App</li>
+<li>To maintain and secure our service (e.g., diagnosing technical problems)</li>
+</ul>
+<p>We do <strong>not</strong> use your data to serve advertising, and we do <strong>not</strong> sell, rent, or "share" (as that term is defined under the CCPA) your personal information to third parties for cross-context behavioral advertising or any other purpose.</p>
+
+<h2>5. Who we share information with</h2>
+<table>
+<tr><th>Recipient</th><th>What they receive</th><th>Why</th></tr>
+<tr><td>Apple Inc.</td><td>Sign-in identifier, subscription/purchase status, voice audio (where applicable)</td><td>Authentication and in-app purchases</td></tr>
+<tr><td>OpenAI, L.L.C. (our AI language model provider)</td><td>The text of your messages and recent conversation context</td><td>To generate the AI's replies</td></tr>
+<tr><td>Our cloud hosting provider (Tencent Cloud)</td><td>Data in transit through our server, and stored Report submissions</td><td>To run our backend service</td></tr>
+</table>
+<p>Per OpenAI's published API data usage policy, data submitted through OpenAI's API is <strong>not used to train OpenAI's models by default</strong>, and is retained by OpenAI for up to 30 days for abuse-monitoring purposes before deletion (longer retention may apply where required by law). We do not enable any additional data-sharing or training opt-ins with OpenAI.</p>
+<p>We may also disclose information if required by law, to protect the rights and safety of our users or the public (for example, in response to a credible indication of imminent harm), or in connection with a merger, acquisition, or sale of assets (in which case we will notify you).</p>
+
+<h2>6. Sensitive information</h2>
+<p>Conversations with SolaceU may reveal information about your mental or emotional health. Under laws like the CCPA/CPRA, this may be considered "sensitive personal information," and under GDPR, a "special category" of data. We do not use it for advertising, we do not sell it, and we limit its transmission to what is necessary to provide the service described above. We do not use this information for any purpose beyond providing and improving the App's core functionality.</p>
+
+<h2>7. Data retention and deletion</h2>
+<ul>
+<li>Conversations and mood entries stored on your device remain there until you delete the App or clear its data.</li>
+<li>Report submissions are retained on our server for as long as reasonably necessary for safety review, and are periodically reviewed for deletion.</li>
+<li>To delete your account and locally stored data, delete the App from your device. To request deletion of any Report data associated with your account, contact us at <a href="mailto:privacy@solaceu.app">privacy@solaceu.app</a>.</li>
+</ul>
+
+<h2>8. Your privacy rights</h2>
+
+<h3>8.1 If you are in the European Economic Area, UK, or Switzerland (GDPR)</h3>
+<p>You have the right to:</p>
+<ul>
+<li><strong>Access</strong> the personal data we hold about you</li>
+<li><strong>Rectify</strong> inaccurate or incomplete data</li>
+<li><strong>Erase</strong> your data ("right to be forgotten")</li>
+<li><strong>Restrict</strong> or <strong>object to</strong> certain processing</li>
+<li><strong>Port</strong> your data to another service in a structured, machine-readable format</li>
+<li><strong>Withdraw consent</strong> at any time, where processing is based on consent</li>
+<li><strong>Lodge a complaint</strong> with your local data protection authority</li>
+</ul>
+
+<h3>8.2 If you are a California resident (CCPA/CPRA)</h3>
+<p>You have the right to:</p>
+<ul>
+<li><strong>Know</strong> what personal information we collect, use, and disclose</li>
+<li><strong>Delete</strong> personal information we hold about you</li>
+<li><strong>Correct</strong> inaccurate personal information</li>
+<li><strong>Opt out of the sale or "sharing"</strong> of personal information — we do not sell or share your data, so there is nothing to opt out of, but you retain this right</li>
+<li><strong>Limit the use of sensitive personal information</strong> — we already limit our use of it to providing the App's core functionality, as described in Section 6</li>
+<li><strong>Non-discrimination</strong> for exercising any of these rights</li>
+</ul>
+
+<h3>8.3 Exercising your rights</h3>
+<p>To exercise any of the above rights, contact us at <a href="mailto:privacy@solaceu.app">privacy@solaceu.app</a>. We will verify your request and respond within the timeframe required by applicable law. You may also exercise many of these rights directly by deleting the App (which removes your on-device data) or by using in-App settings.</p>
+
+<h2>9. International data transfers</h2>
+<p>Because our service providers operate in different countries, your information may be processed in a country other than the one in which you live, which may have different data protection laws. Where required, we take steps to ensure such transfers are subject to appropriate safeguards (such as Standard Contractual Clauses for transfers from the EEA).</p>
+
+<h2>10. Children's privacy</h2>
+<p>SolaceU is not directed at, and is not intended for use by, anyone under the age of 17 (or the age of digital consent in your jurisdiction, if higher). We do not knowingly collect personal information from children. If you believe a child has provided us with personal information, contact us and we will delete it.</p>
+
+<h2>11. Not a substitute for professional care</h2>
+<p>SolaceU is an AI companion for emotional support and is not a medical device, and does not provide medical diagnosis, treatment, or advice. It cannot replace care from a licensed physician or mental health professional. If you are in crisis, please contact your local emergency services or a crisis helpline immediately; you can find one at <a href="https://findahelpline.com" target="_blank">findahelpline.com</a>.</p>
+
+<h2>12. Security</h2>
+<p>We use industry-standard measures, including encrypted (HTTPS) connections between the App and our servers, to protect your information. No method of transmission or storage is completely secure, and we cannot guarantee absolute security.</p>
+
+<h2>13. Changes to this policy</h2>
+<p>We may update this Privacy Policy from time to time. If we make material changes, we will notify you within the App or by updating the "Last updated" date above. Continued use of the App after changes take effect constitutes acceptance of the revised policy.</p>
+
+<h2>14. Contact us</h2>
+<p>If you have questions about this Privacy Policy or how we handle your information, contact us at <a href="mailto:privacy@solaceu.app">privacy@solaceu.app</a>.</p>
+
+</body>
+</html>
