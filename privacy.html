@@ -22,7 +22,7 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="updated">Effective date: 2026-08-12 · Last updated: 2026-08-15</p>
+<p class="updated">Effective date: [FILL IN LAUNCH DATE] · Last updated: [FILL IN DATE]</p>
 
 <p>Lenia ("Lenia," "we," "us," or "our") provides an AI-powered emotional companionship app (the "App"). This Privacy Policy explains what information we collect, how we use it, and the choices you have. By using Lenia, you agree to the practices described here.</p>
 
@@ -31,7 +31,7 @@
 </div>
 
 <h2>1. Who we are</h2>
-<p>Lenia is developed and operated by WANG XIAOHANG. If you have questions about this policy or your data, contact us at <a href="mailto:privacy@lenia.tech">privacy@lenia.tech</a>.</p>
+<p>Lenia is developed and operated by [YOUR LEGAL NAME OR COMPANY NAME]. If you have questions about this policy or your data, contact us at <a href="mailto:privacy@lenia.tech">privacy@lenia.tech</a>.</p>
 
 <h2>2. Information we collect</h2>
 
@@ -40,18 +40,22 @@
 
 <h3>2.2 Conversations and mood entries</h3>
 <p>The messages you send, the AI's replies, and your mood check-in entries are stored locally on your device using Apple's SwiftData framework. We do not maintain a cloud copy of your conversation history or mood data at this time.</p>
-<p>When you send a message, the text of that message (along with your recent conversation history, limited to your last 10 messages, to maintain context) is transmitted to our server and then to our AI language model provider (see Section 5) solely to generate a reply. This content is not permanently stored on our server. Our server also performs automated, in-memory keyword screening on your message to detect possible signs of self-harm or crisis, in order to provide you with appropriate crisis resources — this screening happens transiently and is not itself stored.</p>
+<p>When you send a message, the text of that message (along with your recent conversation history, limited to your last 40 messages, to maintain context) is transmitted to our server and then to our AI language model provider (see Section 5) solely to generate a reply. This content is not permanently stored on our server. Our server also performs automated safety screening on your message, combining keyword detection with a lightweight secondary AI risk-assessment check, to detect possible signs of self-harm or crisis, in order to provide you with appropriate crisis resources. This screening happens transiently: the content is used only to make that determination and is not itself stored.</p>
+<p>To help Lenia maintain continuity across your conversations, the App periodically generates a short "relationship summary" (for example, what you've shared about your situation, or what kinds of responses have been helpful to you). This summary is generated using our AI provider but is stored only on your device — it is never uploaded to or retained on our servers — and is included as context only in the requests your device sends to generate a reply.</p>
 
 <h3>2.3 Voice input</h3>
 <p>If you use voice input, your speech is processed using Apple's on-device Speech Recognition framework to convert it to text. Depending on your device and language settings, this processing may occur entirely on your device or, where on-device recognition is unavailable, may be sent to Apple's servers for transcription, subject to Apple's own privacy practices.</p>
 
-<h3>2.4 Report submissions</h3>
+<h3>2.4 Voice output (text-to-speech)</h3>
+<p>If you choose to have an AI reply read aloud, the text of that reply is sent to Google LLC's Cloud Text-to-Speech service solely to generate the spoken audio, which is then played on your device. Google's handling of this data is governed by their own privacy practices.</p>
+
+<h3>2.5 Report submissions</h3>
 <p>If you use the "Report" feature to flag an AI reply, we collect and store the flagged message content, your selected reason, and any note you provide, in order to review the report and improve the App's safety systems. Report submissions are retained on our server for this purpose.</p>
 
-<h3>2.5 Subscription and purchase information</h3>
+<h3>2.6 Subscription and purchase information</h3>
 <p>Subscriptions are processed entirely through Apple's App Store (StoreKit). We do not receive or store your payment information (such as card numbers). We only receive confirmation from Apple of your subscription status (active, expired, etc.) in order to unlock Premium features on your device.</p>
 
-<h3>2.6 Automatically collected technical information</h3>
+<h3>2.7 Automatically collected technical information</h3>
 <p>Our server may log limited technical information for security and debugging purposes, such as timestamps and error details. We do not use this information to build advertising profiles.</p>
 
 <h2>3. Third-party SDKs and services</h2>
@@ -72,10 +76,11 @@
 <table>
 <tr><th>Recipient</th><th>What they receive</th><th>Why</th></tr>
 <tr><td>Apple Inc.</td><td>Sign-in identifier, subscription/purchase status, voice audio (where applicable)</td><td>Authentication and in-app purchases</td></tr>
-<tr><td>OpenAI, L.L.C. (our AI language model provider)</td><td>The text of your messages and recent conversation context</td><td>To generate the AI's replies</td></tr>
-<tr><td>Our cloud hosting provider (Tencent Cloud)</td><td>Data in transit through our server, and stored Report submissions</td><td>To run our backend service</td></tr>
+<tr><td>Zhipu AI (our current AI language model provider)</td><td>The text of your messages and recent conversation context</td><td>To generate the AI's replies</td></tr>
+<tr><td>Google LLC (Google Cloud Text-to-Speech)</td><td>The text of an AI reply, only when you tap to have it read aloud</td><td>To generate spoken audio of that reply</td></tr>
+<tr><td>Our cloud hosting provider (Oracle Cloud, hosted in the United States)</td><td>Data in transit through our server, and stored Report submissions</td><td>To run our backend service</td></tr>
 </table>
-<p>Per OpenAI's published API data usage policy, data submitted through OpenAI's API is <strong>not used to train OpenAI's models by default</strong>, and is retained by OpenAI for up to 30 days for abuse-monitoring purposes before deletion (longer retention may apply where required by law). We do not enable any additional data-sharing or training opt-ins with OpenAI.</p>
+<p>Our AI provider processes this data solely to generate a reply on our behalf. We are currently using Zhipu AI, and plan to transition to OpenAI, L.L.C. before public launch. Once that transition is complete, we will update this section to reflect OpenAI's published API data usage policy (which does not use API-submitted data to train its models by default).</p>
 <p>We may also disclose information if required by law, to protect the rights and safety of our users or the public (for example, in response to a credible indication of imminent harm), or in connection with a merger, acquisition, or sale of assets (in which case we will notify you).</p>
 
 <h2>6. Sensitive information</h2>
@@ -83,7 +88,7 @@
 
 <h2>7. Data retention and deletion</h2>
 <ul>
-<li>Conversations and mood entries stored on your device remain there until you delete the App or clear its data.</li>
+<li>Conversations, mood entries, and your relationship summary stored on your device remain there until you delete them using the "Clear All Conversations" option in Settings, or delete the App entirely.</li>
 <li>Report submissions are retained on our server for as long as reasonably necessary for safety review, and are periodically reviewed for deletion.</li>
 <li>To delete your account and locally stored data, delete the App from your device. To request deletion of any Report data associated with your account, contact us at <a href="mailto:privacy@lenia.tech">privacy@lenia.tech</a>.</li>
 </ul>
