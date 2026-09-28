@@ -657,6 +657,231 @@ body { background: #07191d; }
   .ring-a { animation: none; }
 }
 
+/* Compact, device-proportioned app preview and the supporting product pages. */
+.phone-frame { aspect-ratio: 78 / 163.4; height: min(750px, calc(100svh - 138px)); padding: 1.5px; border-radius: 48px; }
+.phone-screen { border-radius: 45px; }
+.dynamic-island { width: 90px; height: 26px; }
+.phone-status { padding: 10px 22px 0; font-size: 10px; }
+.status-icons { display: flex; align-items: center; }
+.status-icons svg { width: 34px; height: 12px; fill: currentColor; stroke: currentColor; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+.app-topline { margin: 41px 17px 8px; }
+.app-wordmark { font-size: 13px; }
+.app-wordmark-sub { font-size: 7px; }
+.app-header-actions { gap: 6px; }
+.app-settings { width: 28px; height: 28px; font-size: 13px; }
+.app-beacon { cursor: pointer; font: inherit; font-size: 9px; }
+.phone-body { padding: 2px 18px 17px; }
+.presence-orb { width: 112px; height: 112px; margin: 0 auto 2px; }
+.lighthouse-mark { width: 82px; height: 82px; }
+.app-greeting { margin: 0 0 10px; font-size: 13px; line-height: 1.38; }
+.checkin-card { margin-bottom: 8px; padding: 11px 12px; border-radius: 14px; }
+.checkin-title { font-size: 12px; line-height: 1.4; }
+.checkin-subtitle { margin-top: 4px; font-size: 10px; line-height: 1.42; }
+.checkin-button { margin-top: 8px; padding: 7px 10px; font-size: 10.5px; }
+.app-actions { gap: 7px; }
+.app-action { min-height: 58px; padding: 8px 4px; gap: 5px; border-radius: 13px; }
+.app-action > span { font-size: 10.5px; }
+.app-action .action-icon { width: 18px; height: 18px; flex-basis: 18px; }
+.phone-recent { padding-top: 13px; }
+.phone-section-title { margin-bottom: 7px; font-size: 12px; }
+.recent-state-card { gap: 8px; padding: 10px; border-radius: 12px; }
+.recent-state-mark { width: 24px; height: 24px; flex-basis: 24px; font-size: 12px; }
+.recent-state-card p { font-size: 10px; line-height: 1.4; }
+.recent-state-card strong { font-size: 11px; }
+.phone-section-title.log-title { margin: 13px 0 3px; }
+.vessel-log-row { gap: 8px; padding: 6px 2px; font-size: 10.5px; }
+.log-time { font-size: 9px; }
+.log-mark { width: 20px; height: 20px; border-radius: 6px; }
+.phone-tabbar { min-height: 56px; height: 56px; padding: 6px 22px 9px; }
+.tab-btn { gap: 2px; }
+.tab-btn svg { width: 18px; height: 18px; }
+.tab-btn small { font-size: 9px; }
+.screen-checkin .chat-head { padding-top: 41px; }
+.checkin-form-body { padding: 15px 18px 20px; }
+.checkin-form-question { margin: 2px 0 11px; font-size: 16px; line-height: 1.35; }
+.weather-options { gap: 6px; }
+.weather-choice { min-height: 58px; gap: 4px; border-radius: 11px; }
+.weather-symbol { display: grid; place-items: center; font-size: 17px; }
+.weather-symbol svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.45; stroke-linecap: round; stroke-linejoin: round; }
+.weather-label { font-size: 9.5px; }
+.body-feeling-question { margin: 17px 0 8px; font-size: 12px; }
+.body-options { gap: 6px; }
+.body-choice { min-height: 30px; padding: 4px 3px; font-size: 10px; }
+.checkin-note { min-height: 58px; margin-top: 13px; padding: 9px 10px; font-size: 11px; }
+.checkin-submit { margin-top: 10px; padding: 9px; font-size: 11px; }
+.mini-chart { height: 102px; }
+.mini-chart-head { margin-bottom: 8px; font-size: 11px; }
+.mini-card { gap: 7px; padding: 9px 10px; margin-bottom: 8px; }
+.mini-card p { font-size: 10px; }
+.mini-card p strong { font-size: 11px; }
+.memory-item { gap: 7px; padding: 9px 10px; margin-bottom: 7px; }
+.memory-item p { font-size: 10.5px; line-height: 1.42; }
+.memory-tag { flex: 0 0 auto; padding: 3px 6px; border: 1px solid rgba(116, 197, 180, .24); border-radius: 99px; color: #8dbbab; font-size: 8px; letter-spacing: .04em; }
+.memory-forget { padding: 4px 8px; font-size: 9px; white-space: nowrap; }
+.memory-forget.armed { border-color: rgba(220, 139, 130, .5); color: #e5a8a1; }
+.chat-demo-note { margin: 0; padding: 2px 14px 0; color: #718d84; font-size: 8px; line-height: 1.3; letter-spacing: .02em; }
+.clarity-bubble { width: 94%; max-width: 94%; padding: 10px 11px; border-radius: 12px; }
+.clarity-bubble-title { display: block; margin-bottom: 5px; color: #92c9b8; font-size: 10px; font-weight: 600; }
+.clarity-bubble-row { padding: 5px 0; border-top: 1px solid rgba(190, 220, 207, .08); }
+.clarity-bubble-row > span { color: #88ac9f; font-size: 8px; }
+.clarity-bubble-row p { margin: 2px 0 0; color: #d1dfd6; font-size: 9px; line-height: 1.4; }
+.screen-beacon .chat-head { padding-top: 41px; }
+.beacon-phone-body { padding: 13px 17px 24px; }
+.beacon-phone-intro { padding: 1px 0 10px; text-align: center; }
+.beacon-phone-intro img { width: 30px; height: 44px; margin: 0 auto 6px; object-fit: contain; filter: brightness(0) saturate(100%) invert(73%) sepia(21%) saturate(420%) hue-rotate(112deg) brightness(94%) contrast(88%); }
+.beacon-phone-intro h2 { color: #e1ebe4; font: 400 18px/1.32 var(--serif); }
+.beacon-phone-intro p { margin: 5px 0 2px; color: #8fa79e; font-size: 10px; }
+.beacon-phone-step { display: grid; grid-template-columns: 22px 1fr; gap: 8px; padding: 11px 0; border-top: 1px solid rgba(190, 220, 207, .1); }
+.beacon-phone-num { color: #d8b979; font: 12px var(--serif); }
+.beacon-phone-step strong { color: #dce8e0; font-size: 10px; }
+.beacon-phone-step p { margin: 4px 0 6px; color: #8fa79e; font-size: 9px; line-height: 1.4; }
+.beacon-phone-step button, .beacon-phone-step a { color: #8dcab5; font-size: 9px; }
+.new-log-row { animation: logIn .3s ease both; }
+@keyframes logIn { from { opacity: 0; transform: translateY(-4px); } }
+
+.memory-story { display: grid; grid-template-columns: 1fr .8fr; align-items: center; gap: clamp(42px, 8vw, 106px); padding: 104px 0 112px; border-top: 1px solid var(--line-soft); }
+.memory-story h2, .faq-heading h2 { margin: 25px 0 18px; color: #e8efe9; font: 400 clamp(34px, 4vw, 50px)/1.22 var(--serif); letter-spacing: -.02em; }
+.memory-story-copy > p { max-width: 470px; margin: 0; color: #9eb2ac; font-size: 15px; line-height: 1.85; }
+.memory-preview-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding-bottom: 5px; border-bottom: 1px solid rgba(116, 197, 180, .42); color: var(--teal-bright); font-size: 12px; }
+.boundaries-card { padding: 24px 26px; border: 1px solid rgba(190, 220, 207, .12); border-radius: 14px; background: #0e2023; }
+.boundaries-card-head { display: flex; align-items: center; gap: 12px; padding-bottom: 14px; color: #e2ebe4; font: 17px var(--serif); }
+.boundaries-card-head > div { display: grid; gap: 4px; }
+.boundaries-card-head small { color: #79988d; font: 8px var(--sans); letter-spacing: .15em; }
+.boundary-mark { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid rgba(116, 197, 180, .2); border-radius: 50%; }
+.boundary-mark img { width: 17px; height: 23px; filter: brightness(0) saturate(100%) invert(72%) sepia(18%) saturate(442%) hue-rotate(113deg) brightness(94%) contrast(88%); }
+.boundaries-card > p { margin: 0; padding: 12px 0; border-top: 1px solid rgba(190, 220, 207, .08); color: #a6bab1; font-size: 12px; line-height: 1.65; }
+.faq-section { display: grid; grid-template-columns: .78fr 1.22fr; gap: 28px clamp(38px, 8vw, 96px); padding: 94px 0 104px; border-top: 1px solid var(--line-soft); }
+.faq-section > .section-kicker { grid-column: 1 / -1; }
+.faq-heading h2 { margin: 0 0 12px; font-size: clamp(32px, 3.7vw, 44px); }
+.faq-heading p { margin: 0; color: #96aca3; font-size: 13px; line-height: 1.7; }
+.faq-list details { border-bottom: 1px solid rgba(190, 220, 207, .1); }
+.faq-list details:first-child { border-top: 1px solid rgba(190, 220, 207, .1); }
+.faq-list summary { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 17px 0; color: #d8e4dc; font-size: 13px; cursor: pointer; list-style: none; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-toggle { color: #8dbbab; font-size: 18px; font-weight: 300; transition: transform .2s ease; }
+.faq-list details[open] .faq-toggle { transform: rotate(45deg); }
+.faq-list details > p { max-width: 600px; margin: -2px 30px 16px 0; color: #91a99f; font-size: 12px; line-height: 1.8; }
+.faq-list a { color: var(--teal-bright); text-decoration: underline; text-underline-offset: 3px; }
+.regional-help { margin-top: 9px; }
+
+@media (min-width: 721px) and (max-height: 760px) {
+  .phone-frame { height: min(540px, calc(100svh - 178px)); }
+}
+@media (max-width: 980px) {
+  .memory-story { grid-template-columns: 1fr; gap: 28px; }
+  .faq-section { grid-template-columns: 1fr; gap: 24px; }
+  .faq-section > .section-kicker { grid-column: auto; }
+}
+@media (max-width: 720px) {
+  .phone-frame { height: min(720px, calc(100svh - 150px)); border-radius: 45px; }
+  .phone-screen { border-radius: 42px; }
+  .app-topline { margin: 41px 15px 7px; }
+  .phone-body { padding-inline: 15px; }
+  .presence-orb { width: 108px; height: 108px; }
+  .lighthouse-mark { width: 78px; height: 78px; }
+  .app-greeting { font-size: 12.5px; }
+  .checkin-card { padding: 10px; }
+  .app-action { min-height: 54px; }
+  .memory-story, .faq-section { padding-top: 72px; padding-bottom: 76px; }
+  .boundaries-card { padding: 20px; }
+}
+
+/* Keep the real app hierarchy visible at the compact preview scale. */
+.presence-orb { width: 96px; height: 96px; margin-bottom: 0; }
+.lighthouse-mark { width: 70px; height: 70px; }
+.app-greeting { margin-bottom: 7px; font-size: 12px; line-height: 1.32; }
+.checkin-card { margin-bottom: 7px; padding: 9px 11px; }
+.checkin-title { font-size: 11px; line-height: 1.35; }
+.checkin-subtitle { margin-top: 3px; font-size: 9px; line-height: 1.3; }
+.checkin-button { margin-top: 6px; padding: 6px 9px; font-size: 10px; }
+.app-actions { gap: 6px; }
+.app-action { min-height: 50px; gap: 4px; }
+.app-action > span { font-size: 10px; }
+.app-action .action-icon { width: 16px; height: 16px; flex-basis: 16px; }
+.phone-recent { padding-top: 10px; }
+.phone-section-title { margin-bottom: 5px; font-size: 11px; }
+.recent-state-card { padding: 8px 9px; }
+.recent-state-card p { font-size: 9px; }
+.recent-state-card strong { font-size: 10px; }
+.phone-section-title.log-title { margin-top: 9px; }
+.vessel-log-row { padding-block: 4px; font-size: 9.5px; }
+.phone-tabbar { min-height: 52px; height: 52px; padding: 5px 20px 7px; }
+#recentBodyEn, #recentBodyZh { display: none; }
+.presence-orb { width: 82px; height: 82px; }
+.lighthouse-mark { width: 60px; height: 60px; }
+.app-topline { margin-top: 38px; margin-bottom: 6px; }
+.checkin-card { padding: 8px 10px; }
+.checkin-title { font-size: 10px; }
+.checkin-button { margin-top: 5px; padding-block: 5px; font-size: 9.5px; }
+.app-action { min-height: 44px; }
+.app-action .action-icon { width: 15px; height: 15px; flex-basis: 15px; }
+.phone-recent { padding-top: 8px; }
+@media (max-width: 720px) {
+  .presence-orb { width: 82px; height: 82px; }
+  .lighthouse-mark { width: 60px; height: 60px; }
+  .phone-tabbar { min-height: 52px; height: 52px; }
+}
+
+/* Keep the hero line in its own column; the phone stays a clean, unobstructed device preview. */
+.hero-copy { min-width: 0; max-width: 640px; }
+.hero-signature { position: static; display: block; width: fit-content; max-width: min(100%, 420px); line-height: 1.5; overflow-wrap: anywhere; }
+
+/* Compact the interactive mock to the visual density of the iPhone app. */
+.phone-frame { border-radius: 43px; }
+.phone-screen { border-radius: 40px; }
+.dynamic-island { width: 78px; height: 22px; }
+.phone-status { padding-top: 9px; font-size: 9px; }
+.app-topline { margin: 37px 16px 6px; }
+.app-wordmark { font-size: 12px; }
+.app-wordmark-sub { font-size: 6.5px; }
+.app-settings { width: 24px; height: 24px; font-size: 11px; }
+.app-beacon { gap: 4px; padding: 4px 7px; font-size: 8px; }
+.app-beacon img { width: 11px; height: 11px; }
+.phone-body { padding-inline: 16px; }
+.presence-orb { width: 74px; height: 74px; }
+.lighthouse-mark { width: 54px; height: 54px; }
+.app-greeting { margin-bottom: 6px; font-size: 10.5px; line-height: 1.32; }
+.checkin-card { padding: 7px 9px; border-radius: 11px; }
+.checkin-title { font-size: 9.5px; }
+.checkin-subtitle { font-size: 8px; }
+.checkin-button { padding: 4px 8px; font-size: 8.5px; }
+.app-actions { gap: 5px; }
+.app-action { min-height: 39px; padding: 5px 3px; gap: 3px; border-radius: 10px; }
+.app-action > span { font-size: 9px; }
+.app-action .action-icon { width: 14px; height: 14px; flex-basis: 14px; }
+.phone-recent { padding-top: 7px; }
+.phone-section-title { margin-bottom: 4px; font-size: 10px; }
+.recent-state-card { gap: 6px; padding: 7px 8px; border-radius: 10px; }
+.recent-state-mark { width: 20px; height: 20px; flex-basis: 20px; font-size: 10px; }
+.recent-state-card p { font-size: 8px; }
+.recent-state-card strong { font-size: 9px; }
+.phone-section-title.log-title { margin-top: 7px; }
+.vessel-log-row { gap: 6px; padding-block: 3px; font-size: 8px; }
+.log-time { font-size: 8px; }
+.log-mark { width: 17px; height: 17px; }
+.phone-tabbar { min-height: 48px; height: 48px; padding: 4px 18px 6px; }
+.tab-btn { min-width: 54px; gap: 1px; }
+.tab-btn svg { width: 15px; height: 15px; }
+.tab-btn small { font-size: 7.5px; }
+.mini-chart { height: 88px; }
+.mini-chart-head { font-size: 10px; }
+.memory-item { gap: 6px; padding: 7px 8px; margin-bottom: 5px; }
+.memory-item p { font-size: 9px; }
+.memory-forget { padding: 3px 6px; font-size: 8px; }
+.bubble { font-size: 9.5px; }
+.mode-chip, .suggest-chip { font-size: 8.5px; }
+.chat-input input { height: 32px; font-size: 9px; }
+.chat-send { width: 32px; height: 32px; }
+
+@media (max-width: 720px) {
+  .hero-copy { max-width: none; }
+  .hero-signature { max-width: 100%; }
+  .phone-frame { height: min(680px, calc(100svh - 180px)); }
+  .phone-screen { border-radius: 40px; }
+  .app-topline { margin-top: 37px; }
+  .phone-body { padding-inline: 14px; }
+}
+
 </style>
 </head>
 <body>
@@ -671,9 +896,9 @@ body { background: #07191d; }
       <nav class="main-nav" aria-label="Main navigation">
         <a href="#app"><span class="en">The app</span><span class="zh" hidden>产品体验</span></a>
         <a href="#tides"><span class="en">Tides</span><span class="zh" hidden>潮汐</span></a>
+        <a href="#memory-story"><span class="en">Memory</span><span class="zh" hidden>记忆</span></a>
         <a href="#rituals"><span class="en">Rituals</span><span class="zh" hidden>日常仪式</span></a>
         <a href="#beacon"><span class="en">Safety</span><span class="zh" hidden>安心边界</span></a>
-        <a href="#meaning"><span class="en">Why “Lightvessel”</span><span class="zh" hidden>名字的含义</span></a>
         <a href="#privacy"><span class="en">Privacy</span><span class="zh" hidden>隐私</span></a>
       </nav>
       <div class="header-actions">
@@ -729,17 +954,17 @@ body { background: #07191d; }
 
         <!-- Interactive phone demo -->
           <div class="hero-art" aria-label="Lightvessel app preview in iPhone 18 Pro Max proportions">
-          <div class="phone-hint"><span class="en">iPhone 18 Pro Max · App preview</span><span class="zh" hidden>iPhone 18 Pro Max · App 预览</span></div>
+          <div class="phone-hint"><span class="en">iPhone 18 Pro Max · Interactive preview · sample data</span><span class="zh" hidden>iPhone 18 Pro Max · 可交互预览 · 示例数据</span></div>
           <div class="phone-frame">
             <div class="phone-screen">
               <div class="dynamic-island" aria-hidden="true"></div>
-              <div class="phone-status"><span>9:41</span><span class="status-icons">◔ ▰</span></div>
+              <div class="phone-status"><span>9:41</span><span class="status-icons" aria-hidden="true"><svg viewBox="0 0 40 14"><path d="M1 12V9m4 3V7m4 5V5m4 7V3M20 5a8 8 0 0 1 11 0M22.5 7.5a4.5 4.5 0 0 1 6 0M25 10a1.3 1.3 0 0 1 1 0"/><rect x="34" y="4" width="5" height="7" rx="1.2"/><path d="M35.3 6h2.4"/></svg></span></div>
 
               <!-- NOW SCREEN -->
               <div class="app-screen screen-now active" data-screen="now">
                 <div class="app-topline">
                   <span class="app-heading"><span class="app-wordmark">Lightvessel</span><span class="app-wordmark-sub">A LIGHT AT SEA</span></span>
-                  <span class="app-header-actions"><button type="button" class="app-settings" aria-label="Settings">⚙</button><a class="app-beacon" href="#beacon" aria-label="Open Beacon"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></a></span>
+                  <span class="app-header-actions"><button type="button" class="app-settings" aria-label="Settings" data-action="settings">⚙</button><button type="button" class="app-beacon" data-action="beacon" aria-label="Open Beacon"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></button></span>
                 </div>
                 <div class="phone-body">
                   <div class="presence-orb" role="button" tabindex="0" data-action="breathe" aria-label="Start breathing">
@@ -747,13 +972,13 @@ body { background: #07191d; }
                     <span class="lighthouse-mark"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiNBODZBMkQiIHN0cm9rZT0iI0E4NkEyRCIgc3Ryb2tlLXdpZHRoPSIzMiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik00MDMuNTI0MjY3IDE0Ni4yOTU0NjdoMTgwLjY2NzczM2wtMTguMDU2NTMzIDE0Ni4yOTU0NjZINDIxLjYxNDkzM3oiLz4KICAgIDxwYXRoIGQ9Ik00MzAuNjI2MTMzIDE2OC4yNDMyaDEyNi40NjRsLTEyLjYyOTMzMyAxMDIuNEg0NDMuMjU1NDY3eiIvPgogICAgPHBhdGggZD0iTTQ0Ny44OTc2IDIwNy4yNTc2aDkxLjk1NTJMNTI0LjUyNjkzMyAyNTZINDYzLjE4OTMzM3oiLz4KICA8L2c+Cjwvc3ZnPgo=" alt=""></span>
                   </div>
                   <p class="app-greeting">
-                    <span class="en">Good evening.<br>How are you doing tonight?</span>
-                    <span class="zh" hidden>晚上好。<br>今晚过得怎么样？</span>
+                    <span id="greetingEn" class="en">Good evening.<br>How are you doing tonight?</span>
+                    <span id="greetingZh" class="zh" hidden>晚上好。<br>今晚过得怎么样？</span>
                   </p>
 
                   <div class="checkin-card" id="checkinCard">
                     <p class="checkin-title"><span id="checkinTitleEn" class="en">What’s the weather in your inner sea today?</span><span id="checkinTitleZh" class="zh" hidden>今天的内海是什么天气？</span></p>
-                    <p class="checkin-subtitle"><span id="checkinSubtitleEn" class="en">A small note for today’s self. It will find its place in your tide chart.</span><span id="checkinSubtitleZh" class="zh" hidden>替今天的自己记一笔，它会留在你的潮汐表里。</span></p>
+                    <p class="checkin-subtitle"><span id="checkinSubtitleEn" class="en">A note for your tide chart.</span><span id="checkinSubtitleZh" class="zh" hidden>留一笔，存进潮汐表。</span></p>
                     <button class="checkin-button" id="checkinHomeButton" type="button" data-action="checkin">
                       <span class="en">Log Sea Conditions</span><span class="zh" hidden>登记海况</span>
                     </button>
@@ -775,27 +1000,29 @@ body { background: #07191d; }
                   </div>
                   <section class="phone-recent">
                     <div class="phone-section-title"><span class="en">Recent State</span><span class="zh" hidden>最近的状态</span><span class="sample-label"><span class="en">EXAMPLE</span><span class="zh" hidden>示例</span></span></div>
-                    <div class="recent-state-card"><span class="recent-state-mark">↗</span><p><strong><span class="en">A little more steady</span><span class="zh" hidden>慢慢平稳了一些</span></strong><span class="en">A few rough moments passed sooner this week.</span><span class="zh" hidden>这周有几次起伏，比之前更快地过去了。</span></p></div>
+                    <div class="recent-state-card"><span class="recent-state-mark">≈</span><p><strong><span id="recentTitleEn" class="en">A little more steady</span><span id="recentTitleZh" class="zh" hidden>慢慢平稳了一些</span></strong><span id="recentBodyEn" class="en">A few rough moments passed sooner this week.</span><span id="recentBodyZh" class="zh" hidden>这周有几次起伏，比之前更快地过去了。</span></p></div>
                     <div class="phone-section-title log-title"><span class="en">Vessel Log</span><span class="zh" hidden>小船日志</span></div>
-                    <div class="vessel-log-row"><span class="log-time">8:42</span><span class="log-mark">≈</span><span><span class="en">Sea conditions noted</span><span class="zh" hidden>记下今天的海况</span></span></div>
-                    <div class="vessel-log-row"><span class="log-time">8:16</span><span class="log-mark">◌</span><span><span class="en">A moment to breathe</span><span class="zh" hidden>跟着灯光呼吸</span></span></div>
+                    <div class="vessel-log-rows" id="vesselLogRows">
+                      <div class="vessel-log-row"><span class="log-time">8:42</span><span class="log-mark">≈</span><span><span class="en">Sea conditions noted</span><span class="zh" hidden>记下今天的海况</span></span></div>
+                      <div class="vessel-log-row"><span class="log-time">8:16</span><span class="log-mark">◌</span><span><span class="en">A moment to breathe</span><span class="zh" hidden>跟着灯光呼吸</span></span></div>
+                    </div>
                   </section>
                 </div>
               </div>
 
               <!-- TIDES SCREEN -->
               <div class="app-screen screen-tides" data-screen="tides">
-                <div class="app-topline"><span class="app-wordmark"><span class="en">Tides</span><span class="zh" hidden>潮汐</span></span><span class="app-header-actions"><button type="button" class="app-settings" aria-label="Settings">⚙</button><a class="app-beacon" href="#beacon" aria-label="Open Beacon"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></a></span></div>
+                <div class="app-topline"><span class="app-wordmark"><span class="en">Tides</span><span class="zh" hidden>潮汐</span></span><span class="app-header-actions"><button type="button" class="app-settings" aria-label="Settings" data-action="settings">⚙</button><button type="button" class="app-beacon" data-action="beacon" aria-label="Open Beacon"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></button></span></div>
                 <div class="phone-body">
                   <p class="screen-sub"><span class="en">Feelings aren’t a problem to solve — they’re a sea that rises and falls.</span><span class="zh" hidden>情绪不是要解决的问题，是一片会涨落的海。</span></p>
                   <div class="mini-chart-card">
                     <div class="mini-chart-head"><span><span class="en">Recent sea conditions · 14 days</span><span class="zh" hidden>近 14 天海况</span></span><span class="sample-label"><span class="en">EXAMPLE</span><span class="zh" hidden>示例</span></span></div>
                     <svg viewBox="0 0 300 90" class="mini-chart" preserveAspectRatio="none" aria-hidden="true">
                       <defs><linearGradient id="miniFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#68c4b3" stop-opacity=".25"/><stop offset="1" stop-color="#68c4b3" stop-opacity="0"/></linearGradient></defs>
-                      <path d="M0,64 C22,54 30,70 52,60 S82,40 105,50 S135,66 160,48 S185,34 210,45 S240,58 265,40 L300,32 L300,90 L0,90 Z" fill="url(#miniFill)"/>
-                      <path d="M0,64 C22,54 30,70 52,60 S82,40 105,50 S135,66 160,48 S185,34 210,45 S240,58 265,40 L300,32" fill="none" stroke="#76caba" stroke-width="2.5" stroke-linecap="round"/>
-                      <circle cx="52" cy="60" r="3.4" fill="#f5c77f"/><circle cx="105" cy="50" r="3.4" fill="#f5c77f"/><circle cx="160" cy="48" r="3.4" fill="#f5c77f"/><circle cx="210" cy="45" r="3.4" fill="#f5c77f"/><circle cx="300" cy="32" r="3.4" fill="#f5c77f" opacity="0"/>
-                      <circle cx="300" cy="32" r="3.4" fill="#f5c77f" class="today-dot" opacity="0"/>
+                      <path id="miniArea" d="M0,64 C22,54 30,70 52,60 S82,40 105,50 S135,66 160,48 S185,34 210,45 S240,58 265,40 L300,32 L300,90 L0,90 Z" fill="url(#miniFill)"/>
+                      <path id="miniLine" d="M0,64 C22,54 30,70 52,60 S82,40 105,50 S135,66 160,48 S185,34 210,45 S240,58 265,40 L300,32" fill="none" stroke="#76caba" stroke-width="2" stroke-linecap="round"/>
+                      <circle cx="52" cy="60" r="3.1" fill="#f5c77f"/><circle cx="105" cy="50" r="3.1" fill="#f5c77f"/><circle cx="160" cy="48" r="3.1" fill="#f5c77f"/><circle cx="210" cy="45" r="3.1" fill="#f5c77f"/>
+                      <circle id="miniTodayDot" cx="300" cy="32" r="3.4" fill="#f5c77f" class="today-dot" opacity="0"/>
                     </svg>
                     <div class="mini-days"><span><span class="en">14d ago</span><span class="zh" hidden>14 天前</span></span><span><span class="en">11d</span><span class="zh" hidden>11 天</span></span><span><span class="en">8d</span><span class="zh" hidden>8 天</span></span><span><span class="en">5d</span><span class="zh" hidden>5 天</span></span><span><span class="en">2d</span><span class="zh" hidden>2 天</span></span><span class="today-label"><span class="en">today</span><span class="zh" hidden>今天</span></span></div>
                   </div>
@@ -818,9 +1045,9 @@ body { background: #07191d; }
 
               <!-- MEMORY SCREEN -->
               <div class="app-screen screen-memory" data-screen="memory">
-                <div class="app-topline"><span class="app-wordmark"><span class="en">Memory</span><span class="zh" hidden>记忆</span></span><span class="app-header-actions"><button type="button" class="app-settings" aria-label="Settings">⚙</button><a class="app-beacon" href="#beacon" aria-label="Open Beacon"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></a></span></div>
+                <div class="app-topline"><span class="app-wordmark"><span class="en">Memory</span><span class="zh" hidden>记忆</span></span><span class="app-header-actions"><button type="button" class="app-settings" aria-label="Settings" data-action="settings">⚙</button><button type="button" class="app-beacon" data-action="beacon" aria-label="Open Beacon"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></button></span></div>
                 <div class="phone-body">
-                  <p class="screen-sub"><span class="en">It remembers what matters between visits. You can ask it to forget any one — it takes effect immediately.</span><span class="zh" hidden>它会记住那些重要的事。你说忘记哪一条，立刻就忘。</span></p>
+                  <p class="screen-sub"><span class="en">See what it remembers. Ask it to forget any item.</span><span class="zh" hidden>它记得什么，你都看得见；每一条都可以让它忘记。</span></p>
                   <span class="sample-label memory-sample"><span class="en">EXAMPLE MEMORIES</span><span class="zh" hidden>示例记忆</span></span>
                   <div class="memory-list" id="memoryList"></div>
                   <p class="memory-empty" id="memoryEmpty" hidden>
@@ -857,6 +1084,7 @@ body { background: #07191d; }
                   <span class="chat-mode-dot"></span>
                 </div>
                 <div class="mode-chips" id="modeChips"></div>
+                <p class="chat-demo-note"><span class="en">Sample conversation · replies are scripted</span><span class="zh" hidden>示例对话 · 回复为预设内容</span></p>
                 <div class="chat-scroll" id="chatScroll"></div>
                 <div class="chat-suggest" id="chatSuggest"></div>
                 <form class="chat-input" id="chatForm">
@@ -865,6 +1093,24 @@ body { background: #07191d; }
                     <svg viewBox="0 0 24 24"><path d="M4 12l16-7-4 14-4.5-4.5L4 12z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
                   </button>
                 </form>
+              </div>
+
+              <!-- BEACON OVERLAY -->
+              <div class="app-screen screen-beacon" data-screen="beacon" aria-hidden="true">
+                <div class="chat-head">
+                  <button class="chat-back" type="button" data-action="back-now" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span class="chat-title"><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></span>
+                </div>
+                <div class="phone-body beacon-phone-body">
+                  <div class="beacon-phone-intro">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt="">
+                    <h2><span class="en">A small light<br>for a hard moment.</span><span class="zh" hidden>难熬的时候，<br>先找到一点光。</span></h2>
+                    <p><span class="en">You don’t have to figure everything out right now.</span><span class="zh" hidden>现在不必想清楚所有事情。</span></p>
+                  </div>
+                  <article class="beacon-phone-step"><span class="beacon-phone-num">01</span><div><strong><span class="en">Find your footing</span><span class="zh" hidden>先让身体落地</span></strong><p><span class="en">Try a guided breath, if it helps.</span><span class="zh" hidden>如果有帮助，跟着灯光呼吸一会儿。</span></p><button type="button" data-action="breathe"><span class="en">Breathe with the light</span><span class="zh" hidden>跟着灯光呼吸</span> ↗</button></div></article>
+                  <article class="beacon-phone-step"><span class="beacon-phone-num">02</span><div><strong><span class="en">Reach one person</span><span class="zh" hidden>联系一个信任的人</span></strong><p><span class="en">“I’m having a hard time. Can you stay with me for a few minutes?”</span><span class="zh" hidden>“我现在有些难熬，你能陪我一会儿吗？”</span></p><button type="button" data-action="copy-ask"><span class="en">Copy a message</span><span class="zh" hidden>复制求助短信</span></button></div></article>
+                  <article class="beacon-phone-step"><span class="beacon-phone-num">03</span><div><strong><span class="en">Find trained support</span><span class="zh" hidden>寻找专业支持</span></strong><p><span class="en">Support differs by region. Find a local helpline.</span><span class="zh" hidden>各地支持方式不同，查找你所在地的求助热线。</span></p><a href="https://findahelpline.com" target="_blank" rel="noreferrer"><span class="en">Find local help ↗</span><span class="zh" hidden>查找当地支持 ↗</span></a></div></article>
+                </div>
               </div>
 
               <!-- BOTTLE OVERLAY -->
@@ -1045,9 +1291,25 @@ body { background: #07191d; }
         </div>
       </section>
 
-      <!-- ══════════════ 03 · RITUALS ══════════════ -->
+      <!-- ══════════════ 03 · MEMORY ══════════════ -->
+      <section class="memory-story section-frame reveal" id="memory-story">
+        <div class="memory-story-copy">
+          <div class="section-kicker"><span>03</span><span class="kicker-rule"></span><span class="en">MEMORY, IN YOUR HANDS</span><span class="zh" hidden>记忆，由你掌控</span></div>
+          <h2><span class="en">See what it remembers.<br><em>Choose what stays.</em></span><span class="zh" hidden>它记得什么，<br><em>你都能看见。</em></span></h2>
+          <p><span class="en">The Memory tab lists saved details one by one. You can review each item and ask Lightvessel to forget it. A second tap confirms the choice.</span><span class="zh" hidden>记忆页会逐条列出保存的内容。你可以查看每一条，也可以让 Lightvessel 忘记它；再次点击后才会确认。</span></p>
+          <button class="memory-preview-link" type="button" data-action="show-memory"><span class="en">Open Memory in the phone preview</span><span class="zh" hidden>在手机预览中打开「记忆」</span><span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="boundaries-card">
+          <div class="boundaries-card-head"><span class="boundary-mark"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""></span><div><span class="en">A few things to know</span><span class="zh" hidden>关于这位陪伴者</span><small><span class="en">MY BOUNDARIES</span><span class="zh" hidden>我的边界</span></small></div></div>
+          <p><span class="en">No judgment, and no rushing to advise. It listens first.</span><span class="zh" hidden>不评判，也不急着给建议——先听你说完。</span></p>
+          <p><span class="en">It’s AI, can make mistakes, and isn’t a substitute for professional care.</span><span class="zh" hidden>它是 AI，会犯错，也不能替代专业帮助。</span></p>
+          <p><span class="en">You can ask it to forget any saved memory.</span><span class="zh" hidden>你可以随时让它忘记任何一条已保存的记忆。</span></p>
+        </div>
+      </section>
+
+      <!-- ══════════════ 04 · RITUALS ══════════════ -->
       <section class="rituals-section section-frame reveal" id="rituals">
-        <div class="section-kicker"><span>03</span><span class="kicker-rule"></span><span class="en">SMALL, GENTLE RITUALS</span><span class="zh" hidden>小小的日常仪式</span></div>
+        <div class="section-kicker"><span>04</span><span class="kicker-rule"></span><span class="en">SMALL, GENTLE RITUALS</span><span class="zh" hidden>小小的日常仪式</span></div>
         <div class="ritual-grid">
           <article class="ritual breathing-card">
             <div class="ritual-copy">
@@ -1100,10 +1362,10 @@ body { background: #07191d; }
         </div>
       </section>
 
-      <!-- ══════════════ 04 · BEACON / SAFETY ══════════════ -->
+      <!-- ══════════════ 05 · BEACON / SAFETY ══════════════ -->
       <section class="beacon-section section-frame reveal" id="beacon">
         <div class="beacon-heading">
-          <div class="section-kicker"><span>04</span><span class="kicker-rule"></span><span class="en">IF THE SEA GETS ROUGH</span><span class="zh" hidden>风浪大的时候</span></div>
+          <div class="section-kicker"><span>05</span><span class="kicker-rule"></span><span class="en">IF THE SEA GETS ROUGH</span><span class="zh" hidden>风浪大的时候</span></div>
           <h2>
             <span class="en">Care with warmth.<br><em>And clear boundaries.</em></span>
             <span class="zh" hidden>陪伴需要温度，<br><em>也需要边界。</em></span>
@@ -1141,6 +1403,9 @@ body { background: #07191d; }
             <a class="beacon-link" href="https://findahelpline.com" target="_blank" rel="noreferrer">
               <span class="en">Find help now · findahelpline.com ↗</span><span class="zh" hidden>立即寻找帮助 · findahelpline.com ↗</span>
             </a>
+            <a class="beacon-link regional-help" href="https://988lifeline.org/" target="_blank" rel="noreferrer">
+              <span class="en">In the U.S., call or text 988 ↗</span><span class="zh" hidden>在美国，可拨打或短信联系 988 ↗</span>
+            </a>
           </article>
         </div>
         <p class="beacon-boundary">
@@ -1149,7 +1414,7 @@ body { background: #07191d; }
         </p>
       </section>
 
-      <!-- ══════════════ 05 · MEANING ══════════════ -->
+      <!-- ══════════════ 06 · MEANING ══════════════ -->
       <section class="meaning-section section-frame reveal" id="meaning">
         <div class="meaning-mark">
           <span class="meaning-glow"></span>
@@ -1158,7 +1423,7 @@ body { background: #07191d; }
           <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt="">
         </div>
         <div class="meaning-text">
-          <div class="section-kicker"><span>05</span><span class="kicker-rule"></span><span class="en">WHY “LIGHTVESSEL”</span><span class="zh" hidden>为什么叫 LIGHTVESSEL</span></div>
+          <div class="section-kicker"><span>06</span><span class="kicker-rule"></span><span class="en">WHY “LIGHTVESSEL”</span><span class="zh" hidden>为什么叫 LIGHTVESSEL</span></div>
           <h2>
             <span class="en">Not a lighthouse on a distant shore — <em>a ship anchored beside you.</em></span>
             <span class="zh" hidden>不是远处岸上的灯塔，<em>是一艘停泊在你身边的灯船。</em></span>
@@ -1184,6 +1449,14 @@ body { background: #07191d; }
               <span class="metaphor-key"><span class="en">The sea post</span><span class="zh" hidden>海上的信</span></span>
               <span class="metaphor-val"><span class="en">Leave tonight’s weight in a bottle for tomorrow</span><span class="zh" hidden>把今晚的心事放进瓶子，寄给明天</span></span>
             </div>
+            <div class="metaphor-item">
+              <span class="metaphor-key"><span class="en">The logbook</span><span class="zh" hidden>船上的日志</span></span>
+              <span class="metaphor-val"><span class="en">Memory you can review and ask it to forget</span><span class="zh" hidden>可以逐条查看，也可以让它忘记的记忆</span></span>
+            </div>
+            <div class="metaphor-item">
+              <span class="metaphor-key"><span class="en">The beacon</span><span class="zh" hidden>灯塔</span></span>
+              <span class="metaphor-val"><span class="en">A steady route back to people and local help</span><span class="zh" hidden>指向身边的人与当地支持资源</span></span>
+            </div>
           </div>
           <div class="meaning-signoff">
             <span>“</span>
@@ -1193,10 +1466,10 @@ body { background: #07191d; }
         </div>
       </section>
 
-      <!-- ══════════════ 06 · PRIVACY ══════════════ -->
+      <!-- ══════════════ 07 · PRIVACY ══════════════ -->
       <section class="privacy-section section-frame reveal" id="privacy">
         <div class="privacy-heading">
-          <div class="section-kicker"><span>06</span><span class="kicker-rule"></span><span class="en">QUIET BY DESIGN</span><span class="zh" hidden>把安心放在心上</span></div>
+          <div class="section-kicker"><span>07</span><span class="kicker-rule"></span><span class="en">QUIET BY DESIGN</span><span class="zh" hidden>把安心放在心上</span></div>
           <h2>
             <span class="en">Your records<br><em>stay in your hands.</em></span>
             <span class="zh" hidden>你的记录，<br><em>由你掌控。</em></span>
@@ -1243,15 +1516,29 @@ body { background: #07191d; }
         </div>
       </section>
 
+      <!-- ══════════════ 08 · FAQ ══════════════ -->
+      <section class="faq-section section-frame reveal" id="faq">
+        <div class="section-kicker"><span>08</span><span class="kicker-rule"></span><span class="en">A FEW CLEAR ANSWERS</span><span class="zh" hidden>几个直接的回答</span></div>
+        <div class="faq-heading"><h2><span class="en">Before you come aboard.</span><span class="zh" hidden>登船之前。</span></h2><p><span class="en">The useful details, without making you hunt for them.</span><span class="zh" hidden>把你可能关心的细节，放在这里说清楚。</span></p></div>
+        <div class="faq-list">
+          <details><summary><span class="en">Is Lightvessel a therapist?</span><span class="zh" hidden>Lightvessel 是心理治疗师吗？</span><span class="faq-toggle" aria-hidden="true">+</span></summary><p><span class="en">No. It’s an AI companion for reflection and everyday emotional support. It doesn’t diagnose or replace professional care, and it can make mistakes.</span><span class="zh" hidden>不是。它是一位用于日常倾诉与自我梳理的 AI 陪伴者，不做诊断，也不能替代专业帮助，而且可能会犯错。</span></p></details>
+          <details><summary><span class="en">Where is my information stored?</span><span class="zh" hidden>我的信息存在哪里？</span><span class="faq-toggle" aria-hidden="true">+</span></summary><p><span class="en">Conversations, mood entries, memories, and bottles are stored on your device. Text and context needed for an AI reply are sent securely to the AI provider for processing. See the <a href="/privacy.html">Privacy Policy</a> for details.</span><span class="zh" hidden>对话、情绪记录、记忆和漂流瓶保存在你的设备上。生成 AI 回复所需的文字和上下文会安全发送至 AI 服务处理。详情请查看<a href="/privacy.html">隐私政策</a>。</span></p></details>
+          <details><summary><span class="en">Can I delete something Lightvessel remembers?</span><span class="zh" hidden>我可以删除 Lightvessel 记住的内容吗？</span><span class="faq-toggle" aria-hidden="true">+</span></summary><p><span class="en">Yes. Open the Memory tab, review the saved items, and confirm which one you want it to forget.</span><span class="zh" hidden>可以。打开「记忆」页查看保存的内容，再确认要它忘记哪一条。</span></p></details>
+          <details><summary><span class="en">What does Premium cost?</span><span class="zh" hidden>Premium 如何收费？</span><span class="faq-toggle" aria-hidden="true">+</span></summary><p><span class="en">The App Store shows the price, renewal terms, and whether a trial is available for your account before purchase. You can start by exploring the app’s free features.</span><span class="zh" hidden>购买前，App Store 会显示适用于你账号的价格、续费条款和试用资格。你可以先体验 App 的免费功能。</span></p></details>
+        </div>
+      </section>
+
       <!-- ══════════════ PRICING STRIP ══════════════ -->
       <section class="pricing section-frame reveal">
         <p class="pricing-title"><span class="en">“Whenever you need a pause, there’s room here.”</span><span class="zh" hidden>“想停一停的时候，这里有位置。”</span></p>
         <div class="pricing-benefits">
+          <span><span class="en">Free to start</span><span class="zh" hidden>可先免费体验</span></span>
+          <i></i>
           <span><span class="en">Premium: unlimited conversations</span><span class="zh" hidden>Premium：无限次对话</span></span>
           <i></i>
           <span><span class="en">Mood tracking &amp; personalized insights</span><span class="zh" hidden>情绪记录与个性化洞察</span></span>
           <i></i>
-          <span><span class="en">Trial may be available for eligible accounts</span><span class="zh" hidden>符合资格时可试用 3 天</span></span>
+          <span><span class="en">Trial for eligible accounts</span><span class="zh" hidden>符合资格时可试用</span></span>
         </div>
         <a class="app-store-button" href="https://apps.apple.com/app/id6800191641" target="_blank" rel="noreferrer">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.8 12.8c0-2.3 1.9-3.4 2-3.5a4.3 4.3 0 0 0-3.4-1.8c-1.4-.2-2.7.8-3.4.8-.7 0-1.8-.8-3-.8a4.5 4.5 0 0 0-3.8 2.3c-1.6 2.8-.4 7 1.1 9.3.7 1.1 1.5 2.4 2.7 2.4 1.1 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 1.9-1.1 2.6-2.3a10 10 0 0 0 1.2-2.5 4 4 0 0 1-2-3.9ZM14.5 6.1a4 4 0 0 0 .9-2.8 4.1 4.1 0 0 0-2.6 1.3 3.8 3.8 0 0 0-1 2.7 3.4 3.4 0 0 0 2.7-1.2Z"/></svg>
@@ -1317,6 +1604,9 @@ const L = {
     chatPlaceholder: "Say what’s on your mind…",
     bottlePlaceholder: "One sentence is enough…",
     forget: "Forget",
+    forgetConfirm: "Confirm?",
+    settingsPreview: "Settings are available in the iPhone app.",
+    copiedAsk: "Message copied — send it to someone you trust.",
     checkinLogged: (w) => `${w} · recorded`,
     checkinQuestion: "What’s the weather in your inner sea?",
     checkinSubtitle: "A small note for today’s self. It will find its place in your tide chart.",
@@ -1338,10 +1628,13 @@ const L = {
     ],
     bodyFeelings: ["Light", "Steady", "Tense", "Heavy", "Noisy mind", "Numb"],
     memories: [
-      "Prefers being heard before advice is offered",
-      "Rainy evenings have felt heavy lately",
-      "Has a big presentation on Friday",
+      { tag: "PREFERENCE", text: "Prefers being heard before advice is offered" },
+      { tag: "RECENT", text: "Rainy evenings have felt heavy lately" },
+      { tag: "UPCOMING", text: "Has a big presentation on Friday" },
     ],
+    clarityCardTitle: "Clarity Card · sample",
+    clarityLabels: ["What happened", "When it began", "What your body may be holding", "A gentler way to see it", "One small next step"],
+    clarityExamples: ["Notice where tension is showing up, without needing to change it yet.", "This feeling is worth listening to; it doesn’t define the whole story.", "Choose one small thing you can leave until tomorrow."],
     modes: {
       vent: {
         name: "Vent",
@@ -1357,11 +1650,7 @@ const L = {
         name: "Tidy",
         guidance: "Tell me about one specific thing that’s been weighing on you — one sentence is enough.",
         chips: ["Work has been swallowing my evenings.", "I keep putting off a hard conversation."],
-        replies: [
-          "Let’s take one piece of it: which part feels heaviest right now?",
-          "If that thought were a wave — what do you think is underneath it?",
-          "What would the smallest next step look like? Five minutes, not five hours.",
-        ],
+        replies: ["Got it. When did this feeling first come up? What else was happening around then?"],
       },
       stay: {
         name: "Stay",
@@ -1376,6 +1665,9 @@ const L = {
     chatPlaceholder: "想说就说……",
     bottlePlaceholder: "一句话就够了……",
     forget: "忘记",
+    forgetConfirm: "确定？",
+    settingsPreview: "设置请在 iPhone App 中体验。",
+    copiedAsk: "求助短信已复制，可以发给你信任的人。",
     checkinLogged: (w) => `${w} · 已记录`,
     checkinQuestion: "今天的内海是什么天气？",
     checkinSubtitle: "替今天的自己记一笔，它会留在你的潮汐表里。",
@@ -1396,7 +1688,14 @@ const L = {
       { id: "aurora", name: "极光", icon: "✧" },
     ],
     bodyFeelings: ["轻盈", "平稳", "紧绷", "沉重", "脑子很吵", "麻木"],
-    memories: ["希望先被听见，再听建议", "最近雨天的傍晚容易低落", "周五有个重要的汇报"],
+    memories: [
+      { tag: "偏好", text: "希望先被听见，再听建议" },
+      { tag: "近况", text: "最近雨天的傍晚容易低落" },
+      { tag: "待办", text: "周五有个重要的汇报" },
+    ],
+    clarityCardTitle: "梳理卡 · 示例",
+    clarityLabels: ["发生了什么", "最初的源头", "身体可能在经历什么", "一个更温和的看法", "最小的下一步"],
+    clarityExamples: ["留意一下紧绷感出现在哪里，不必急着改变它。", "这个感受值得被听见，但它不等于整个故事。", "挑一件今晚可以留到明天再做的小事。"],
     modes: {
       vent: {
         name: "倾诉",
@@ -1408,7 +1707,7 @@ const L = {
         name: "梳理",
         guidance: "说一件最近压在心上的具体的事——一句话就够。",
         chips: ["工作把我的晚上都吞掉了。", "我一直在拖一场艰难的对话。"],
-        replies: ["我们拆一小块看：哪一部分此刻最重？", "如果这个念头是一道浪——你觉得浪底下是什么？", "最小的一步会是什么样的？五分钟的那种，不是五小时。"],
+        replies: ["收到。这个念头第一次冒出来，大概是什么时候？那前后还发生了什么？"],
       },
       stay: {
         name: "陪伴",
@@ -1424,11 +1723,24 @@ const L = {
 let lang = "en";
 const t = (key) => L[lang][key];
 
+function updateGreeting() {
+  const hour = new Date().getHours();
+  const period = hour >= 5 && hour < 12 ? 0 : hour >= 12 && hour < 18 ? 1 : 2;
+  const en = [["Good morning.", "How are you this morning?"], ["Good afternoon.", "How are you doing today?"], ["Good evening.", "How are you doing tonight?"]][period];
+  const zh = [["早上好。", "上午过得怎么样？"], ["下午好。", "今天过得怎么样？"], ["晚上好。", "今晚过得怎么样？"]][period];
+  [["#greetingEn", en], ["#greetingZh", zh]].forEach(([selector, lines]) => {
+    const node = $(selector);
+    if (!node) return;
+    node.replaceChildren(document.createTextNode(lines[0]), document.createElement("br"), document.createTextNode(lines[1]));
+  });
+}
+
 /* ───────────────────────── language toggle ───────────────────────── */
 
 function setLang(next) {
   lang = next;
   document.documentElement.lang = next === "en" ? "en" : "zh-Hans";
+  updateGreeting();
   $$(".en").forEach((el) => (el.hidden = next !== "en"));
   $$(".zh").forEach((el) => (el.hidden = next !== "zh"));
   const btn = $(".language-button");
@@ -1443,9 +1755,14 @@ function setLang(next) {
 /* ───────────────────────── phone: screens & tabs ───────────────────────── */
 
 const BASE_SCREENS = ["now", "tides", "memory"];
+let activeScreen = "now";
+let returnScreen = "now";
 
 function showScreen(name) {
   const isTab = BASE_SCREENS.includes(name);
+  if (isTab) returnScreen = name;
+  else if (BASE_SCREENS.includes(activeScreen)) returnScreen = activeScreen;
+  activeScreen = name;
   $$(".app-screen").forEach((s) => {
     const active = s.dataset.screen === name;
     s.classList.toggle("active", active);
@@ -1563,7 +1880,7 @@ const phoneBreath = makeBreath($("#phoneBreath"), {
   autoCycles: 6,
   onDone: () => {
     phoneToast(L[lang].breathDone);
-    showScreen("now");
+    showScreen(returnScreen);
   },
 });
 
@@ -1595,6 +1912,54 @@ let checkedIn = null; // { weather, body, note }
 let selectedWeather = null;
 let selectedBodyFeeling = null;
 
+const WEATHER_ICON_SVG = {
+  storm: '<svg viewBox="0 0 24 24"><path d="M5.2 14.2a4.1 4.1 0 0 1 .9-8.1A6.1 6.1 0 0 1 17.7 7a3.7 3.7 0 0 1 .8 7.2"/><path d="m13 12-3 5h3l-1 4 4-6h-3l1-3"/></svg>',
+  rain: '<svg viewBox="0 0 24 24"><path d="M5.2 13.5a4 4 0 0 1 .9-8A6 6 0 0 1 17.7 6.5a3.4 3.4 0 0 1 .7 6.9H5.2Z"/><path d="m8 16-1 2m6-2-1 2m6-2-1 2"/></svg>',
+  fog: '<svg viewBox="0 0 24 24"><path d="M5.2 12.5a4 4 0 0 1 .9-8A6 6 0 0 1 17.7 5.5a3.4 3.4 0 0 1 .7 6.9H5.2Z"/><path d="M4 16h15M6 19h12"/></svg>',
+  cloudy: '<svg viewBox="0 0 24 24"><path d="M5.2 15a4.1 4.1 0 0 1 .9-8.1A6.1 6.1 0 0 1 17.7 7a3.7 3.7 0 0 1 .8 7.2H5.2Z"/></svg>',
+  breeze: '<svg viewBox="0 0 24 24"><path d="M3 8h12.5a2.5 2.5 0 1 0-2.4-3.2M3 12h17a2.5 2.5 0 1 1-2.4 3.2M3 16h8.5"/></svg>',
+  sunny: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+  aurora: '<svg viewBox="0 0 24 24"><path d="M3 17c2.1-5.6 5.2-8.7 9-9.2 3.5-.5 6.5 1.2 9 5.2M3 20c3.5-3.4 6.8-4.6 10-3.7 2.8.8 5 2.4 8 2.7"/><path d="M12 3v2m-1-1h2"/></svg>',
+};
+
+function addVesselLogRow({ en, zh, mark = "≈" }) {
+  const list = $("#vesselLogRows");
+  if (!list) return;
+  const row = document.createElement("div");
+  row.className = "vessel-log-row new-log-row";
+  const time = document.createElement("span");
+  time.className = "log-time";
+  time.textContent = new Intl.DateTimeFormat(lang === "en" ? "en-GB" : "zh-CN", { hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date());
+  const icon = document.createElement("span");
+  icon.className = "log-mark";
+  icon.textContent = mark;
+  const label = document.createElement("span");
+  const enText = document.createElement("span");
+  enText.className = "en";
+  enText.textContent = en;
+  const zhText = document.createElement("span");
+  zhText.className = "zh";
+  zhText.hidden = true;
+  zhText.textContent = zh;
+  label.append(enText, zhText);
+  row.append(time, icon, label);
+  list.prepend(row);
+}
+
+function updateDemoChart(score) {
+  const y = Math.max(20, Math.min(82, 88 - score * 13));
+  const line = `M0,64 C22,54 30,70 52,60 S82,40 105,50 S135,66 160,48 S185,34 210,45 S240,58 265,40 Q282,${(40 + y) / 2} 300,${y.toFixed(1)}`;
+  const lineEl = $("#miniLine");
+  const areaEl = $("#miniArea");
+  const dot = $("#miniTodayDot");
+  if (lineEl) lineEl.setAttribute("d", line);
+  if (areaEl) areaEl.setAttribute("d", `${line} L300,90 L0,90 Z`);
+  if (dot) {
+    dot.setAttribute("cy", y.toFixed(1));
+    dot.setAttribute("opacity", "1");
+  }
+}
+
 function renderCheckinChoices() {
   const weatherRoot = $("#weatherOptions");
   const bodyRoot = $("#bodyOptions");
@@ -1609,7 +1974,7 @@ function renderCheckinChoices() {
     const icon = document.createElement("span");
     icon.className = "weather-symbol";
     icon.setAttribute("aria-hidden", "true");
-    icon.textContent = weather.icon;
+    icon.innerHTML = WEATHER_ICON_SVG[weather.id] || "";
     const label = document.createElement("span");
     label.className = "weather-label";
     label.textContent = weather.name;
@@ -1661,12 +2026,22 @@ function saveCheckin() {
   const noteValue = $("#checkinNote")?.value.trim() || "";
   checkedIn = { weather: selectedWeather, body: selectedBodyFeeling, note: noteValue };
 
+  const weatherScore = { storm: 1, rain: 2, fog: 2.5, cloudy: 3, breeze: 3.5, sunny: 4, aurora: 5 }[selectedWeather];
+  const bodyModifier = { light: 0.4, steady: 0, tense: -0.3, heavy: -0.5, noisy: -0.4, numb: -0.6 }[selectedBodyFeeling] || 0;
+  const score = Math.round(Math.max(0.5, Math.min(5, weatherScore + bodyModifier)) * 10) / 10;
+
   $("#checkinTitleEn").textContent = `Today · ${weatherEn}`;
   $("#checkinTitleZh").textContent = `今天 · ${weatherZh}`;
   $("#checkinSubtitleEn").textContent = bodyEn ? `Body · ${bodyEn}` : (noteValue || "Your sea, recorded on this device.");
   $("#checkinSubtitleZh").textContent = bodyZh ? `身体 · ${bodyZh}` : (noteValue || "今天的海况已记下，只保存在本机。");
   $("#checkinHomeButton .en").textContent = "Edit today’s entry";
   $("#checkinHomeButton .zh").textContent = "修改今天的记录";
+  $("#recentTitleEn").textContent = `Logged · ${weatherEn}`;
+  $("#recentTitleZh").textContent = `已记录 · ${weatherZh}`;
+  $("#recentBodyEn").textContent = bodyEn ? `Body · ${bodyEn}` : (noteValue || "A note from today.");
+  $("#recentBodyZh").textContent = bodyZh ? `身体 · ${bodyZh}` : (noteValue || "今天留下的一笔。");
+  updateDemoChart(score);
+  addVesselLogRow({ en: `Sea conditions · ${weatherEn}`, zh: `登记海况 · ${weatherZh}` });
   showScreen("now");
   phoneToast(L[lang].checkinLogged(lang === "en" ? weatherEn : weatherZh));
 }
@@ -1674,6 +2049,8 @@ function saveCheckin() {
 /* ───────────────────────── memory demo ───────────────────────── */
 
 const forgotten = new Set();
+let armedMemory = null;
+let memoryTimer = null;
 
 function renderMemory() {
   const list = $("#memoryList");
@@ -1681,27 +2058,42 @@ function renderMemory() {
   if (!list) return;
   list.innerHTML = "";
   const items = L[lang].memories;
-  items.forEach((text, i) => {
+  items.forEach((memory, i) => {
     if (forgotten.has(i)) return;
     const item = document.createElement("div");
     item.className = "memory-item";
-    const leaf = document.createElement("span");
-    leaf.className = "mem-leaf";
-    leaf.textContent = "❧";
+    const tag = document.createElement("span");
+    tag.className = "memory-tag";
+    tag.textContent = memory.tag;
     const p = document.createElement("p");
-    p.textContent = text;
+    p.textContent = memory.text;
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "memory-forget";
-    btn.textContent = L[lang].forget;
+    const isArmed = armedMemory === i;
+    btn.classList.toggle("armed", isArmed);
+    btn.textContent = isArmed ? L[lang].forgetConfirm : L[lang].forget;
     btn.addEventListener("click", () => {
-      item.classList.add("gone");
-      setTimeout(() => {
+      if (armedMemory === i) {
+        clearTimeout(memoryTimer);
+        armedMemory = null;
         forgotten.add(i);
+        addVesselLogRow({ en: "Memory forgotten", zh: "已忘记一条记忆", mark: "⌁" });
         renderMemory();
-      }, 420);
+        phoneToast(lang === "en" ? "Memory forgotten in this preview." : "已在预览中忘记这条记忆。");
+        return;
+      }
+      clearTimeout(memoryTimer);
+      armedMemory = i;
+      renderMemory();
+      memoryTimer = setTimeout(() => {
+        if (armedMemory === i) {
+          armedMemory = null;
+          renderMemory();
+        }
+      }, 3000);
     });
-    item.append(leaf, p, btn);
+    item.append(tag, p, btn);
     list.appendChild(item);
   });
   const visible = items.filter((_, i) => !forgotten.has(i)).length;
@@ -1718,6 +2110,25 @@ let typingTimer = null;
 function bubbleEl(m) {
   const div = document.createElement("div");
   div.className = "bubble" + (m.role === "user" ? " user" : " ai") + (m.kind === "guidance" ? " guidance" : "");
+  if (m.kind === "clarity-card") {
+    div.classList.add("clarity-bubble");
+    const title = document.createElement("strong");
+    title.className = "clarity-bubble-title";
+    title.textContent = L[lang].clarityCardTitle;
+    div.appendChild(title);
+    const values = [m.answers[0] || "—", m.answers[1] || "—", ...L[lang].clarityExamples];
+    L[lang].clarityLabels.forEach((label, index) => {
+      const row = document.createElement("div");
+      row.className = "clarity-bubble-row";
+      const field = document.createElement("span");
+      field.textContent = label;
+      const value = document.createElement("p");
+      value.textContent = values[index];
+      row.append(field, value);
+      div.appendChild(row);
+    });
+    return div;
+  }
   div.textContent = m[lang === "en" ? "en" : "zh"];
   return div;
 }
@@ -1748,9 +2159,19 @@ function sendUserMessage(text) {
   typingTimer = setTimeout(() => {
     const mode = L[lang].modes[chatMode];
     const modeEn = L.en.modes[chatMode];
-    const idx = replyIndex[chatMode] % modeEn.replies.length;
-    replyIndex[chatMode] += 1;
-    chatMsgs.push({ role: "ai", en: modeEn.replies[idx], zh: mode.replies[idx] });
+    if (chatMode === "tidy") {
+      const lastCardIndex = chatMsgs.map((m) => m.kind).lastIndexOf("clarity-card");
+      const round = chatMsgs.slice(lastCardIndex + 1).filter((m) => m.role === "user");
+      if (round.length >= 2) {
+        chatMsgs.push({ role: "ai", kind: "clarity-card", answers: round.slice(-2).map((m) => m.en) });
+      } else {
+        chatMsgs.push({ role: "ai", en: modeEn.replies[0], zh: mode.replies[0] });
+      }
+    } else {
+      const idx = replyIndex[chatMode] % modeEn.replies.length;
+      replyIndex[chatMode] += 1;
+      chatMsgs.push({ role: "ai", en: modeEn.replies[idx], zh: mode.replies[idx] });
+    }
     renderChat();
   }, 950 + Math.random() * 450);
 }
@@ -1861,6 +2282,28 @@ document.addEventListener("click", (e) => {
   if (action === "talk") {
     showScreen("chat");
     if (chatMsgs.length === 0) resetChat(chatMode);
+  } else if (action === "beacon") {
+    showScreen("beacon");
+  } else if (action === "settings") {
+    phoneToast(L[lang].settingsPreview);
+  } else if (action === "show-memory") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => showScreen("memory"), 420);
+  } else if (action === "copy-ask") {
+    const text = lang === "en"
+      ? "I’m having a hard time. Can you stay with me for a few minutes?"
+      : "我现在有些难熬，你能陪我一会儿吗？";
+    const done = () => phoneToast(L[lang].copiedAsk);
+    if (navigator.clipboard?.writeText) navigator.clipboard.writeText(text).then(done).catch(done);
+    else {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (err) { /* noop */ }
+      ta.remove();
+      done();
+    }
   } else if (action === "breathe") {
     showScreen("breathe");
     phoneBreath.start();
@@ -1868,14 +2311,14 @@ document.addEventListener("click", (e) => {
     showScreen("bottle");
   } else if (action === "back-now") {
     if (phoneBreath.isRunning()) phoneBreath.stop();
-    showScreen("now");
+    showScreen(returnScreen);
   } else if (action === "stop-breathe") {
     phoneBreath.stop();
-    showScreen("now");
+    showScreen(returnScreen);
   } else if (action === "send-bottle") {
     const ta = $("#bottleInput");
     const ok = releaseBottle(ta, phoneToast);
-    if (ok) setTimeout(() => showScreen("now"), 900);
+    if (ok) setTimeout(() => showScreen(returnScreen), 900);
   } else if (action === "checkin") {
     openCheckin();
   } else if (action === "save-checkin") {
