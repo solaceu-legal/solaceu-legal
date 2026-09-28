@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#07191e">
-  <meta name="description" content="Lightvessel 是一艘停在心海边的灯船。倾诉、梳理、记录情绪，或跟着灯塔呼吸，在需要时找到一处安静的停泊。">
-  <title>Lightvessel — 给心里的潮汐，一处停泊的地方</title>
-  <link rel="icon" href="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%20%20%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%230c292d%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%2232%22%20cy%3D%2222%22%20r%3D%2215%22%20fill%3D%22%23e8ba70%22%20opacity%3D%22.16%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M28%2015h8v8h4v5H24v-5h4zM25%2032h14l3%2018H22z%22%20fill%3D%22%2381cdb8%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M16%2053c5-3%2010-3%2016%200s11%203%2016%200%22%20fill%3D%22none%22%20stroke%3D%22%2381cdb8%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M31%2016h2v7h-2z%22%20fill%3D%22%23f3c77d%22%2F%3E%0A%3C%2Fsvg%3E%0A" type="image/svg+xml">
+  <meta name="description" content="A quiet AI companion for your inner tides. Talk things through, note your feelings, breathe with the light, or simply pause awhile. Made for iPhone.">
+  <title>Lightvessel — A quiet harbor for your inner tides</title>
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTgiIGZpbGw9IiMwYzI5MmQiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjIyIiByPSIxNSIgZmlsbD0iI2U4YmE3MCIgb3BhY2l0eT0iLjE2Ii8+CiAgPHBhdGggZD0iTTI4IDE1aDh2OGg0djVIMjR2LTVoNHpNMjUgMzJoMTRsMyAxOEgyMnoiIGZpbGw9IiM4MWNkYjgiLz4KICA8cGF0aCBkPSJNMTYgNTNjNS0zIDEwLTMgMTYgMHMxMSAzIDE2IDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzgxY2RiOCIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0zMSAxNmgydjdoLTJ6IiBmaWxsPSIjZjNjNzdkIi8+Cjwvc3ZnPgo=" type="image/svg+xml">
   <style>
 :root {
   color-scheme: dark;
@@ -15,418 +15,1115 @@
   --faint: #76908c;
   --deep: #07191e;
   --deep-2: #0b2228;
+  --card: #0d1e22;
+  --card-2: #101f23;
   --teal: #74c5b4;
   --teal-bright: #8bdbc9;
   --teal-dim: #2b756b;
   --gold: #f2c77e;
   --line: rgba(185, 221, 210, .14);
-  --serif: "Iowan Old Style", "Baskerville", "Times New Roman", "Songti SC", "STSong", "Noto Serif SC", serif;
+  --line-soft: rgba(191, 224, 211, .09);
+  --serif: "New York", "Iowan Old Style", "Baskerville", "Georgia", "Times New Roman", "Noto Serif SC", "Songti SC", serif;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; background: var(--deep); }
 body { margin: 0; background: var(--deep); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
-body::before { content: ""; position: fixed; inset: 0; z-index: 4; pointer-events: none; opacity: .13; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E"); mix-blend-mode: soft-light; }
 a { color: inherit; text-decoration: none; }
-button { font: inherit; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+img { display: block; }
 .site-shell { position: relative; overflow: hidden; }
-.section-frame { width: min(1180px, calc(100% - 72px)); margin-inline: auto; }
+.section-frame { width: min(1180px, calc(100% - 72px)); margin-inline: auto; position: relative; }
+[hidden] { display: none !important; }
 
-.topbar { width: min(1320px, calc(100% - 64px)); height: 88px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 6; border-bottom: 1px solid rgba(205, 234, 223, .1); }
+html[lang="en"] .zh:not([hidden]) { display: none; }
+html[lang="zh-Hans"] .en:not([hidden]) { display: none; }
+
+/* ───────── topbar ───────── */
+.topbar { width: min(1320px, calc(100% - 64px)); height: 88px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 20; border-bottom: 1px solid rgba(205, 234, 223, .08); }
 .brand { display: inline-flex; align-items: center; gap: 10px; color: #edf5ef; font-size: 12px; font-weight: 700; letter-spacing: .19em; white-space: nowrap; }
 .brand-mark { display: grid; place-items: center; width: 30px; height: 34px; }
 .brand-mark img { width: 28px; height: 31px; filter: brightness(0) saturate(100%) invert(77%) sepia(30%) saturate(410%) hue-rotate(113deg) brightness(91%) contrast(88%); }
-.main-nav { display: flex; align-items: center; gap: clamp(20px, 3vw, 44px); color: #adc0bb; font-size: 13px; }
-.main-nav a, .footer-links a { transition: color .2s ease; }
-.main-nav a:hover, .footer-links a:hover { color: var(--teal-bright); }
+.main-nav { display: flex; align-items: center; gap: clamp(20px, 2.6vw, 38px); color: #adc0bb; font-size: 13px; }
+.main-nav a, .footer-links a, .privacy-links a { transition: color .2s ease; }
+.main-nav a:hover, .footer-links a:hover, .privacy-links a:hover { color: var(--teal-bright); }
 .header-actions { display: flex; align-items: center; gap: 18px; }
-.language-button { border: 0; color: #c5d2ce; background: transparent; font-size: 12px; letter-spacing: .12em; padding: 10px 4px; cursor: pointer; }
+.language-button { color: #c5d2ce; font-size: 12px; letter-spacing: .12em; padding: 10px 4px; transition: color .2s; }
 .language-button:hover { color: var(--gold); }
-.header-download { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border: 1px solid rgba(190, 222, 210, .28); border-radius: 100px; color: #ecf3ef; font-size: 13px; transition: background .2s, border .2s; }
+.header-download { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border: 1px solid rgba(190, 222, 210, .28); border-radius: 100px; color: #ecf3ef; font-size: 13px; transition: background .2s, border-color .2s; }
 .header-download:hover { background: rgba(119, 198, 179, .12); border-color: var(--teal); }
-.header-download > span:last-child { color: var(--gold); font-size: 15px; }
+.header-download > span:last-child:not(:only-child) { color: var(--gold); font-size: 15px; }
 
-.hero { min-height: 680px; padding: 92px 0 88px; position: relative; display: grid; grid-template-columns: .94fr 1.06fr; align-items: center; gap: 44px; }
-.hero::before { content: ""; position: absolute; width: 780px; height: 500px; top: 110px; right: -365px; border-radius: 50%; background: radial-gradient(ellipse, rgba(34, 104, 99, .26), rgba(9, 35, 40, 0) 68%); pointer-events: none; }
-.hero-copy { position: relative; z-index: 2; padding-bottom: 6px; }
+/* ───────── hero ───────── */
+.hero { min-height: 700px; padding: 76px 0 96px; position: relative; display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: clamp(40px, 6vw, 90px); }
+.hero-copy { position: relative; z-index: 3; }
 .eyebrow { margin: 0 0 25px; display: flex; align-items: center; gap: 10px; color: #acd4c9; font-size: 12px; letter-spacing: .07em; }
 .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 14px rgba(242, 199, 126, .8); }
-.hero h1, .intro h2, .tides-copy h2, .meaning-text h2, .privacy-heading h2, .closing h2 { margin: 0; font-family: var(--serif); font-weight: 400; letter-spacing: -.045em; }
-.hero h1 { font-size: clamp(43px, 5.1vw, 68px); line-height: 1.2; max-width: 660px; }
-.hero h1 em, .intro h2 em, .tides-copy h2 em, .meaning-text h2 em, .privacy-heading h2 em, .closing h2 em { color: var(--teal-bright); font-style: normal; }
-.hero-lede { max-width: 485px; color: #adbfbb; font-size: 17px; line-height: 1.95; margin: 23px 0 28px; }
+h1, h2 { margin: 0; font-family: var(--serif); font-weight: 400; letter-spacing: -.02em; }
+.hero h1 { font-size: clamp(44px, 5.1vw, 68px); line-height: 1.14; max-width: 640px; }
+html[lang="en"] .hero h1 { font-size: clamp(42px, 3.7vw, 54px); }
+h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
+.hero-lede { max-width: 500px; color: #adbfbb; font-size: 17px; line-height: 1.9; margin: 24px 0 30px; }
 .hero-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 .app-store-button { min-height: 56px; display: inline-flex; align-items: center; gap: 12px; padding: 8px 18px 9px 15px; background: #eef4ef; color: #101919; border-radius: 10px; box-shadow: 0 8px 30px rgba(0,0,0,.16); transition: transform .2s ease, box-shadow .2s ease; }
 .app-store-button:hover { transform: translateY(-2px); box-shadow: 0 13px 34px rgba(0,0,0,.24); }
 .app-store-button svg { width: 26px; height: 28px; fill: currentColor; }
-.app-store-button span { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
+.app-store-button > span { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
 .app-store-button small { font-size: 10px; letter-spacing: .03em; }
 .app-store-button strong { font-size: 16px; letter-spacing: -.02em; }
-.hero-note { color: #8fa7a0; font-size: 12px; letter-spacing: .01em; }
+.hero-note { color: #8fa7a0; font-size: 12px; }
 .note-separator { color: var(--gold); padding: 0 5px; }
-.hero-signature { display: flex; align-items: center; gap: 12px; margin-top: 38px; color: #89a49b; font-family: var(--serif); font-size: 14px; }
+.hero-signature { display: flex; align-items: center; gap: 12px; margin-top: 40px; color: #89a49b; font-family: var(--serif); font-size: 14px; }
 .signature-line { height: 1px; width: 34px; background: linear-gradient(90deg, var(--gold), transparent); }
+.scroll-cue { position: absolute; left: 0; bottom: 30px; display: flex; align-items: center; gap: 10px; color: #6b8580; font-size: 10px; letter-spacing: .11em; text-transform: uppercase; z-index: 3; }
+.scroll-cue span:last-child { color: var(--gold); font-size: 16px; }
 
-.hero-art { height: 520px; position: relative; display: flex; align-items: center; justify-content: center; isolation: isolate; }
-.art-glow { position: absolute; width: 480px; height: 480px; right: 8%; top: 6%; z-index: -3; border-radius: 50%; background: radial-gradient(circle, rgba(46, 139, 124, .27) 0%, rgba(24, 83, 81, .17) 35%, transparent 70%); }
-.moon { position: absolute; width: 46px; height: 46px; border-radius: 50%; top: 36px; right: 14%; background: var(--gold); box-shadow: 0 0 48px 12px rgba(246, 204, 132, .2); opacity: .95; }
-.horizon { position: absolute; border-radius: 50%; pointer-events: none; }
-.horizon-back { z-index: -2; width: 810px; height: 260px; left: -7%; bottom: 13px; background: linear-gradient(180deg, rgba(23, 78, 79, .3), rgba(9, 30, 37, .07)); transform: rotate(-4deg); }
-.horizon-front { z-index: -1; width: 900px; height: 245px; left: -14%; bottom: -32px; background: linear-gradient(180deg, rgba(20, 62, 69, .46), rgba(7, 25, 30, .02)); transform: rotate(3deg); border-top: 1px solid rgba(126, 198, 180, .12); }
-.water-line { position: absolute; height: 1px; background: linear-gradient(90deg, transparent, rgba(129, 194, 178, .35), transparent); z-index: -1; }
-.water-one { width: 76%; left: 12%; bottom: 111px; }.water-two { width: 45%; left: 26%; bottom: 79px; opacity: .7; }.water-three { width: 58%; left: 18%; bottom: 144px; opacity: .38; }
-.hero-lighthouse { position: absolute; top: 54px; right: 16%; width: 195px; height: 225px; z-index: -1; opacity: .64; filter: drop-shadow(0 0 28px rgba(119, 216, 191, .14)); }
-.hero-lighthouse::before, .hero-lighthouse::after { content: ""; position: absolute; height: 1px; width: 210px; top: 35px; left: -5px; background: linear-gradient(90deg, rgba(245, 204, 128, 0), rgba(245, 204, 128, .25), rgba(245, 204, 128, 0)); transform: rotate(15deg); }
-.hero-lighthouse::after { top: 64px; transform: rotate(-15deg); }
-.hero-lighthouse img { width: 100%; height: 100%; object-fit: contain; filter: brightness(0) saturate(100%) invert(67%) sepia(34%) saturate(478%) hue-rotate(116deg) brightness(95%) contrast(87%); }
-.phone-frame { position: absolute; width: 244px; height: 485px; top: 12px; left: 12%; border: 1px solid rgba(229, 239, 229, .46); border-radius: 34px; padding: 8px; background: linear-gradient(145deg, #bdc9c0, #42595a 24%, #111c20 66%, #91a5a0); box-shadow: 0 28px 85px rgba(0, 0, 0, .48), inset 0 1px 2px rgba(255,255,255,.54); transform: rotate(-3deg); }
-.phone-screen { height: 100%; position: relative; overflow: hidden; border-radius: 27px; padding: 9px 14px 12px; background: radial-gradient(ellipse at 70% 34%, rgba(59, 135, 121, .28), transparent 54%), linear-gradient(165deg, #0d252a, #0b191e 52%, #102a2d); }
-.phone-screen::before { content: ""; position: absolute; width: 80%; height: 48%; right: -32%; bottom: 9%; border-radius: 50%; background: rgba(46, 113, 105, .2); filter: blur(26px); }
-.phone-status { position: relative; display: flex; justify-content: space-between; color: #dce6df; font-size: 9px; font-weight: 600; padding: 0 3px; }
-.status-icons { letter-spacing: 2px; }
-.app-topline { position: relative; display: flex; align-items: center; justify-content: center; margin: 16px 0 14px; color: #e4ede6; font-size: 11px; letter-spacing: .06em; }
-.tiny-mark { color: var(--gold); position: absolute; left: 1px; }.menu-dots { position: absolute; right: 0; color: #a8bbb4; letter-spacing: 3px; }
-.app-greeting { position: relative; text-align: center; }
-.app-overline { color: #80bdae; font-size: 9px; letter-spacing: .19em; text-transform: uppercase; margin: 0 0 5px; }
-.app-greeting h3 { font-family: var(--serif); font-size: 18px; font-weight: 400; letter-spacing: -.03em; line-height: 1.5; margin: 0; color: #eef2e8; }
-.app-greeting p { color: #9eb3ac; font-size: 10px; line-height: 1.5; margin: 4px 0 0; }
-.app-orb { position: relative; width: 140px; height: 145px; display: grid; place-items: center; margin: 12px auto 12px; }
-.app-orb::before { content: ""; position: absolute; inset: 10px; border-radius: 50%; background: radial-gradient(circle, rgba(243, 196, 123, .26), rgba(60, 146, 127, .15) 32%, transparent 70%); }
-.app-orb::after { content: ""; position: absolute; width: 118px; height: 38px; border-radius: 50%; border-top: 1px solid rgba(120, 196, 173, .5); bottom: 20px; transform: rotate(-7deg); }
-.app-orb img { position: relative; z-index: 2; width: 74px; height: 95px; object-fit: contain; filter: brightness(0) saturate(100%) invert(74%) sepia(21%) saturate(436%) hue-rotate(112deg) brightness(91%) contrast(88%) drop-shadow(0 0 18px rgba(246,203,128,.5)); }
-.orb-ring { position: absolute; width: 115px; height: 115px; border-radius: 50%; border: 1px solid rgba(129, 203, 180, .17); }
-.app-actions { position: relative; display: grid; gap: 6px; }
-.app-action { height: 30px; display: flex; align-items: center; gap: 8px; padding: 0 9px; border: 1px solid rgba(184, 221, 204, .1); border-radius: 10px; background: rgba(217, 241, 225, .045); color: #c7d6ce; font-size: 9px; }
-.app-action.active { color: #e4f1e7; border-color: rgba(116, 197, 180, .45); background: rgba(70, 157, 136, .18); }
-.action-icon { width: 17px; color: var(--gold); text-align: center; font-size: 14px; }
-.phone-tabbar { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; height: 44px; border-top: 1px solid rgba(200, 226, 212, .11); background: rgba(8, 22, 25, .9); display: flex; align-items: center; justify-content: space-around; color: #78958d; font-size: 14px; }
-.phone-tabbar > span { display: flex; align-items: center; flex-direction: column; line-height: 1; gap: 3px; }.phone-tabbar .tab-active { color: #86cdbb; }.phone-tabbar small { font-size: 8px; }
-.floating-note { position: absolute; display: flex; align-items: center; gap: 9px; border: 1px solid rgba(176, 220, 202, .19); border-radius: 100px; background: rgba(12, 36, 39, .78); box-shadow: 0 12px 40px rgba(0, 0, 0, .22); backdrop-filter: blur(15px); padding: 10px 15px; z-index: 3; color: #cfddd5; font-size: 12px; white-space: nowrap; }
-.note-top { top: 96px; right: 0; }.note-bottom { bottom: 74px; left: 3%; }.note-sparkle { color: var(--gold); }.note-wave { color: var(--teal-bright); font-size: 19px; line-height: 1; }
-.art-caption { position: absolute; bottom: -12px; right: 5%; color: #6e8982; font-family: var(--serif); font-size: 13px; letter-spacing: .03em; }
-.scroll-cue { position: absolute; left: 0; bottom: 26px; display: flex; align-items: center; gap: 10px; color: #6b8580; font-size: 10px; letter-spacing: .11em; text-transform: uppercase; }.scroll-cue span:last-child { color: var(--gold); font-size: 16px; }
+/* sea scene behind the phone */
+.hero-sea { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.sea-moon { position: absolute; top: 64px; right: 16%; width: 42px; height: 42px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 48px 12px rgba(246, 204, 132, .18); opacity: .9; }
+.sea-star { position: absolute; color: rgba(242, 199, 126, .55); font-size: 11px; }
+.star-a { top: 110px; right: 42%; } .star-b { top: 46px; right: 34%; font-size: 14px; } .star-c { top: 190px; right: 7%; font-size: 9px; }
+.sea-arc { position: absolute; border-radius: 50%; left: 50%; }
+.arc-back { width: 920px; height: 270px; right: -18%; bottom: 8%; background: radial-gradient(ellipse at 50% 100%, rgba(23, 78, 79, .38), rgba(9, 30, 37, 0) 65%); transform: translateX(42%); }
+.arc-front { width: 1000px; height: 250px; right: -24%; bottom: -30px; background: radial-gradient(ellipse at 50% 100%, rgba(20, 62, 69, .5), rgba(7, 25, 30, 0) 62%); transform: translateX(38%); border-top: 1px solid rgba(126, 198, 180, .12); }
+.sea-light-beam { position: absolute; top: 170px; right: 30%; width: 230px; height: 150px; background: radial-gradient(ellipse at 80% 0%, rgba(242, 199, 126, .12), transparent 65%); transform: rotate(14deg); }
 
-.intro { padding: 118px 0 125px; border-top: 1px solid rgba(191, 223, 211, .09); }
-.section-kicker { display: flex; align-items: center; gap: 12px; color: #80b6a8; font-size: 11px; letter-spacing: .1em; }
-.section-kicker > span:first-child { color: var(--gold); font-size: 10px; letter-spacing: .12em; }
-.kicker-rule { width: 28px; height: 1px; background: linear-gradient(90deg, rgba(242,199,126,.9), rgba(242,199,126,0)); }
-.intro-heading { display: grid; grid-template-columns: 1.1fr .9fr; align-items: end; gap: 62px; margin: 26px 0 48px; }
-.intro h2, .tides-copy h2, .meaning-text h2, .privacy-heading h2 { font-size: clamp(35px, 4vw, 52px); line-height: 1.3; }
-.intro-heading p, .tides-copy > p, .meaning-text > p { max-width: 460px; margin: 0 0 7px; color: #9eb2ac; font-size: 16px; line-height: 1.95; }
-.mode-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.mode-card { min-height: 355px; padding: 25px 25px 20px; position: relative; overflow: hidden; border: 1px solid rgba(191, 224, 211, .12); border-radius: 17px; background: linear-gradient(145deg, rgba(19, 49, 52, .8), rgba(12, 30, 35, .9)); }
-.mode-card::after { content: ""; position: absolute; inset: auto -70px -100px auto; width: 240px; height: 210px; border-radius: 50%; background: radial-gradient(circle, rgba(51, 124, 112, .18), transparent 68%); pointer-events: none; }
-.mode-number, .ritual-index { color: #81a99f; font-size: 10px; letter-spacing: .16em; }
-.mode-glyph { position: absolute; top: 16px; right: 22px; font-family: var(--serif); font-size: 47px; line-height: 1; color: rgba(132, 209, 187, .43); }
-.mode-card h3 { margin: 22px 0 6px; font-family: var(--serif); font-size: 26px; font-weight: 400; letter-spacing: -.025em; color: #ebf1e9; }
-.mode-card > p { position: relative; z-index: 1; max-width: 295px; min-height: 62px; margin: 0; color: #9db0aa; font-size: 14px; line-height: 1.8; }
-.mini-chat { margin-top: 22px; display: flex; gap: 9px; align-items: flex-start; padding: 12px 13px; border: 1px solid rgba(174, 215, 200, .1); background: rgba(3, 18, 22, .28); border-radius: 12px; color: #d1ded7; font-size: 12px; line-height: 1.6; }
-.mini-avatar { flex: 0 0 22px; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: rgba(113, 195, 172, .17); color: var(--teal-bright); font: 11px var(--serif); }
-.clarity-preview { margin-top: 22px; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(122, 190, 168, .22); background: rgba(69, 135, 115, .11); display: grid; gap: 7px; }
-.clarity-label { color: #b5d7c8; font-size: 11px; }.clarity-rule { width: 90%; height: 1px; background: rgba(161, 208, 183, .2); }.clarity-small { font: 13px var(--serif); color: #e2e9de; }
-.companion-sky { position: absolute; bottom: 18px; left: 25px; right: 25px; height: 91px; border-radius: 12px; overflow: hidden; background: linear-gradient(155deg, rgba(38, 64, 89, .56), rgba(18, 42, 50, .2)); }
-.companion-sky::before { content: ""; position: absolute; left: -15%; right: -12%; bottom: -25px; height: 60px; border-top: 1px solid rgba(119, 197, 177, .27); border-radius: 50%; transform: rotate(-4deg); }
-.sky-star { position: absolute; color: var(--gold); }.star-a { top: 11px; left: 27px; }.star-b { top: 23px; right: 34px; font-size: 19px; }
-.sky-moon { position: absolute; top: 16px; left: 55%; width: 24px; height: 24px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 28px rgba(245, 203, 128, .2); }.sky-moon::after { content: ""; position: absolute; top: -4px; left: 8px; width: 24px; height: 24px; border-radius: 50%; background: #203c45; }
-.sky-caption { position: absolute; left: 15px; bottom: 11px; color: #b9cfc6; font: 12px var(--serif); }
-
-.tides-section { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: clamp(40px, 8vw, 110px); padding: 102px 0 125px; border-top: 1px solid rgba(191, 223, 211, .09); border-bottom: 1px solid rgba(191, 223, 211, .09); }
-.tides-copy h2 { margin: 26px 0 20px; }.tides-copy > p { margin-bottom: 24px; }
-.text-link { display: inline-flex; align-items: center; gap: 9px; color: var(--teal-bright); font-size: 13px; padding-bottom: 4px; border-bottom: 1px solid rgba(116, 197, 180, .42); }.text-link span:last-child { color: var(--gold); }
-.tide-ui { position: relative; padding: 29px 30px 21px; border: 1px solid rgba(187, 224, 209, .16); border-radius: 21px; background: linear-gradient(145deg, rgba(23, 54, 57, .9), rgba(13, 32, 38, .95)); box-shadow: 0 24px 75px rgba(0, 0, 0, .22); }
-.tide-ui::before { content: ""; position: absolute; z-index: -1; left: 10%; right: 10%; bottom: -24px; height: 90px; filter: blur(35px); background: rgba(51, 122, 108, .22); }
-.tide-card-head { display: flex; align-items: center; justify-content: space-between; }.ui-overline { color: #81bbaa; font-size: 10px; letter-spacing: .16em; }.tide-card-head h3 { margin: 5px 0 0; font: 400 20px var(--serif); color: #e6eee5; }.calendar-mark { color: #95b9ad; width: 33px; height: 33px; border-radius: 10px; display: grid; place-items: center; background: rgba(191, 225, 209, .08); }
-.tide-chart { height: 159px; margin-top: 22px; position: relative; display: flex; }.chart-y { z-index: 1; width: 23px; height: 118px; display: flex; flex-direction: column; justify-content: space-between; color: #789b90; font-size: 12px; padding: 0 0 2px; }.tide-chart svg { position: absolute; left: 24px; top: 0; width: calc(100% - 24px); height: 138px; overflow: visible; }.chart-grid { position: absolute; top: 5px; left: 25px; right: 0; height: 114px; display: flex; flex-direction: column; justify-content: space-between; pointer-events: none; }.chart-grid i { height: 1px; width: 100%; background: rgba(168, 210, 194, .1); }
-.chart-days { display: flex; justify-content: space-between; color: #86a198; margin-left: 24px; font-size: 10px; }.weekly-note { display: flex; align-items: center; gap: 12px; margin-top: 23px; padding: 14px 16px; border-radius: 13px; border: 1px solid rgba(184, 221, 202, .12); background: rgba(5, 20, 24, .3); }.weekly-sparkle { color: var(--gold); font-size: 17px; }.weekly-note p { flex: 1; margin: 0; color: #d6e5dc; font: 14px/1.6 var(--serif); }.weekly-note small { color: #9eb5a9; font-size: 12px; }.note-arrow { color: #88c6b2; font-size: 14px; }.ui-footnote { display: flex; align-items: center; gap: 7px; margin-top: 13px; color: #809b90; font-size: 11px; }.privacy-dot { width: 6px; height: 6px; border-radius: 50%; background: #8bcdb7; box-shadow: 0 0 9px rgba(139,205,183,.45); }
-
-.rituals-section { padding: 118px 0 125px; }.rituals-section > .section-kicker { margin-bottom: 34px; }.ritual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }.ritual { min-height: 372px; position: relative; overflow: hidden; border: 1px solid rgba(191, 223, 211, .12); border-radius: 19px; background: linear-gradient(140deg, rgba(19, 50, 52, .88), rgba(12, 30, 35, .95)); }.ritual-copy { position: relative; z-index: 2; padding: 28px 30px; max-width: 58%; }.ritual-copy h3 { margin: 20px 0 10px; color: #edf1e9; font: 400 clamp(25px, 2.7vw, 34px)/1.45 var(--serif); letter-spacing: -.03em; }.ritual-copy p { color: #9eb1aa; font-size: 14px; line-height: 1.8; max-width: 280px; margin: 0; }.breathing-card { background: radial-gradient(ellipse at 86% 47%, rgba(54, 133, 118, .2), transparent 54%), linear-gradient(140deg, rgba(19, 50, 52, .92), rgba(10, 29, 36, .95)); }
-.breath-visual { position: absolute; right: -3px; top: 35px; width: 52%; height: 80%; display: grid; place-items: center; }.breath-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(118, 201, 178, .14); }.ring-outer { width: 250px; height: 250px; box-shadow: 0 0 60px rgba(66, 150, 128, .1); }.ring-middle { width: 192px; height: 192px; border-color: rgba(132, 208, 182, .25); }.ring-inner { width: 132px; height: 132px; border-color: rgba(242, 199, 126, .25); box-shadow: 0 0 50px rgba(242, 199, 126, .08); }.breath-visual img { width: 70px; height: 105px; object-fit: contain; filter: brightness(0) saturate(100%) invert(75%) sepia(20%) saturate(420%) hue-rotate(112deg) brightness(94%) contrast(87%) drop-shadow(0 0 14px rgba(242,199,126,.55)); }.breath-caption { position: absolute; bottom: 10px; color: #92b3a6; white-space: nowrap; font-size: 10px; letter-spacing: .1em; }
-.bottle-card { background: radial-gradient(ellipse at 82% 45%, rgba(42, 104, 114, .25), transparent 55%), linear-gradient(140deg, rgba(24, 48, 57, .92), rgba(12, 29, 38, .95)); }.bottle-scene { position: absolute; right: 0; top: 0; bottom: 0; width: 49%; overflow: hidden; }.bottle-scene::before { content: ""; position: absolute; left: -25%; right: -13%; bottom: 12%; height: 36%; border-top: 1px solid rgba(121, 196, 186, .31); border-radius: 50%; transform: rotate(-11deg); }.bottle-scene::after { content: ""; position: absolute; left: -6%; right: -35%; bottom: 1%; height: 38%; border-top: 1px solid rgba(121, 196, 186, .2); border-radius: 50%; transform: rotate(7deg); }.bottle-moon { position: absolute; top: 54px; right: 41px; width: 39px; height: 39px; border-radius: 50%; background: #edc77f; box-shadow: 0 0 43px rgba(241, 199, 126, .2); opacity: .86; }.bottle-stars { position: absolute; top: 43px; left: 25%; color: rgba(241, 199, 126, .72); font-size: 13px; }.bottle-wave { position: absolute; width: 86%; height: 85px; left: 8%; bottom: 24%; border-top: 1px solid rgba(128, 198, 183, .37); border-radius: 50%; transform: rotate(-12deg); }.wave-b { bottom: 13%; left: 23%; width: 100%; opacity: .55; transform: rotate(9deg); }.bottle-glyph { position: absolute; z-index: 2; width: 52px; height: 92px; object-fit: contain; top: 38%; left: 45%; opacity: .88; filter: brightness(0) saturate(100%) invert(70%) sepia(27%) saturate(421%) hue-rotate(124deg) brightness(90%) contrast(89%) drop-shadow(0 0 14px rgba(108, 197, 177, .35)); transform: rotate(12deg); }.bottle-caption { position: absolute; z-index: 3; bottom: 20px; right: 18px; color: #9fbdb2; font: 12px var(--serif); }
-
-.meaning-section { padding: 115px 0 121px; position: relative; display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 60px; border-top: 1px solid rgba(191, 223, 211, .09); border-bottom: 1px solid rgba(191, 223, 211, .09); }
-.meaning-section::before { content: ""; position: absolute; z-index: -2; width: 680px; height: 490px; left: -340px; top: -40px; border-radius: 50%; background: radial-gradient(circle, rgba(36, 103, 97, .22), transparent 68%); }.meaning-orbit { position: absolute; border: 1px solid rgba(125, 197, 178, .09); border-radius: 50%; left: -145px; top: 50%; transform: translateY(-50%); pointer-events: none; }.orbit-one { width: 400px; height: 400px; }.orbit-two { width: 560px; height: 560px; left: -225px; border-color: rgba(125, 197, 178, .05); }
-.meaning-mark { position: relative; width: 300px; height: 300px; margin: 0 auto; display: grid; place-items: center; }.meaning-glow { position: absolute; inset: -10%; border-radius: 50%; background: radial-gradient(circle, rgba(74, 171, 145, .2), rgba(242, 199, 126, .055) 37%, transparent 68%); }.meaning-mark::before, .meaning-mark::after { content: ""; position: absolute; border-radius: 50%; border: 1px solid rgba(125, 198, 178, .19); }.meaning-mark::before { inset: 25px; }.meaning-mark::after { inset: 57px; border-color: rgba(241, 198, 124, .15); }.meaning-mark img { position: relative; width: 130px; height: 173px; object-fit: contain; z-index: 1; filter: brightness(0) saturate(100%) invert(76%) sepia(24%) saturate(427%) hue-rotate(115deg) brightness(94%) contrast(88%) drop-shadow(0 0 22px rgba(244, 202, 130, .36)); }
-.meaning-text h2 { margin: 24px 0 20px; }.meaning-text > p { max-width: 630px; }.meaning-signoff { display: flex; gap: 10px; align-items: center; margin-top: 26px; color: #bdd0c5; font: 15px var(--serif); }.meaning-signoff > span:first-child { color: var(--gold); font-size: 32px; line-height: 1; }
-
-.privacy-section { padding: 116px 0 120px; display: grid; grid-template-columns: .82fr 1.18fr; gap: 75px; }.privacy-heading h2 { margin-top: 25px; }.privacy-details { padding-top: 8px; }.privacy-item { display: grid; grid-template-columns: 42px 1fr; gap: 16px; padding: 18px 0 19px; border-bottom: 1px solid rgba(191, 223, 211, .1); }.privacy-icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; color: var(--teal-bright); background: rgba(82, 153, 131, .14); font-size: 19px; }.privacy-item h3 { margin: 0 0 5px; color: #e1ece3; font: 400 18px var(--serif); }.privacy-item p { margin: 0; color: #98ada5; font-size: 14px; line-height: 1.75; }.privacy-links { display: flex; flex-wrap: wrap; gap: 20px; padding-top: 22px; }.privacy-links a { display: inline-flex; align-items: center; gap: 7px; color: #a8c8b9; font-size: 13px; }.privacy-links a span:last-child { color: var(--gold); }
-
-.closing { min-height: 430px; margin-bottom: 30px; border: 1px solid rgba(162, 216, 193, .17); border-radius: 24px; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: radial-gradient(ellipse at 50% 89%, rgba(40, 112, 102, .36), transparent 48%), linear-gradient(140deg, #102e32, #0b1c22 70%); }
-.closing::before, .closing::after { content: ""; position: absolute; left: -10%; right: -10%; bottom: -73%; height: 125%; border: 1px solid rgba(125, 197, 177, .1); border-radius: 50%; }.closing::after { left: 8%; right: 8%; bottom: -85%; border-color: rgba(242, 199, 126, .12); }
-.closing-light { position: absolute; top: 12px; left: calc(50% - 65px); width: 130px; height: 127px; display: grid; place-items: center; }.closing-light span { position: absolute; border-radius: 50%; border: 1px solid rgba(118, 200, 177, .13); }.closing-light span:nth-child(1) { inset: 4px; }.closing-light span:nth-child(2) { inset: 21px; border-color: rgba(242,199,126,.16); }.closing-light span:nth-child(3) { inset: 37px; }.closing-light img { width: 34px; height: 52px; object-fit: contain; filter: brightness(0) saturate(100%) invert(77%) sepia(19%) saturate(438%) hue-rotate(112deg) brightness(96%) contrast(90%) drop-shadow(0 0 10px rgba(242,199,126,.4)); }
-.closing-overline { color: #96baad; font-size: 12px; letter-spacing: .06em; margin: 107px 0 13px; }.closing h2 { font-size: clamp(38px, 4.3vw, 53px); line-height: 1.25; }.closing-button { margin-top: 24px; position: relative; z-index: 2; }
-.footer { min-height: 186px; padding: 25px 0 20px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; column-gap: 28px; }.footer-brand { grid-column: 1; }.footer-note { grid-column: 2; margin: 0; color: #718d84; font: 14px var(--serif); }.footer-links { grid-column: 3; display: flex; gap: 20px; color: #91a79f; font-size: 12px; }.footer-bottom { grid-column: 1 / -1; display: flex; align-items: center; gap: 18px; padding-top: 19px; border-top: 1px solid rgba(191, 223, 211, .1); color: #6c847c; font-size: 10px; letter-spacing: .05em; }.footer-disclaimer { margin-left: auto; letter-spacing: 0; }.back-top { width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid rgba(191, 223, 211, .16); border-radius: 50%; color: var(--gold); font-size: 15px; }
-
-@media (max-width: 980px) {
-  .section-frame { width: min(100% - 52px, 760px); }
-  .topbar { width: calc(100% - 48px); height: 76px; }.main-nav { gap: 18px; }.header-download { padding: 9px 13px; }
-  .hero { min-height: unset; grid-template-columns: 1fr 1fr; gap: 10px; padding: 74px 0 82px; }.hero-art { transform: scale(.92); transform-origin: center; margin-left: -18px; }.hero h1 { font-size: clamp(42px, 5vw, 58px); }
-  .phone-frame { left: 9%; }.note-top { right: -3%; }.note-bottom { left: -3%; }
-  .intro-heading { gap: 34px; }.mode-card { padding: 21px; }.mode-card > p { font-size: 13px; }.companion-sky { left: 21px; right: 21px; }.ritual-copy { padding: 26px 23px; max-width: 62%; }.breath-visual { right: -24px; width: 55%; }.meaning-section { gap: 35px; }.meaning-mark { transform: scale(.86); }.privacy-section { gap: 45px; }
-}
-@media (max-width: 720px) {
-  body { font-size: 16px; }.section-frame { width: calc(100% - 40px); }
-  .topbar { width: calc(100% - 36px); height: 70px; }.brand { font-size: 10px; letter-spacing: .15em; gap: 7px; }.brand-mark { width: 26px; }.brand-mark img { width: 24px; height: 28px; }.main-nav { display: none; }.header-actions { gap: 11px; }.language-button { font-size: 11px; }.header-download { font-size: 11px; padding: 8px 11px; gap: 6px; }
-  .hero { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 57px 0 73px; }.hero-copy { padding: 0; }.eyebrow { margin-bottom: 20px; font-size: 11px; }.hero h1 { font-size: clamp(41px, 11.2vw, 58px); line-height: 1.26; }.hero-lede { margin: 18px 0 23px; font-size: 16px; line-height: 1.85; }.hero-actions { gap: 13px; }.app-store-button { min-height: 53px; }.hero-note { font-size: 11px; }.hero-signature { margin-top: 22px; font-size: 13px; }
-  .hero-art { height: 410px; margin: 16px -20px 0; transform: none; }.art-glow { width: 370px; height: 370px; right: 0; top: 3%; }.moon { width: 34px; height: 34px; right: 16%; top: 21px; }.hero-lighthouse { width: 132px; height: 160px; top: 25px; right: 18%; }.phone-frame { width: 205px; height: 400px; top: 10px; left: 21%; padding: 7px; border-radius: 29px; }.phone-screen { padding: 7px 12px 10px; border-radius: 23px; }.phone-status { font-size: 8px; }.app-topline { margin: 12px 0 10px; font-size: 10px; }.app-greeting h3 { font-size: 16px; }.app-greeting p { font-size: 9px; }.app-orb { width: 112px; height: 116px; margin: 7px auto 8px; }.app-orb img { width: 62px; height: 82px; }.orb-ring { width: 93px; height: 93px; }.app-actions { gap: 5px; }.app-action { height: 26px; font-size: 8px; }.action-icon { font-size: 12px; }.phone-tabbar { height: 37px; font-size: 12px; }.phone-tabbar small { font-size: 7px; }.floating-note { padding: 8px 11px; font-size: 10px; }.note-top { top: 53px; right: 4%; }.note-bottom { bottom: 46px; left: 3%; }.art-caption { bottom: -4px; right: 6%; font-size: 11px; }.scroll-cue { bottom: 24px; left: 1px; font-size: 9px; }
-  .intro { padding: 83px 0 88px; }.intro-heading { display: block; margin: 24px 0 30px; }.intro h2, .tides-copy h2, .meaning-text h2, .privacy-heading h2 { font-size: clamp(34px, 9vw, 46px); }.intro-heading p { margin-top: 18px; font-size: 15px; line-height: 1.9; }.mode-cards { grid-template-columns: 1fr; gap: 12px; }.mode-card { min-height: 276px; padding: 22px; }.mode-card h3 { font-size: 24px; margin-top: 17px; }.mode-card > p { min-height: unset; max-width: 100%; font-size: 14px; }.mini-chat, .clarity-preview { margin-top: 17px; }.companion-sky { left: 22px; right: 22px; height: 77px; bottom: 14px; }
-  .tides-section { grid-template-columns: 1fr; gap: 32px; padding: 82px 0 87px; }.tides-copy h2 { margin: 22px 0 16px; }.tides-copy > p { font-size: 15px; line-height: 1.9; }.tide-ui { padding: 23px 20px 18px; border-radius: 17px; }.tide-chart { height: 143px; }.tide-chart svg { height: 124px; }.chart-grid { height: 104px; }.chart-days { font-size: 9px; }.weekly-note p { font-size: 13px; }.weekly-note small { font-size: 11px; }.ui-footnote { font-size: 10px; }
-  .rituals-section { padding: 83px 0 88px; }.rituals-section > .section-kicker { margin-bottom: 24px; }.ritual-grid { grid-template-columns: 1fr; gap: 13px; }.ritual { min-height: 340px; }.ritual-copy { padding: 24px; max-width: 62%; }.ritual-copy h3 { margin: 18px 0 8px; font-size: 28px; }.ritual-copy p { font-size: 14px; }.breath-visual { right: -10px; top: 15px; width: 50%; height: 84%; }.ring-outer { width: 210px; height: 210px; }.ring-middle { width: 162px; height: 162px; }.ring-inner { width: 115px; height: 115px; }.breath-visual img { width: 61px; height: 92px; }.breath-caption { bottom: 6px; font-size: 9px; }.bottle-scene { width: 49%; }.bottle-moon { right: 31px; top: 51px; width: 33px; height: 33px; }.bottle-glyph { width: 43px; height: 79px; }.bottle-caption { right: 10px; bottom: 17px; font-size: 10px; }
-  .meaning-section { grid-template-columns: 1fr; gap: 10px; padding: 79px 0 84px; }.meaning-mark { width: 235px; height: 220px; transform: none; margin: -13px auto -2px; }.meaning-mark img { width: 96px; height: 136px; }.meaning-mark::before { inset: 14px; }.meaning-mark::after { inset: 39px; }.orbit-one { width: 310px; height: 310px; left: -166px; }.orbit-two { width: 450px; height: 450px; left: -235px; }.meaning-text h2 { margin: 22px 0 15px; }.meaning-text > p { font-size: 15px; line-height: 1.9; }.meaning-signoff { font-size: 14px; }
-  .privacy-section { grid-template-columns: 1fr; gap: 27px; padding: 81px 0 86px; }.privacy-heading h2 { margin-top: 21px; }.privacy-details { padding: 0; }.privacy-item { grid-template-columns: 38px 1fr; gap: 13px; padding: 16px 0; }.privacy-icon { width: 34px; height: 34px; font-size: 16px; }.privacy-item h3 { font-size: 17px; }.privacy-item p { font-size: 14px; }.privacy-links { gap: 14px 20px; }
-  .closing { width: calc(100% - 24px); min-height: 384px; margin-bottom: 15px; border-radius: 19px; }.closing-light { top: 3px; transform: scale(.84); }.closing-overline { margin-top: 98px; font-size: 11px; }.closing h2 { font-size: 41px; }.closing-button { margin-top: 20px; }
-  .footer { min-height: 230px; padding: 27px 0 18px; grid-template-columns: 1fr auto; row-gap: 17px; }.footer-brand { grid-column: 1; }.footer-note { grid-column: 2; font-size: 12px; text-align: right; }.footer-links { grid-column: 1 / -1; gap: 17px; font-size: 12px; }.footer-bottom { grid-column: 1 / -1; flex-wrap: wrap; gap: 8px 13px; padding-top: 15px; font-size: 9px; }.footer-disclaimer { margin-left: 0; width: calc(100% - 45px); order: 3; }.back-top { margin-left: auto; order: 4; }
-}
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
-
-/* A quieter, product-led treatment: let the app screen carry the hero. */
-body::before { display: none; }
-.hero { min-height: 760px; grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 92px); padding: 72px 0 78px; }
-.hero::before { display: none; }
-.hero-art { height: min(648px, calc(100vh - 230px)); margin: 0; transform: none; isolation: isolate; }
-.hero-art::before { content: ""; position: absolute; z-index: -1; width: 76%; height: 74%; left: 12%; top: 13%; border-radius: 50%; background: radial-gradient(ellipse, rgba(39, 83, 79, .22), rgba(7, 25, 30, 0) 70%); pointer-events: none; }
-.art-glow, .moon, .horizon, .water-line, .hero-lighthouse, .floating-note { display: none; }
-.phone-frame { top: calc(50% - 12px); left: 50%; width: auto; height: min(620px, calc(100vh - 230px)); aspect-ratio: 393 / 852; padding: 3px; border: 1px solid #505b59; border-radius: 47px; background: linear-gradient(145deg, #66716e 0%, #263033 13%, #0d1113 47%, #252d2d 84%, #68716e 100%); box-shadow: 0 24px 52px rgba(0, 0, 0, .38), 0 2px 4px rgba(0, 0, 0, .28); transform: translate(-50%, -50%); }
+/* ───────── interactive phone ───────── */
+.hero-art { position: relative; z-index: 2; height: min(660px, calc(100vh - 220px)); min-height: 540px; }
+.phone-hint { position: absolute; top: 6px; left: 50%; transform: translateX(-50%); z-index: 6; display: inline-flex; align-items: center; gap: 7px; padding: 7px 14px; border: 1px solid rgba(176, 220, 202, .22); border-radius: 100px; background: rgba(12, 36, 39, .72); backdrop-filter: blur(12px); color: #cfe2d8; font-size: 11px; letter-spacing: .04em; white-space: nowrap; }
+.phone-hint::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 8px rgba(242,199,126,.8); animation: hintPulse 2.4s ease-in-out infinite; }
+@keyframes hintPulse { 50% { opacity: .4; } }
+.phone-frame { position: absolute; top: calc(50% + 14px); left: 50%; width: auto; height: min(640px, calc(100vh - 220px)); aspect-ratio: 393 / 852; padding: 3px; border: 1px solid #505b59; border-radius: 47px; background: linear-gradient(145deg, #66716e 0%, #263033 13%, #0d1113 47%, #252d2d 84%, #68716e 100%); box-shadow: 0 24px 52px rgba(0, 0, 0, .38), 0 2px 4px rgba(0, 0, 0, .28); transform: translate(-50%, -50%); }
 .phone-frame::before, .phone-frame::after { content: ""; position: absolute; width: 2px; border-radius: 2px; background: #596260; }
 .phone-frame::before { height: 47px; left: -3px; top: 112px; box-shadow: 0 60px 0 #596260, 0 98px 0 #596260; }
 .phone-frame::after { height: 74px; right: -3px; top: 144px; }
-.phone-screen { height: 100%; border: 1px solid rgba(255, 255, 255, .04); border-radius: 43px; padding: 13px 18px 12px; background: linear-gradient(180deg, #121b1d, #0c1719 48%, #0d191b); }
-.phone-screen::before { display: none; }
-.dynamic-island { position: absolute; z-index: 4; top: 8px; left: 50%; width: 82px; height: 23px; transform: translateX(-50%); border-radius: 20px; background: #030506; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .035); }
-.phone-status { padding: 9px 4px 0; font-size: 10px; }
-.app-topline { margin: 16px 0 14px; font-size: 12px; }
-.app-greeting h3 { font-family: var(--sans); font-size: 17px; font-weight: 500; letter-spacing: -.025em; }
-.app-greeting p { margin-top: 5px; font-size: 9px; line-height: 1.4; }
-.app-orb { width: 92px; height: 92px; margin: 13px auto 13px; border: 1px solid rgba(126, 179, 163, .2); border-radius: 50%; background: #112322; }
-.app-orb::before { inset: 17px; background: radial-gradient(circle, rgba(216, 189, 129, .13), rgba(78, 137, 119, .08) 40%, transparent 72%); }
-.app-orb::after { display: none; }
-.app-orb img { width: 50px; height: 70px; filter: brightness(0) saturate(100%) invert(74%) sepia(21%) saturate(436%) hue-rotate(112deg) brightness(91%) contrast(88%); }
-.app-actions { gap: 6px; }
-.app-action { height: 34px; padding: 0 10px; border: 1px solid #293b39; border-radius: 11px; background: #132123; color: #c5d3ce; font-size: 10px; }
-.app-action.active { border-color: #4f887a; background: #18302e; color: #e3eee8; }
+.phone-screen { position: relative; height: 100%; border: 1px solid rgba(255, 255, 255, .04); border-radius: 43px; background: linear-gradient(180deg, #121b1d, #0c1719 48%, #0d191b); overflow: hidden; }
+.dynamic-island { position: absolute; z-index: 15; top: 8px; left: 50%; width: 82px; height: 23px; transform: translateX(-50%); border-radius: 20px; background: #030506; box-shadow: inset 0 0 0 1px rgba(255,255,255,.035); }
+.phone-status { position: absolute; z-index: 14; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; padding: 9px 20px 0; color: #dce6df; font-size: 10px; font-weight: 600; pointer-events: none; }
+.status-icons { letter-spacing: 2px; }
+
+/* screens */
+.app-screen { position: absolute; inset: 0; opacity: 0; visibility: hidden; transform: translateX(14px); transition: opacity .32s ease, transform .32s ease, visibility .32s; pointer-events: none; display: flex; flex-direction: column; }
+.app-screen.active { opacity: 1; visibility: visible; transform: none; pointer-events: auto; }
+.app-screen.overlay { z-index: 12; background: #0c1719; }
+.screen-chat .chat-head, .screen-bottle .chat-head { padding-top: 38px; }
+.breathe-body { padding-top: 26px; }
+.phone-body { flex: 1; overflow-y: auto; padding: 6px 18px 18px; scrollbar-width: none; }
+.phone-body::-webkit-scrollbar { display: none; }
+.app-topline { position: relative; display: flex; align-items: baseline; justify-content: center; margin: 24px 0 10px; color: #e4ede6; }
+.app-wordmark { font-size: 12px; letter-spacing: .06em; font-weight: 600; }
+.app-wordmark-sub { position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 7px; letter-spacing: .18em; color: #6f8d84; }
+.menu-dots { position: absolute; left: 0; color: #a8bbb4; letter-spacing: 3px; }
+.screen-sub { margin: 4px 2px 12px; color: #93aca4; font-size: 10.5px; line-height: 1.55; }
+.screen-footnote { display: flex; align-items: center; gap: 7px; margin: 12px 2px 0; color: #7d968d; font-size: 9.5px; }
+
+/* Now screen */
+.presence-orb { position: relative; width: 118px; height: 118px; margin: 14px auto 10px; display: grid; place-items: center; cursor: pointer; }
+.presence-orb img { width: 52px; height: 72px; position: relative; z-index: 2; filter: brightness(0) saturate(100%) invert(74%) sepia(21%) saturate(436%) hue-rotate(112deg) brightness(91%) contrast(88%) drop-shadow(0 0 14px rgba(246, 203, 128, .45)); animation: presenceTide 14s ease-in-out infinite; transform-origin: center; }
+@keyframes presenceTide { 0% { transform: scale(1); } 28.6% { transform: scale(1.12); } 57.2% { transform: scale(1.12); } 100% { transform: scale(1); } }
+.orb-ring { position: absolute; border-radius: 50%; }
+.ring-a { inset: 6px; border: 1px solid rgba(129, 203, 180, .2); animation: presenceTide 14s ease-in-out infinite; }
+.ring-b { inset: 20px; border: 1px solid rgba(242, 199, 126, .14); }
+.orb-pulse { position: absolute; inset: 14px; border-radius: 50%; background: radial-gradient(circle, rgba(243, 196, 123, .18), rgba(60, 146, 127, .1) 42%, transparent 72%); }
+.app-greeting { margin: 2px 0 12px; text-align: center; color: #e7efe9; font-family: var(--serif); font-size: 14.5px; line-height: 1.5; }
+
+.checkin-card { position: relative; margin-bottom: 12px; padding: 13px 14px 12px; border: 1px solid #2a3d3b; border-radius: 14px; background: #132326; }
+.checkin-head { display: flex; justify-content: space-between; align-items: center; }
+.checkin-overline { color: #83bfae; font-size: 8.5px; letter-spacing: .16em; }
+.checkin-spark { color: var(--gold); font-size: 12px; }
+.checkin-title { margin: 7px 0 0; color: #e4eee6; font-family: var(--serif); font-size: 12.5px; line-height: 1.45; }
+.checkin-scale { display: flex; justify-content: space-between; gap: 6px; margin-top: 12px; }
+.tide-dot { flex: 1; height: 30px; border: 1px solid #2c4340; border-radius: 9px; background: #10201f; color: #9dbab0; font-size: 10px; display: grid; place-items: center; transition: border-color .2s, background .2s, color .2s; }
+.tide-dot:hover { border-color: #4f887a; color: #d6e8dd; }
+.tide-dot.on { border-color: var(--gold); background: rgba(242, 199, 126, .14); color: var(--gold); }
+.checkin-scale-label { margin-top: 8px; text-align: center; color: #8fb0a4; font-size: 9px; letter-spacing: .06em; min-height: 12px; }
+.checkin-button { display: block; width: 100%; margin-top: 11px; padding: 9px 0; border-radius: 10px; background: rgba(116, 197, 180, .16); border: 1px solid #3f6f64; color: #d7eae0; font-size: 11px; transition: background .2s; }
+.checkin-button:hover { background: rgba(116, 197, 180, .26); }
+.checkin-done { margin: 10px 0 0; text-align: center; color: #8fe0c4; font-size: 10.5px; }
+
+.app-actions { display: grid; gap: 7px; }
+.app-action { position: relative; display: flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 12px; border: 1px solid #293b39; border-radius: 12px; background: #132123; color: #c5d3ce; font-size: 11px; cursor: pointer; transition: border-color .2s, background .2s; }
+.app-action:hover { border-color: #4f887a; background: #18302e; }
+.app-action > span { font-weight: 600; font-size: 11.5px; color: #e3eee8; }
+.app-action small { margin-left: auto; color: #7f9c93; font-size: 8.5px; letter-spacing: .04em; }
 .action-icon { width: 17px; height: 17px; flex: 0 0 17px; color: #a8cbbd; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.app-action.active .action-icon { color: var(--gold); }
-.phone-tabbar { height: 48px; background: #0a1517; }
-.phone-tabbar > span { min-width: 56px; gap: 4px; font-size: 12px; }
-.phone-tabbar svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
-.phone-tabbar small { font-size: 8px; }
-.art-caption { display: none; }
 
-.mode-card { border-radius: 12px; border-color: rgba(191, 224, 211, .1); background: #0d1e22; }
-.mode-card::after, .mode-glyph { display: none; }
-.mini-chat, .clarity-preview { border-radius: 8px; background: #101e21; }
-.companion-note { position: relative; right: auto; bottom: auto; left: auto; height: auto; min-height: 48px; margin-top: 22px; border-radius: 8px; }
-.tide-ui { border-radius: 14px; background: #0d1c20; box-shadow: none; }
-.tide-ui::before { display: none; }
-.weekly-note { border-radius: 8px; background: #0a171a; }
-.ritual { border-radius: 13px; background: #0d1d21; }
-.breathing-card, .bottle-card { background: #0d1d21; }
-.ring-outer, .ring-inner { display: none; }
-.ring-middle { width: 190px; height: 190px; border-color: rgba(132, 208, 182, .2); box-shadow: none; }
-.breath-visual img { filter: brightness(0) saturate(100%) invert(75%) sepia(20%) saturate(420%) hue-rotate(112deg) brightness(94%) contrast(87%); }
-.drift-note { position: absolute; top: 50%; right: 8%; width: 42%; transform: translateY(-50%); padding: 20px 18px; border: 1px solid #2b403e; border-left: 2px solid #78b9a6; border-radius: 8px; background: #132326; }
-.drift-note-label { color: #91b4a7; font-size: 10px; letter-spacing: .12em; }
-.drift-note p { margin: 18px 0 0; color: #e0e9e2; font: 17px/1.65 var(--serif); }
-.drift-note-rule { display: block; width: 34px; height: 1px; margin-top: 20px; background: var(--gold); opacity: .8; }
-.meaning-section::before, .meaning-orbit { display: none; }
-.meaning-mark { width: 230px; height: 230px; border: 1px solid rgba(125, 198, 178, .17); border-radius: 50%; }
-.meaning-glow, .meaning-mark::before, .meaning-mark::after { display: none; }
-.meaning-mark img { width: 90px; height: 135px; filter: brightness(0) saturate(100%) invert(76%) sepia(24%) saturate(427%) hue-rotate(115deg) brightness(94%) contrast(88%); }
-.privacy-icon { border-radius: 9px; background: #122623; }
-.closing { border-radius: 16px; background: #0f2528; }
-.closing::before, .closing::after, .closing-light span { display: none; }
-.closing-light img { filter: brightness(0) saturate(100%) invert(77%) sepia(19%) saturate(438%) hue-rotate(112deg) brightness(96%) contrast(90%); }
+/* Tides screen (phone) */
+.mini-chart-card { padding: 12px 13px 10px; border: 1px solid #2a3d3b; border-radius: 14px; background: #132326; margin-bottom: 10px; }
+.mini-chart-head { display: flex; justify-content: space-between; align-items: center; color: #dcebe2; font-size: 11px; font-weight: 600; margin-bottom: 8px; }
+.calendar-mark { color: #95b9ad; }
+.mini-chart { width: 100%; height: 78px; overflow: visible; }
+.today-dot { transition: opacity .6s ease, r .3s; }
+.mini-days { display: flex; justify-content: space-between; margin-top: 6px; color: #78938a; font-size: 8.5px; }
+.mini-days .today-label { color: var(--gold); font-weight: 600; }
+.mini-card { display: flex; gap: 9px; align-items: flex-start; padding: 11px 12px; border: 1px solid #2a3d3b; border-radius: 12px; background: #101f21; margin-bottom: 10px; }
+.mini-card-icon { color: var(--gold); font-size: 13px; line-height: 1.4; }
+.mini-card p { margin: 0; flex: 1; color: #c3d7cc; font-size: 10px; line-height: 1.55; }
+.mini-card p strong { display: block; color: #e6efe8; font-size: 11px; margin-bottom: 2px; }
+.mini-arrow { color: #88c6b2; font-size: 12px; }
 
+/* Memory screen (phone) */
+.memory-item { display: flex; align-items: center; gap: 9px; padding: 10px 12px; border: 1px solid #2a3d3b; border-radius: 12px; background: #101f21; margin-bottom: 8px; transition: opacity .4s ease, transform .4s ease; }
+.memory-item.gone { opacity: 0; transform: translateX(16px); }
+.memory-item .mem-leaf { color: #8bc7ae; font-size: 11px; }
+.memory-item p { flex: 1; margin: 0; color: #cadcd2; font-size: 10.5px; line-height: 1.5; }
+.memory-forget { padding: 5px 10px; border: 1px solid #37544e; border-radius: 100px; color: #93b8ab; font-size: 9px; transition: color .2s, border-color .2s; }
+.memory-forget:hover { color: var(--gold); border-color: rgba(242, 199, 126, .5); }
+.memory-empty { margin: 18px 4px; color: #7f9c93; font-size: 10.5px; font-family: var(--serif); }
+
+/* Chat overlay */
+.chat-head { position: relative; z-index: 2; display: flex; align-items: center; gap: 8px; padding: 12px 14px 10px; border-bottom: 1px solid #223532; }
+.chat-back { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 9px; color: #b7d2c6; }
+.chat-back svg { width: 17px; height: 17px; }
+.chat-back:hover { background: rgba(119, 198, 179, .12); }
+.chat-title { font-size: 11px; font-weight: 600; color: #e2ece6; letter-spacing: .02em; }
+.chat-mode-dot { margin-left: auto; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px rgba(116,197,180,.7); }
+.mode-chips { display: flex; gap: 6px; padding: 10px 14px 4px; }
+.mode-chip { flex: 1; padding: 7px 0; border: 1px solid #2c4340; border-radius: 100px; color: #8fada2; font-size: 9.5px; text-align: center; transition: all .2s; }
+.mode-chip.on { border-color: #4f887a; background: #18302e; color: #e4f1e7; }
+.chat-scroll { flex: 1; overflow-y: auto; padding: 10px 14px; scrollbar-width: none; display: flex; flex-direction: column; gap: 9px; }
+.chat-scroll::-webkit-scrollbar { display: none; }
+.bubble { max-width: 82%; padding: 9px 12px; border-radius: 14px; font-size: 11px; line-height: 1.55; animation: bubbleIn .3s ease both; }
+@keyframes bubbleIn { from { opacity: 0; transform: translateY(8px); } }
+.bubble.ai { align-self: flex-start; background: #16282a; border: 1px solid #24393a; border-bottom-left-radius: 4px; color: #d9e6de; }
+.bubble.user { align-self: flex-end; background: rgba(116, 197, 180, .17); border: 1px solid rgba(116, 197, 180, .35); border-bottom-right-radius: 4px; color: #eaf5ee; }
+.bubble.guidance { align-self: flex-start; border-style: dashed; color: #9cc0b2; background: transparent; }
+.typing { display: inline-flex; gap: 4px; align-items: center; padding: 11px 13px; }
+.typing i { width: 5px; height: 5px; border-radius: 50%; background: #7fbfa9; animation: typingDot 1.1s ease-in-out infinite; }
+.typing i:nth-child(2) { animation-delay: .18s; } .typing i:nth-child(3) { animation-delay: .36s; }
+@keyframes typingDot { 40% { transform: translateY(-4px); opacity: .5; } }
+.chat-suggest { display: flex; gap: 6px; overflow-x: auto; padding: 6px 14px 8px; scrollbar-width: none; }
+.chat-suggest::-webkit-scrollbar { display: none; }
+.suggest-chip { flex: 0 0 auto; padding: 6px 11px; border: 1px solid #2c4340; border-radius: 100px; color: #9dbab0; font-size: 9.5px; white-space: nowrap; transition: all .2s; }
+.suggest-chip:hover { border-color: #4f887a; color: #dceee3; }
+.chat-input { display: flex; gap: 7px; align-items: center; padding: 8px 12px 14px; }
+.chat-input input { flex: 1; height: 36px; padding: 0 13px; border: 1px solid #2c4340; border-radius: 100px; background: #101f21; color: #dfeae3; font-size: 10.5px; outline: none; }
+.chat-input input:focus { border-color: #4f887a; }
+.chat-input input::placeholder { color: #6f8d84; }
+.chat-send { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: rgba(116, 197, 180, .18); border: 1px solid #3f6f64; color: #bfe6d5; transition: background .2s; }
+.chat-send:hover { background: rgba(116, 197, 180, .3); }
+.chat-send svg { width: 15px; height: 15px; }
+
+/* Bottle overlay */
+.bottle-visual { width: 100px; height: 84px; margin: 18px auto 8px; display: grid; place-items: center; }
+.bottle-visual img { width: 48px; height: 78px; object-fit: contain; filter: brightness(0) saturate(100%) invert(70%) sepia(27%) saturate(421%) hue-rotate(124deg) brightness(90%) contrast(89%) drop-shadow(0 0 12px rgba(108, 197, 177, .3)); animation: bottleBob 4.5s ease-in-out infinite; transform: rotate(8deg); }
+@keyframes bottleBob { 50% { transform: rotate(8deg) translateY(-7px); } }
+.bottle-lede { margin: 0 4px 12px; color: #9db5ac; font-size: 10.5px; line-height: 1.6; }
+.bottle-input { display: block; width: 100%; padding: 11px 13px; border: 1px solid #2c4340; border-radius: 12px; background: #101f21; color: #dfeae3; font: 11px/1.6 var(--sans); resize: none; outline: none; }
+.bottle-input:focus { border-color: #4f887a; }
+.bottle-input::placeholder { color: #6f8d84; }
+.bottle-send { display: block; width: 100%; margin-top: 12px; padding: 10px 0; border-radius: 100px; background: rgba(242, 199, 126, .13); border: 1px solid rgba(242, 199, 126, .45); color: #f4dcae; font-size: 11px; transition: background .2s; }
+.bottle-send:hover { background: rgba(242, 199, 126, .22); }
+
+/* Breathe overlay */
+.breathe-body { display: grid; place-items: center; align-content: center; text-align: center; }
+.breath-stage { display: grid; place-items: center; gap: 16px; }
+.breath-orb { position: relative; width: 132px; height: 150px; display: grid; place-items: center; }
+.breath-orb.small { width: 104px; height: 118px; }
+.breath-orb img { position: relative; z-index: 2; width: 54px; height: 76px; filter: brightness(0) saturate(100%) invert(75%) sepia(20%) saturate(420%) hue-rotate(112deg) brightness(94%) contrast(87%) drop-shadow(0 0 16px rgba(242,199,126,.5)); }
+.breath-halo { position: absolute; border-radius: 50%; }
+.halo-a { inset: 0; border: 1px solid rgba(132, 208, 182, .3); }
+.halo-b { inset: 18px; border: 1px solid rgba(242, 199, 126, .22); }
+.breath-orb.running { transform: scale(1); transition-property: transform; transition-timing-function: cubic-bezier(.45, .05, .55, .95); will-change: transform; }
+.breath-orb.running.in { transform: scale(1.22); }
+.breath-caption { display: grid; place-items: center; gap: 4px; min-height: 52px; position: relative; width: 100%; }
+.breath-phase { font-family: var(--serif); font-size: 15px; color: #e9f2ec; letter-spacing: .02em; position: absolute; }
+.breath-count { color: var(--gold); font-size: 11px; font-variant-numeric: tabular-nums; position: absolute; margin-top: 24px; }
+.breath-cycles { color: #7f9c93; font-size: 9.5px; letter-spacing: .08em; position: absolute; margin-top: 40px; }
+.breath-cycles b { color: #b7d6c8; }
+.breath-stop { padding: 8px 18px; border: 1px solid rgba(242, 199, 126, .4); border-radius: 100px; color: #f0dcb0; font-size: 10.5px; transition: background .2s; }
+.breath-stop:hover { background: rgba(242, 199, 126, .12); }
+.breathe-intro { max-width: 240px; margin: 2px 0 0; color: #7f9c93; font-size: 9.5px; line-height: 1.6; }
+
+/* tabbar + toast */
+.phone-tabbar { position: absolute; z-index: 10; left: 0; right: 0; bottom: 0; height: 52px; display: flex; align-items: center; justify-content: space-around; border-top: 1px solid rgba(200, 226, 212, .1); background: rgba(8, 22, 25, .92); }
+.tab-btn { display: flex; flex-direction: column; align-items: center; gap: 3px; color: #78958d; font-size: 14px; min-width: 64px; }
+.tab-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
+.tab-btn small { font-size: 8.5px; letter-spacing: .03em; }
+.tab-btn.active { color: #86cdbb; }
+.phone-toast { position: absolute; z-index: 30; top: 14px; left: 50%; transform: translate(-50%, -8px); max-width: 86%; padding: 8px 16px; border-radius: 100px; background: rgba(23, 56, 52, .95); border: 1px solid rgba(139, 205, 183, .4); color: #d9efe5; font-size: 10px; text-align: center; opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+.phone-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ───────── shared section bits ───────── */
+.reveal { opacity: 0; transform: translateY(26px); }
+.reveal.in { opacity: 1; transform: none; transition: opacity .8s ease, transform .8s ease; }
+.section-kicker { display: flex; align-items: center; gap: 12px; color: #80b6a8; font-size: 11px; letter-spacing: .1em; }
+.section-kicker > span:first-child { color: var(--gold); font-size: 10px; letter-spacing: .12em; }
+.kicker-rule { width: 28px; height: 1px; background: linear-gradient(90deg, rgba(242,199,126,.9), rgba(242,199,126,0)); }
+.text-link { display: inline-flex; align-items: center; gap: 9px; color: var(--teal-bright); font-size: 13px; padding-bottom: 4px; border-bottom: 1px solid rgba(116, 197, 180, .42); }
+
+/* ───────── 01 modes ───────── */
+.intro { padding: 118px 0 110px; border-top: 1px solid var(--line-soft); }
+.intro-heading { display: grid; grid-template-columns: 1.1fr .9fr; align-items: end; gap: 62px; margin: 26px 0 46px; }
+.intro h2, .tides-copy h2, .beacon-heading h2, .meaning-text h2, .privacy-heading h2 { font-size: clamp(35px, 4vw, 52px); line-height: 1.22; }
+.en-p, .tides-copy > p, .beacon-heading > .en-p, .meaning-text > p { max-width: 480px; margin: 0; color: #9eb2ac; font-size: 16px; line-height: 1.95; }
+.intro-strip { margin: 34px 0 0; color: #7f9a91; font-size: 13px; letter-spacing: .01em; border-left: 2px solid rgba(242, 199, 126, .5); padding-left: 16px; max-width: 560px; }
+.mode-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.mode-card { min-height: 340px; padding: 26px 24px 22px; position: relative; overflow: hidden; border: 1px solid var(--line-soft); border-radius: 14px; background: var(--card); display: flex; flex-direction: column; }
+.mode-card::after { content: ""; position: absolute; inset: auto -70px -110px auto; width: 240px; height: 210px; border-radius: 50%; background: radial-gradient(circle, rgba(51, 124, 112, .16), transparent 68%); pointer-events: none; }
+.mode-number { color: #81a99f; font-size: 10px; letter-spacing: .16em; }
+.mode-card h3 { margin: 20px 0 8px; font-family: var(--serif); font-size: 27px; font-weight: 400; letter-spacing: -.02em; color: #ebf1e9; }
+.mode-card > p { position: relative; z-index: 1; margin: 0; color: #9db0aa; font-size: 14px; line-height: 1.75; flex: 0 0 auto; }
+.mini-chat { margin-top: auto; display: flex; gap: 9px; align-items: flex-start; padding: 12px 13px; border: 1px solid rgba(174, 215, 200, .1); background: #101e21; border-radius: 10px; color: #d1ded7; font-size: 12px; line-height: 1.6; }
+.mini-avatar { flex: 0 0 22px; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: rgba(113, 195, 172, .17); color: var(--teal-bright); font: 11px var(--serif); }
+.clarity-preview { margin-top: auto; padding: 13px 15px; border-radius: 10px; border: 1px solid rgba(122, 190, 168, .22); background: rgba(69, 135, 115, .08); }
+.clarity-label { display: block; color: #8bc4ae; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 9px; }
+.clarity-preview ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.clarity-preview li { color: #c9dcd2; font-size: 12px; line-height: 1.45; padding-left: 14px; position: relative; }
+.clarity-preview li::before { content: "·"; position: absolute; left: 2px; color: var(--gold); }
+.clarity-preview li em { color: #f0dcae; font-style: normal; }
+.clarity-pocket { display: block; margin-top: 11px; color: #9fc3b4; font-size: 11px; }
+
+/* ───────── 02 tides ───────── */
+.tides-section { display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: clamp(40px, 8vw, 100px); padding: 104px 0 118px; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+.tides-copy h2 { margin: 26px 0 20px; }
+.tides-points { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 12px; }
+.tides-points li { display: flex; gap: 12px; align-items: baseline; color: #a9c0b7; font-size: 14.5px; }
+.tides-points li::before { content: "◈"; color: var(--gold); font-size: 11px; }
+.tide-ui { position: relative; padding: 28px 30px 20px; border: 1px solid rgba(187, 224, 209, .16); border-radius: 16px; background: var(--card); box-shadow: 0 24px 75px rgba(0, 0, 0, .22); }
+.tide-card-head { display: flex; align-items: center; justify-content: space-between; }
+.ui-overline { color: #81bbaa; font-size: 10px; letter-spacing: .16em; }
+.tide-card-head h3 { margin: 5px 0 0; font: 400 20px var(--serif); color: #e6eee5; }
+.tide-chart { height: 158px; margin-top: 20px; position: relative; display: flex; }
+.chart-y { z-index: 1; width: 23px; height: 116px; display: flex; flex-direction: column; justify-content: space-between; color: #789b90; font-size: 12px; }
+.tide-chart svg { position: absolute; left: 24px; top: 0; width: calc(100% - 24px); height: 138px; overflow: visible; }
+.chart-grid { position: absolute; top: 5px; left: 25px; right: 0; height: 114px; display: flex; flex-direction: column; justify-content: space-between; pointer-events: none; }
+.chart-grid i { height: 1px; width: 100%; background: rgba(168, 210, 194, .1); }
+.chart-days { display: flex; justify-content: space-between; color: #86a198; margin-left: 24px; font-size: 10px; }
+.weekly-note { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(184, 221, 202, .12); background: rgba(5, 20, 24, .3); }
+.weekly-note p { flex: 1; margin: 0; color: #d6e5dc; font: 14px/1.6 var(--serif); }
+.weekly-note small { color: #9eb5a9; font-size: 12px; }
+.weekly-sparkle { color: var(--gold); font-size: 15px; }
+.note-arrow { color: #88c6b2; font-size: 14px; }
+.pattern-note p { font-size: 13px; }
+.ui-footnote { display: flex; align-items: center; gap: 7px; margin-top: 14px; color: #809b90; font-size: 11px; }
+.privacy-dot { width: 6px; height: 6px; border-radius: 50%; background: #8bcdb7; box-shadow: 0 0 9px rgba(139,205,183,.45); flex: 0 0 6px; }
+
+/* ───────── 03 rituals ───────── */
+.rituals-section { padding: 112px 0 118px; }
+.rituals-section > .section-kicker { margin-bottom: 34px; }
+.ritual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ritual { min-height: 380px; position: relative; overflow: hidden; border: 1px solid var(--line-soft); border-radius: 15px; background: var(--card); padding: 28px 30px; }
+.ritual-copy { position: relative; z-index: 2; max-width: 60%; }
+.ritual-index { color: #81a99f; font-size: 10px; letter-spacing: .16em; }
+.ritual-copy h3 { margin: 18px 0 10px; color: #edf1e9; font: 400 clamp(25px, 2.7vw, 32px)/1.4 var(--serif); letter-spacing: -.02em; }
+.ritual-copy p { color: #9eb1aa; font-size: 14px; line-height: 1.8; max-width: 300px; margin: 0 0 18px; }
+.ritual-button { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border: 1px solid rgba(242, 199, 126, .45); border-radius: 100px; color: #f0dcb0; font-size: 13px; transition: background .2s, border-color .2s; }
+.ritual-button:hover { background: rgba(242, 199, 126, .12); border-color: var(--gold); }
+.breathing-card { background: radial-gradient(ellipse at 88% 40%, rgba(54, 133, 118, .16), transparent 55%), var(--card); }
+.bottle-card { background: radial-gradient(ellipse at 85% 30%, rgba(42, 104, 114, .2), transparent 55%), var(--card); }
+.breath-demo { position: absolute; right: -6px; top: 34px; width: 52%; height: 76%; display: grid; place-items: center; justify-items: center; grid-template-rows: auto auto auto; gap: 14px; }
+.breath-demo .breath-orb { width: 168px; height: 190px; }
+.breath-demo .breath-orb img { width: 66px; height: 94px; }
+.breath-demo .breath-caption { min-height: 64px; }
+.breath-demo .breath-phase { font-size: 17px; }
+.bottle-demo { position: absolute; right: 26px; top: 50%; transform: translateY(-50%); width: 40%; display: grid; gap: 12px; z-index: 2; }
+.bottle-timeline { display: flex; align-items: center; gap: 8px; color: #7f9c93; font-size: 9px; letter-spacing: .12em; }
+.bottle-timeline .gold { color: var(--gold); }
+.bottle-dots { flex: 1; letter-spacing: 3px; color: rgba(127, 156, 147, .5); }
+.bottle-demo .bottle-input { background: rgba(16, 31, 33, .85); font-size: 12px; }
+.bottle-toast { margin: 0; color: #8fe0c4; font-size: 11px; line-height: 1.5; animation: bottleIn .4s ease both; }
+@keyframes bottleIn { from { opacity: 0; transform: translateY(6px); } }
+
+/* ───────── 04 beacon ───────── */
+.beacon-section { padding: 112px 0 110px; border-top: 1px solid var(--line-soft); }
+.beacon-heading h2 { margin: 25px 0 20px; }
+.beacon-heading .en-p { margin-bottom: 40px; }
+.beacon-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.beacon-step { padding: 26px 24px 24px; border: 1px solid rgba(242, 199, 126, .14); border-radius: 14px; background: linear-gradient(150deg, rgba(30, 46, 44, .7), rgba(13, 28, 32, .9)); display: flex; flex-direction: column; }
+.beacon-num { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(242, 199, 126, .4); border-radius: 50%; color: var(--gold); font-family: var(--serif); font-size: 15px; margin-bottom: 18px; }
+.beacon-step h3 { margin: 0 0 9px; font: 400 21px var(--serif); color: #edf1e9; }
+.beacon-step p { margin: 0; color: #9db0aa; font-size: 13.5px; line-height: 1.8; flex: 1; }
+.beacon-link { display: inline-flex; margin-top: 16px; color: var(--teal-bright); font-size: 12.5px; transition: color .2s; text-align: left; }
+.beacon-link:hover { color: var(--gold); }
+.beacon-quote { margin-top: 16px; padding: 13px 15px; border: 1px solid rgba(184, 221, 202, .14); border-left: 2px solid var(--gold); border-radius: 10px; background: rgba(5, 20, 24, .4); }
+.beacon-quote p { margin: 0 0 10px; color: #dcebe0; font: 13.5px/1.65 var(--serif); flex: none; }
+.beacon-copy { display: inline-flex; align-items: center; padding: 7px 14px; border: 1px solid rgba(116, 197, 180, .4); border-radius: 100px; color: #c9e4d6; font-size: 11.5px; transition: background .2s; }
+.beacon-copy:hover { background: rgba(116, 197, 180, .14); }
+.beacon-boundary { margin: 34px 0 0; max-width: 720px; color: #7f9a91; font-size: 13px; line-height: 1.85; border-left: 2px solid rgba(116, 197, 180, .4); padding-left: 16px; }
+
+/* ───────── 05 meaning ───────── */
+.meaning-section { padding: 110px 0 116px; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); position: relative; display: grid; grid-template-columns: .78fr 1.22fr; align-items: center; gap: 56px; }
+.meaning-mark { position: relative; width: 290px; height: 290px; margin: 0 auto; display: grid; place-items: center; }
+.meaning-glow { position: absolute; inset: -8%; border-radius: 50%; background: radial-gradient(circle, rgba(74, 171, 145, .18), rgba(242, 199, 126, .05) 37%, transparent 68%); }
+.meaning-orbit { position: absolute; border: 1px solid rgba(125, 197, 178, .1); border-radius: 50%; }
+.orbit-one { width: 250px; height: 250px; }
+.orbit-two { width: 290px; height: 290px; border-color: rgba(125, 197, 178, .05); }
+.meaning-mark img { position: relative; width: 104px; height: 142px; object-fit: contain; z-index: 1; filter: brightness(0) saturate(100%) invert(76%) sepia(24%) saturate(427%) hue-rotate(115deg) brightness(94%) contrast(88%) drop-shadow(0 0 22px rgba(244, 202, 130, .3)); }
+.meaning-text h2 { margin: 24px 0 20px; }
+.meaning-text > p { max-width: 620px; margin-bottom: 26px; }
+.metaphor-map { display: grid; grid-template-columns: 1fr 1fr; gap: 0 44px; }
+.metaphor-item { display: grid; grid-template-columns: 92px 1fr; gap: 14px; align-items: baseline; padding: 13px 2px; border-bottom: 1px solid rgba(191, 223, 211, .08); }
+.metaphor-key { color: var(--gold); font-family: var(--serif); font-size: 14px; letter-spacing: .02em; }
+.metaphor-val { color: #a9c0b7; font-size: 13.5px; line-height: 1.6; }
+.meaning-signoff { display: flex; gap: 10px; align-items: center; margin-top: 26px; color: #bdd0c5; font: 15px var(--serif); }
+.meaning-signoff > span:first-child { color: var(--gold); font-size: 32px; line-height: 1; }
+
+/* ───────── 06 privacy ───────── */
+.privacy-section { padding: 112px 0 116px; display: grid; grid-template-columns: .84fr 1.16fr; gap: 70px; }
+.privacy-heading h2 { margin-top: 25px; }
+.privacy-item { display: grid; grid-template-columns: 42px 1fr; gap: 16px; padding: 19px 0 20px; border-bottom: 1px solid rgba(191, 223, 211, .08); }
+.privacy-icon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px; color: var(--teal-bright); background: rgba(82, 153, 131, .12); }
+.privacy-icon svg { width: 19px; height: 19px; }
+.privacy-item h3 { margin: 0 0 5px; color: #e1ece3; font: 400 18px var(--serif); }
+.privacy-item p { margin: 0; color: #98ada5; font-size: 14px; line-height: 1.75; }
+.privacy-links { display: flex; flex-wrap: wrap; gap: 22px; padding-top: 22px; }
+.privacy-links a { display: inline-flex; align-items: center; gap: 7px; color: #a8c8b9; font-size: 13px; }
+.privacy-links a span:last-child { color: var(--gold); }
+
+/* ───────── pricing ───────── */
+.pricing { padding: 96px 0 90px; display: grid; place-items: center; text-align: center; gap: 20px; border-top: 1px solid var(--line-soft); }
+.pricing-title { margin: 0; font: 400 clamp(28px, 3.4vw, 40px)/1.35 var(--serif); color: #e7efe8; }
+.pricing-benefits { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center; color: #a9c0b7; font-size: 14px; }
+.pricing-benefits i { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+.pricing-note { margin: 0; color: #7f9a91; font-size: 12px; }
+
+/* ───────── closing ───────── */
+.closing { min-height: 440px; margin-bottom: 34px; border: 1px solid rgba(162, 216, 193, .16); border-radius: 18px; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: radial-gradient(ellipse at 50% 90%, rgba(40, 112, 102, .32), transparent 50%), #0f2528; }
+.closing::before, .closing::after { content: ""; position: absolute; left: -10%; right: -10%; bottom: -72%; height: 125%; border: 1px solid rgba(125, 197, 177, .1); border-radius: 50%; }
+.closing::after { left: 8%; right: 8%; bottom: -84%; border-color: rgba(242, 199, 126, .1); }
+.closing-light { position: absolute; top: 14px; left: calc(50% - 65px); width: 130px; height: 127px; display: grid; place-items: center; }
+.closing-light span { position: absolute; border-radius: 50%; border: 1px solid rgba(118, 200, 177, .13); }
+.closing-light span:nth-child(1) { inset: 4px; } .closing-light span:nth-child(2) { inset: 21px; border-color: rgba(242,199,126,.16); } .closing-light span:nth-child(3) { inset: 37px; }
+.closing-light img { width: 34px; height: 52px; object-fit: contain; filter: brightness(0) saturate(100%) invert(77%) sepia(19%) saturate(438%) hue-rotate(112deg) brightness(96%) contrast(90%) drop-shadow(0 0 10px rgba(242,199,126,.4)); }
+.closing-overline { color: #96baad; font-size: 12px; letter-spacing: .06em; margin: 104px 0 13px; position: relative; z-index: 2; }
+.closing h2 { font-size: clamp(38px, 4.3vw, 53px); line-height: 1.2; position: relative; z-index: 2; }
+.closing-button { margin-top: 26px; position: relative; z-index: 2; }
+
+/* ───────── footer ───────── */
+.footer { min-height: 186px; padding: 26px 0 20px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; column-gap: 28px; }
+.footer-note { grid-column: 2; margin: 0; color: #718d84; font: 14px var(--serif); }
+.footer-links { grid-column: 3; display: flex; gap: 20px; color: #91a79f; font-size: 12px; }
+.footer-bottom { grid-column: 1 / -1; display: flex; align-items: center; gap: 18px; padding-top: 19px; border-top: 1px solid rgba(191, 223, 211, .09); color: #6c847c; font-size: 10px; letter-spacing: .05em; }
+.footer-disclaimer { margin-left: auto; letter-spacing: 0; max-width: 560px; text-align: right; }
+.back-top { width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid rgba(191, 223, 211, .16); border-radius: 50%; color: var(--gold); font-size: 15px; flex: 0 0 28px; }
+
+/* ───────── responsive ───────── */
+@media (max-width: 1080px) {
+  .breath-demo { width: 48%; }
+}
 @media (max-width: 980px) {
-  .hero { min-height: unset; grid-template-columns: 1fr 1fr; gap: 28px; padding: 74px 0 82px; }
-  .hero-art { height: min(610px, calc(100vh - 230px)); margin: 0; transform: none; }
-  .phone-frame { height: min(560px, calc(100vh - 230px)); left: 50%; top: calc(50% - 12px); }
+  .section-frame { width: min(100% - 52px, 760px); }
+  .topbar { width: calc(100% - 48px); height: 76px; }
+  .main-nav { gap: 16px; font-size: 12px; }
+  .header-download { padding: 9px 13px; }
+  .hero { min-height: unset; padding: 60px 0 80px; gap: 20px; }
+  .hero h1 { font-size: clamp(40px, 5vw, 56px); }
+  .hero-art { height: min(590px, calc(100vh - 200px)); min-height: 500px; }
+  .phone-frame { height: min(560px, calc(100vh - 200px)); }
+  .sea-moon { right: 10%; }
+  .intro-heading { gap: 34px; grid-template-columns: 1fr; align-items: start; }
+  .mode-cards { grid-template-columns: 1fr; gap: 12px; }
+  .mode-card { min-height: unset; }
+  .tides-section { grid-template-columns: 1fr; gap: 36px; }
+  .ritual-grid { grid-template-columns: 1fr; gap: 13px; }
+  .ritual { min-height: unset; padding: 26px; }
+  .ritual-copy { max-width: 100%; }
+  .breath-demo { position: relative; right: auto; top: auto; width: 100%; height: auto; margin-top: 26px; }
+  .bottle-demo { position: relative; right: auto; top: auto; transform: none; width: 100%; margin-top: 20px; }
+  .beacon-steps { grid-template-columns: 1fr; }
+  .meaning-section { grid-template-columns: 1fr; gap: 24px; }
+  .meaning-mark { width: 220px; height: 220px; }
+  .privacy-section { grid-template-columns: 1fr; gap: 30px; }
 }
 @media (max-width: 720px) {
-  .hero { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 57px 0 73px; }
-  .hero-art { height: 500px; margin: 22px -8px 0; transform: none; }
-  .phone-frame { height: 428px; top: calc(50% - 15px); left: 50%; padding: 3px; border-radius: 38px; }
-  .phone-screen { border-radius: 34px; padding: 11px 14px 10px; }
-  .phone-frame::before { height: 38px; top: 92px; box-shadow: 0 50px 0 #596260, 0 82px 0 #596260; }
-  .phone-frame::after { height: 60px; top: 119px; }
-  .dynamic-island { top: 7px; width: 70px; height: 20px; }
-  .phone-status { padding-top: 8px; font-size: 9px; }
-  .app-topline { margin: 19px 0 16px; font-size: 11px; }
-  .app-greeting h3 { font-size: 16px; }
-  .app-greeting p { font-size: 9px; }
-  .app-orb { width: 88px; height: 88px; margin: 12px auto 12px; }
-  .app-orb img { width: 47px; height: 66px; }
-  .app-actions { gap: 5px; }
-  .app-action { height: 31px; font-size: 9px; }
-  .phone-tabbar { height: 43px; }
-  .drift-note { right: 7%; width: 43%; padding: 15px 12px; }
-  .drift-note p { margin-top: 13px; font-size: 14px; }
-  .drift-note-rule { margin-top: 15px; }
-  .meaning-mark { border: 0; }
+  body { font-size: 16px; }
+  .section-frame { width: calc(100% - 40px); }
+  .topbar { width: calc(100% - 36px); height: 70px; }
+  .brand { font-size: 10px; letter-spacing: .15em; gap: 7px; }
+  .main-nav { display: none; }
+  .header-actions { gap: 10px; }
+  .hero { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 48px 0 66px; }
+  .hero h1 { font-size: clamp(38px, 10.5vw, 54px); }
+  .hero-lede { font-size: 15.5px; margin: 18px 0 24px; }
+  .hero-signature { margin-top: 24px; font-size: 13px; }
+  .hero-art { height: 580px; min-height: 540px; margin: 26px -12px 0; }
+  .phone-frame { height: 520px; border-radius: 40px; }
+  .phone-frame::before, .phone-frame::after { display: none; }
+  .phone-screen { border-radius: 37px; }
+  .phone-body { padding: 4px 12px 14px; }
+  .app-topline { margin: 20px 0 8px; }
+  .app-action small { display: none; }
+  .app-action { min-height: 42px; }
+  .sea-moon { width: 30px; height: 30px; top: 30px; right: 6%; }
+  .scroll-cue { display: none; }
+  .phone-hint { top: 2px; }
+  .intro, .tides-section, .rituals-section, .beacon-section, .meaning-section, .privacy-section { padding-top: 72px; padding-bottom: 72px; }
+  .intro h2, .tides-copy h2, .beacon-heading h2, .meaning-text h2, .privacy-heading h2 { font-size: clamp(30px, 8vw, 42px); }
+  .intro-strip { font-size: 12.5px; }
+  .tide-ui { padding: 22px 18px 16px; }
+  .chart-days { font-size: 8.5px; }
+  .metaphor-map { grid-template-columns: 1fr; gap: 0 0; }
+  .metaphor-item { grid-template-columns: 84px 1fr; }
+  .footer { grid-template-columns: 1fr auto; row-gap: 16px; }
+  .footer-note { grid-column: 2; font-size: 11px; text-align: right; }
+  .footer-links { grid-column: 1 / -1; }
+  .footer-bottom { flex-wrap: wrap; gap: 8px 12px; font-size: 9px; }
+  .footer-disclaimer { margin-left: 0; width: 100%; order: 3; text-align: left; }
+  .back-top { order: 4; margin-left: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
 
-</style>
+/* Quiet the decorative effects; let the product surfaces carry the page. */
+.sea-moon, .sea-star, .sea-light-beam, .meaning-glow, .meaning-orbit,
+.closing-light > span { display: none; }
+.arc-back { display: none; }
+.arc-front { background: transparent; opacity: .5; }
+.phone-hint { background: #0c1c20; backdrop-filter: none; }
+.phone-hint::before { box-shadow: none; animation: none; }
+.phone-frame { background: #20292a; box-shadow: 0 18px 42px rgba(0, 0, 0, .28); }
+.phone-screen { background: #0c1719; }
+.presence-orb img { filter: brightness(0) saturate(100%) invert(74%) sepia(21%) saturate(436%) hue-rotate(112deg) brightness(91%) contrast(88%); }
+.ring-a { animation: none; }
+.ring-b, .orb-pulse { display: none; }
+.sample-label { color: #78928a; font-size: 8px; letter-spacing: .13em; white-space: nowrap; }
+.memory-sample { display: inline-flex; margin: 0 2px 9px; }
+.phone-body { padding: 4px 14px 10px; }
+.app-topline { margin: 34px 0 4px; }
+.presence-orb { width: 74px; height: 74px; margin: 5px auto 3px; }
+.presence-orb img { width: 34px; height: 50px; }
+.app-greeting { margin: 0 0 6px; font-size: 12.5px; line-height: 1.34; }
+.checkin-card { margin-bottom: 7px; padding: 8px 10px; }
+.checkin-title { margin-top: 4px; font-size: 11px; }
+.checkin-button { margin-top: 7px; padding-block: 6px; }
+.app-actions { gap: 4px; }
+.app-action { min-height: 35px; padding-inline: 9px; }
+.mode-card::after, .halo-b { display: none; }
+.breathing-card, .bottle-card { background: var(--card); }
+.breathing-card, .bottle-card, .mode-card, .tide-ui { border-radius: 10px; }
+.breath-orb img, .meaning-mark img, .closing-light img { filter: brightness(0) saturate(100%) invert(76%) sepia(24%) saturate(427%) hue-rotate(115deg) brightness(94%) contrast(88%); }
+.eyebrow-dot, .privacy-dot, .chat-mode-dot { box-shadow: none; }
+.tide-ui { box-shadow: none; }
+.closing { border-radius: 10px; background: #0d2024; }
+.app-action small { font-size: 7.5px; }
+
+@media (min-width: 721px) and (max-height: 760px) {
+  .hero { min-height: 560px; padding-top: 28px; padding-bottom: 44px; }
+  .hero-art { height: 460px; min-height: 0; }
+  .phone-frame { height: min(430px, calc(100vh - 200px)); }
+  .phone-hint { top: -14px; }
+  .phone-body { padding: 2px 12px 6px; }
+  .app-topline { margin-top: 27px; margin-bottom: 0; }
+  .presence-orb { width: 52px; height: 52px; margin: 2px auto; }
+  .presence-orb img { width: 26px; height: 38px; }
+  .app-greeting { margin: 0 0 5px; font-size: 11px; line-height: 1.25; }
+  .checkin-card { margin-bottom: 5px; padding: 6px 8px; }
+  .checkin-title { margin-top: 3px; font-size: 10.5px; line-height: 1.25; }
+  .checkin-button { margin-top: 4px; padding-block: 4px; }
+  .app-actions { gap: 3px; }
+  .app-action { min-height: 29px; }
+}
+
+  </style>
 </head>
 <body>
   <div class="site-shell">
+
+    <!-- ══════════════ TOPBAR ══════════════ -->
     <header class="topbar">
       <a class="brand" href="#top" aria-label="Lightvessel home">
-        <span class="brand-mark"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%201024%201024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20fill%3D%22%23177F6B%22%20stroke%3D%22%23177F6B%22%20stroke-width%3D%2240%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M349.2864%20285.9008h36.181333V102.4H349.252267zM602.248533%20293.205333h36.181334V109.704533h-36.181334z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M329.8304%20341.333333h333.653333V256H329.8304z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M481.6%2042Q497.6%2028%20513.6%2042L647%20109Q653.984%20113%20653.984%20122V143Q653.984%20152%20644.984%20152H350.216Q341.216%20152%20341.216%20143V122Q341.216%20113%20348.216%20109zM622.72%20416l-7.84-24h-234.56l-23.456%2092zM333.408%20572l-27.36%20112%20359.648-96-23.456-100zM712.64%20760l-27.392-96-402.656%20104-31.264%20112zM231.776%20968l-7.84%2024h547.328l-39.072-156.032z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A" alt=""></span>
+        <span class="brand-mark"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""></span>
         <span>LIGHTVESSEL</span>
       </a>
       <nav class="main-nav" aria-label="Main navigation">
-        <a class="zh" href="#experience">产品体验</a><a class="en" href="#experience" hidden>Experience</a>
-        <a class="zh" href="#meaning">名字的含义</a><a class="en" href="#meaning" hidden>Our meaning</a>
-        <a class="zh" href="#privacy">隐私与安心</a><a class="en" href="#privacy" hidden>Privacy</a>
+        <a href="#app"><span class="en">The app</span><span class="zh" hidden>产品体验</span></a>
+        <a href="#tides"><span class="en">Tides</span><span class="zh" hidden>潮汐</span></a>
+        <a href="#rituals"><span class="en">Rituals</span><span class="zh" hidden>日常仪式</span></a>
+        <a href="#beacon"><span class="en">Safety</span><span class="zh" hidden>安心边界</span></a>
+        <a href="#meaning"><span class="en">Why “Lightvessel”</span><span class="zh" hidden>名字的含义</span></a>
+        <a href="#privacy"><span class="en">Privacy</span><span class="zh" hidden>隐私</span></a>
       </nav>
       <div class="header-actions">
-        <button class="language-button" type="button" aria-label="Switch language">EN</button>
+        <button class="language-button" type="button" aria-label="切换到简体中文">中文</button>
         <a class="header-download" href="https://apps.apple.com/app/id6800191641" target="_blank" rel="noreferrer">
-          <span class="zh">前往 App Store</span><span class="en" hidden>Get the app</span>
+          <span class="en">Get the app</span><span class="zh" hidden>前往 App Store</span>
           <span aria-hidden="true">↗</span>
         </a>
       </div>
     </header>
 
     <main id="top">
+
+      <!-- ══════════════ HERO ══════════════ -->
       <section class="hero section-frame">
+        <div class="hero-sea" aria-hidden="true">
+          <span class="sea-moon"></span>
+          <span class="sea-star star-a">✳</span><span class="sea-star star-b">✦</span><span class="sea-star star-c">✳</span>
+          <span class="sea-arc arc-back"></span>
+          <span class="sea-arc arc-front"></span>
+          <span class="sea-light-beam"></span>
+        </div>
+
         <div class="hero-copy">
-          <p class="eyebrow"><span class="eyebrow-dot"></span><span class="zh">现已在 App Store 上架</span><span class="en" hidden>NOW ON THE APP STORE</span></p>
-          <h1 class="zh">给心里的潮汐，<br><em>一处停泊的地方。</em></h1>
-          <h1 class="en" hidden>A quiet harbor<br><em>for your inner tides.</em></h1>
-          <p class="hero-lede zh">有些时刻，不急着解决，只想先找个地方靠岸。Lightvessel 陪你把感受说出来，看见自己的变化，按自己的节奏慢慢走。</p>
-          <p class="hero-lede en" hidden>Some moments don’t need an answer right away. Lightvessel is a quiet place to put feelings into words, notice your own patterns, and move at your pace.</p>
+          <p class="eyebrow"><span class="eyebrow-dot"></span><span class="en">NOW ON THE APP STORE</span><span class="zh" hidden>现已在 App Store 上架</span></p>
+          <h1>
+            <span class="en">A quiet harbor<br><em>for your inner tides.</em></span>
+            <span class="zh" hidden>给心里的潮汐，<br><em>一处停泊的地方。</em></span>
+          </h1>
+          <p class="hero-lede">
+            <span class="en">Lightvessel is a quiet AI companion for the moments when you need a place to pause. Talk things through, note your inner weather, breathe with the light — or simply stay awhile. No streaks to maintain; no visits to count.</span>
+            <span class="zh" hidden>Lightvessel 是一处安静的 AI 陪伴空间。有些时刻，不急着解决，只想先找个地方靠岸。把感受说出来，记下心情，或跟着灯光呼吸——也可以什么都不做，只待一会儿。没有连续打卡，也不用计算来过几次。</span>
+          </p>
           <div class="hero-actions">
             <a class="app-store-button" href="https://apps.apple.com/app/id6800191641" target="_blank" rel="noreferrer">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.8 12.8c0-2.3 1.9-3.4 2-3.5a4.3 4.3 0 0 0-3.4-1.8c-1.4-.2-2.7.8-3.4.8-.7 0-1.8-.8-3-.8a4.5 4.5 0 0 0-3.8 2.3c-1.6 2.8-.4 7 1.1 9.3.7 1.1 1.5 2.4 2.7 2.4 1.1 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 1.9-1.1 2.6-2.3a10 10 0 0 0 1.2-2.5 4 4 0 0 1-2-3.9ZM14.5 6.1a4 4 0 0 0 .9-2.8 4.1 4.1 0 0 0-2.6 1.3 3.8 3.8 0 0 0-1 2.7 3.4 3.4 0 0 0 2.7-1.2Z"/></svg>
               <span><small>Download on the</small><strong>App Store</strong></span>
             </a>
-            <span class="hero-note"><span class="zh">为 iPhone 打造</span><span class="en" hidden>Made for iPhone</span><span class="note-separator">·</span><span class="zh">从容一点，也很好</span><span class="en" hidden>No rush. Just be here.</span></span>
+            <span class="hero-note">
+              <span class="en">3-day trial for eligible accounts</span><span class="zh" hidden>符合资格时可试用 3 天</span>
+              <span class="note-separator">·</span>
+              <span class="en">No ads</span><span class="zh" hidden>没有广告</span>
+              <span class="note-separator">·</span>
+              <span class="en">Made for iPhone</span><span class="zh" hidden>为 iPhone 打造</span>
+            </span>
           </div>
-          <div class="hero-signature"><span class="signature-line"></span><span class="zh">你的情绪，不必独自漂流。</span><span class="en" hidden>You don’t have to drift alone.</span></div>
+          <div class="hero-signature">
+            <span class="signature-line"></span>
+            <span class="en">Your feelings don’t have to drift alone.</span>
+            <span class="zh" hidden>你的情绪，不必独自漂流。</span>
+          </div>
         </div>
 
-        <div class="hero-art" aria-label="Lightvessel app preview">
+        <!-- Interactive phone demo -->
+        <div class="hero-art" aria-label="Interactive Lightvessel app demo">
+          <div class="phone-hint"><span class="en">App preview · inputs stay in this browser</span><span class="zh" hidden>交互预览 · 输入仅留在本页</span></div>
           <div class="phone-frame">
             <div class="phone-screen">
               <div class="dynamic-island" aria-hidden="true"></div>
               <div class="phone-status"><span>9:41</span><span class="status-icons">◔ ▰</span></div>
-              <div class="app-topline"><span>Lightvessel</span><span class="menu-dots">···</span></div>
-              <div class="app-greeting">
-                <span class="app-overline zh">此刻</span><span class="app-overline en" hidden>RIGHT NOW</span>
-                <h3 class="zh">不着急，先靠岸。</h3><h3 class="en" hidden>No rush. Come ashore.</h3>
-                <p class="zh">你可以从这里开始，也可以什么都不做。</p><p class="en" hidden>Start anywhere—or simply pause.</p>
+
+              <!-- NOW SCREEN -->
+              <div class="app-screen screen-now active" data-screen="now">
+                <div class="app-topline">
+                  <span class="app-wordmark">Lightvessel</span>
+                  <span class="app-wordmark-sub"><span class="en">A LIGHT AT SEA</span><span class="zh" hidden>海上的一盏灯</span></span>
+                  <span class="menu-dots">···</span>
+                </div>
+                <div class="phone-body">
+                  <div class="presence-orb" role="button" tabindex="0" data-action="breathe" aria-label="Start breathing">
+                    <span class="orb-ring ring-a"></span><span class="orb-ring ring-b"></span>
+                    <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt="">
+                    <span class="orb-pulse"></span>
+                  </div>
+                  <p class="app-greeting">
+                    <span class="en">Good evening.<br>How are you doing tonight?</span>
+                    <span class="zh" hidden>晚上好。<br>今晚过得怎么样？</span>
+                  </p>
+
+                  <div class="checkin-card" id="checkinCard">
+                    <div class="checkin-head">
+                      <span class="checkin-overline"><span class="en">TODAY’S CHECK-IN</span><span class="zh" hidden>今日打卡</span></span>
+                      <span class="checkin-spark">✳</span>
+                    </div>
+                    <p class="checkin-title"><span class="en">What’s the weather in your inner sea today?</span><span class="zh" hidden>今天内心海域的天气怎么样？</span></p>
+                    <div class="checkin-scale" id="checkinScale" hidden>
+                    </div>
+                    <button class="checkin-button" type="button" data-action="checkin">
+                      <span class="en">Log today’s tide — 20 seconds</span><span class="zh" hidden>记录今天的潮位 · 二十秒</span>
+                    </button>
+                    <p class="checkin-done" hidden>
+                      <span class="en"></span><span class="zh" hidden></span>
+                    </p>
+                  </div>
+
+                  <div class="app-actions">
+                    <div class="app-action action-talk" role="button" tabindex="0" data-action="talk">
+                      <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7.5A3.5 3.5 0 0 1 8.5 4h7A3.5 3.5 0 0 1 19 7.5v5a3.5 3.5 0 0 1-3.5 3.5H11l-5 3v-3.5a3.5 3.5 0 0 1-1-2.5z"/></svg>
+                      <span><span class="en">Talk</span><span class="zh" hidden>说说话</span></span>
+                      <small><span class="en">Vent · Tidy · Stay</span><span class="zh" hidden>倾诉 · 梳理 · 陪伴</span></small>
+                    </div>
+                    <div class="app-action" role="button" tabindex="0" data-action="breathe">
+                      <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2.4-3.2 4.8-3.2 7.2 0s4.8 3.2 7.2 0 3.2-2.8 3.6-3"/></svg>
+                      <span><span class="en">Breathe</span><span class="zh" hidden>跟灯塔呼吸</span></span>
+                      <small><span class="en">4 · 4 · 6</span><span class="zh" hidden>4·4·6 呼吸</span></small>
+                    </div>
+                    <div class="app-action" role="button" tabindex="0" data-action="bottle">
+                      <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v4l2 2v10a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2V9l2-2zM9 7h6"/></svg>
+                      <span><span class="en">Message in a bottle</span><span class="zh" hidden>寄一只漂流瓶</span></span>
+                      <small><span class="en">Reply at 7:30 AM</span><span class="zh" hidden>明早 7:30 有回信</span></small>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="app-orb"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%201024%201024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20fill%3D%22%23177F6B%22%20stroke%3D%22%23177F6B%22%20stroke-width%3D%2240%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M349.2864%20285.9008h36.181333V102.4H349.252267zM602.248533%20293.205333h36.181334V109.704533h-36.181334z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M329.8304%20341.333333h333.653333V256H329.8304z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M481.6%2042Q497.6%2028%20513.6%2042L647%20109Q653.984%20113%20653.984%20122V143Q653.984%20152%20644.984%20152H350.216Q341.216%20152%20341.216%20143V122Q341.216%20113%20348.216%20109zM622.72%20416l-7.84-24h-234.56l-23.456%2092zM333.408%20572l-27.36%20112%20359.648-96-23.456-100zM712.64%20760l-27.392-96-402.656%20104-31.264%20112zM231.776%20968l-7.84%2024h547.328l-39.072-156.032z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A" alt=""></div>
-              <div class="app-actions">
-                <div class="app-action active"><svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7.5A3.5 3.5 0 0 1 8.5 4h7A3.5 3.5 0 0 1 19 7.5v5a3.5 3.5 0 0 1-3.5 3.5H11l-5 3v-3.5a3.5 3.5 0 0 1-1-2.5z"/></svg><span class="zh">说说话</span><span class="en" hidden>Talk</span></div>
-                <div class="app-action"><svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2.4-3.2 4.8-3.2 7.2 0s4.8 3.2 7.2 0 3.2-2.8 3.6-3"/></svg><span class="zh">跟灯塔呼吸</span><span class="en" hidden>Breathe</span></div>
-                <div class="app-action"><svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v4l2 2v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l2-2zM9 7h6M9 12h8"/></svg><span class="zh">寄一只漂流瓶</span><span class="en" hidden>Drift bottle</span></div>
+
+              <!-- TIDES SCREEN -->
+              <div class="app-screen screen-tides" data-screen="tides">
+                <div class="app-topline"><span class="app-wordmark"><span class="en">Tides</span><span class="zh" hidden>潮汐</span></span><span class="menu-dots">···</span></div>
+                <div class="phone-body">
+                  <p class="screen-sub"><span class="en">Feelings aren’t a problem to solve — they’re a sea that rises and falls.</span><span class="zh" hidden>情绪不是要解决的问题，是一片会涨落的海。</span></p>
+                  <div class="mini-chart-card">
+                    <div class="mini-chart-head"><span><span class="en">This week at sea</span><span class="zh" hidden>这一周的海况</span></span><span class="sample-label"><span class="en">EXAMPLE</span><span class="zh" hidden>示例</span></span></div>
+                    <svg viewBox="0 0 300 90" class="mini-chart" preserveAspectRatio="none" aria-hidden="true">
+                      <defs><linearGradient id="miniFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#68c4b3" stop-opacity=".25"/><stop offset="1" stop-color="#68c4b3" stop-opacity="0"/></linearGradient></defs>
+                      <path d="M0,64 C22,54 30,70 52,60 S82,40 105,50 S135,66 160,48 S185,34 210,45 S240,58 265,40 L300,32 L300,90 L0,90 Z" fill="url(#miniFill)"/>
+                      <path d="M0,64 C22,54 30,70 52,60 S82,40 105,50 S135,66 160,48 S185,34 210,45 S240,58 265,40 L300,32" fill="none" stroke="#76caba" stroke-width="2.5" stroke-linecap="round"/>
+                      <circle cx="52" cy="60" r="3.4" fill="#f5c77f"/><circle cx="105" cy="50" r="3.4" fill="#f5c77f"/><circle cx="160" cy="48" r="3.4" fill="#f5c77f"/><circle cx="210" cy="45" r="3.4" fill="#f5c77f"/><circle cx="300" cy="32" r="3.4" fill="#f5c77f" opacity="0"/>
+                      <circle cx="300" cy="32" r="3.4" fill="#f5c77f" class="today-dot" opacity="0"/>
+                    </svg>
+                    <div class="mini-days"><span><span class="en">M</span><span class="zh" hidden>一</span></span><span><span class="en">T</span><span class="zh" hidden>二</span></span><span><span class="en">W</span><span class="zh" hidden>三</span></span><span><span class="en">T</span><span class="zh" hidden>四</span></span><span><span class="en">F</span><span class="zh" hidden>五</span></span><span><span class="en">S</span><span class="zh" hidden>六</span></span><span class="today-label"><span class="en">today</span><span class="zh" hidden>今天</span></span></div>
+                  </div>
+                  <div class="mini-card letter-card">
+                    <span class="mini-card-icon">✳</span>
+                    <p><strong><span class="en">This Week’s Letter</span><span class="zh" hidden>这一周的信</span></strong>
+                    <span class="en">“Some things make sense only after the tide turns.”</span>
+                    <span class="zh" hidden>“有些起伏，走过之后才看得出方向。”</span></p>
+                    <span class="mini-arrow">↗</span>
+                  </div>
+                  <div class="mini-card pattern-card">
+                    <span class="mini-card-icon">◌</span>
+                    <p><strong><span class="en">Patterns I’ve noticed</span><span class="zh" hidden>我注意到的规律</span></strong>
+                    <span class="en">“Over time, a few connections can become easier to notice.”</span>
+                    <span class="zh" hidden>“记录多一些，也许会慢慢看见此前没留意的关联。”</span></p>
+                  </div>
+                  <p class="screen-footnote"><span class="privacy-dot"></span><span class="en">Your check-ins stay on your device</span><span class="zh" hidden>心情记录只留在你的设备上</span></p>
+                </div>
               </div>
+
+              <!-- MEMORY SCREEN -->
+              <div class="app-screen screen-memory" data-screen="memory">
+                <div class="app-topline"><span class="app-wordmark"><span class="en">Memory</span><span class="zh" hidden>记忆</span></span><span class="menu-dots">···</span></div>
+                <div class="phone-body">
+                  <p class="screen-sub"><span class="en">It remembers what matters between visits. You can ask it to forget any one — it takes effect immediately.</span><span class="zh" hidden>它会记住那些重要的事。你说忘记哪一条，立刻就忘。</span></p>
+                  <span class="sample-label memory-sample"><span class="en">EXAMPLE MEMORIES</span><span class="zh" hidden>示例记忆</span></span>
+                  <div class="memory-list" id="memoryList"></div>
+                  <p class="memory-empty" id="memoryEmpty" hidden>
+                    <span class="en">Nothing remembered yet. It’ll fill in as you talk.</span>
+                    <span class="zh" hidden>还没有记住什么。聊着聊着，就有了。</span>
+                  </p>
+                  <p class="screen-footnote"><span class="privacy-dot"></span><span class="en">Memories live on this device only</span><span class="zh" hidden>记忆只保存在这台设备上</span></p>
+                </div>
+              </div>
+
+              <!-- CHAT OVERLAY -->
+              <div class="app-screen screen-chat" data-screen="chat" aria-hidden="true">
+                <div class="chat-head">
+                  <button class="chat-back" type="button" data-action="back-now" aria-label="Back">
+                    <svg viewBox="0 0 24 24"><path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <span class="chat-title"><span class="en">Lightvessel · Talk</span><span class="zh" hidden>Lightvessel · 对话</span></span>
+                  <span class="chat-mode-dot"></span>
+                </div>
+                <div class="mode-chips" id="modeChips"></div>
+                <div class="chat-scroll" id="chatScroll"></div>
+                <div class="chat-suggest" id="chatSuggest"></div>
+                <form class="chat-input" id="chatForm">
+                  <input id="chatText" type="text" autocomplete="off" maxlength="120">
+                  <button class="chat-send" type="submit" aria-label="Send">
+                    <svg viewBox="0 0 24 24"><path d="M4 12l16-7-4 14-4.5-4.5L4 12z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                  </button>
+                </form>
+              </div>
+
+              <!-- BOTTLE OVERLAY -->
+              <div class="app-screen screen-bottle" data-screen="bottle" aria-hidden="true">
+                <div class="chat-head">
+                  <button class="chat-back" type="button" data-action="back-now" aria-label="Back">
+                    <svg viewBox="0 0 24 24"><path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <span class="chat-title"><span class="en">Message in a Bottle</span><span class="zh" hidden>漂流瓶</span></span>
+                </div>
+                <div class="phone-body">
+                  <div class="bottle-visual"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDE3MCAxMDI0IDY5MCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0zNjUuMjI2NjY3IDY2My44OTMzMzNjOC41MzMzMzMgMS43MDY2NjcgMTUuMzYgMy40MTMzMzMgMjMuODkzMzMzIDUuMTIgOC41MzMzMzMgMS43MDY2NjcgMTUuMzYgMy40MTMzMzMgMjMuODkzMzMzIDUuMTIgOC41MzMzMzMgMS43MDY2NjcgMTUuMzYgMy40MTMzMzMgMjMuODkzMzM0IDYuODI2NjY3IDguNTMzMzMzIDEuNzA2NjY3IDE3LjA2NjY2NyA1LjEyIDI1LjYgOC41MzMzMzMgNi44MjY2NjcgMS43MDY2NjcgMTUuMzYgNS4xMiAyMi4xODY2NjYgNi44MjY2NjcgMy40MTMzMzMgMS43MDY2NjcgNi44MjY2NjcgMS43MDY2NjcgOC41MzMzMzQgMy40MTMzMzNsMTAuMjQgMy40MTMzMzRjNi44MjY2NjcgMS43MDY2NjcgMTUuMzYgMy40MTMzMzMgMjIuMTg2NjY2IDYuODI2NjY2IDMwLjcyIDguNTMzMzMzIDU5LjczMzMzMyAxMy42NTMzMzMgOTAuNDUzMzM0IDE4Ljc3MzMzNCAxNS4zNiAxLjcwNjY2NyAzMC43MiAzLjQxMzMzMyA0NC4zNzMzMzMgNS4xMiA1LjEyIDAgMTAuMjQgMCAxNS4zNiAxLjcwNjY2NiA2LjgyNjY2NyAwIDExLjk0NjY2Ny0xLjcwNjY2NyAxNS4zNi02LjgyNjY2NiA0Ni4wOC01MS4yIDg1LjMzMzMzMy05NS41NzMzMzMgOTAuNDUzMzMzLTEwMi40IDE3LjA2NjY2Ny0xOC43NzMzMzMtNi44MjY2NjctMTEwLjkzMzMzMy02LjgyNjY2Ni0xMTAuOTMzMzM0bDEzNC44MjY2NjYtMTUxLjg5MzMzMy0yMC40OC0xNy4wNjY2NjcgMjIuMTg2NjY3LTIzLjg5MzMzM2MyMC40OCAxNy4wNjY2NjcgMzIuNDI2NjY3IDguNTMzMzMzIDQ2LjA4LTYuODI2NjY3IDEzLjY1MzMzMy0xNy4wNjY2NjcgMTcuMDY2NjY3LTMyLjQyNjY2NyA2LjgyNjY2Ny00Mi42NjY2NjZsLTc4LjUwNjY2Ny02OC4yNjY2NjdjLTEwLjI0LTEwLjI0LTMyLjQyNjY2Ny04LjUzMzMzMy00Ni4wOCA2LjgyNjY2Ny0xMy42NTMzMzMgMTcuMDY2NjY3LTE3LjA2NjY2NyAzNC4xMzMzMzMtNi44MjY2NjcgNDIuNjY2NjY2bC0yMi4xODY2NjYgMjMuODkzMzM0LTIwLjQ4LTE3LjA2NjY2Ny0xMjkuNzA2NjY3IDE0OC40OHMtOTMuODY2NjY3LTExLjk0NjY2Ny0xMTAuOTMzMzMzIDYuODI2NjY3TDMzNi4yMTMzMzMgNjU3LjA2NjY2N2wtMS43MDY2NjYgMS43MDY2NjZjMS43MDY2NjcgMCA1LjEyIDAgNi44MjY2NjYgMS43MDY2NjcgOC41MzMzMzMgMCAxNy4wNjY2NjcgMS43MDY2NjcgMjMuODkzMzM0IDMuNDEzMzMzeiIgZmlsbD0iI2RiZGJkYiI+PC9wYXRoPjxwYXRoIGQ9Ik05NzEuMDkzMzMzIDcwMS40NGMtMTEuOTQ2NjY3IDYuODI2NjY3LTI3LjMwNjY2NyAxNS4zNi00NC4zNzMzMzMgMjIuMTg2NjY3cy0zNy41NDY2NjcgMTUuMzYtNTkuNzMzMzMzIDIyLjE4NjY2NmMtMTEuOTQ2NjY3IDMuNDEzMzMzLTIyLjE4NjY2NyA2LjgyNjY2Ny0zNS44NCA4LjUzMzMzNC0xMS45NDY2NjcgMy40MTMzMzMtMjUuNiA1LjEyLTM3LjU0NjY2NyA2LjgyNjY2Ni0xMy42NTMzMzMgMS43MDY2NjctMjcuMzA2NjY3IDMuNDEzMzMzLTQwLjk2IDMuNDEzMzM0LTEzLjY1MzMzMyAwLTI3LjMwNjY2NyAxLjcwNjY2Ny00Mi42NjY2NjcgMS43MDY2NjYtMTMuNjUzMzMzIDAtMjkuMDEzMzMzIDAtNDQuMzczMzMzLTEuNzA2NjY2LTE1LjM2LTEuNzA2NjY3LTI5LjAxMzMzMy0zLjQxMzMzMy00NC4zNzMzMzMtNS4xMi0zMC43Mi01LjEyLTU5LjczMzMzMy0xMC4yNC05MC40NTMzMzQtMTguNzczMzM0LTYuODI2NjY3LTEuNzA2NjY3LTE1LjM2LTMuNDEzMzMzLTIyLjE4NjY2Ni02LjgyNjY2NmwtMTMuNjUzMzM0LTMuNDEzMzM0Yy0zLjQxMzMzMy0xLjcwNjY2Ny02LjgyNjY2Ny0xLjcwNjY2Ny0xMS45NDY2NjYtMy40MTMzMzMtOC41MzMzMzMtMS43MDY2NjctMTUuMzYtNS4xMi0yMy44OTMzMzQtNi44MjY2NjctOC41MzMzMzMtMS43MDY2NjctMTUuMzYtNS4xMi0yMy44OTMzMzMtNi44MjY2NjYtOC41MzMzMzMtMS43MDY2NjctMTUuMzYtNS4xMi0yMy44OTMzMzMtNi44MjY2NjctOC41MzMzMzMtMS43MDY2NjctMTUuMzYtMy40MTMzMzMtMjMuODkzMzM0LTUuMTItOC41MzMzMzMtMS43MDY2NjctMTUuMzYtMy40MTMzMzMtMjMuODkzMzMzLTUuMTItOC41MzMzMzMtMS43MDY2NjctMTUuMzYtMy40MTMzMzMtMjMuODkzMzMzLTMuNDEzMzMzLTguNTMzMzMzLTEuNzA2NjY3LTE1LjM2LTEuNzA2NjY3LTIzLjg5MzMzNC0zLjQxMzMzNC04LjUzMzMzMy0xLjcwNjY2Ny0xNS4zNi0xLjcwNjY2Ny0yMy44OTMzMzMtMS43MDY2NjYtMTEuOTQ2NjY3LTUuMTItMjUuNi01LjEyLTQwLjk2LTUuMTItMjkuMDEzMzMzIDAtNTYuMzIgMS43MDY2NjctODEuOTIgNS4xMi0yNS42IDMuNDEzMzMzLTQ3Ljc4NjY2NyA4LjUzMzMzMy02OC4yNjY2NjcgMTUuMzYtMTguNzczMzMzIDYuODI2NjY3LTM1Ljg0IDEzLjY1MzMzMy00OS40OTMzMzMgMjIuMTg2NjY2LTExLjk0NjY2NyA2LjgyNjY2Ny0yMi4xODY2NjcgMTUuMzYtMjcuMzA2NjY3IDIwLjQ4bC04LjUzMzMzMyA4LjUzMzMzNCAxMC4yNC01LjEyYzYuODI2NjY3LTMuNDEzMzMzIDE3LjA2NjY2Ny02LjgyNjY2NyAzMC43Mi0xMC4yNCAxMy42NTMzMzMtMy40MTMzMzMgMzAuNzItNi44MjY2NjcgNDkuNDkzMzMzLTguNTMzMzM0IDE4Ljc3MzMzMy0xLjcwNjY2NyA0MC45Ni0zLjQxMzMzMyA2NC44NTMzMzQtMS43MDY2NjYgMjMuODkzMzMzIDAgNDkuNDkzMzMzIDMuNDEzMzMzIDc1LjA5MzMzMyA2LjgyNjY2NiAxMy42NTMzMzMgMS43MDY2NjcgMjcuMzA2NjY3IDUuMTIgNDAuOTYgNi44MjY2NjdsMjAuNDggNS4xMiAyMC40OCA1LjEyYzI5LjAxMzMzMyA2LjgyNjY2NyA1OC4wMjY2NjcgMTUuMzYgODcuMDQgMjUuNiA2LjgyNjY2NyAxLjcwNjY2NyAxNS4zNiA1LjEyIDIyLjE4NjY2NyA2LjgyNjY2NyA2LjgyNjY2NyAzLjQxMzMzMyAxNS4zNiA1LjEyIDIyLjE4NjY2NiA4LjUzMzMzM3MxNy4wNjY2NjcgNS4xMiAyMy44OTMzMzQgOC41MzMzMzNjOC41MzMzMzMgMS43MDY2NjcgMTcuMDY2NjY3IDUuMTIgMjMuODkzMzMzIDYuODI2NjY3IDE3LjA2NjY2NyA1LjEyIDMyLjQyNjY2NyA4LjUzMzMzMyA0OS40OTMzMzMgMTEuOTQ2NjY3bDI1LjYgNS4xMmM4LjUzMzMzMyAxLjcwNjY2NyAxNy4wNjY2NjcgMS43MDY2NjcgMjUuNiAzLjQxMzMzMyAzNC4xMzMzMzMgMy40MTMzMzMgNjYuNTYgNS4xMiA5OC45ODY2NjcgMS43MDY2NjcgMTUuMzYtMS43MDY2NjcgMzIuNDI2NjY3LTMuNDEzMzMzIDQ3Ljc4NjY2Ny01LjEyIDE1LjM2LTMuNDEzMzMzIDMwLjcyLTUuMTIgNDQuMzczMzMzLTEwLjI0IDEzLjY1MzMzMy0zLjQxMzMzMyAyNy4zMDY2NjctOC41MzMzMzMgNDAuOTYtMTMuNjUzMzM0IDEzLjY1MzMzMy01LjEyIDI1LjYtMTAuMjQgMzcuNTQ2NjY3LTE1LjM2IDIyLjE4NjY2Ny0xMS45NDY2NjcgNDIuNjY2NjY3LTIzLjg5MzMzMyA1OS43MzMzMzMtMzUuODQgMTcuMDY2NjY3LTExLjk0NjY2NyAyOS4wMTMzMzMtMjMuODkzMzMzIDM5LjI1MzMzMy0zNC4xMzMzMzMgMTAuMjQtMTAuMjQgMTcuMDY2NjY3LTE4Ljc3MzMzMyAyMi4xODY2NjctMjUuNiA1LjEyLTYuODI2NjY3IDYuODI2NjY3LTEwLjI0IDYuODI2NjY3LTEwLjI0cy0xMC4yNCA2LjgyNjY2Ny0zNC4xMzMzMzQgMjAuNDh6IiBmaWxsPSIjZGJkYmRiIj48L3BhdGg+PC9zdmc+Cg==" alt="" id="bottleImg"></div>
+                  <p class="bottle-lede">
+                    <span class="en">Put what’s weighing on you right now into a bottle and let it drift out to sea. At 7:30 tomorrow morning, there’s a reply waiting for you.</span>
+                    <span class="zh" hidden>把此刻压在心上的事放进瓶子，放归大海。明早 7:30，会有一封回信等你。</span>
+                  </p>
+                  <textarea class="bottle-input" id="bottleInput" rows="3" maxlength="240"></textarea>
+                  <button class="bottle-send" type="button" data-action="send-bottle">
+                    <span class="en">Send it out to sea</span><span class="zh" hidden>放归大海</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- BREATHE OVERLAY -->
+              <div class="app-screen screen-breathe" data-screen="breathe" aria-hidden="true">
+                <div class="phone-body breathe-body">
+                  <div class="breath-stage" id="phoneBreath">
+                    <div class="breath-orb small" aria-hidden="true">
+                      <span class="breath-halo halo-a"></span><span class="breath-halo halo-b"></span>
+                      <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt="">
+                    </div>
+                    <div class="breath-caption">
+                      <strong class="breath-phase" data-phase-ready><span class="en">Get ready</span><span class="zh" hidden>准备</span></strong>
+                      <strong class="breath-phase" data-phase-in hidden><span class="en">Inhale</span><span class="zh" hidden>吸气</span></strong>
+                      <strong class="breath-phase" data-phase-hold hidden><span class="en">Hold</span><span class="zh" hidden>停留</span></strong>
+                      <strong class="breath-phase" data-phase-out hidden><span class="en">Exhale</span><span class="zh" hidden>呼气</span></strong>
+                      <span class="breath-count" hidden>4</span>
+                      <span class="breath-cycles" hidden><span class="en">Cycle</span><span class="zh" hidden>第</span>&nbsp;<b>1</b></span>
+                    </div>
+                    <button class="breath-stop" type="button" data-action="stop-breathe" hidden>
+                      <span class="en">That’s enough for now</span><span class="zh" hidden>今天就到这里</span>
+                    </button>
+                    <p class="breathe-intro">
+                      <span class="en">Follow the 4 · 4 · 6 rhythm at your own pace. Stop whenever you like.</span>
+                      <span class="zh" hidden>跟着 4·4·6 的节奏呼吸，按自己的速度来；任何时候都可以停下。</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               <div class="phone-tabbar">
-                <span class="tab-active"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12a7 7 0 1 1 14 0 7 7 0 0 1-14 0zm4.5 0a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0z"/></svg><small class="zh">此刻</small><small class="en" hidden>Now</small></span>
-                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13c2.4-3.2 4.8-3.2 7.2 0s4.8 3.2 7.2 0 3.2-2.8 3.6-3"/></svg><small class="zh">潮汐</small><small class="en" hidden>Tides</small></span>
-                <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16l-6-3-6 3z"/></svg><small class="zh">记忆</small><small class="en" hidden>Memories</small></span>
+                <button class="tab-btn active" type="button" data-tab="now">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12a7 7 0 1 1 14 0 7 7 0 0 1-14 0zm4.5 0a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0z"/></svg>
+                  <small><span class="en">Now</span><span class="zh" hidden>此刻</span></small>
+                </button>
+                <button class="tab-btn" type="button" data-tab="tides">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13c2.4-3.2 4.8-3.2 7.2 0s4.8 3.2 7.2 0 3.2-2.8 3.6-3"/></svg>
+                  <small><span class="en">Tides</span><span class="zh" hidden>潮汐</span></small>
+                </button>
+                <button class="tab-btn" type="button" data-tab="memory">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16l-6-3-6 3z"/></svg>
+                  <small><span class="en">Memory</span><span class="zh" hidden>记忆</span></small>
+                </button>
               </div>
+
+              <div class="phone-toast" id="phoneToast" hidden></div>
             </div>
           </div>
         </div>
-        <div class="scroll-cue"><span class="zh">向下看看</span><span class="en" hidden>SCROLL TO EXPLORE</span><span>↓</span></div>
+
+        <div class="scroll-cue"><span class="en">SCROLL TO EXPLORE</span><span class="zh" hidden>向下看看</span><span>↓</span></div>
       </section>
 
-      <section class="intro section-frame" id="experience">
-        <div class="section-kicker"><span>01</span><span class="kicker-rule"></span><span class="zh">在 Lightvessel 里</span><span class="en" hidden>ON LIGHTVESSEL</span></div>
+      <!-- ══════════════ 01 · THE APP — THREE MODES ══════════════ -->
+      <section class="intro section-frame reveal" id="app">
+        <div class="section-kicker"><span>01</span><span class="kicker-rule"></span><span class="en">THE APP</span><span class="zh" hidden>产品体验</span></div>
         <div class="intro-heading">
-          <h2 class="zh">此刻的你，<br><em>需要什么都可以。</em></h2>
-          <h2 class="en" hidden>Meet yourself<br><em>where you are.</em></h2>
-          <p class="zh">不是每一天都需要答案。有时倾诉，有时整理思绪，有时只想感到有人在。选择此刻更适合你的方式。</p>
-          <p class="en" hidden>Not every day needs an answer. Talk it out, untangle a thought, or simply feel accompanied. Choose what fits this moment.</p>
+          <h2>
+            <span class="en">Meet yourself<br><em>where you are.</em></span>
+            <span class="zh" hidden>此刻的你，<br><em>需要什么都可以。</em></span>
+          </h2>
+          <p class="en-p">
+            <span class="en">Not every day needs an answer. Choose how the vessel listens — the same steady presence, tuned to this moment.</span>
+            <span class="zh" hidden>不是每一天都需要答案。选择此刻希望被陪伴的方式——还是同一艘灯船，只是换一种听法。</span>
+          </p>
         </div>
         <div class="mode-cards">
-          <article class="mode-card mode-vent">
-            <div class="mode-number">A / LISTEN</div>
-            <h3 class="zh">倾诉</h3><h3 class="en" hidden>Vent</h3>
-            <p class="zh">先把话说出来。这里会认真听，不急着给你建议。</p><p class="en" hidden>Say what’s on your mind. You’ll be heard before advice is offered.</p>
-            <div class="mini-chat"><span class="mini-avatar">L</span><span class="zh">我在听。想从哪里说起都可以。</span><span class="en" hidden>I’m listening. Start wherever you like.</span></div>
+          <article class="mode-card">
+            <div class="mode-number"><span class="en">A · LISTEN</span><span class="zh" hidden>A · 倾听</span></div>
+            <h3><span class="en">Vent</span><span class="zh" hidden>倾诉</span></h3>
+            <p><span class="en">When you just need someone to talk to. You’ll be heard in full — advice only if you ask for it.</span><span class="zh" hidden>先把话说出来。会被认真听见，不急着给建议。</span></p>
+            <div class="mini-chat">
+              <span class="mini-avatar">L</span>
+              <span><span class="en">I’m here — say whatever’s on your mind.</span><span class="zh" hidden>我在——想说什么都可以。</span></span>
+            </div>
           </article>
-          <article class="mode-card mode-untangle">
-            <div class="mode-number">B / REFLECT</div>
-            <h3 class="zh">梳理</h3><h3 class="en" hidden>Untangle</h3>
-            <p class="zh">把缠在一起的念头慢慢摊开，找到更温和的看法和下一小步。</p><p class="en" hidden>Lay tangled thoughts out gently, and find a kinder reframe or a small next step.</p>
-            <div class="clarity-preview"><span class="clarity-label zh">把事情放进口袋</span><span class="clarity-label en" hidden>A thought to carry</span><span class="clarity-rule"></span><span class="clarity-small zh">一小步，也算在前进。</span><span class="clarity-small en" hidden>Small steps still count.</span></div>
+          <article class="mode-card">
+            <div class="mode-number"><span class="en">B · REFLECT</span><span class="zh" hidden>B · 梳理</span></div>
+            <h3><span class="en">Tidy</span><span class="zh" hidden>梳理</span></h3>
+            <p><span class="en">Take one weighing thing apart with a couple of gentle questions, and keep what’s left as a card.</span><span class="zh" hidden>回答两个温柔的问题，把缠在一起的事拆开，存成一张卡。</span></p>
+            <div class="clarity-preview">
+              <span class="clarity-label"><span class="en">Clarity Card</span><span class="zh" hidden>梳理卡</span></span>
+              <ul>
+                <li><span class="en">What happened</span><span class="zh" hidden>发生了什么</span></li>
+                <li><span class="en">Where it started</span><span class="zh" hidden>它从哪里开始</span></li>
+                <li><span class="en">What your body is saying</span><span class="zh" hidden>身体在说什么</span></li>
+                <li><span class="en">A gentler way to see it</span><span class="zh" hidden>一个更温和的看法</span></li>
+                <li><em><span class="en">The smallest next step</span><span class="zh" hidden>最小的下一步</span></em></li>
+              </ul>
+              <span class="clarity-pocket"><span class="en">Keep this</span><span class="zh" hidden>收进口袋</span> →</span>
+            </div>
           </article>
-          <article class="mode-card mode-companion">
-            <div class="mode-number">C / BE HERE</div>
-            <h3 class="zh">陪伴</h3><h3 class="en" hidden>Companion</h3>
-            <p class="zh">不想独自待着的时候，留在一段轻松、没有任务的对话里。</p><p class="en" hidden>When being alone feels like too much, stay for a conversation with nowhere to be.</p>
-            <div class="mini-chat companion-note"><span class="mini-avatar" aria-hidden="true">L</span><span class="zh">不用急着变好。先待一会儿。</span><span class="en" hidden>You don’t have to be okay yet. Stay awhile.</span></div>
+          <article class="mode-card">
+            <div class="mode-number"><span class="en">C · BE HERE</span><span class="zh" hidden>C · 陪伴</span></div>
+            <h3><span class="en">Stay</span><span class="zh" hidden>陪伴</span></h3>
+            <p><span class="en">No questions, no tasks — quiet company until you’re ready to move. Even a few words are enough.</span><span class="zh" hidden>没有问题，没有任务——只是安静地在，等你准备好再走。</span></p>
+            <div class="mini-chat">
+              <span class="mini-avatar">L</span>
+              <span><span class="en">I’m here quietly with you — no need to rush into words.</span><span class="zh" hidden>我安静地在这儿，不用急着说话。</span></span>
+            </div>
           </article>
         </div>
+        <p class="intro-strip">
+          <span class="en">One vessel, three ways of listening — warm, unhurried, and clear that it’s AI.</span>
+          <span class="zh" hidden>同一艘灯船，三种听的方式。温暖、不催促，也会坦白自己是 AI。</span>
+        </p>
       </section>
 
-      <section class="tides-section section-frame">
+      <!-- ══════════════ 02 · TIDES ══════════════ -->
+      <section class="tides-section section-frame reveal" id="tides">
         <div class="tides-copy">
-          <div class="section-kicker"><span>02</span><span class="kicker-rule"></span><span class="zh">潮汐 · 看见自己的变化</span><span class="en" hidden>TIDES · NOTICE THE PATTERNS</span></div>
-          <h2 class="zh">潮起潮落，<br><em>都是海的一部分。</em></h2>
-          <h2 class="en" hidden>Every tide<br><em>belongs to the sea.</em></h2>
-          <p class="zh">每天用片刻记下内心的海况。随着时间，回头看看情绪怎样变化，也读一封为这一周写下的信。记录是为了更了解自己，不是为了打分。</p>
-          <p class="en" hidden>Take a moment to note your inner weather. Over time, look back on how your mood has moved and read a letter reflecting on your week. This is for understanding, never grading yourself.</p>
-          <a class="text-link" href="https://apps.apple.com/app/id6800191641" target="_blank" rel="noreferrer"><span class="zh">在 App Store 了解 Lightvessel</span><span class="en" hidden>Explore Lightvessel on the App Store</span><span>↗</span></a>
+          <div class="section-kicker"><span>02</span><span class="kicker-rule"></span><span class="en">TIDES</span><span class="zh" hidden>潮汐</span></div>
+          <h2>
+            <span class="en">Feelings aren’t a problem to solve — <em>they’re a sea that rises and falls.</em></span>
+            <span class="zh" hidden>情绪不是要解决的问题，<em>是一片会涨落的海。</em></span>
+          </h2>
+          <p>
+            <span class="en">A brief daily check-in gives your week a shape. After a few entries, a letter can help you look back; gentle reflections may surface over time — for understanding, never grading.</span>
+            <span class="zh" hidden>每天花一点时间记下内心海况。积累几天后，可以收到一封回看这一周的信，也可能慢慢看见一些关联——是为了理解，不是为了打分。</span>
+          </p>
+          <ul class="tides-points">
+            <li><span class="en">Daily mood check-in — a tide level, not a score</span><span class="zh" hidden>每日打卡——是潮位，不是评分</span></li>
+            <li><span class="en">“This Week’s Letter” — your week, read back to you</span><span class="zh" hidden>“这一周的信”——把你的七天读给你听</span></li>
+            <li><span class="en">Patterns I’ve noticed — kind, evidence-based observations</span><span class="zh" hidden>“我注意到的规律”——温和、有依据的观察</span></li>
+          </ul>
         </div>
-        <div class="tide-ui" aria-label="Mood chart app preview">
-          <div class="tide-card-head"><div><span class="ui-overline zh">潮汐</span><span class="ui-overline en" hidden>TIDES</span><h3 class="zh">这一周的海况</h3><h3 class="en" hidden>Your week at sea</h3></div><span class="calendar-mark">◷</span></div>
-          <div class="tide-chart"><div class="chart-y"><span>↑</span><span>·</span><span>·</span></div><svg viewBox="0 0 460 150" role="img" aria-label="A gentle mood trend line"><defs><linearGradient id="tideFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#68c4b3" stop-opacity=".28"/><stop offset="1" stop-color="#68c4b3" stop-opacity="0"/></linearGradient></defs><path d="M0,105 C26,92 33,113 64,101 S103,70 128,85 S163,106 195,83 S225,62 258,77 S292,96 322,68 S354,55 386,70 S430,42 460,48 L460,150 L0,150 Z" fill="url(#tideFill)"/><path d="M0,105 C26,92 33,113 64,101 S103,70 128,85 S163,106 195,83 S225,62 258,77 S292,96 322,68 S354,55 386,70 S430,42 460,48" fill="none" stroke="#76caba" stroke-width="3" stroke-linecap="round"/><circle cx="64" cy="101" r="4" fill="#f5c77f"/><circle cx="195" cy="83" r="4" fill="#f5c77f"/><circle cx="322" cy="68" r="4" fill="#f5c77f"/><circle cx="460" cy="48" r="4" fill="#f5c77f"/></svg><div class="chart-grid"><i></i><i></i><i></i></div></div>
-          <div class="chart-days"><span class="zh">周一</span><span class="en" hidden>MON</span><span class="zh">周二</span><span class="en" hidden>TUE</span><span class="zh">周三</span><span class="en" hidden>WED</span><span class="zh">周四</span><span class="en" hidden>THU</span><span class="zh">周五</span><span class="en" hidden>FRI</span><span class="zh">周六</span><span class="en" hidden>SAT</span><span class="zh">周日</span><span class="en" hidden>SUN</span></div>
-          <div class="weekly-note"><span class="weekly-sparkle">✳</span><p class="zh">这一周的信<br><small>“有些起伏，走过之后才看得出方向。”</small></p><p class="en" hidden>This week’s letter<br><small>“Some things make sense only after the tide turns.”</small></p><span class="note-arrow">↗</span></div>
-          <div class="ui-footnote"><span class="privacy-dot"></span><span class="zh">心情由你记录，记录留在你的设备上</span><span class="en" hidden>Your check-ins stay on your device</span></div>
+        <div class="tide-ui" aria-label="Tides app preview">
+          <div class="tide-card-head">
+            <div>
+              <span class="ui-overline"><span class="en">TIDES</span><span class="zh" hidden>潮汐</span></span>
+              <h3><span class="en">Your week at sea</span><span class="zh" hidden>这一周的海况</span></h3>
+            </div>
+            <span class="sample-label"><span class="en">EXAMPLE</span><span class="zh" hidden>示例</span></span>
+          </div>
+          <div class="tide-chart">
+            <div class="chart-y"><span>↑</span><span>·</span><span>·</span></div>
+            <svg viewBox="0 0 460 150" role="img" aria-label="A gentle mood trend line">
+              <defs><linearGradient id="tideFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#68c4b3" stop-opacity=".28"/><stop offset="1" stop-color="#68c4b3" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0,105 C26,92 33,113 64,101 S103,70 128,85 S163,106 195,83 S225,62 258,77 S292,96 322,68 S354,55 386,70 S430,42 460,48 L460,150 L0,150 Z" fill="url(#tideFill)"/>
+              <path d="M0,105 C26,92 33,113 64,101 S103,70 128,85 S163,106 195,83 S225,62 258,77 S292,96 322,68 S354,55 386,70 S430,42 460,48" fill="none" stroke="#76caba" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="64" cy="101" r="4" fill="#f5c77f"/><circle cx="195" cy="83" r="4" fill="#f5c77f"/><circle cx="322" cy="68" r="4" fill="#f5c77f"/><circle cx="460" cy="48" r="4" fill="#f5c77f"/>
+            </svg>
+            <div class="chart-grid"><i></i><i></i><i></i></div>
+          </div>
+          <div class="chart-days">
+            <span><span class="en">MON</span><span class="zh" hidden>周一</span></span><span><span class="en">TUE</span><span class="zh" hidden>周二</span></span><span><span class="en">WED</span><span class="zh" hidden>周三</span></span><span><span class="en">THU</span><span class="zh" hidden>周四</span></span><span><span class="en">FRI</span><span class="zh" hidden>周五</span></span><span><span class="en">SAT</span><span class="zh" hidden>周六</span></span><span><span class="en">SUN</span><span class="zh" hidden>周日</span></span>
+          </div>
+          <div class="weekly-note">
+            <span class="weekly-sparkle">✳</span>
+            <p><span class="en">This Week’s Letter<br><small>“Some things make sense only after the tide turns.”</small></span><span class="zh" hidden>这一周的信<br><small>“有些起伏，走过之后才看得出方向。”</small></span></p>
+            <span class="note-arrow">↗</span>
+          </div>
+          <div class="weekly-note pattern-note">
+            <span class="weekly-sparkle">◌</span>
+            <p><span class="en">Patterns I’ve noticed<br><small>“Over time, a few connections can become easier to notice.”</small></span><span class="zh" hidden>我注意到的规律<br><small>“记录多一些，也许会慢慢看见此前没留意的关联。”</small></span></p>
+          </div>
+          <div class="ui-footnote"><span class="privacy-dot"></span><span class="en">Your check-ins stay on your device</span><span class="zh" hidden>心情记录只留在你的设备上</span></div>
         </div>
       </section>
 
-      <section class="rituals-section section-frame">
-        <div class="section-kicker"><span>03</span><span class="kicker-rule"></span><span class="zh">小小的日常仪式</span><span class="en" hidden>SMALL, GENTLE RITUALS</span></div>
+      <!-- ══════════════ 03 · RITUALS ══════════════ -->
+      <section class="rituals-section section-frame reveal" id="rituals">
+        <div class="section-kicker"><span>03</span><span class="kicker-rule"></span><span class="en">SMALL, GENTLE RITUALS</span><span class="zh" hidden>小小的日常仪式</span></div>
         <div class="ritual-grid">
           <article class="ritual breathing-card">
-            <div class="ritual-copy"><span class="ritual-index">01 / PAUSE</span><h3 class="zh">跟着灯塔，<br>慢慢呼吸。</h3><h3 class="en" hidden>Breathe with<br>the lighthouse.</h3><p class="zh">让稳定的光和缓慢的节奏，陪身体歇一会儿。</p><p class="en" hidden>A steady light and an unhurried rhythm for a moment of rest.</p></div>
-            <div class="breath-visual"><span class="breath-ring ring-outer"></span><span class="breath-ring ring-middle"></span><span class="breath-ring ring-inner"></span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%201024%201024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20fill%3D%22%23177F6B%22%20stroke%3D%22%23177F6B%22%20stroke-width%3D%2240%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M349.2864%20285.9008h36.181333V102.4H349.252267zM602.248533%20293.205333h36.181334V109.704533h-36.181334z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M329.8304%20341.333333h333.653333V256H329.8304z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M481.6%2042Q497.6%2028%20513.6%2042L647%20109Q653.984%20113%20653.984%20122V143Q653.984%20152%20644.984%20152H350.216Q341.216%20152%20341.216%20143V122Q341.216%20113%20348.216%20109zM622.72%20416l-7.84-24h-234.56l-23.456%2092zM333.408%20572l-27.36%20112%20359.648-96-23.456-100zM712.64%20760l-27.392-96-402.656%20104-31.264%20112zM231.776%20968l-7.84%2024h547.328l-39.072-156.032z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A" alt=""><span class="breath-caption zh">吸气　·　停留　·　呼气</span><span class="breath-caption en" hidden>INHALE · PAUSE · EXHALE</span></div>
+            <div class="ritual-copy">
+              <span class="ritual-index"><span class="en">01 · PAUSE</span><span class="zh" hidden>01 · 停一停</span></span>
+              <h3><span class="en">Breathe with<br>the light.</span><span class="zh" hidden>跟着灯塔，<br>慢慢呼吸。</span></h3>
+              <p><span class="en">In for four. Hold for four. Out for six. Follow the light at your own pace, and stop whenever you like.</span><span class="zh" hidden>吸气四拍，停留四拍，呼气六拍。跟着灯光试一试，按自己的速度来；任何时候都可以停下。</span></p>
+              <button class="ritual-button" type="button" id="ritualBreatheStart">
+                <span class="en">Try one minute</span><span class="zh" hidden>试一分钟</span>
+              </button>
+            </div>
+            <div class="breath-demo" id="ritualBreath">
+              <div class="breath-orb" aria-hidden="true">
+                <span class="breath-halo halo-a"></span><span class="breath-halo halo-b"></span>
+                <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt="">
+              </div>
+              <div class="breath-caption">
+                <strong class="breath-phase" data-phase-ready><span class="en">Ready when you are</span><span class="zh" hidden>准备好了就开始</span></strong>
+                <strong class="breath-phase" data-phase-in hidden><span class="en">Inhale</span><span class="zh" hidden>吸气</span></strong>
+                <strong class="breath-phase" data-phase-hold hidden><span class="en">Hold</span><span class="zh" hidden>停留</span></strong>
+                <strong class="breath-phase" data-phase-out hidden><span class="en">Exhale</span><span class="zh" hidden>呼气</span></strong>
+                <span class="breath-count" hidden>4</span>
+                <span class="breath-cycles" hidden><span class="en">Cycle</span><span class="zh" hidden>第</span>&nbsp;<b>1</b></span>
+              </div>
+              <button class="breath-stop" type="button" id="ritualBreatheStop" hidden>
+                <span class="en">That’s enough for now</span><span class="zh" hidden>今天就到这里</span>
+              </button>
+              <p class="bottle-toast" id="ritualBreathToast" hidden></p>
+            </div>
           </article>
+
           <article class="ritual bottle-card">
-            <div class="ritual-copy"><span class="ritual-index">02 / LET GO</span><h3 class="zh">写给明天的<br>一只漂流瓶。</h3><h3 class="en" hidden>A drift bottle<br>for tomorrow.</h3><p class="zh">把今晚的一句话放归大海。明早，会有一封回信等你。</p><p class="en" hidden>Set tonight’s thought out to sea. A gentle reply will be waiting in the morning.</p></div>
-            <div class="drift-note"><span class="drift-note-label zh">今晚 · 写给明天</span><span class="drift-note-label en" hidden>TONIGHT · FOR TOMORROW</span><p class="zh">把心事放在这里，明早再读。</p><p class="en" hidden>Leave a thought here. Read it tomorrow.</p><span class="drift-note-rule"></span></div>
+            <div class="ritual-copy">
+              <span class="ritual-index"><span class="en">02 · LET GO</span><span class="zh" hidden>02 · 放一放</span></span>
+              <h3><span class="en">Tonight’s weight,<br>tomorrow’s letter.</span><span class="zh" hidden>今晚的心事，<br>明早的信。</span></h3>
+              <p><span class="en">Put what’s weighing on you into a bottle and let it drift out to sea. Sleep on it. At 7:30 tomorrow morning, a reply is waiting — written for who you are by then.</span><span class="zh" hidden>把此刻压在心上的事放进瓶子，放归大海，睡一觉。明早 7:30，有一封回信在等你——写给那时的你。</span></p>
+            </div>
+            <div class="bottle-demo">
+              <div class="bottle-timeline">
+                <span><span class="en">TONIGHT</span><span class="zh" hidden>今晚</span></span>
+                <span class="bottle-dots">····</span>
+                <span class="gold"><span class="en">7:30 AM</span><span class="zh" hidden>明早 7:30</span></span>
+              </div>
+              <textarea class="bottle-input" id="ritualBottleInput" rows="2" maxlength="240"></textarea>
+              <button class="ritual-button" type="button" id="ritualBottleSend">
+                <span class="en">Send it out to sea</span><span class="zh" hidden>放归大海</span>
+              </button>
+              <p class="bottle-toast" id="ritualBottleToast" hidden></p>
+            </div>
           </article>
         </div>
       </section>
 
-      <section class="meaning-section section-frame" id="meaning">
-        <div class="meaning-orbit orbit-one"></div><div class="meaning-orbit orbit-two"></div>
-        <div class="meaning-mark"><span class="meaning-glow"></span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%201024%201024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20fill%3D%22%23177F6B%22%20stroke%3D%22%23177F6B%22%20stroke-width%3D%2240%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M349.2864%20285.9008h36.181333V102.4H349.252267zM602.248533%20293.205333h36.181334V109.704533h-36.181334z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M329.8304%20341.333333h333.653333V256H329.8304z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M481.6%2042Q497.6%2028%20513.6%2042L647%20109Q653.984%20113%20653.984%20122V143Q653.984%20152%20644.984%20152H350.216Q341.216%20152%20341.216%20143V122Q341.216%20113%20348.216%20109zM622.72%20416l-7.84-24h-234.56l-23.456%2092zM333.408%20572l-27.36%20112%20359.648-96-23.456-100zM712.64%20760l-27.392-96-402.656%20104-31.264%20112zM231.776%20968l-7.84%2024h547.328l-39.072-156.032z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A" alt=""></div>
+      <!-- ══════════════ 04 · BEACON / SAFETY ══════════════ -->
+      <section class="beacon-section section-frame reveal" id="beacon">
+        <div class="beacon-heading">
+          <div class="section-kicker"><span>04</span><span class="kicker-rule"></span><span class="en">IF THE SEA GETS ROUGH</span><span class="zh" hidden>风浪大的时候</span></div>
+          <h2>
+            <span class="en">Care with warmth.<br><em>And clear boundaries.</em></span>
+            <span class="zh" hidden>陪伴需要温度，<br><em>也需要边界。</em></span>
+          </h2>
+          <p class="en-p">
+            <span class="en">If a message suggests someone may need immediate support, the app may show the Beacon — with a breathing guide, a way to reach someone you trust, and local support resources.</span>
+            <span class="zh" hidden>当对话出现可能需要即时支持的信号时，App 可能会展示「灯塔」求助指引：呼吸练习、联系信任的人，以及当地求助资源。</span>
+          </p>
+        </div>
+        <div class="beacon-steps">
+          <article class="beacon-step">
+            <span class="beacon-num">1</span>
+            <h3><span class="en">Land first</span><span class="zh" hidden>先稳住身体</span></h3>
+            <p><span class="en">If it feels useful, pause for a short guided breath. You can stop at any time.</span><span class="zh" hidden>如果你愿意，可以跟着做一小段呼吸练习；随时都可以停下来。</span></p>
+            <button class="beacon-link" type="button" id="beaconBreathe">
+              <span class="en">Try the breathing →</span><span class="zh" hidden>去呼吸一分钟 →</span>
+            </button>
+          </article>
+          <article class="beacon-step">
+            <span class="beacon-num">2</span>
+            <h3><span class="en">Tell one real person</span><span class="zh" hidden>告诉一个真实的人</span></h3>
+            <p><span class="en">You don’t have to explain it all. This one sentence is enough to send to someone you trust.</span><span class="zh" hidden>你不必解释全部。这句话就够了，发给你信任的人。</span></p>
+            <div class="beacon-quote">
+              <p>“<span class="en">I’m not doing great emotionally right now — do you have ten minutes?</span><span class="zh" hidden>我最近状态不太好，你有十分钟吗？</span>”</p>
+              <button class="beacon-copy" type="button" id="beaconCopy" data-copy="I'm not doing great emotionally right now — do you have ten minutes?">
+                <span class="copy-idle"><span class="en">Copy this message</span><span class="zh" hidden>复制这句话</span></span>
+                <span class="copy-done" hidden><span class="en">Copied ✓</span><span class="zh" hidden>已复制 ✓</span></span>
+              </button>
+            </div>
+          </article>
+          <article class="beacon-step">
+            <span class="beacon-num">3</span>
+            <h3><span class="en">Let someone trained catch you</span><span class="zh" hidden>让受过训练的人接住你</span></h3>
+            <p><span class="en">Support options differ by country and region. Find local crisis resources for where you are.</span><span class="zh" hidden>不同地区的支持方式各不相同，可以按所在地区查找当地的危机求助资源。</span></p>
+            <a class="beacon-link" href="https://findahelpline.com" target="_blank" rel="noreferrer">
+              <span class="en">Find help now · findahelpline.com ↗</span><span class="zh" hidden>立即寻找帮助 · findahelpline.com ↗</span>
+            </a>
+          </article>
+        </div>
+        <p class="beacon-boundary">
+          <span class="en">Lightvessel is AI companionship — not a doctor, therapist, or emergency service. It won’t diagnose, won’t pretend, and will always say plainly: it’s AI. In a crisis, its job is to point the light toward real help.</span>
+          <span class="zh" hidden>Lightvessel 是 AI 陪伴——不是医生、心理治疗师或紧急服务。它不做诊断，也不假装可以。它会坦白说：我是 AI。危机时刻，它的任务是把灯照向真正的帮助。</span>
+        </p>
+      </section>
+
+      <!-- ══════════════ 05 · MEANING ══════════════ -->
+      <section class="meaning-section section-frame reveal" id="meaning">
+        <div class="meaning-mark">
+          <span class="meaning-glow"></span>
+          <span class="meaning-orbit orbit-one"></span>
+          <span class="meaning-orbit orbit-two"></span>
+          <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt="">
+        </div>
         <div class="meaning-text">
-          <div class="section-kicker"><span>04</span><span class="kicker-rule"></span><span class="zh">为什么叫 Lightvessel</span><span class="en" hidden>WHY LIGHTVESSEL</span></div>
-          <h2 class="zh">不是远处的灯塔，<br><em>而是一艘与你同在的灯船。</em></h2>
-          <h2 class="en" hidden>Not a lighthouse far away,<br><em>a lightship here beside you.</em></h2>
-          <p class="zh">Lightvessel 是“灯船”。它不要求海面平静，也不催你驶向某个终点。它带着一束稳定的光，停在心海边——当你需要的时候，可以靠过来，说一说，喘口气，再按自己的方向出发。</p>
-          <p class="en" hidden>A lightvessel is a ship that carries its own light. It does not ask the sea to be calm or point you toward a finish line. It stays nearby—a steady light to come alongside when you want to talk, breathe, and find your own way forward.</p>
-          <div class="meaning-signoff"><span>“</span><span class="zh">潮起潮落，你都可以在这里停一停。</span><span class="en" hidden>Through every tide, there is room to pause.</span></div>
+          <div class="section-kicker"><span>05</span><span class="kicker-rule"></span><span class="en">WHY “LIGHTVESSEL”</span><span class="zh" hidden>为什么叫 LIGHTVESSEL</span></div>
+          <h2>
+            <span class="en">Not a lighthouse on a distant shore — <em>a ship anchored beside you.</em></span>
+            <span class="zh" hidden>不是远处岸上的灯塔，<em>是一艘停泊在你身边的灯船。</em></span>
+          </h2>
+          <p>
+            <span class="en">A lightvessel is a real thing: a ship that carries a lighthouse’s light, anchored in open water where it’s needed most. It doesn’t steer anyone’s ship. It doesn’t ask the sea to be calm. It simply stays — visible, steady, close — for anyone who needs a place to pause.</span>
+            <span class="zh" hidden>灯船是真实存在的东西：一艘自带灯塔之光的船，锚泊在最需要它的海面上。它不替任何人掌舵，也不要求海面平静，只是停在那里——可见、稳定、很近——给需要停一停的人。</span>
+          </p>
+          <div class="metaphor-map">
+            <div class="metaphor-item">
+              <span class="metaphor-key"><span class="en">The light</span><span class="zh" hidden>灯光</span></span>
+              <span class="metaphor-val"><span class="en">A presence that’s always on — Talk, in three tempos</span><span class="zh" hidden>一直在的陪伴——倾诉 · 梳理 · 陪伴</span></span>
+            </div>
+            <div class="metaphor-item">
+              <span class="metaphor-key"><span class="en">The rhythm</span><span class="zh" hidden>光的节奏</span></span>
+              <span class="metaphor-val"><span class="en">The light pulses 4·4·6 — breathe with it</span><span class="zh" hidden>光以 4·4·6 明灭——跟着它呼吸</span></span>
+            </div>
+            <div class="metaphor-item">
+              <span class="metaphor-key"><span class="en">The tide log</span><span class="zh" hidden>潮汐记录</span></span>
+              <span class="metaphor-val"><span class="en">Every rise and fall, noted — never graded</span><span class="zh" hidden">记下每次涨落——从不打分</span></span>
+            </div>
+            <div class="metaphor-item">
+              <span class="metaphor-key"><span class="en">The sea post</span><span class="zh" hidden>海上的信</span></span>
+              <span class="metaphor-val"><span class="en">Leave tonight’s weight in a bottle for tomorrow</span><span class="zh" hidden>把今晚的心事放进瓶子，寄给明天</span></span>
+            </div>
+          </div>
+          <div class="meaning-signoff">
+            <span>“</span>
+            <span class="en">Through every tide, there is room to pause.</span>
+            <span class="zh" hidden>潮起潮落，你都可以在这里停一停。</span>
+          </div>
         </div>
       </section>
 
-      <section class="privacy-section section-frame" id="privacy">
+      <!-- ══════════════ 06 · PRIVACY ══════════════ -->
+      <section class="privacy-section section-frame reveal" id="privacy">
         <div class="privacy-heading">
-          <div class="section-kicker"><span>05</span><span class="kicker-rule"></span><span class="zh">把安心放在心上</span><span class="en" hidden>CARE, WITH PRIVACY</span></div>
-          <h2 class="zh">陪伴需要温度，<br><em>也需要边界。</em></h2>
-          <h2 class="en" hidden>Care needs warmth.<br><em>And clear boundaries.</em></h2>
+          <div class="section-kicker"><span>06</span><span class="kicker-rule"></span><span class="en">QUIET BY DESIGN</span><span class="zh" hidden>把安心放在心上</span></div>
+          <h2>
+            <span class="en">Your records<br><em>stay in your hands.</em></span>
+            <span class="zh" hidden>你的记录，<br><em>由你掌控。</em></span>
+          </h2>
+          <p class="en-p">
+            <span class="en">Companionship needs trust. Your records stay on your device, and the app explains when text is sent to generate an AI reply.</span>
+            <span class="zh" hidden>陪伴需要信任。你的记录保存在设备上；生成 AI 回复时，相关内容会安全传输处理。</span>
+          </p>
         </div>
         <div class="privacy-details">
-          <div class="privacy-item"><span class="privacy-icon">⌂</span><div><h3 class="zh">个人记录留在设备</h3><h3 class="en" hidden>Your records stay on device</h3><p class="zh">对话历史、情绪记录和记忆保存在你的设备。生成 AI 回复时，你发送的消息会经安全处理。</p><p class="en" hidden>Conversation history, mood logs, and memories stay on your device. Messages are securely processed to generate AI replies.</p></div></div>
-          <div class="privacy-item"><span class="privacy-icon">◌</span><div><h3 class="zh">没有广告和追踪</h3><h3 class="en" hidden>No ads or tracking</h3><p class="zh">Lightvessel 不含广告或追踪 SDK。你可以随时在应用中清除内容或删除账号。</p><p class="en" hidden>Lightvessel has no advertising or tracking SDKs. Clear your content or delete your account in the app at any time.</p></div></div>
-          <div class="privacy-item"><span class="privacy-icon">✳</span><div><h3 class="zh">诚实说明能力边界</h3><h3 class="en" hidden>Honest about its limits</h3><p class="zh">Lightvessel 是 AI 陪伴，不是医疗设备、心理治疗或危机服务，不能提供诊断或治疗。</p><p class="en" hidden>Lightvessel offers AI companionship, not medical care, therapy, or emergency support. It does not diagnose or treat.</p></div></div>
-          <div class="privacy-links"><a href="/privacy.html"><span class="zh">隐私政策</span><span class="en" hidden>Privacy policy</span><span>↗</span></a><a href="/terms.html"><span class="zh">使用条款</span><span class="en" hidden>Terms of use</span><span>↗</span></a><a href="/support.html"><span class="zh">联系我们</span><span class="en" hidden>Support</span><span>↗</span></a></div>
+          <div class="privacy-item">
+            <span class="privacy-icon"><svg viewBox="0 0 24 24"><path d="M7 3h10l3 4v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 13.5h7M12 10v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <div>
+              <h3><span class="en">On your device by default</span><span class="zh" hidden>记录留在设备上</span></h3>
+              <p><span class="en">Your conversations, mood records, memories, and bottles are stored on your iPhone. To generate AI replies, relevant text and context are sent securely to our AI provider for processing; we don’t keep ordinary conversations on our servers.</span><span class="zh" hidden>对话、情绪记录、记忆和漂流瓶保存在你的 iPhone 上。生成 AI 回复时，相关文字和上下文会通过安全连接发送给 AI 服务处理；我们不会在自己的服务器上保存普通对话。</span></p>
+            </div>
+          </div>
+          <div class="privacy-item">
+            <span class="privacy-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 12h16M12 4c2.5 2.6 2.5 13.4 0 16-2.5-2.6-2.5-13.4 0-16z" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></span>
+            <div>
+              <h3><span class="en">No ads. No tracking.</span><span class="zh" hidden>没有广告，没有追踪</span></h3>
+              <p><span class="en">No advertising or tracking SDKs. Your personal data is not sold. You can clear your local records or delete your account in the app.</span><span class="zh" hidden>没有广告或追踪 SDK，也不出售个人数据。你可以在应用内清除本地记录或删除账号。</span></p>
+            </div>
+          </div>
+          <div class="privacy-item">
+            <span class="privacy-icon"><svg viewBox="0 0 24 24"><path d="M12 3a5.5 5.5 0 0 1 5.5 5.5c0 3-1.8 5.4-3 7.5h-5c-1.2-2.1-3-4.5-3-7.5A5.5 5.5 0 0 1 12 3zM9 19.5h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <div>
+              <h3><span class="en">Memory you command</span><span class="zh" hidden>由你掌控的记忆</span></h3>
+              <p><span class="en">It remembers what matters between visits — and forgets any single memory the moment you ask. Immediately, no questions.</span><span class="zh" hidden>它会记住那些重要的事——你说忘记哪一条，立刻就忘。没有追问。</span></p>
+            </div>
+          </div>
+          <div class="privacy-item">
+            <span class="privacy-icon"><svg viewBox="0 0 24 24"><path d="M12 4l8 3v6c0 4.4-3.2 6.9-8 8-4.8-1.1-8-3.6-8-8V7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12.5l2 2 4-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div>
+              <h3><span class="en">Honest about its limits</span><span class="zh" hidden>诚实说明边界</span></h3>
+              <p><span class="en">It will tell you plainly: it’s AI, it can be wrong, and it isn’t a substitute for professional care. The app is available in nine languages.</span><span class="zh" hidden">它会坦白告诉你：我是 AI，我会出错，我不能替代专业帮助。支持九种语言。</span></p>
+            </div>
+          </div>
+          <div class="privacy-links">
+            <a href="/privacy.html"><span class="en">Privacy policy</span><span class="zh" hidden>隐私政策</span><span>↗</span></a>
+            <a href="/terms.html"><span class="en">Terms of use</span><span class="zh" hidden>使用条款</span><span>↗</span></a>
+            <a href="/support.html"><span class="en">Support</span><span class="zh" hidden>支持</span><span>↗</span></a>
+          </div>
         </div>
       </section>
 
-      <section class="closing section-frame">
-        <div class="closing-light"><span></span><span></span><span></span><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%201024%201024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20fill%3D%22%23177F6B%22%20stroke%3D%22%23177F6B%22%20stroke-width%3D%2240%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M349.2864%20285.9008h36.181333V102.4H349.252267zM602.248533%20293.205333h36.181334V109.704533h-36.181334z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M329.8304%20341.333333h333.653333V256H329.8304z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M481.6%2042Q497.6%2028%20513.6%2042L647%20109Q653.984%20113%20653.984%20122V143Q653.984%20152%20644.984%20152H350.216Q341.216%20152%20341.216%20143V122Q341.216%20113%20348.216%20109zM622.72%20416l-7.84-24h-234.56l-23.456%2092zM333.408%20572l-27.36%20112%20359.648-96-23.456-100zM712.64%20760l-27.392-96-402.656%20104-31.264%20112zM231.776%20968l-7.84%2024h547.328l-39.072-156.032z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A" alt=""></div>
-        <p class="closing-overline zh">海面宽阔，不必一个人漂着。</p><p class="closing-overline en" hidden>The sea is wide. You don’t have to drift alone.</p>
-        <h2 class="zh">需要的时候，<br><em>来这里靠岸。</em></h2><h2 class="en" hidden>When you need a pause,<br><em>come ashore.</em></h2>
+      <!-- ══════════════ PRICING STRIP ══════════════ -->
+      <section class="pricing section-frame reveal">
+        <p class="pricing-title"><span class="en">“Whenever you need a pause, there’s room here.”</span><span class="zh" hidden>“想停一停的时候，这里有位置。”</span></p>
+        <div class="pricing-benefits">
+          <span><span class="en">Premium: unlimited conversations</span><span class="zh" hidden>Premium：无限次对话</span></span>
+          <i></i>
+          <span><span class="en">Mood tracking &amp; personalized insights</span><span class="zh" hidden>情绪记录与个性化洞察</span></span>
+          <i></i>
+          <span><span class="en">Trial may be available for eligible accounts</span><span class="zh" hidden>符合资格时可试用 3 天</span></span>
+        </div>
+        <a class="app-store-button" href="https://apps.apple.com/app/id6800191641" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.8 12.8c0-2.3 1.9-3.4 2-3.5a4.3 4.3 0 0 0-3.4-1.8c-1.4-.2-2.7.8-3.4.8-.7 0-1.8-.8-3-.8a4.5 4.5 0 0 0-3.8 2.3c-1.6 2.8-.4 7 1.1 9.3.7 1.1 1.5 2.4 2.7 2.4 1.1 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 1.9-1.1 2.6-2.3a10 10 0 0 0 1.2-2.5 4 4 0 0 1-2-3.9ZM14.5 6.1a4 4 0 0 0 .9-2.8 4.1 4.1 0 0 0-2.6 1.3 3.8 3.8 0 0 0-1 2.7 3.4 3.4 0 0 0 2.7-1.2Z"/></svg>
+          <span><small class="en">See plans and trial eligibility on</small><small class="zh" hidden>查看方案与试用资格</small><strong>App Store</strong></span>
+        </a>
+        <p class="pricing-note"><span class="en">Plans renew automatically unless canceled. Apple shows the applicable price, terms, and trial eligibility before purchase.</span><span class="zh" hidden>订阅将自动续费，可在 Apple ID 设置中取消。购买前，App Store 会显示适用的价格、周期与试用资格。</span></p>
+      </section>
+
+      <!-- ══════════════ CLOSING ══════════════ -->
+      <section class="closing section-frame reveal">
+        <div class="closing-light">
+          <span></span><span></span><span></span>
+          <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt="">
+        </div>
+        <p class="closing-overline">
+          <span class="en">The sea is wide. You don’t have to drift alone.</span>
+          <span class="zh" hidden>海面宽阔，不必一个人漂着。</span>
+        </p>
+        <h2>
+          <span class="en">When you need a pause,<br><em>come aboard.</em></span>
+          <span class="zh" hidden>需要的时候，<br><em>来灯船上停一停。</em></span>
+        </h2>
         <a class="app-store-button closing-button" href="https://apps.apple.com/app/id6800191641" target="_blank" rel="noreferrer">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.8 12.8c0-2.3 1.9-3.4 2-3.5a4.3 4.3 0 0 0-3.4-1.8c-1.4-.2-2.7.8-3.4.8-.7 0-1.8-.8-3-.8a4.5 4.5 0 0 0-3.8 2.3c-1.6 2.8-.4 7 1.1 9.3.7 1.1 1.5 2.4 2.7 2.4 1.1 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 1.9-1.1 2.6-2.3a10 10 0 0 0 1.2-2.5 4 4 0 0 1-2-3.9ZM14.5 6.1a4 4 0 0 0 .9-2.8 4.1 4.1 0 0 0-2.6 1.3 3.8 3.8 0 0 0-1 2.7 3.4 3.4 0 0 0 2.7-1.2Z"/></svg>
           <span><small>Download on the</small><strong>App Store</strong></span>
@@ -434,36 +1131,600 @@ body::before { display: none; }
       </section>
     </main>
 
+    <!-- ══════════════ FOOTER ══════════════ -->
     <footer class="footer section-frame">
-      <a class="brand footer-brand" href="#top"><span class="brand-mark"><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%220%200%201024%201024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cg%20fill%3D%22%23177F6B%22%20stroke%3D%22%23177F6B%22%20stroke-width%3D%2240%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M349.2864%20285.9008h36.181333V102.4H349.252267zM602.248533%20293.205333h36.181334V109.704533h-36.181334z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M329.8304%20341.333333h333.653333V256H329.8304z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M481.6%2042Q497.6%2028%20513.6%2042L647%20109Q653.984%20113%20653.984%20122V143Q653.984%20152%20644.984%20152H350.216Q341.216%20152%20341.216%20143V122Q341.216%20113%20348.216%20109zM622.72%20416l-7.84-24h-234.56l-23.456%2092zM333.408%20572l-27.36%20112%20359.648-96-23.456-100zM712.64%20760l-27.392-96-402.656%20104-31.264%20112zM231.776%20968l-7.84%2024h547.328l-39.072-156.032z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A" alt=""></span><span>LIGHTVESSEL</span></a>
-      <p class="footer-note zh">一艘陪你看潮起潮落的船。</p><p class="footer-note en" hidden>A vessel for life’s tides.</p>
-      <div class="footer-links"><a href="/privacy.html"><span class="zh">隐私</span><span class="en" hidden>Privacy</span></a><a href="/terms.html"><span class="zh">条款</span><span class="en" hidden>Terms</span></a><a href="/support.html"><span class="zh">支持</span><span class="en" hidden>Support</span></a><a href="mailto:support@lenia.tech"><span class="zh">写信给我们</span><span class="en" hidden>Email us</span></a></div>
-      <div class="footer-bottom"><span>© 2026 WANG XIAOHANG</span><span class="footer-disclaimer zh">Lightvessel 不提供医疗、心理治疗或危机服务。</span><span class="footer-disclaimer en" hidden>Lightvessel is not medical, therapeutic, or emergency care.</span><a href="#top" class="back-top" aria-label="Back to top">↑</a></div>
+      <a class="brand footer-brand" href="#top">
+        <span class="brand-mark"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""></span>
+        <span>LIGHTVESSEL</span>
+      </a>
+      <p class="footer-note"><span class="en">A vessel for life’s tides.</span><span class="zh" hidden>一艘陪你看潮起潮落的船。</span></p>
+      <div class="footer-links">
+        <a href="/privacy.html"><span class="en">Privacy</span><span class="zh" hidden>隐私</span></a>
+        <a href="/terms.html"><span class="en">Terms</span><span class="zh" hidden>条款</span></a>
+        <a href="/support.html"><span class="en">Support</span><span class="zh" hidden>支持</span></a>
+        <a href="mailto:support@lenia.tech"><span class="en">Email us</span><span class="zh" hidden>写信给我们</span></a>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 WANG XIAOHANG</span>
+        <span class="footer-disclaimer">
+          <span class="en">Lightvessel is AI companionship — not medical care, therapy, or emergency services. In a crisis, contact local emergency services or visit findahelpline.com.</span>
+          <span class="zh" hidden>Lightvessel 是 AI 陪伴——不提供医疗、心理治疗或紧急服务。危机时刻请联系当地紧急服务或访问 findahelpline.com。</span>
+        </span>
+        <a href="#top" class="back-top" aria-label="Back to top">↑</a>
+      </div>
     </footer>
   </div>
   <script>
-const languageToggle = document.querySelector(".language-button");
+/* Lightvessel site — language toggle + interactive app demo */
 
-function setLanguage(useEnglish) {
-  document.documentElement.lang = useEnglish ? "en" : "zh-Hans";
-  document.querySelectorAll(".zh").forEach((element) => {
-    element.hidden = useEnglish;
+const $ = (sel, ctx = document) => ctx.querySelector(sel);
+const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+
+/* ───────────────────────── language strings ───────────────────────── */
+
+const L = {
+  en: {
+    chatPlaceholder: "Say what’s on your mind…",
+    bottlePlaceholder: "One sentence is enough…",
+    forget: "Forget",
+    checkinHint: "Pick today’s tide",
+    checkinLogged: (n) => `Tide level ${n} — logged`,
+    checkinDone: (w) => `Today: ${w} · logged`,
+    bottleNeed: "Write a sentence first — one is enough.",
+    bottleToast: "Released into the sea · A reply will be waiting at 7:30",
+    breathDone: "The body landed first — that’s enough for now.",
+    cycle: (n) => `Cycle&nbsp;<b>${n}</b>`,
+    moods: ["Calm — glassy", "Gentle swell", "Overcast", "Restless chop", "Storm"],
+    memories: [
+      "Prefers being heard before advice is offered",
+      "Rainy evenings have felt heavy lately",
+      "Has a big presentation on Friday",
+    ],
+    modes: {
+      vent: {
+        name: "Vent",
+        guidance: "I’m here — say whatever’s on your mind.",
+        chips: ["Today was a lot.", "I can’t stop overthinking.", "Just needed to say it out loud."],
+        replies: [
+          "That sounds like a lot to hold at once. I’m listening.",
+          "That makes sense — anyone would feel that after a day like today.",
+          "I hear you. You don’t have to make it smaller for me.",
+        ],
+      },
+      tidy: {
+        name: "Tidy",
+        guidance: "Tell me about one specific thing that’s been weighing on you — one sentence is enough.",
+        chips: ["Work has been swallowing my evenings.", "I keep putting off a hard conversation."],
+        replies: [
+          "Let’s take one piece of it: which part feels heaviest right now?",
+          "If that thought were a wave — what do you think is underneath it?",
+          "What would the smallest next step look like? Five minutes, not five hours.",
+        ],
+      },
+      stay: {
+        name: "Stay",
+        guidance: "I’m here quietly with you — no need to rush into words.",
+        chips: ["Can you just stay with me a while?", "Not ready to talk about it yet."],
+        replies: ["I’m here. No rush.", "Still here — keeping the light on.", "You don’t have to be okay yet. Stay awhile."],
+      },
+    },
+    modeOrder: ["vent", "tidy", "stay"],
+  },
+  zh: {
+    chatPlaceholder: "想说就说……",
+    bottlePlaceholder: "一句话就够了……",
+    forget: "忘记",
+    checkinHint: "选一个今天的潮位",
+    checkinLogged: (n) => `潮位 ${n} —— 已记录`,
+    checkinDone: (w) => `今天：${w} · 已记录`,
+    bottleNeed: "先写一句吧——一句就够了。",
+    bottleToast: "已放归大海 · 明早 7:30 有回信",
+    breathDone: "身体先落地了，就到这里。",
+    cycle: (n) => `第&nbsp;<b>${n}</b>&nbsp;组`,
+    moods: ["平静 · 无风", "微波", "多云", "骚动", "风暴"],
+    memories: ["希望先被听见，再听建议", "最近雨天的傍晚容易低落", "周五有个重要的汇报"],
+    modes: {
+      vent: {
+        name: "倾诉",
+        guidance: "我在——想说什么都可以。",
+        chips: ["今天太多了。", "脑子里停不下来。", "只是想说出来。"],
+        replies: ["听起来今天要装的事太多了。我在听。", "这很正常——谁经历过这样的一天都会这样。", "我听到了。你不用把它说得更小。"],
+      },
+      tidy: {
+        name: "梳理",
+        guidance: "说一件最近压在心上的具体的事——一句话就够。",
+        chips: ["工作把我的晚上都吞掉了。", "我一直在拖一场艰难的对话。"],
+        replies: ["我们拆一小块看：哪一部分此刻最重？", "如果这个念头是一道浪——你觉得浪底下是什么？", "最小的一步会是什么样的？五分钟的那种，不是五小时。"],
+      },
+      stay: {
+        name: "陪伴",
+        guidance: "我安静地在这儿，不用急着说话。",
+        chips: ["你能陪我待一会儿吗？", "还没准备好说这件事。"],
+        replies: ["我在。不急。", "还在——灯留着。", "你不用现在就好起来。再待一会儿。"],
+      },
+    },
+    modeOrder: ["vent", "tidy", "stay"],
+  },
+};
+
+let lang = "en";
+const t = (key) => L[lang][key];
+
+/* ───────────────────────── language toggle ───────────────────────── */
+
+function setLang(next) {
+  lang = next;
+  document.documentElement.lang = next === "en" ? "en" : "zh-Hans";
+  $$(".en").forEach((el) => (el.hidden = next !== "en"));
+  $$(".zh").forEach((el) => (el.hidden = next !== "zh"));
+  const btn = $(".language-button");
+  if (btn) {
+    btn.textContent = next === "en" ? "中文" : "EN";
+    btn.setAttribute("aria-label", next === "en" ? "切换到简体中文" : "Switch to English");
+  }
+  try { localStorage.setItem("lv-lang", next); } catch (e) { /* private mode */ }
+  renderDynamic();
+}
+
+/* ───────────────────────── phone: screens & tabs ───────────────────────── */
+
+const BASE_SCREENS = ["now", "tides", "memory"];
+
+function showScreen(name) {
+  const isTab = BASE_SCREENS.includes(name);
+  $$(".app-screen").forEach((s) => {
+    const active = s.dataset.screen === name;
+    s.classList.toggle("active", active);
+    s.classList.toggle("overlay", active && !isTab);
+    s.setAttribute("aria-hidden", active ? "false" : "true");
   });
-  document.querySelectorAll(".en").forEach((element) => {
-    element.hidden = !useEnglish;
+  $$(".tab-btn").forEach((b) => b.classList.toggle("active", b.dataset.tab === name));
+  const tabbar = $(".phone-tabbar");
+  if (tabbar) tabbar.hidden = !isTab;
+}
+
+$$(".tab-btn").forEach((btn) =>
+  btn.addEventListener("click", () => showScreen(btn.dataset.tab))
+);
+
+/* ───────────────────────── phone: toast ───────────────────────── */
+
+let toastTimer = null;
+function phoneToast(msg) {
+  const el = $("#phoneToast");
+  if (!el) return;
+  el.textContent = msg;
+  el.hidden = false;
+  requestAnimationFrame(() => el.classList.add("show"));
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    el.classList.remove("show");
+    setTimeout(() => (el.hidden = true), 320);
+  }, 2400);
+}
+
+/* ───────────────────────── breathing engine ───────────────────────── */
+
+function makeBreath(root, opts = {}) {
+  const orb = root.querySelector(".breath-orb");
+  const ready = root.querySelector("[data-phase-ready]");
+  const inEl = root.querySelector("[data-phase-in]");
+  const holdEl = root.querySelector("[data-phase-hold]");
+  const outEl = root.querySelector("[data-phase-out]");
+  const count = root.querySelector(".breath-count");
+  const cycles = root.querySelector(".breath-cycles");
+  const stopBtn = root.querySelector(".breath-stop");
+  const seq = [
+    { key: "in", dur: 4000 },
+    { key: "hold", dur: 4000 },
+    { key: "out", dur: 6000 },
+  ];
+  let running = false;
+  let cycle = 0;
+  let stepTimer = null;
+  let countTimer = null;
+  const phaseEls = { ready, in: inEl, hold: holdEl, out: outEl };
+
+  function showPhase(key) {
+    Object.entries(phaseEls).forEach(([k, el]) => (el.hidden = k !== key));
+  }
+  function countdown(ms) {
+    let left = Math.round(ms / 1000);
+    count.hidden = false;
+    count.textContent = left;
+    clearInterval(countTimer);
+    countTimer = setInterval(() => {
+      left -= 1;
+      if (left > 0) count.textContent = left;
+    }, 1000);
+  }
+  function step(i) {
+    const { key, dur } = seq[i];
+    showPhase(key);
+    if (key === "in") {
+      cycle += 1;
+      if (cycles) {
+        cycles.hidden = false;
+        cycles.innerHTML = L[lang].cycle(cycle);
+      }
+      orb.classList.add("running");
+      orb.style.transitionDuration = `${dur}ms`;
+      requestAnimationFrame(() => orb.classList.add("in"));
+    } else if (key === "out") {
+      orb.style.transitionDuration = `${dur}ms`;
+      orb.classList.remove("in");
+    }
+    countdown(dur);
+    const nextIndex = (i + 1) % seq.length;
+    const autoDone = opts.autoCycles && key === "out" && cycle >= opts.autoCycles;
+    stepTimer = setTimeout(() => (autoDone ? stop(true) : step(nextIndex)), dur);
+  }
+  function start() {
+    if (running) return;
+    running = true;
+    cycle = 0;
+    if (stopBtn) stopBtn.hidden = false;
+    if (opts.startBtn) opts.startBtn.hidden = true;
+    step(0);
+  }
+  function stop(auto = false) {
+    if (!running) return;
+    running = false;
+    clearTimeout(stepTimer);
+    clearInterval(countTimer);
+    orb.classList.remove("running", "in");
+    orb.style.transitionDuration = "700ms";
+    showPhase("ready");
+    count.hidden = true;
+    if (cycles) cycles.hidden = true;
+    if (stopBtn) stopBtn.hidden = true;
+    if (opts.startBtn) opts.startBtn.hidden = false;
+    if (opts.onDone) opts.onDone(auto);
+  }
+  return { start, stop, isRunning: () => running };
+}
+
+/* phone breathing */
+const phoneBreath = makeBreath($("#phoneBreath"), {
+  onDone: () => phoneToast(L[lang].breathDone),
+});
+
+/* ritual breathing — one guided minute (4 cycles ≈ 1 minute) */
+const ritualBreathToast = $("#ritualBreathToast");
+const ritualBreath = makeBreath($("#ritualBreath"), {
+  autoCycles: 4,
+  startBtn: $("#ritualBreatheStart"),
+  onDone: () => {
+    if (ritualBreathToast) {
+      ritualBreathToast.textContent = L[lang].breathDone;
+      ritualBreathToast.hidden = false;
+      clearTimeout(ritualToastTimer);
+      ritualToastTimer = setTimeout(() => (ritualBreathToast.hidden = true), 4200);
+    }
+  },
+});
+
+$("#ritualBreatheStart")?.addEventListener("click", () => ritualBreath.start());
+$("#ritualBreatheStop")?.addEventListener("click", () => ritualBreath.stop());
+$("#beaconBreathe")?.addEventListener("click", () => {
+  $("#rituals").scrollIntoView({ behavior: "smooth", block: "center" });
+  setTimeout(() => ritualBreath.start(), 650);
+});
+
+/* ───────────────────────── check-in demo ───────────────────────── */
+
+let checkedIn = null; // { level }
+
+function renderCheckinScale() {
+  const scale = $("#checkinScale");
+  if (!scale) return;
+  scale.innerHTML = "";
+  L[lang].moods.forEach((mood, i) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "tide-dot" + (checkedIn && checkedIn.level === i + 1 ? " on" : "");
+    dot.textContent = i + 1;
+    dot.addEventListener("click", () => pickTide(i + 1));
+    scale.appendChild(dot);
+  });
+  const label = document.createElement("p");
+  label.className = "checkin-scale-label";
+  label.textContent = checkedIn ? "" : L[lang].checkinHint;
+  scale.appendChild(label);
+}
+
+function pickTide(level) {
+  checkedIn = { level };
+  renderCheckinScale();
+  const btn = $(".checkin-button");
+  if (btn) btn.hidden = true;
+  const done = $(".checkin-done");
+  const doneEn = $(".checkin-done .en");
+  const doneZh = $(".checkin-done .zh");
+  const weather = L.en.moods[level - 1];
+  const weatherZh = L.zh.moods[level - 1];
+  if (doneEn) doneEn.textContent = L.en.checkinDone(weather);
+  if (doneZh) doneZh.textContent = L.zh.checkinDone(weatherZh);
+  if (done) done.hidden = false;
+  const todayDot = $(".today-dot");
+  if (todayDot) todayDot.style.opacity = "1";
+  phoneToast(L[lang].checkinLogged(level));
+}
+
+$(".checkin-button")?.addEventListener("click", () => {
+  const scale = $("#checkinScale");
+  if (scale) scale.hidden = false;
+  renderCheckinScale();
+});
+
+/* ───────────────────────── memory demo ───────────────────────── */
+
+const forgotten = new Set();
+
+function renderMemory() {
+  const list = $("#memoryList");
+  const empty = $("#memoryEmpty");
+  if (!list) return;
+  list.innerHTML = "";
+  const items = L[lang].memories;
+  items.forEach((text, i) => {
+    if (forgotten.has(i)) return;
+    const item = document.createElement("div");
+    item.className = "memory-item";
+    const leaf = document.createElement("span");
+    leaf.className = "mem-leaf";
+    leaf.textContent = "❧";
+    const p = document.createElement("p");
+    p.textContent = text;
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "memory-forget";
+    btn.textContent = L[lang].forget;
+    btn.addEventListener("click", () => {
+      item.classList.add("gone");
+      setTimeout(() => {
+        forgotten.add(i);
+        renderMemory();
+      }, 420);
+    });
+    item.append(leaf, p, btn);
+    list.appendChild(item);
+  });
+  const visible = items.filter((_, i) => !forgotten.has(i)).length;
+  if (empty) empty.hidden = visible > 0;
+}
+
+/* ───────────────────────── chat demo ───────────────────────── */
+
+let chatMode = "vent";
+let chatMsgs = []; // { role, en, zh, kind }
+let replyIndex = { vent: 0, tidy: 0, stay: 0 };
+let typingTimer = null;
+
+function bubbleEl(m) {
+  const div = document.createElement("div");
+  div.className = "bubble" + (m.role === "user" ? " user" : " ai") + (m.kind === "guidance" ? " guidance" : "");
+  div.textContent = m[lang === "en" ? "en" : "zh"];
+  return div;
+}
+
+function renderChat() {
+  const scroll = $("#chatScroll");
+  if (!scroll) return;
+  scroll.innerHTML = "";
+  chatMsgs.forEach((m) => scroll.appendChild(bubbleEl(m)));
+  scroll.scrollTop = scroll.scrollHeight;
+}
+
+function typingEl() {
+  const div = document.createElement("div");
+  div.className = "bubble ai typing";
+  div.innerHTML = "<i></i><i></i><i></i>";
+  return div;
+}
+
+function sendUserMessage(text) {
+  chatMsgs.push({ role: "user", en: text, zh: text });
+  renderChat();
+  const scroll = $("#chatScroll");
+  const typing = typingEl();
+  scroll.appendChild(typing);
+  scroll.scrollTop = scroll.scrollHeight;
+  clearTimeout(typingTimer);
+  typingTimer = setTimeout(() => {
+    const mode = L[lang].modes[chatMode];
+    const modeEn = L.en.modes[chatMode];
+    const idx = replyIndex[chatMode] % modeEn.replies.length;
+    replyIndex[chatMode] += 1;
+    chatMsgs.push({ role: "ai", en: modeEn.replies[idx], zh: mode.replies[idx] });
+    renderChat();
+  }, 950 + Math.random() * 450);
+}
+
+function resetChat(mode) {
+  chatMode = mode;
+  chatMsgs = [{ role: "ai", kind: "guidance", en: L.en.modes[mode].guidance, zh: L.zh.modes[mode].guidance }];
+  renderModeChips();
+  renderSuggestions();
+  renderChat();
+}
+
+function renderModeChips() {
+  const wrap = $("#modeChips");
+  if (!wrap) return;
+  wrap.innerHTML = "";
+  L[lang].modeOrder.forEach((id) => {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "mode-chip" + (id === chatMode ? " on" : "");
+    chip.textContent = L[lang].modes[id].name;
+    chip.addEventListener("click", () => resetChat(id));
+    wrap.appendChild(chip);
   });
 }
 
-setLanguage(false);
+function renderSuggestions() {
+  const wrap = $("#chatSuggest");
+  if (!wrap) return;
+  wrap.innerHTML = "";
+  L[lang].modes[chatMode].chips.forEach((text) => {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "suggest-chip";
+    chip.textContent = text;
+    chip.addEventListener("click", () => sendUserMessage(text));
+    wrap.appendChild(chip);
+  });
+}
 
-languageToggle?.addEventListener("click", () => {
-  const useEnglish = document.documentElement.lang !== "en";
-  setLanguage(useEnglish);
-  languageToggle.textContent = useEnglish ? "中文" : "EN";
-  languageToggle.setAttribute("aria-label", useEnglish ? "切换到简体中文" : "Switch to English");
-  languageToggle.setAttribute("aria-pressed", String(useEnglish));
+$("#chatForm")?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const input = $("#chatText");
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = "";
+  sendUserMessage(text);
 });
 
-</script>
+/* ───────────────────────── bottle demo ───────────────────────── */
+
+function releaseBottle(textarea, toastFn) {
+  const text = textarea.value.trim();
+  if (!text) {
+    toastFn(L[lang].bottleNeed);
+    return false;
+  }
+  textarea.value = "";
+  toastFn(L[lang].bottleToast);
+  return true;
+}
+
+let ritualToastTimer = null;
+function showRitualToast(el, msg) {
+  if (!el) return;
+  el.textContent = msg;
+  el.hidden = false;
+  clearTimeout(ritualToastTimer);
+  ritualToastTimer = setTimeout(() => (el.hidden = true), 4200);
+}
+
+$("#ritualBottleSend")?.addEventListener("click", () => {
+  releaseBottle($("#ritualBottleInput"), (msg) => showRitualToast($("#ritualBottleToast"), msg));
+});
+
+/* ───────────────────────── beacon copy button ───────────────────────── */
+
+$("#beaconCopy")?.addEventListener("click", (e) => {
+  const btn = e.currentTarget;
+  const text = btn.dataset.copy;
+  const done = () => {
+    btn.querySelector(".copy-idle").hidden = true;
+    btn.querySelector(".copy-done").hidden = false;
+    setTimeout(() => {
+      btn.querySelector(".copy-idle").hidden = false;
+      btn.querySelector(".copy-done").hidden = true;
+    }, 2200);
+  };
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(done);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); } catch (err) { /* noop */ }
+    ta.remove();
+    done();
+  }
+});
+
+/* ───────────────────────── app actions ───────────────────────── */
+
+document.addEventListener("click", (e) => {
+  const target = e.target.closest("[data-action]");
+  if (!target) return;
+  const action = target.dataset.action;
+  if (action === "talk") {
+    showScreen("chat");
+    if (chatMsgs.length === 0) resetChat(chatMode);
+  } else if (action === "breathe") {
+    showScreen("breathe");
+    phoneBreath.start();
+  } else if (action === "bottle") {
+    showScreen("bottle");
+  } else if (action === "back-now") {
+    if (phoneBreath.isRunning()) phoneBreath.stop();
+    showScreen("now");
+  } else if (action === "stop-breathe") {
+    phoneBreath.stop();
+    showScreen("now");
+  } else if (action === "send-bottle") {
+    const ta = $("#bottleInput");
+    const ok = releaseBottle(ta, phoneToast);
+    if (ok) setTimeout(() => showScreen("now"), 900);
+  } else if (action === "checkin") {
+    const scale = $("#checkinScale");
+    scale.hidden = false;
+    renderCheckinScale();
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter" && e.key !== " ") return;
+  const target = e.target.closest?.("[data-action][role='button']");
+  if (!target) return;
+  e.preventDefault();
+  target.click();
+});
+
+/* ───────────────────────── dynamic re-render on language switch ───────────────────────── */
+
+function renderDynamic() {
+  renderModeChips();
+  renderSuggestions();
+  renderChat();
+  renderMemory();
+  renderCheckinScale();
+  const chatInput = $("#chatText");
+  if (chatInput) chatInput.placeholder = L[lang].chatPlaceholder;
+  const bottleInputs = $$(".bottle-input");
+  bottleInputs.forEach((ta) => (ta.placeholder = L[lang].bottlePlaceholder));
+}
+
+/* ───────────────────────── language button ───────────────────────── */
+
+$(".language-button")?.addEventListener("click", () => {
+  setLang(lang === "en" ? "zh" : "en");
+});
+
+/* ───────────────────────── scroll reveal ───────────────────────── */
+
+const revealEls = $$(".reveal");
+if ("IntersectionObserver" in window && revealEls.length) {
+  const io = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      }),
+    { threshold: 0.1 }
+  );
+  revealEls.forEach((el) => io.observe(el));
+} else {
+  revealEls.forEach((el) => el.classList.add("in"));
+}
+
+/* ───────────────────────── boot ───────────────────────── */
+
+(function boot() {
+  let stored = null;
+  try { stored = localStorage.getItem("lv-lang"); } catch (e) { /* noop */ }
+  showScreen("now");
+  setLang(stored === "zh" ? "zh" : "en");
+})();
+
+  </script>
 </body>
 </html>
