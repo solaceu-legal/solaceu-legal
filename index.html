@@ -526,7 +526,7 @@ body { background: #07191d; }
 .hero-lede { max-width: 520px; line-height: 1.82; }
 .hero-signature { width: fit-content; max-width: 100%; margin-top: 26px; padding-left: 13px; border-left: 1px solid rgba(242, 199, 126, .58); color: #91aaa1; font-size: 13px; }
 .signature-line { display: none; }
-.hero-sea, .scroll-cue { display: none; }
+.scroll-cue { display: none; }
 .hero-art { height: min(840px, calc(100svh - 72px)); min-height: 560px; }
 .phone-hint { top: 7px; padding: 6px 0; border: 0; background: transparent; color: #89a49b; font-size: 12px; letter-spacing: .02em; }
 .phone-hint::before { display: none; }
@@ -880,6 +880,31 @@ body { background: #07191d; }
   .phone-screen { border-radius: 40px; }
   .app-topline { margin-top: 37px; }
   .phone-body { padding-inline: 14px; }
+}
+
+/* A slow, restrained sweep from the beacon light, inspired by the reference demo. */
+.hero-sea { display: block; z-index: 0; overflow: hidden; clip-path: inset(0); }
+.hero-sea .sea-moon { display: block !important; top: 42px; right: 8.5%; }
+.hero-sea .sea-light-beam { display: block !important; }
+.sea-light-beam {
+  top: -160px;
+  right: -80px;
+  width: min(720px, 70vw);
+  height: min(820px, 115svh);
+  background: conic-gradient(from 200deg at 74% 27%, transparent 0deg, rgba(242, 199, 126, .03) 24deg, rgba(242, 199, 126, .12) 34deg, rgba(242, 199, 126, .035) 44deg, transparent 70deg);
+  transform-origin: 74% 27%;
+  animation: lightvesselBeamSweep 16s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+@keyframes lightvesselBeamSweep {
+  from { transform: rotate(-13deg); }
+  to { transform: rotate(15deg); }
+}
+@media (max-width: 720px) {
+  .sea-light-beam { top: -65px; right: -48%; width: 120vw; height: 96svh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sea-light-beam { animation: none; transform: rotate(1deg); }
 }
 
 </style>
