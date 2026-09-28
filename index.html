@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#07191e">
-  <meta name="description" content="A quiet AI companion for your inner tides. Talk things through, note your feelings, breathe with the light, or simply pause awhile. Made for iPhone.">
+  <meta name="description" content="Lightvessel is a lightship anchored beside you through every tide. Talk, note your mood, breathe with the light, or simply stay awhile. Made for iPhone.">
   <title>Lightvessel — A quiet harbor for your inner tides</title>
   <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTgiIGZpbGw9IiMwYzI5MmQiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjIyIiByPSIxNSIgZmlsbD0iI2U4YmE3MCIgb3BhY2l0eT0iLjE2Ii8+CiAgPHBhdGggZD0iTTI4IDE1aDh2OGg0djVIMjR2LTVoNHpNMjUgMzJoMTRsMyAxOEgyMnoiIGZpbGw9IiM4MWNkYjgiLz4KICA8cGF0aCBkPSJNMTYgNTNjNS0zIDEwLTMgMTYgMHMxMSAzIDE2IDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzgxY2RiOCIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0zMSAxNmgydjdoLTJ6IiBmaWxsPSIjZjNjNzdkIi8+Cjwvc3ZnPgo=" type="image/svg+xml">
   <style>
@@ -517,7 +517,147 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
   .app-action { min-height: 29px; }
 }
 
-  </style>
+/* Lightship at rest: real-device proportions, calmer materials, room for the app UI. */
+html { background: #07191d; }
+body { background: #07191d; }
+.site-shell { background: radial-gradient(ellipse at 74% 12%, rgba(27, 74, 69, .16), transparent 36%), #07191d; }
+.hero { min-height: 700px; padding-top: 52px; padding-bottom: 72px; gap: clamp(36px, 5vw, 76px); }
+.hero h1 { max-width: 650px; }
+.hero-lede { max-width: 520px; line-height: 1.82; }
+.hero-signature { width: fit-content; max-width: 100%; margin-top: 26px; padding-left: 13px; border-left: 1px solid rgba(242, 199, 126, .58); color: #91aaa1; font-size: 13px; }
+.signature-line { display: none; }
+.hero-sea, .scroll-cue { display: none; }
+.hero-art { height: min(840px, calc(100svh - 72px)); min-height: 560px; }
+.phone-hint { top: 7px; padding: 6px 0; border: 0; background: transparent; color: #89a49b; font-size: 12px; letter-spacing: .02em; }
+.phone-hint::before { display: none; }
+.phone-frame { top: calc(50% + 12px); height: min(720px, calc(100svh - 156px)); aspect-ratio: 78 / 163.4; padding: 2px; border: 1px solid rgba(202, 213, 207, .7); border-radius: 44px; background: linear-gradient(140deg, #d0d4cf 0%, #757e7c 3%, #262f30 7%, #141a1b 52%, #4c5554 96%, #aeb6b1 100%); box-shadow: 0 28px 58px rgba(0, 0, 0, .38), inset 0 0 0 1px rgba(255, 255, 255, .14); }
+.phone-frame::before, .phone-frame::after { width: 1px; background: #808986; }
+.phone-frame::before { height: 38px; left: -2px; top: 116px; box-shadow: 0 52px 0 #808986; }
+.phone-frame::after { height: 62px; right: -2px; top: 148px; }
+.phone-screen { border: 0; border-radius: 41px; background: #0b181a; }
+.dynamic-island { top: 9px; width: 96px; height: 27px; border-radius: 18px; }
+.phone-status { padding: 11px 23px 0; font-size: 11px; }
+.app-topline { align-items: center; justify-content: space-between; margin: 43px 18px 12px; color: #e5ede7; }
+.app-heading { display: flex; flex-direction: column; gap: 1px; }
+.app-wordmark { font-size: 14px; letter-spacing: .01em; }
+.app-wordmark-sub { position: static; transform: none; font-size: 8px; letter-spacing: .18em; }
+.app-header-actions { display: flex; align-items: center; gap: 7px; }
+.app-settings { width: 30px; height: 30px; border: 1px solid rgba(206, 226, 215, .13); border-radius: 50%; color: #91a79e; font-size: 14px; }
+.app-beacon { display: inline-flex; align-items: center; gap: 5px; padding: 5px 9px; border: 1px solid rgba(232, 185, 112, .28); border-radius: 99px; color: #dfbd82; font-size: 10px; white-space: nowrap; }
+.app-beacon img { width: 13px; height: 13px; object-fit: contain; filter: brightness(0) saturate(100%) invert(77%) sepia(27%) saturate(617%) hue-rotate(356deg) brightness(91%) contrast(88%); }
+.phone-body { padding: 4px 20px 24px; }
+.presence-orb { width: 132px; height: 132px; margin: 1px auto 5px; }
+.orb-glow { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, rgba(231, 184, 108, .20) 0, rgba(82, 164, 145, .12) 33%, rgba(72, 153, 136, .06) 57%, transparent 76%); filter: blur(2px); }
+.orb-ring { display: block; border: 1px solid rgba(136, 201, 181, .25); }
+.ring-a { inset: 2px; animation: ringBreath 4.5s ease-in-out infinite alternate; }
+.ring-b { inset: 18px; border-color: rgba(229, 183, 111, .25); }
+@keyframes ringBreath { from { transform: scale(.94); opacity: .58; } to { transform: scale(1.035); opacity: .94; } }
+.lighthouse-mark { position: relative; z-index: 2; width: 94px; height: 94px; display: block; filter: drop-shadow(0 0 9px rgba(231, 184, 108, .24)); }
+.lighthouse-mark img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: brightness(0) saturate(100%) invert(71%) sepia(17%) saturate(519%) hue-rotate(112deg) brightness(94%) contrast(88%); }
+.lighthouse-mark img + img { filter: brightness(0) saturate(100%) invert(77%) sepia(32%) saturate(523%) hue-rotate(351deg) brightness(99%) contrast(90%); }
+.app-greeting { margin: 3px 0 16px; font-size: 15px; line-height: 1.48; }
+.checkin-card { margin-bottom: 12px; padding: 14px; border-color: rgba(190, 220, 207, .13); border-radius: 16px; background: #101f21; }
+.checkin-title { margin: 0; font-size: 13px; line-height: 1.45; }
+.checkin-subtitle { margin: 5px 0 0; color: #8fa79e; font-size: 11px; line-height: 1.5; }
+.checkin-button { margin-top: 12px; padding: 9px 12px; border-radius: 11px; font-size: 12px; }
+.app-actions { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+.app-action { min-height: 74px; padding: 11px 5px; flex-direction: column; justify-content: center; gap: 7px; border-color: rgba(190, 220, 207, .12); border-radius: 15px; background: #101d1f; font-size: 12px; }
+.app-action > span { font-size: 12px; font-weight: 500; }
+.app-action .action-icon { width: 21px; height: 21px; flex: 0 0 21px; }
+.app-action small { display: none; }
+.phone-recent { padding-top: 20px; }
+.phone-section-title { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 9px; color: #dbe6df; font-size: 13px; font-weight: 600; }
+.phone-section-title .sample-label { font-size: 8px; font-weight: 400; }
+.recent-state-card { display: flex; gap: 10px; align-items: flex-start; padding: 13px; border: 1px solid rgba(190, 220, 207, .1); border-radius: 14px; background: #101d1f; }
+.recent-state-mark { width: 27px; height: 27px; display: grid; place-items: center; border-radius: 50%; background: rgba(116, 197, 180, .12); color: #87cdb8; font-size: 14px; flex: 0 0 27px; }
+.recent-state-card p { margin: 0; display: grid; gap: 3px; color: #91a89f; font-size: 11px; line-height: 1.5; }
+.recent-state-card strong { color: #dce7df; font-size: 12px; font-weight: 600; }
+.phone-section-title.log-title { margin: 19px 0 4px; }
+.vessel-log-row { display: flex; align-items: center; gap: 11px; padding: 9px 2px; border-bottom: 1px solid rgba(190, 220, 207, .08); color: #c0d0c8; font-size: 12px; }
+.log-time { color: #718980; font-size: 10px; font-variant-numeric: tabular-nums; }
+.log-mark { width: 23px; height: 23px; display: grid; place-items: center; border-radius: 7px; background: rgba(116, 197, 180, .12); color: #87cdb8; }
+.phone-tabbar { min-height: 63px; padding: 8px 24px 12px; border-top: 1px solid rgba(190, 220, 207, .09); background: #0b181a; }
+.tab-btn { gap: 4px; color: #7f968e; }
+.tab-btn svg { width: 20px; height: 20px; }
+.tab-btn small { font-size: 10px; }
+.tab-btn.active { color: #89cbb6; }
+.screen-checkin .chat-head { padding-top: 43px; }
+.checkin-form-body { padding: 18px 19px 28px; }
+.checkin-form-question { margin: 3px 0 14px; color: #e3ece6; font: 400 18px/1.4 var(--serif); }
+.weather-options { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
+.weather-choice { min-height: 66px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 6px 2px; border: 1px solid rgba(190, 220, 207, .12); border-radius: 12px; color: #a9bbb3; background: #101d1f; }
+.weather-choice.on { border-color: rgba(119, 198, 179, .65); background: rgba(116, 197, 180, .12); color: #e3eee7; }
+.weather-symbol { color: #9bd2bd; font-size: 20px; line-height: 1; }
+.weather-label { font-size: 11px; }
+.body-feeling-question { margin: 21px 0 10px; color: #9fb1aa; font-size: 13px; }
+.body-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+.body-choice { min-height: 34px; padding: 5px 4px; border: 1px solid rgba(190, 220, 207, .12); border-radius: 99px; color: #a9bbb3; font-size: 11px; }
+.body-choice.on { border-color: rgba(119, 198, 179, .65); color: #dbede4; background: rgba(116, 197, 180, .12); }
+.checkin-note { width: 100%; min-height: 68px; margin-top: 17px; padding: 11px 12px; resize: vertical; border: 1px solid rgba(190, 220, 207, .14); border-radius: 12px; outline: none; color: #dce8e0; background: #101d1f; font: inherit; font-size: 12px; }
+.checkin-note:focus { border-color: rgba(119, 198, 179, .68); }
+.checkin-submit { width: 100%; margin-top: 13px; padding: 11px; border-radius: 11px; background: #2a796b; color: #f3f7f3; font-size: 12px; }
+.checkin-submit:disabled { opacity: .44; cursor: not-allowed; }
+.mini-chart-card, .mini-card, .memory-item { border-color: rgba(190, 220, 207, .12); border-radius: 14px; background: #101d1f; }
+.mini-chart { height: 116px; }
+.mini-chart-head { margin-bottom: 12px; font-size: 12px; }
+.mini-card p { font-size: 11px; }
+.mini-card p strong { font-size: 12px; }
+.memory-item p { font-size: 12px; }
+.memory-forget { font-size: 10px; }
+.screen-sub, .screen-footnote { font-size: 11px; }
+.phone-toast { left: 14px; right: 14px; bottom: 72px; padding: 10px 12px; border-radius: 13px; font-size: 12px; }
+.app-screen.overlay { background: #0b181a; }
+
+/* Keep the rest of the page composed like a product journal, not a stack of glowing cards. */
+.intro, .tides-section, .rituals-section, .beacon-section, .meaning-section, .privacy-section, .pricing { border-top-color: rgba(190, 220, 207, .1); }
+.mode-card, .tide-ui, .ritual, .beacon-step, .privacy-item, .weekly-note, .bottle-demo { background: #0e2023; box-shadow: none; }
+.mode-card, .tide-ui, .ritual, .beacon-step, .privacy-item { border-color: rgba(190, 220, 207, .12); }
+.closing { border-color: rgba(190, 220, 207, .14); border-radius: 16px; background: radial-gradient(ellipse at 50% 100%, rgba(39, 103, 93, .18), transparent 60%), #0e2023; }
+.closing::before, .closing::after { border-color: rgba(150, 204, 183, .07); }
+.meaning-mark, .closing-light { filter: none; }
+.meaning-mark img, .closing-light img { filter: brightness(0) saturate(100%) invert(72%) sepia(18%) saturate(442%) hue-rotate(113deg) brightness(94%) contrast(88%); }
+.sea-moon, .sea-star, .sea-light-beam, .meaning-glow, .meaning-orbit, .closing-light > span { display: none !important; }
+.arc-back, .arc-front { display: none; }
+
+@media (min-width: 721px) and (max-height: 760px) {
+  .hero { min-height: 680px; padding-top: 34px; padding-bottom: 48px; }
+  .hero-art { height: min(630px, calc(100svh - 85px)); min-height: 540px; }
+  .phone-frame { height: min(560px, calc(100svh - 155px)); top: 29px; transform: translateX(-50%); }
+  .phone-hint { top: 0; }
+  .phone-body { padding: 3px 18px 16px; }
+  .app-topline { margin-top: 39px; margin-bottom: 7px; }
+  .presence-orb { width: 108px; height: 108px; margin-bottom: 1px; }
+  .lighthouse-mark { width: 78px; height: 78px; }
+  .app-greeting { margin-bottom: 9px; font-size: 12px; }
+  .checkin-card { padding: 10px; margin-bottom: 9px; }
+  .checkin-title { font-size: 12px; }
+  .checkin-subtitle { margin-top: 3px; font-size: 10px; }
+  .checkin-button { margin-top: 8px; padding-block: 7px; }
+  .app-action { min-height: 56px; padding-block: 8px; gap: 5px; }
+  .phone-recent { padding-top: 11px; }
+}
+@media (max-width: 720px) {
+  .hero { padding-top: 43px; padding-bottom: 50px; }
+  .hero-signature { margin-top: 22px; }
+  .hero-art { height: min(790px, calc(100svh - 52px)); min-height: 540px; margin: 30px -8px 0; }
+  .phone-frame { height: min(720px, calc(100svh - 178px)); top: calc(50% + 12px); border-radius: 42px; }
+  .phone-frame::before, .phone-frame::after { display: block; }
+  .phone-screen { border-radius: 39px; }
+  .phone-hint { top: 2px; }
+  .phone-body { padding: 4px 17px 22px; }
+  .app-topline { margin: 42px 15px 10px; }
+  .presence-orb { width: 126px; height: 126px; }
+  .lighthouse-mark { width: 90px; height: 90px; }
+  .app-greeting { font-size: 14px; }
+  .checkin-card { padding: 13px; }
+  .app-action { min-height: 70px; }
+  .mini-chart { height: 104px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ring-a { animation: none; }
+}
+
+</style>
 </head>
 <body>
   <div class="site-shell">
@@ -564,8 +704,8 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
             <span class="zh" hidden>给心里的潮汐，<br><em>一处停泊的地方。</em></span>
           </h1>
           <p class="hero-lede">
-            <span class="en">Lightvessel is a quiet AI companion for the moments when you need a place to pause. Talk things through, note your inner weather, breathe with the light — or simply stay awhile. No streaks to maintain; no visits to count.</span>
-            <span class="zh" hidden>Lightvessel 是一处安静的 AI 陪伴空间。有些时刻，不急着解决，只想先找个地方靠岸。把感受说出来，记下心情，或跟着灯光呼吸——也可以什么都不做，只待一会儿。没有连续打卡，也不用计算来过几次。</span>
+            <span class="en">Lightvessel is a lightship, anchored here to stay beside you through every tide. Some moments don’t need to be fixed right away. Find a place to come ashore: say what you feel, note your mood, breathe with the light — or do nothing at all and stay awhile.</span>
+            <span class="zh" hidden>Lightvessel是一艘灯船，停在这里陪你看潮起潮落。有些时刻，不用急着解决，先找个地方靠岸，把感受说出来，记下心情，或跟着灯光呼吸——也可以什么都不做，只待一会儿。</span>
           </p>
           <div class="hero-actions">
             <a class="app-store-button" href="https://apps.apple.com/app/id6800191641" target="_blank" rel="noreferrer">
@@ -588,8 +728,8 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
         </div>
 
         <!-- Interactive phone demo -->
-        <div class="hero-art" aria-label="Interactive Lightvessel app demo">
-          <div class="phone-hint"><span class="en">App preview · inputs stay in this browser</span><span class="zh" hidden>交互预览 · 输入仅留在本页</span></div>
+          <div class="hero-art" aria-label="Lightvessel app preview in iPhone 18 Pro Max proportions">
+          <div class="phone-hint"><span class="en">iPhone 18 Pro Max · App preview</span><span class="zh" hidden>iPhone 18 Pro Max · App 预览</span></div>
           <div class="phone-frame">
             <div class="phone-screen">
               <div class="dynamic-island" aria-hidden="true"></div>
@@ -598,15 +738,13 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
               <!-- NOW SCREEN -->
               <div class="app-screen screen-now active" data-screen="now">
                 <div class="app-topline">
-                  <span class="app-wordmark">Lightvessel</span>
-                  <span class="app-wordmark-sub"><span class="en">A LIGHT AT SEA</span><span class="zh" hidden>海上的一盏灯</span></span>
-                  <span class="menu-dots">···</span>
+                  <span class="app-heading"><span class="app-wordmark">Lightvessel</span><span class="app-wordmark-sub">A LIGHT AT SEA</span></span>
+                  <span class="app-header-actions"><button type="button" class="app-settings" aria-label="Settings">⚙</button><a class="app-beacon" href="#beacon" aria-label="Open Beacon"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></a></span>
                 </div>
                 <div class="phone-body">
                   <div class="presence-orb" role="button" tabindex="0" data-action="breathe" aria-label="Start breathing">
-                    <span class="orb-ring ring-a"></span><span class="orb-ring ring-b"></span>
-                    <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt="">
-                    <span class="orb-pulse"></span>
+                    <span class="orb-glow"></span><span class="orb-ring ring-a"></span><span class="orb-ring ring-b"></span>
+                    <span class="lighthouse-mark"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiNBODZBMkQiIHN0cm9rZT0iI0E4NkEyRCIgc3Ryb2tlLXdpZHRoPSIzMiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik00MDMuNTI0MjY3IDE0Ni4yOTU0NjdoMTgwLjY2NzczM2wtMTguMDU2NTMzIDE0Ni4yOTU0NjZINDIxLjYxNDkzM3oiLz4KICAgIDxwYXRoIGQ9Ik00MzAuNjI2MTMzIDE2OC4yNDMyaDEyNi40NjRsLTEyLjYyOTMzMyAxMDIuNEg0NDMuMjU1NDY3eiIvPgogICAgPHBhdGggZD0iTTQ0Ny44OTc2IDIwNy4yNTc2aDkxLjk1NTJMNTI0LjUyNjkzMyAyNTZINDYzLjE4OTMzM3oiLz4KICA8L2c+Cjwvc3ZnPgo=" alt=""></span>
                   </div>
                   <p class="app-greeting">
                     <span class="en">Good evening.<br>How are you doing tonight?</span>
@@ -614,48 +752,44 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
                   </p>
 
                   <div class="checkin-card" id="checkinCard">
-                    <div class="checkin-head">
-                      <span class="checkin-overline"><span class="en">TODAY’S CHECK-IN</span><span class="zh" hidden>今日打卡</span></span>
-                      <span class="checkin-spark">✳</span>
-                    </div>
-                    <p class="checkin-title"><span class="en">What’s the weather in your inner sea today?</span><span class="zh" hidden>今天内心海域的天气怎么样？</span></p>
-                    <div class="checkin-scale" id="checkinScale" hidden>
-                    </div>
-                    <button class="checkin-button" type="button" data-action="checkin">
-                      <span class="en">Log today’s tide — 20 seconds</span><span class="zh" hidden>记录今天的潮位 · 二十秒</span>
+                    <p class="checkin-title"><span id="checkinTitleEn" class="en">What’s the weather in your inner sea today?</span><span id="checkinTitleZh" class="zh" hidden>今天的内海是什么天气？</span></p>
+                    <p class="checkin-subtitle"><span id="checkinSubtitleEn" class="en">A small note for today’s self. It will find its place in your tide chart.</span><span id="checkinSubtitleZh" class="zh" hidden>替今天的自己记一笔，它会留在你的潮汐表里。</span></p>
+                    <button class="checkin-button" id="checkinHomeButton" type="button" data-action="checkin">
+                      <span class="en">Log Sea Conditions</span><span class="zh" hidden>登记海况</span>
                     </button>
-                    <p class="checkin-done" hidden>
-                      <span class="en"></span><span class="zh" hidden></span>
-                    </p>
                   </div>
 
                   <div class="app-actions">
                     <div class="app-action action-talk" role="button" tabindex="0" data-action="talk">
                       <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7.5A3.5 3.5 0 0 1 8.5 4h7A3.5 3.5 0 0 1 19 7.5v5a3.5 3.5 0 0 1-3.5 3.5H11l-5 3v-3.5a3.5 3.5 0 0 1-1-2.5z"/></svg>
                       <span><span class="en">Talk</span><span class="zh" hidden>说说话</span></span>
-                      <small><span class="en">Vent · Tidy · Stay</span><span class="zh" hidden>倾诉 · 梳理 · 陪伴</span></small>
                     </div>
                     <div class="app-action" role="button" tabindex="0" data-action="breathe">
                       <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2.4-3.2 4.8-3.2 7.2 0s4.8 3.2 7.2 0 3.2-2.8 3.6-3"/></svg>
                       <span><span class="en">Breathe</span><span class="zh" hidden>跟灯塔呼吸</span></span>
-                      <small><span class="en">4 · 4 · 6</span><span class="zh" hidden>4·4·6 呼吸</span></small>
                     </div>
                     <div class="app-action" role="button" tabindex="0" data-action="bottle">
                       <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v4l2 2v10a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2V9l2-2zM9 7h6"/></svg>
-                      <span><span class="en">Message in a bottle</span><span class="zh" hidden>寄一只漂流瓶</span></span>
-                      <small><span class="en">Reply at 7:30 AM</span><span class="zh" hidden>明早 7:30 有回信</span></small>
+                      <span><span class="en">Bottle</span><span class="zh" hidden>漂流瓶</span></span>
                     </div>
                   </div>
+                  <section class="phone-recent">
+                    <div class="phone-section-title"><span class="en">Recent State</span><span class="zh" hidden>最近的状态</span><span class="sample-label"><span class="en">EXAMPLE</span><span class="zh" hidden>示例</span></span></div>
+                    <div class="recent-state-card"><span class="recent-state-mark">↗</span><p><strong><span class="en">A little more steady</span><span class="zh" hidden>慢慢平稳了一些</span></strong><span class="en">A few rough moments passed sooner this week.</span><span class="zh" hidden>这周有几次起伏，比之前更快地过去了。</span></p></div>
+                    <div class="phone-section-title log-title"><span class="en">Vessel Log</span><span class="zh" hidden>小船日志</span></div>
+                    <div class="vessel-log-row"><span class="log-time">8:42</span><span class="log-mark">≈</span><span><span class="en">Sea conditions noted</span><span class="zh" hidden>记下今天的海况</span></span></div>
+                    <div class="vessel-log-row"><span class="log-time">8:16</span><span class="log-mark">◌</span><span><span class="en">A moment to breathe</span><span class="zh" hidden>跟着灯光呼吸</span></span></div>
+                  </section>
                 </div>
               </div>
 
               <!-- TIDES SCREEN -->
               <div class="app-screen screen-tides" data-screen="tides">
-                <div class="app-topline"><span class="app-wordmark"><span class="en">Tides</span><span class="zh" hidden>潮汐</span></span><span class="menu-dots">···</span></div>
+                <div class="app-topline"><span class="app-wordmark"><span class="en">Tides</span><span class="zh" hidden>潮汐</span></span><span class="app-header-actions"><button type="button" class="app-settings" aria-label="Settings">⚙</button><a class="app-beacon" href="#beacon" aria-label="Open Beacon"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></a></span></div>
                 <div class="phone-body">
                   <p class="screen-sub"><span class="en">Feelings aren’t a problem to solve — they’re a sea that rises and falls.</span><span class="zh" hidden>情绪不是要解决的问题，是一片会涨落的海。</span></p>
                   <div class="mini-chart-card">
-                    <div class="mini-chart-head"><span><span class="en">This week at sea</span><span class="zh" hidden>这一周的海况</span></span><span class="sample-label"><span class="en">EXAMPLE</span><span class="zh" hidden>示例</span></span></div>
+                    <div class="mini-chart-head"><span><span class="en">Recent sea conditions · 14 days</span><span class="zh" hidden>近 14 天海况</span></span><span class="sample-label"><span class="en">EXAMPLE</span><span class="zh" hidden>示例</span></span></div>
                     <svg viewBox="0 0 300 90" class="mini-chart" preserveAspectRatio="none" aria-hidden="true">
                       <defs><linearGradient id="miniFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#68c4b3" stop-opacity=".25"/><stop offset="1" stop-color="#68c4b3" stop-opacity="0"/></linearGradient></defs>
                       <path d="M0,64 C22,54 30,70 52,60 S82,40 105,50 S135,66 160,48 S185,34 210,45 S240,58 265,40 L300,32 L300,90 L0,90 Z" fill="url(#miniFill)"/>
@@ -663,7 +797,7 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
                       <circle cx="52" cy="60" r="3.4" fill="#f5c77f"/><circle cx="105" cy="50" r="3.4" fill="#f5c77f"/><circle cx="160" cy="48" r="3.4" fill="#f5c77f"/><circle cx="210" cy="45" r="3.4" fill="#f5c77f"/><circle cx="300" cy="32" r="3.4" fill="#f5c77f" opacity="0"/>
                       <circle cx="300" cy="32" r="3.4" fill="#f5c77f" class="today-dot" opacity="0"/>
                     </svg>
-                    <div class="mini-days"><span><span class="en">M</span><span class="zh" hidden>一</span></span><span><span class="en">T</span><span class="zh" hidden>二</span></span><span><span class="en">W</span><span class="zh" hidden>三</span></span><span><span class="en">T</span><span class="zh" hidden>四</span></span><span><span class="en">F</span><span class="zh" hidden>五</span></span><span><span class="en">S</span><span class="zh" hidden>六</span></span><span class="today-label"><span class="en">today</span><span class="zh" hidden>今天</span></span></div>
+                    <div class="mini-days"><span><span class="en">14d ago</span><span class="zh" hidden>14 天前</span></span><span><span class="en">11d</span><span class="zh" hidden>11 天</span></span><span><span class="en">8d</span><span class="zh" hidden>8 天</span></span><span><span class="en">5d</span><span class="zh" hidden>5 天</span></span><span><span class="en">2d</span><span class="zh" hidden>2 天</span></span><span class="today-label"><span class="en">today</span><span class="zh" hidden>今天</span></span></div>
                   </div>
                   <div class="mini-card letter-card">
                     <span class="mini-card-icon">✳</span>
@@ -684,7 +818,7 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
 
               <!-- MEMORY SCREEN -->
               <div class="app-screen screen-memory" data-screen="memory">
-                <div class="app-topline"><span class="app-wordmark"><span class="en">Memory</span><span class="zh" hidden>记忆</span></span><span class="menu-dots">···</span></div>
+                <div class="app-topline"><span class="app-wordmark"><span class="en">Memory</span><span class="zh" hidden>记忆</span></span><span class="app-header-actions"><button type="button" class="app-settings" aria-label="Settings">⚙</button><a class="app-beacon" href="#beacon" aria-label="Open Beacon"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></a></span></div>
                 <div class="phone-body">
                   <p class="screen-sub"><span class="en">It remembers what matters between visits. You can ask it to forget any one — it takes effect immediately.</span><span class="zh" hidden>它会记住那些重要的事。你说忘记哪一条，立刻就忘。</span></p>
                   <span class="sample-label memory-sample"><span class="en">EXAMPLE MEMORIES</span><span class="zh" hidden>示例记忆</span></span>
@@ -694,6 +828,22 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
                     <span class="zh" hidden>还没有记住什么。聊着聊着，就有了。</span>
                   </p>
                   <p class="screen-footnote"><span class="privacy-dot"></span><span class="en">Memories live on this device only</span><span class="zh" hidden>记忆只保存在这台设备上</span></p>
+                </div>
+              </div>
+
+              <!-- CHECK-IN SHEET -->
+              <div class="app-screen screen-checkin" data-screen="checkin" aria-hidden="true">
+                <div class="chat-head">
+                  <button class="chat-back" type="button" data-action="back-now" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span class="chat-title"><span class="en">Sea Conditions</span><span class="zh" hidden>登记海况</span></span>
+                </div>
+                <div class="phone-body checkin-form-body">
+                  <p class="checkin-form-question"><span class="en">What’s the weather in your inner sea?</span><span class="zh" hidden>今天的内海是什么天气？</span></p>
+                  <div class="weather-options" id="weatherOptions"></div>
+                  <p class="body-feeling-question"><span class="en">How does your body feel?</span><span class="zh" hidden>身体现在的感觉</span></p>
+                  <div class="body-options" id="bodyOptions"></div>
+                  <textarea class="checkin-note" id="checkinNote" rows="2" maxlength="240"></textarea>
+                  <button class="checkin-submit" type="button" data-action="save-checkin" disabled><span class="en">Log Sea Conditions</span><span class="zh" hidden>登记海况</span></button>
                 </div>
               </div>
 
@@ -775,7 +925,7 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
                   <small><span class="en">Tides</span><span class="zh" hidden>潮汐</span></small>
                 </button>
                 <button class="tab-btn" type="button" data-tab="memory">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16l-6-3-6 3z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.6 4.2c-6.5.1-11 1.2-13.6 3.7-2.1 2.1-2.7 5.3-1.8 9.1.2.8 1.2 1 1.6.3 1.2-2 2.9-3.8 5.2-5.2-1.4 1.7-2.4 3.4-3 5.4-.2.8.6 1.5 1.4 1.1 5.2-2.2 8.4-5.4 9.6-9.5.4-1.3.5-2.8.6-4.1 0-.5-.4-.9-.9-.8Z"/></svg>
                   <small><span class="en">Memory</span><span class="zh" hidden>记忆</span></small>
                 </button>
               </div>
@@ -865,7 +1015,7 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
           <div class="tide-card-head">
             <div>
               <span class="ui-overline"><span class="en">TIDES</span><span class="zh" hidden>潮汐</span></span>
-              <h3><span class="en">Your week at sea</span><span class="zh" hidden>这一周的海况</span></h3>
+              <h3><span class="en">Recent sea conditions · 14 days</span><span class="zh" hidden>近 14 天海况</span></h3>
             </div>
             <span class="sample-label"><span class="en">EXAMPLE</span><span class="zh" hidden>示例</span></span>
           </div>
@@ -880,7 +1030,7 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
             <div class="chart-grid"><i></i><i></i><i></i></div>
           </div>
           <div class="chart-days">
-            <span><span class="en">MON</span><span class="zh" hidden>周一</span></span><span><span class="en">TUE</span><span class="zh" hidden>周二</span></span><span><span class="en">WED</span><span class="zh" hidden>周三</span></span><span><span class="en">THU</span><span class="zh" hidden>周四</span></span><span><span class="en">FRI</span><span class="zh" hidden>周五</span></span><span><span class="en">SAT</span><span class="zh" hidden>周六</span></span><span><span class="en">SUN</span><span class="zh" hidden>周日</span></span>
+            <span><span class="en">14d ago</span><span class="zh" hidden>14 天前</span></span><span><span class="en">11d</span><span class="zh" hidden>11 天</span></span><span><span class="en">8d</span><span class="zh" hidden>8 天</span></span><span><span class="en">5d</span><span class="zh" hidden>5 天</span></span><span><span class="en">2d</span><span class="zh" hidden>2 天</span></span><span><span class="en">today</span><span class="zh" hidden>今天</span></span>
           </div>
           <div class="weekly-note">
             <span class="weekly-sparkle">✳</span>
@@ -903,9 +1053,9 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
             <div class="ritual-copy">
               <span class="ritual-index"><span class="en">01 · PAUSE</span><span class="zh" hidden>01 · 停一停</span></span>
               <h3><span class="en">Breathe with<br>the light.</span><span class="zh" hidden>跟着灯塔，<br>慢慢呼吸。</span></h3>
-              <p><span class="en">In for four. Hold for four. Out for six. Follow the light at your own pace, and stop whenever you like.</span><span class="zh" hidden>吸气四拍，停留四拍，呼气六拍。跟着灯光试一试，按自己的速度来；任何时候都可以停下。</span></p>
+              <p><span class="en">In for four. Hold for four. Out for six, for six rounds. Follow the light at your own pace, and stop whenever you like.</span><span class="zh" hidden>吸气四拍，停留四拍，呼气六拍，共六轮。跟着灯光，按自己的速度来；任何时候都可以停下。</span></p>
               <button class="ritual-button" type="button" id="ritualBreatheStart">
-                <span class="en">Try one minute</span><span class="zh" hidden>试一分钟</span>
+                <span class="en">Begin breathing</span><span class="zh" hidden>开始呼吸</span>
               </button>
             </div>
             <div class="breath-demo" id="ritualBreath">
@@ -959,8 +1109,8 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
             <span class="zh" hidden>陪伴需要温度，<br><em>也需要边界。</em></span>
           </h2>
           <p class="en-p">
-            <span class="en">If a message suggests someone may need immediate support, the app may show the Beacon — with a breathing guide, a way to reach someone you trust, and local support resources.</span>
-            <span class="zh" hidden>当对话出现可能需要即时支持的信号时，App 可能会展示「灯塔」求助指引：呼吸练习、联系信任的人，以及当地求助资源。</span>
+            <span class="en">The Beacon is available from the app’s main pages. It offers a breathing guide, a way to reach someone you trust, and local support resources.</span>
+            <span class="zh" hidden>你可以从 App 的主页面随时打开「灯塔」求助指引：跟着呼吸、联系信任的人，或查找当地支持资源。</span>
           </p>
         </div>
         <div class="beacon-steps">
@@ -969,7 +1119,7 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
             <h3><span class="en">Land first</span><span class="zh" hidden>先稳住身体</span></h3>
             <p><span class="en">If it feels useful, pause for a short guided breath. You can stop at any time.</span><span class="zh" hidden>如果你愿意，可以跟着做一小段呼吸练习；随时都可以停下来。</span></p>
             <button class="beacon-link" type="button" id="beaconBreathe">
-              <span class="en">Try the breathing →</span><span class="zh" hidden>去呼吸一分钟 →</span>
+              <span class="en">Start breathing →</span><span class="zh" hidden>开始呼吸练习 →</span>
             </button>
           </article>
           <article class="beacon-step">
@@ -1075,7 +1225,7 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
             <span class="privacy-icon"><svg viewBox="0 0 24 24"><path d="M12 3a5.5 5.5 0 0 1 5.5 5.5c0 3-1.8 5.4-3 7.5h-5c-1.2-2.1-3-4.5-3-7.5A5.5 5.5 0 0 1 12 3zM9 19.5h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
             <div>
               <h3><span class="en">Memory you command</span><span class="zh" hidden>由你掌控的记忆</span></h3>
-              <p><span class="en">It remembers what matters between visits — and forgets any single memory the moment you ask. Immediately, no questions.</span><span class="zh" hidden>它会记住那些重要的事——你说忘记哪一条，立刻就忘。没有追问。</span></p>
+            <p><span class="en">Review saved memories one by one in the Memory tab. Choose any item to forget it.</span><span class="zh" hidden>记忆页会逐条列出保存的内容，你可以选择忘记其中任何一条。</span></p>
             </div>
           </div>
           <div class="privacy-item">
@@ -1167,14 +1317,26 @@ const L = {
     chatPlaceholder: "Say what’s on your mind…",
     bottlePlaceholder: "One sentence is enough…",
     forget: "Forget",
-    checkinHint: "Pick today’s tide",
-    checkinLogged: (n) => `Tide level ${n} — logged`,
-    checkinDone: (w) => `Today: ${w} · logged`,
+    checkinLogged: (w) => `${w} · recorded`,
+    checkinQuestion: "What’s the weather in your inner sea?",
+    checkinSubtitle: "A small note for today’s self. It will find its place in your tide chart.",
+    checkinBodyQuestion: "How does your body feel?",
+    checkinNote: "Leave a note for today’s self…",
+    checkinSubmit: "Log Sea Conditions",
     bottleNeed: "Write a sentence first — one is enough.",
     bottleToast: "Released into the sea · A reply will be waiting at 7:30",
     breathDone: "The body landed first — that’s enough for now.",
     cycle: (n) => `Cycle&nbsp;<b>${n}</b>`,
-    moods: ["Calm — glassy", "Gentle swell", "Overcast", "Restless chop", "Storm"],
+    weather: [
+      { id: "storm", name: "Storm", icon: "⛈" },
+      { id: "rain", name: "Rain", icon: "☂" },
+      { id: "fog", name: "Fog", icon: "≋" },
+      { id: "cloudy", name: "Cloudy", icon: "☁" },
+      { id: "breeze", name: "Breeze", icon: "≈" },
+      { id: "sunny", name: "Sunny", icon: "☼" },
+      { id: "aurora", name: "Aurora", icon: "✧" },
+    ],
+    bodyFeelings: ["Light", "Steady", "Tense", "Heavy", "Noisy mind", "Numb"],
     memories: [
       "Prefers being heard before advice is offered",
       "Rainy evenings have felt heavy lately",
@@ -1214,14 +1376,26 @@ const L = {
     chatPlaceholder: "想说就说……",
     bottlePlaceholder: "一句话就够了……",
     forget: "忘记",
-    checkinHint: "选一个今天的潮位",
-    checkinLogged: (n) => `潮位 ${n} —— 已记录`,
-    checkinDone: (w) => `今天：${w} · 已记录`,
+    checkinLogged: (w) => `${w} · 已记录`,
+    checkinQuestion: "今天的内海是什么天气？",
+    checkinSubtitle: "替今天的自己记一笔，它会留在你的潮汐表里。",
+    checkinBodyQuestion: "身体现在的感觉",
+    checkinNote: "给今天的自己留句话……",
+    checkinSubmit: "登记海况",
     bottleNeed: "先写一句吧——一句就够了。",
     bottleToast: "已放归大海 · 明早 7:30 有回信",
     breathDone: "身体先落地了，就到这里。",
     cycle: (n) => `第&nbsp;<b>${n}</b>&nbsp;组`,
-    moods: ["平静 · 无风", "微波", "多云", "骚动", "风暴"],
+    weather: [
+      { id: "storm", name: "雷暴", icon: "⛈" },
+      { id: "rain", name: "落雨", icon: "☂" },
+      { id: "fog", name: "有雾", icon: "≋" },
+      { id: "cloudy", name: "多云", icon: "☁" },
+      { id: "breeze", name: "微风", icon: "≈" },
+      { id: "sunny", name: "晴朗", icon: "☼" },
+      { id: "aurora", name: "极光", icon: "✧" },
+    ],
+    bodyFeelings: ["轻盈", "平稳", "紧绷", "沉重", "脑子很吵", "麻木"],
     memories: ["希望先被听见，再听建议", "最近雨天的傍晚容易低落", "周五有个重要的汇报"],
     modes: {
       vent: {
@@ -1384,15 +1558,19 @@ function makeBreath(root, opts = {}) {
   return { start, stop, isRunning: () => running };
 }
 
-/* phone breathing */
+/* phone breathing — six 4·4·6 rounds, matching the app */
 const phoneBreath = makeBreath($("#phoneBreath"), {
-  onDone: () => phoneToast(L[lang].breathDone),
+  autoCycles: 6,
+  onDone: () => {
+    phoneToast(L[lang].breathDone);
+    showScreen("now");
+  },
 });
 
-/* ritual breathing — one guided minute (4 cycles ≈ 1 minute) */
+/* ritual breathing — six guided 4·4·6 rounds, matching the app */
 const ritualBreathToast = $("#ritualBreathToast");
 const ritualBreath = makeBreath($("#ritualBreath"), {
-  autoCycles: 4,
+  autoCycles: 6,
   startBtn: $("#ritualBreatheStart"),
   onDone: () => {
     if (ritualBreathToast) {
@@ -1413,49 +1591,85 @@ $("#beaconBreathe")?.addEventListener("click", () => {
 
 /* ───────────────────────── check-in demo ───────────────────────── */
 
-let checkedIn = null; // { level }
+let checkedIn = null; // { weather, body, note }
+let selectedWeather = null;
+let selectedBodyFeeling = null;
 
-function renderCheckinScale() {
-  const scale = $("#checkinScale");
-  if (!scale) return;
-  scale.innerHTML = "";
-  L[lang].moods.forEach((mood, i) => {
-    const dot = document.createElement("button");
-    dot.type = "button";
-    dot.className = "tide-dot" + (checkedIn && checkedIn.level === i + 1 ? " on" : "");
-    dot.textContent = i + 1;
-    dot.addEventListener("click", () => pickTide(i + 1));
-    scale.appendChild(dot);
+function renderCheckinChoices() {
+  const weatherRoot = $("#weatherOptions");
+  const bodyRoot = $("#bodyOptions");
+  if (!weatherRoot || !bodyRoot) return;
+
+  weatherRoot.innerHTML = "";
+  L[lang].weather.forEach((weather) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "weather-choice" + (selectedWeather === weather.id ? " on" : "");
+    button.setAttribute("aria-pressed", String(selectedWeather === weather.id));
+    const icon = document.createElement("span");
+    icon.className = "weather-symbol";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = weather.icon;
+    const label = document.createElement("span");
+    label.className = "weather-label";
+    label.textContent = weather.name;
+    button.append(icon, label);
+    button.addEventListener("click", () => {
+      selectedWeather = weather.id;
+      renderCheckinChoices();
+    });
+    weatherRoot.appendChild(button);
   });
-  const label = document.createElement("p");
-  label.className = "checkin-scale-label";
-  label.textContent = checkedIn ? "" : L[lang].checkinHint;
-  scale.appendChild(label);
+
+  bodyRoot.innerHTML = "";
+  L[lang].bodyFeelings.forEach((name, index) => {
+    const id = ["light", "steady", "tense", "heavy", "noisy", "numb"][index];
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "body-choice" + (selectedBodyFeeling === id ? " on" : "");
+    button.setAttribute("aria-pressed", String(selectedBodyFeeling === id));
+    button.textContent = name;
+    button.addEventListener("click", () => {
+      selectedBodyFeeling = selectedBodyFeeling === id ? null : id;
+      renderCheckinChoices();
+    });
+    bodyRoot.appendChild(button);
+  });
+
+  const note = $("#checkinNote");
+  if (note) note.placeholder = L[lang].checkinNote;
+  const submit = $(".checkin-submit");
+  if (submit) submit.disabled = !selectedWeather;
 }
 
-function pickTide(level) {
-  checkedIn = { level };
-  renderCheckinScale();
-  const btn = $(".checkin-button");
-  if (btn) btn.hidden = true;
-  const done = $(".checkin-done");
-  const doneEn = $(".checkin-done .en");
-  const doneZh = $(".checkin-done .zh");
-  const weather = L.en.moods[level - 1];
-  const weatherZh = L.zh.moods[level - 1];
-  if (doneEn) doneEn.textContent = L.en.checkinDone(weather);
-  if (doneZh) doneZh.textContent = L.zh.checkinDone(weatherZh);
-  if (done) done.hidden = false;
-  const todayDot = $(".today-dot");
-  if (todayDot) todayDot.style.opacity = "1";
-  phoneToast(L[lang].checkinLogged(level));
+function openCheckin() {
+  selectedWeather = checkedIn?.weather || null;
+  selectedBodyFeeling = checkedIn?.body || null;
+  const note = $("#checkinNote");
+  if (note) note.value = checkedIn?.note || "";
+  renderCheckinChoices();
+  showScreen("checkin");
 }
 
-$(".checkin-button")?.addEventListener("click", () => {
-  const scale = $("#checkinScale");
-  if (scale) scale.hidden = false;
-  renderCheckinScale();
-});
+function saveCheckin() {
+  if (!selectedWeather) return;
+  const weatherEn = L.en.weather.find((item) => item.id === selectedWeather)?.name || "";
+  const weatherZh = L.zh.weather.find((item) => item.id === selectedWeather)?.name || "";
+  const bodyIndex = ["light", "steady", "tense", "heavy", "noisy", "numb"].indexOf(selectedBodyFeeling);
+  const bodyEn = bodyIndex >= 0 ? L.en.bodyFeelings[bodyIndex] : "";
+  const bodyZh = bodyIndex >= 0 ? L.zh.bodyFeelings[bodyIndex] : "";
+  const noteValue = $("#checkinNote")?.value.trim() || "";
+  checkedIn = { weather: selectedWeather, body: selectedBodyFeeling, note: noteValue };
+
+  $("#checkinTitleEn").textContent = `Today · ${weatherEn}`;
+  $("#checkinTitleZh").textContent = `今天 · ${weatherZh}`;
+  $("#checkinSubtitleEn").textContent = bodyEn ? `Body · ${bodyEn}` : (noteValue || "Your sea, recorded on this device.");
+  $("#checkinSubtitleZh").textContent = bodyZh ? `身体 · ${bodyZh}` : (noteValue || "今天的海况已记下，只保存在本机。");
+  $("#checkinHomeButton .en").textContent = "Edit today’s entry";
+  $("#checkinHomeButton .zh").textContent = "修改今天的记录";
+  showScreen("now");
+  phoneToast(L[lang].checkinLogged(lang === "en" ? weatherEn : weatherZh));
+}
 
 /* ───────────────────────── memory demo ───────────────────────── */
 
@@ -1663,9 +1877,9 @@ document.addEventListener("click", (e) => {
     const ok = releaseBottle(ta, phoneToast);
     if (ok) setTimeout(() => showScreen("now"), 900);
   } else if (action === "checkin") {
-    const scale = $("#checkinScale");
-    scale.hidden = false;
-    renderCheckinScale();
+    openCheckin();
+  } else if (action === "save-checkin") {
+    saveCheckin();
   }
 });
 
@@ -1684,7 +1898,7 @@ function renderDynamic() {
   renderSuggestions();
   renderChat();
   renderMemory();
-  renderCheckinScale();
+  renderCheckinChoices();
   const chatInput = $("#chatText");
   if (chatInput) chatInput.placeholder = L[lang].chatPlaceholder;
   const bottleInputs = $$(".bottle-input");
@@ -1725,6 +1939,6 @@ if ("IntersectionObserver" in window && revealEls.length) {
   setLang(stored === "zh" ? "zh" : "en");
 })();
 
-  </script>
+</script>
 </body>
 </html>
