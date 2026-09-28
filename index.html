@@ -891,10 +891,10 @@ body { background: #07191d; }
   right: -80px;
   width: min(720px, 70vw);
   height: min(820px, 115svh);
-  background: conic-gradient(from 200deg at 74% 27%, transparent 0deg, rgba(242, 199, 126, .03) 24deg, rgba(242, 199, 126, .12) 34deg, rgba(242, 199, 126, .035) 44deg, transparent 70deg);
+  background: conic-gradient(from 200deg at 74% 27%, rgba(242, 199, 126, 0) 0deg, rgba(242, 199, 126, .035) 24deg, rgba(242, 199, 126, .15) 34deg, rgba(242, 199, 126, .045) 44deg, rgba(242, 199, 126, 0) 70deg);
   transform-origin: 74% 27%;
   animation: lightvesselBeamSweep 16s ease-in-out infinite alternate;
-  mix-blend-mode: screen;
+  filter: blur(8px);
 }
 @keyframes lightvesselBeamSweep {
   from { transform: rotate(-13deg); }
