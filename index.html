@@ -273,7 +273,6 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
 .clarity-preview li { color: #c9dcd2; font-size: 12px; line-height: 1.45; padding-left: 14px; position: relative; }
 .clarity-preview li::before { content: "·"; position: absolute; left: 2px; color: var(--gold); }
 .clarity-preview li em { color: #f0dcae; font-style: normal; }
-.clarity-pocket { display: block; margin-top: 11px; color: #9fc3b4; font-size: 11px; }
 
 /* ───────── 02 tides ───────── */
 .tides-section { display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: clamp(40px, 8vw, 100px); padding: 104px 0 118px; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
@@ -335,8 +334,6 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
 .beacon-num { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(242, 199, 126, .4); border-radius: 50%; color: var(--gold); font-family: var(--serif); font-size: 15px; margin-bottom: 18px; }
 .beacon-step h3 { margin: 0 0 9px; font: 400 21px var(--serif); color: #edf1e9; }
 .beacon-step p { margin: 0; color: #9db0aa; font-size: 13.5px; line-height: 1.8; flex: 1; }
-.beacon-link { display: inline-flex; margin-top: 16px; color: var(--teal-bright); font-size: 12.5px; transition: color .2s; text-align: left; }
-.beacon-link:hover { color: var(--gold); }
 .beacon-quote { margin-top: 16px; padding: 13px 15px; border: 1px solid rgba(184, 221, 202, .14); border-left: 2px solid var(--gold); border-radius: 10px; background: rgba(5, 20, 24, .4); }
 .beacon-quote p { margin: 0 0 10px; color: #dcebe0; font: 13.5px/1.65 var(--serif); flex: none; }
 .beacon-copy { display: inline-flex; align-items: center; padding: 7px 14px; border: 1px solid rgba(116, 197, 180, .4); border-radius: 100px; color: #c9e4d6; font-size: 11.5px; transition: background .2s; }
@@ -381,11 +378,7 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
 
 /* ───────── closing ───────── */
 .closing { min-height: 440px; margin-bottom: 34px; border: 1px solid rgba(162, 216, 193, .16); border-radius: 18px; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: radial-gradient(ellipse at 50% 90%, rgba(40, 112, 102, .32), transparent 50%), #0f2528; }
-.closing::before, .closing::after { content: ""; position: absolute; left: -10%; right: -10%; bottom: -72%; height: 125%; border: 1px solid rgba(125, 197, 177, .1); border-radius: 50%; }
-.closing::after { left: 8%; right: 8%; bottom: -84%; border-color: rgba(242, 199, 126, .1); }
 .closing-light { position: absolute; top: 14px; left: calc(50% - 65px); width: 130px; height: 127px; display: grid; place-items: center; }
-.closing-light span { position: absolute; border-radius: 50%; border: 1px solid rgba(118, 200, 177, .13); }
-.closing-light span:nth-child(1) { inset: 4px; } .closing-light span:nth-child(2) { inset: 21px; border-color: rgba(242,199,126,.16); } .closing-light span:nth-child(3) { inset: 37px; }
 .closing-light img { width: 34px; height: 52px; object-fit: contain; filter: brightness(0) saturate(100%) invert(77%) sepia(19%) saturate(438%) hue-rotate(112deg) brightness(96%) contrast(90%) drop-shadow(0 0 10px rgba(242,199,126,.4)); }
 .closing-overline { color: #96baad; font-size: 12px; letter-spacing: .06em; margin: 104px 0 13px; position: relative; z-index: 2; }
 .closing h2 { font-size: clamp(38px, 4.3vw, 53px); line-height: 1.2; position: relative; z-index: 2; }
@@ -612,11 +605,11 @@ body { background: #07191d; }
 .intro, .tides-section, .rituals-section, .beacon-section, .meaning-section, .privacy-section, .pricing { border-top-color: rgba(190, 220, 207, .1); }
 .mode-card, .tide-ui, .ritual, .beacon-step, .privacy-item, .weekly-note, .bottle-demo { background: #0e2023; box-shadow: none; }
 .mode-card, .tide-ui, .ritual, .beacon-step, .privacy-item { border-color: rgba(190, 220, 207, .12); }
-.closing { border-color: rgba(190, 220, 207, .14); border-radius: 16px; background: radial-gradient(ellipse at 50% 100%, rgba(39, 103, 93, .18), transparent 60%), #0e2023; }
-.closing::before, .closing::after { border-color: rgba(150, 204, 183, .07); }
+.closing { border-color: rgba(190, 220, 207, .14); border-radius: 16px; background: radial-gradient(ellipse at 50% 100%, rgba(39, 103, 93, .12), transparent 62%), #0e2023; }
+.closing::before, .closing::after { display: none; }
 .meaning-mark, .closing-light { filter: none; }
 .meaning-mark img, .closing-light img { filter: brightness(0) saturate(100%) invert(72%) sepia(18%) saturate(442%) hue-rotate(113deg) brightness(94%) contrast(88%); }
-.sea-moon, .sea-star, .sea-light-beam, .meaning-glow, .meaning-orbit, .closing-light > span { display: none !important; }
+.sea-moon, .sea-star, .sea-light-beam, .meaning-glow, .meaning-orbit { display: none !important; }
 .arc-back, .arc-front { display: none; }
 
 @media (min-width: 721px) and (max-height: 760px) {
@@ -1570,6 +1563,7 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
 
 /* Keep hero copy comfortably inside the frame while the beam sweeps past. */
 .hero-copy { box-sizing: border-box; padding-inline-start: clamp(18px, 1.8vw, 28px); }
+
 </style>
 </head>
 <body>
@@ -1678,7 +1672,6 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
                 <li><span class="en">A gentler way to see it</span><span class="zh" hidden>一个更温和的看法</span></li>
                 <li><em><span class="en">The smallest next step</span><span class="zh" hidden>最小的下一步</span></em></li>
               </ul>
-              <span class="clarity-pocket"><span class="en">Keep this</span><span class="zh" hidden>收进口袋</span> →</span>
             </div>
           </article>
           <article class="mode-card">
@@ -1773,28 +1766,16 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
               <span class="ritual-index"><span class="en">01 · PAUSE</span><span class="zh" hidden>01 · 停一停</span></span>
               <h3><span class="en">Breathe with<br>the light.</span><span class="zh" hidden>跟着灯塔，<br>慢慢呼吸。</span></h3>
               <p><span class="en">In for four. Hold for four. Out for six, for six rounds. Follow the light at your own pace, and stop whenever you like.</span><span class="zh" hidden>吸气四拍，停留四拍，呼气六拍，共六轮。跟着灯光，按自己的速度来；任何时候都可以停下。</span></p>
-              <button class="ritual-button" type="button" id="ritualBreatheStart">
-                <span class="en">Begin breathing</span><span class="zh" hidden>开始呼吸</span>
-              </button>
             </div>
-            <div class="breath-demo" id="ritualBreath">
+            <div class="breath-demo">
               <div class="breath-orb" aria-hidden="true">
                 <span class="breath-halo halo-a"></span><span class="breath-halo halo-b"></span>
                 <img data-lightvessel-mark src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iTGlnaHR2ZXNzZWwgYmVhY29uIj4KICA8ZyBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiBmaWxsPSIjQTg2QTJEIiBzdHJva2U9IiNBODZBMkQiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="">
               </div>
               <div class="breath-caption">
-                <strong class="breath-phase" data-phase-ready><span class="en">Ready when you are</span><span class="zh" hidden>准备好了就开始</span></strong>
-                <strong class="breath-phase" data-phase-in hidden><span class="en">Inhale</span><span class="zh" hidden>吸气</span></strong>
-                <strong class="breath-phase" data-phase-hold hidden><span class="en">Hold</span><span class="zh" hidden>停留</span></strong>
-                <strong class="breath-phase" data-phase-out hidden><span class="en">Exhale</span><span class="zh" hidden>呼气</span></strong>
-                <span class="breath-count" hidden>4</span>
-                <span class="breath-cycles" hidden><span class="en">Cycle</span><span class="zh" hidden>第</span>&nbsp;<b>1</b></span>
+                <strong class="breath-phase"><span class="en">At your own pace</span><span class="zh" hidden>按自己的节奏来</span></strong>
               </div>
-              <button class="breath-stop" type="button" id="ritualBreatheStop" hidden>
-                <span class="en">That’s enough for now</span><span class="zh" hidden>今天就到这里</span>
-              </button>
-              <p class="bottle-toast" id="ritualBreathToast" hidden></p>
-            </div>
+</div>
           </article>
 
           <article class="ritual bottle-card">
@@ -1842,11 +1823,8 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
           <article class="beacon-step">
             <span class="beacon-num">1</span>
             <h3><span class="en">Land first</span><span class="zh" hidden>先稳住身体</span></h3>
-            <p><span class="en">If it feels useful, pause for a short guided breath. You can stop at any time.</span><span class="zh" hidden>如果你愿意，可以跟着做一小段呼吸练习；随时都可以停下来。</span></p>
-            <button class="beacon-link" type="button" id="beaconBreathe">
-              <span class="en">Start breathing →</span><span class="zh" hidden>开始呼吸练习 →</span>
-            </button>
-          </article>
+            <p><span class="en">The Beacon offers a short breathing guide you can stop at any time.</span><span class="zh" hidden>Beacon 提供一段简短的呼吸引导，你随时都可以停下来。</span></p>
+</article>
           <article class="beacon-step">
             <span class="beacon-num">2</span>
             <h3><span class="en">Tell one real person</span><span class="zh" hidden>告诉一个真实的人</span></h3>
@@ -2014,7 +1992,6 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
       <!-- ══════════════ CLOSING ══════════════ -->
       <section class="closing section-frame reveal">
         <div class="closing-light">
-          <span></span><span></span><span></span>
           <img data-lightvessel-mark src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iTGlnaHR2ZXNzZWwgYmVhY29uIj4KICA8ZyBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiBmaWxsPSIjQTg2QTJEIiBzdHJva2U9IiNBODZBMkQiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="">
         </div>
         <p class="closing-overline">
@@ -2078,8 +2055,6 @@ const L = {
     checkinSubmit: "Log Sea Conditions",
     bottleNeed: "Write a sentence first — one is enough.",
     bottleToast: "Released into the sea · A reply will be waiting at 7:30",
-    breathDone: "The body landed first — that’s enough for now.",
-    cycle: (n) => `Cycle&nbsp;<b>${n}</b>`,
     weather: [
       { id: "storm", name: "Storm", icon: "⛈" },
       { id: "rain", name: "Rain", icon: "☂" },
@@ -2138,8 +2113,6 @@ const L = {
     checkinSubmit: "登记海况",
     bottleNeed: "先写一句吧——一句就够了。",
     bottleToast: "已放归大海 · 明早 7:30 有回信",
-    breathDone: "身体先落地了，就到这里。",
-    cycle: (n) => `第&nbsp;<b>${n}</b>&nbsp;组`,
     weather: [
       { id: "storm", name: "雷暴", icon: "⛈" },
       { id: "rain", name: "落雨", icon: "☂" },
@@ -2255,109 +2228,6 @@ function phoneToast(msg) {
     setTimeout(() => (el.hidden = true), 320);
   }, 2400);
 }
-
-/* ───────────────────────── breathing engine ───────────────────────── */
-
-function makeBreath(root, opts = {}) {
-  const orb = root.querySelector(".breath-orb");
-  const ready = root.querySelector("[data-phase-ready]");
-  const inEl = root.querySelector("[data-phase-in]");
-  const holdEl = root.querySelector("[data-phase-hold]");
-  const outEl = root.querySelector("[data-phase-out]");
-  const count = root.querySelector(".breath-count");
-  const cycles = root.querySelector(".breath-cycles");
-  const stopBtn = root.querySelector(".breath-stop");
-  const seq = [
-    { key: "in", dur: 4000 },
-    { key: "hold", dur: 4000 },
-    { key: "out", dur: 6000 },
-  ];
-  let running = false;
-  let cycle = 0;
-  let stepTimer = null;
-  let countTimer = null;
-  const phaseEls = { ready, in: inEl, hold: holdEl, out: outEl };
-
-  function showPhase(key) {
-    Object.entries(phaseEls).forEach(([k, el]) => (el.hidden = k !== key));
-  }
-  function countdown(ms) {
-    let left = Math.round(ms / 1000);
-    count.hidden = false;
-    count.textContent = left;
-    clearInterval(countTimer);
-    countTimer = setInterval(() => {
-      left -= 1;
-      if (left > 0) count.textContent = left;
-    }, 1000);
-  }
-  function step(i) {
-    const { key, dur } = seq[i];
-    showPhase(key);
-    if (key === "in") {
-      cycle += 1;
-      if (cycles) {
-        cycles.hidden = false;
-        cycles.innerHTML = L[lang].cycle(cycle);
-      }
-      orb.classList.add("running");
-      orb.style.transitionDuration = `${dur}ms`;
-      requestAnimationFrame(() => orb.classList.add("in"));
-    } else if (key === "out") {
-      orb.style.transitionDuration = `${dur}ms`;
-      orb.classList.remove("in");
-    }
-    countdown(dur);
-    const nextIndex = (i + 1) % seq.length;
-    const autoDone = opts.autoCycles && key === "out" && cycle >= opts.autoCycles;
-    stepTimer = setTimeout(() => (autoDone ? stop(true) : step(nextIndex)), dur);
-  }
-  function start() {
-    if (running) return;
-    running = true;
-    cycle = 0;
-    if (stopBtn) stopBtn.hidden = false;
-    if (opts.startBtn) opts.startBtn.hidden = true;
-    step(0);
-  }
-  function stop(auto = false) {
-    if (!running) return;
-    running = false;
-    clearTimeout(stepTimer);
-    clearInterval(countTimer);
-    orb.classList.remove("running", "in");
-    orb.style.transitionDuration = "700ms";
-    showPhase("ready");
-    count.hidden = true;
-    if (cycles) cycles.hidden = true;
-    if (stopBtn) stopBtn.hidden = true;
-    if (opts.startBtn) opts.startBtn.hidden = false;
-    if (opts.onDone) opts.onDone(auto);
-  }
-  return { start, stop, isRunning: () => running };
-}
-
-/* ritual breathing — six guided 4·4·6 rounds, matching the app */
-const ritualBreathToast = $("#ritualBreathToast");
-const ritualBreath = makeBreath($("#ritualBreath"), {
-  autoCycles: 6,
-  startBtn: $("#ritualBreatheStart"),
-  onDone: () => {
-    if (ritualBreathToast) {
-      ritualBreathToast.textContent = L[lang].breathDone;
-      ritualBreathToast.hidden = false;
-      clearTimeout(ritualToastTimer);
-      ritualToastTimer = setTimeout(() => (ritualBreathToast.hidden = true), 4200);
-    }
-  },
-});
-
-$("#ritualBreatheStart")?.addEventListener("click", () => ritualBreath.start());
-$("#ritualBreatheStop")?.addEventListener("click", () => ritualBreath.stop());
-$("#beaconBreathe")?.addEventListener("click", () => {
-  $("#rituals").scrollIntoView({ behavior: "smooth", block: "center" });
-  setTimeout(() => ritualBreath.start(), 650);
-});
 
 /* ───────────────────────── check-in demo ───────────────────────── */
 
