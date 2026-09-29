@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#07191e">
   <meta name="description" content="Lightvessel is a lightship anchored beside you through every tide. Talk, note your mood, breathe with the light, or simply stay awhile. Made for iPhone.">
   <title>Lightvessel — A quiet harbor for your inner tides</title>
-  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTgiIGZpbGw9IiMwYzI5MmQiLz4KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjIyIiByPSIxNSIgZmlsbD0iI2U4YmE3MCIgb3BhY2l0eT0iLjE2Ii8+CiAgPHBhdGggZD0iTTI4IDE1aDh2OGg0djVIMjR2LTVoNHpNMjUgMzJoMTRsMyAxOEgyMnoiIGZpbGw9IiM4MWNkYjgiLz4KICA8cGF0aCBkPSJNMTYgNTNjNS0zIDEwLTMgMTYgMHMxMSAzIDE2IDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzgxY2RiOCIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0zMSAxNmgydjdoLTJ6IiBmaWxsPSIjZjNjNzdkIi8+Cjwvc3ZnPgo=" type="image/svg+xml">
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTgiIGZpbGw9IiNlNGVmZWIiLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1IDIpIHNjYWxlKC4wNTMpIiBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1IDIpIHNjYWxlKC4wNTMpIiBmaWxsPSIjQTg2QTJEIi8+Cjwvc3ZnPgo=" type="image/svg+xml">
   <style>
 :root {
   color-scheme: dark;
@@ -907,6 +907,459 @@ body { background: #07191d; }
   .sea-light-beam { animation: none; transform: rotate(1deg); }
 }
 
+/* The moving light ends in a soft oval falloff, like a real beam in mist. */
+.sea-light-beam {
+  top: -22%;
+  right: -3%;
+  width: min(900px, 88vw);
+  height: 132%;
+  background: conic-gradient(from 148deg at 100% 22%, transparent 0deg, transparent 45deg, rgba(242, 199, 126, .025) 50deg, rgba(242, 199, 126, .12) 58deg, rgba(242, 199, 126, .035) 68deg, transparent 88deg);
+  transform-origin: 100% 22%;
+  -webkit-mask-image: radial-gradient(ellipse at 99% 23%, #000 0%, #000 22%, rgba(0,0,0,.88) 42%, transparent 76%);
+  mask-image: radial-gradient(ellipse at 99% 23%, #000 0%, #000 22%, rgba(0,0,0,.88) 42%, transparent 76%);
+  filter: blur(11px);
+}
+@media (max-width: 720px) {
+  .sea-light-beam { top: -14%; right: -36%; width: 136vw; height: 108%; }
+}
+
+/* Match the live iPhone app: pale sea glass, ink typography, and the app's own mark. */
+img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !important; }
+.phone-hint { color: #dcece5; }
+.phone-frame {
+  height: min(742px, calc(100svh - 96px));
+  aspect-ratio: 402 / 874;
+  padding: 1.5px;
+  border: 1px solid rgba(176, 185, 178, .8);
+  border-radius: 48px;
+  background: linear-gradient(145deg, #e2e5df 0%, #89908c 3%, #2c3433 7%, #111818 52%, #555d59 96%, #d0d5cf 100%);
+  box-shadow: 0 28px 62px rgba(0, 0, 0, .36), inset 0 0 0 1px rgba(255, 255, 255, .23);
+}
+.phone-frame::before, .phone-frame::after { width: 1px; background: #8d9691; }
+.phone-frame::before { height: 38px; left: -2px; top: 116px; box-shadow: 0 52px 0 #8d9691; }
+.phone-frame::after { height: 62px; right: -2px; top: 148px; }
+.phone-screen {
+  border: 0;
+  border-radius: 45px;
+  color: #151918;
+  background:
+    radial-gradient(ellipse at 62% 22%, rgba(255,255,255,.38), transparent 44%),
+    linear-gradient(155deg, #eef3f0 0%, #e4efeb 40%, #d7e7e1 100%);
+}
+.dynamic-island { top: 9px; width: 104px; height: 28px; }
+.phone-status { padding: 11px 13.5% 0; color: #131715; font-size: 11px; }
+.status-icons svg { display: block; width: 43px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.app-screen.overlay { background: linear-gradient(155deg, #eef3f0 0%, #e4efeb 40%, #d7e7e1 100%); }
+.app-topline {
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+  margin: 49px 17px 7px;
+  color: #131715;
+}
+.app-heading { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.08; }
+.app-wordmark { color: #0d1211; font: 600 20px/1.04 var(--serif); letter-spacing: 0; }
+.app-wordmark-sub { position: static; transform: none; margin-top: 3px; color: #707a76; font-size: 7px; letter-spacing: .31em; }
+.app-topline > .app-wordmark { font-size: 22px; }
+.app-header-actions { display: flex; align-items: center; }
+.app-settings { display: none !important; }
+.app-beacon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 4px 12px;
+  border: 1px solid rgba(168, 126, 79, .44);
+  border-radius: 999px;
+  background: rgba(232, 218, 192, .44);
+  color: #936332;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.app-beacon img { width: 16px; height: 20px; object-fit: contain; filter: none !important; }
+.phone-body { padding: 0 16px 18px; color: #181c1a; }
+.screen-sub { margin: 5px 1px 14px; color: #777e7c; font-size: 14px; line-height: 1.45; }
+.screen-footnote { color: #78817d; }
+
+/* Now */
+.screen-now .phone-body { padding: 0 16px 78px; }
+.presence-orb { width: 154px; height: 142px; margin: 0 auto 2px; }
+.orb-glow {
+  position: absolute;
+  z-index: 0;
+  inset: -29px -33px -24px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 53%, rgba(30, 145, 120, .30) 0%, rgba(67, 171, 144, .22) 36%, rgba(106, 190, 168, .10) 57%, transparent 78%);
+  filter: blur(10px);
+  animation: beaconHaze 8s ease-in-out infinite alternate;
+}
+@keyframes beaconHaze { from { opacity: .72; transform: scale(.94); } to { opacity: 1; transform: scale(1.04); } }
+.orb-ring { display: none !important; }
+.lighthouse-mark { position: relative; z-index: 1; display: grid; place-items: center; width: 112px; height: 112px; }
+.lighthouse-mark img { width: 100%; height: 100%; object-fit: contain; filter: none !important; animation: presenceTide 14s ease-in-out infinite; }
+.app-greeting { margin: 0 0 9px; color: #111513; font: 600 17px/1.28 var(--serif); }
+.checkin-card {
+  margin: 0 0 11px;
+  padding: 14px 15px 12px;
+  border: 1px solid rgba(255,255,255,.75);
+  border-radius: 19px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 3px 15px rgba(73, 109, 96, .06);
+}
+.checkin-title { margin: 0; color: #181b19; font: 650 14px/1.42 var(--sans); }
+.checkin-subtitle { margin: 6px 0 0; color: #858b89; font-size: 12px; line-height: 1.38; }
+.checkin-button {
+  width: fit-content;
+  margin: 11px auto 0;
+  padding: 7px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #16836f;
+  color: #f7fbf9;
+  font-size: 15px;
+  line-height: 1.25;
+}
+.checkin-button:hover { background: #116f5e; }
+.app-actions { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.app-action {
+  min-height: 69px;
+  padding: 8px 4px 7px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 17px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 2px 9px rgba(64, 101, 89, .04);
+}
+.app-action:hover { border-color: rgba(22,131,111,.3); background: rgba(255,255,255,.94); }
+.app-action > span { color: #80aaa0; font-size: 13px; font-weight: 500; }
+.app-action .action-icon { width: 22px; height: 22px; flex: 0 0 22px; color: #168673; stroke-width: 1.9; }
+.bottle-reply-card {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  min-height: 48px;
+  margin: 12px 0 4px;
+  padding: 8px 13px;
+  border: 1px solid rgba(174, 141, 104, .48);
+  border-radius: 16px;
+  background: rgba(235, 223, 203, .58);
+  color: #171a18;
+  text-align: left;
+}
+.bottle-reply-card > svg { width: 23px; height: 23px; flex: none; fill: none; stroke: #a86a2d; stroke-width: 1.8; stroke-linejoin: round; }
+.bottle-reply-card strong { font-size: 13px; font-weight: 600; }
+.reply-chevron { margin-left: auto; color: #818784; font-size: 25px; line-height: 1; }
+.phone-recent { padding-top: 12px; }
+.phone-section-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; color: #171a18; font: 600 16px/1.3 var(--serif); }
+.phone-section-title .sample-label { display: none; }
+.recent-empty { margin: 12px 0 14px; padding: 9px 0; color: #898f8d; font-size: 13px; line-height: 1.45; text-align: center; }
+.phone-section-title.log-title { margin-top: 7px; }
+.presence-status { display: inline-flex; align-items: center; gap: 5px; color: #168673; font: 12px/1.2 var(--sans); }
+.presence-status i { width: 6px; height: 6px; border-radius: 50%; background: #168673; }
+.vessel-log-rows { color: #68716e; }
+.vessel-log-row { display: grid; grid-template-columns: 39px 19px 1fr; align-items: center; gap: 7px; min-height: 27px; color: #5d6662; font-size: 10px; }
+.vessel-log-row .log-time { color: #9aa19f; }
+.vessel-log-row .log-mark { color: #168673; }
+
+/* Tides */
+.screen-tides .phone-body, .screen-memory .phone-body { padding: 0 15px 76px; }
+.screen-tides .screen-sub { margin: 5px 0 12px; font-size: 14px; }
+.mini-chart-card {
+  margin: 0 0 11px;
+  padding: 13px 13px 10px;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 19px;
+  background: rgba(255,255,255,.84);
+  box-shadow: 0 3px 15px rgba(73, 109, 96, .05);
+}
+.mini-chart-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 3px 6px; margin-bottom: 7px; color: #171a18; font-size: 11px; }
+.mini-chart-head strong { flex: 0 0 100%; color: #191c1a; font-size: 13px; font-weight: 650; }
+.chart-metrics { display: block; width: 100%; color: #818785; font-size: 9px; font-weight: 400; text-align: left; line-height: 1.25; }
+.tide-chart-layout { display: grid; grid-template-columns: 12px 1fr; align-items: stretch; gap: 3px; height: 101px; }
+.chart-y-labels { display: flex; flex-direction: column; justify-content: space-between; padding: 0 0 13px; color: #828986; font-size: 9px; line-height: 1; }
+.mini-chart { display: block; width: 100%; height: 100%; overflow: visible; }
+.chart-grid { fill: none; stroke: rgba(118, 128, 123, .35); stroke-width: .65; }
+.chart-grid-vertical { stroke: rgba(118, 128, 123, .34); stroke-dasharray: 2.2 2.3; }
+.chart-empty-days { fill: #d4d8d6; }
+.today-dot { transition: cx .5s ease, cy .5s ease; }
+.mini-days { margin: 2px 1px 0 16px; color: #818785; font-size: 9px; }
+.chart-footnote { margin: 10px 1px 0; color: #a0a6a3; font-size: 10px; line-height: 1.35; }
+.tides-checkin-button { width: fit-content; display: block; margin: 11px auto 20px; padding: 8px 16px; }
+.weekly-letter { margin: 0; padding: 14px 15px 15px; border: 1px solid rgba(255,255,255,.78); border-radius: 19px; background: rgba(255,255,255,.82); color: #191c1a; }
+.weekly-letter h3 { margin: 0 0 7px; font: 600 17px/1.3 var(--serif); }
+.weekly-letter p { margin: 0 0 11px; color: #1a1d1b; font: 14px/1.52 var(--serif); }
+.weekly-letter p:last-child { margin-bottom: 0; }
+.mini-card, .memory-item { border-color: rgba(255,255,255,.8); border-radius: 16px; background: rgba(255,255,255,.82); }
+.memory-item p { color: #313936; font-size: 12px; }
+.memory-tag { color: #168673; border-color: rgba(22,131,111,.24); }
+.memory-forget { color: #75817b; border-color: rgba(80,104,94,.3); }
+.memory-empty { color: #75817b; }
+
+/* Check-in */
+.screen-checkin .checkin-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 54px 15px 8px; }
+.checkin-toolbar > button { padding: 8px 13px; border-radius: 999px; background: rgba(255,255,255,.82); color: #202522; font-size: 13px; }
+.checkin-toolbar .checkin-save-top { background: rgba(255,255,255,.88); color: #168673; font-weight: 600; }
+.checkin-toolbar .checkin-save-top:disabled { color: #a4acab; }
+.checkin-form-body { padding: 0 15px 20px; }
+.checkin-screen-title { margin: 8px 0 18px; color: #111513; font: 650 26px/1.12 var(--sans); letter-spacing: -.04em; }
+.checkin-form-question, .body-feeling-question { margin: 0; padding: 13px 14px 8px; color: #858c89; font-size: 13px; }
+.weather-options { padding: 2px 12px 12px; border: 1px solid rgba(255,255,255,.8); border-radius: 18px; background: rgba(255,255,255,.82); }
+.weather-choice { min-height: 58px; border-color: rgba(118,128,123,.28); border-radius: 14px; color: #828784; }
+.weather-choice.selected, .weather-choice.on { border-color: #168673; background: rgba(22,131,111,.09); color: #168673; }
+.weather-symbol { font-size: 19px; }
+.weather-symbol svg { width: 20px; height: 20px; stroke-width: 1.6; }
+.weather-label { font-size: 11px; }
+.body-feeling-question { margin-top: 13px; padding-bottom: 8px; }
+.body-options { padding: 0 12px 12px; border: 1px solid rgba(255,255,255,.8); border-radius: 18px; background: rgba(255,255,255,.82); }
+.body-choice { min-height: 37px; border-color: rgba(118,128,123,.28); border-radius: 999px; color: #808784; font-size: 11px; }
+.body-choice.on { border-color: #168673; background: rgba(22,131,111,.09); color: #168673; }
+.checkin-note { min-height: 86px; margin-top: 14px; border: 1px solid rgba(255,255,255,.82); border-radius: 18px; background: rgba(255,255,255,.84); color: #222725; font: 13px/1.5 var(--sans); }
+.checkin-note::placeholder { color: #a0a7a4; }
+
+/* Talk, breathing, bottle, and Beacon */
+.screen-chat .chat-head, .screen-bottle .chat-head, .screen-beacon .chat-head { min-height: 56px; padding: 37px 15px 7px; border: 0; color: #131715; justify-content: center; }
+.screen-chat .chat-head { position: relative; }
+.chat-back { position: absolute; left: 15px; top: 43px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.85); color: #202522; }
+.chat-back svg { width: 22px; height: 22px; }
+.chat-back.bottle-close { left: auto; right: 14px; top: 47px; width: 32px; height: 32px; background: transparent; color: #7c8581; }
+.chat-title { color: #171b19; font-size: 17px; font-weight: 600; text-align: center; }
+.screen-chat .mode-chips { gap: 6px; padding: 8px 14px 6px; }
+.mode-chip { padding: 7px 10px; border-color: rgba(112,130,122,.25); color: #7f8985; font-size: 12px; }
+.mode-chip.on { border-color: rgba(22,131,111,.45); background: rgba(22,131,111,.1); color: #168673; }
+.chat-scroll { min-height: 0; padding: 12px 18px; }
+.screen-chat .chat-scroll:has(.chat-empty) { display: grid; place-items: center; }
+.chat-empty { margin: 0; color: #89908d; font-size: 15px; text-align: center; }
+.bubble { font-size: 12px; }
+.bubble.ai { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.8); color: #28312d; }
+.bubble.user { border-color: rgba(22,131,111,.18); background: rgba(22,131,111,.11); color: #125c50; }
+.bubble.guidance { border-style: solid; color: #596762; background: rgba(255,255,255,.62); }
+.chat-footer-note { padding: 0; color: #65716c; }
+.message-limit { display: flex; align-items: center; justify-content: space-between; min-height: 33px; padding: 5px 13px; background: rgba(22,131,111,.12); color: #168673; font-size: 11px; }
+.message-limit a { color: #168673; font-weight: 600; }
+.chat-disclaimer { display: block; padding: 5px 10px 6px; color: #596460; font-size: 10px; text-align: center; }
+.chat-input { gap: 9px; margin: 0 11px 12px; padding: 8px 9px 8px 13px; border: 1px solid rgba(255,255,255,.86); border-radius: 999px; background: rgba(255,255,255,.84); box-shadow: 0 5px 18px rgba(61,94,83,.1); }
+.chat-input input { height: 38px; padding: 0 4px; border: 0; background: transparent; color: #242927; font-size: 14px; }
+.chat-input input::placeholder { color: #a1a7a4; }
+.chat-mic { display: grid; place-items: center; width: 25px; height: 28px; flex: none; color: #131715; }
+.chat-mic svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.chat-send { width: 38px; height: 38px; flex: none; border: 0; background: #c8c8d0; color: white; }
+.chat-send svg { width: 20px; height: 20px; }
+.screen-breathe .breathe-body { position: relative; padding: 125px 24px 30px; background: transparent; }
+.overlay-close { position: absolute; z-index: 14; top: 48px; right: 25px; color: #7e8783; font-size: 29px; font-weight: 300; line-height: 1; }
+.breath-stage { width: 100%; gap: 18px; }
+.breath-orb { width: 188px; height: 214px; }
+.breath-orb.small { width: 178px; height: 202px; }
+.breath-orb img { width: 138px; height: 148px; object-fit: contain; filter: none !important; }
+.breath-halo { inset: -15px -20px; border: 0; border-radius: 50%; background: radial-gradient(ellipse at 50% 48%, rgba(222,169,82,.24) 0%, rgba(36,143,118,.27) 31%, rgba(74,169,143,.18) 52%, transparent 76%); filter: blur(11px); animation: beaconHaze 7s ease-in-out infinite alternate; }
+.breath-caption { min-height: 76px; gap: 4px; }
+.breath-phase { color: #131715; font: 600 22px/1.2 var(--serif); letter-spacing: .18em; }
+.breath-count { color: #168673; font-size: 15px; margin-top: 26px; }
+.breath-dots { display: flex; align-items: center; gap: 7px; position: absolute; margin-top: 46px; }
+.breath-dots i { display: block; width: 8px; height: 8px; border: 1px solid rgba(22,131,111,.65); border-radius: 50%; }
+.breath-stop { margin-top: 54px; padding: 9px 20px; border-color: rgba(22,131,111,.22); color: #6ea89b; font-size: 14px; }
+.breathe-intro { max-width: 270px; color: #818986; font-size: 13px; line-height: 1.55; }
+.screen-bottle .chat-head { min-height: 73px; padding-top: 50px; }
+.screen-bottle .phone-body { padding: 16px 15px; }
+.bottle-visual { width: 100%; height: 112px; margin: 0 auto 12px; border: 1px solid rgba(255,255,255,.8); border-radius: 19px; background: rgba(255,255,255,.82); }
+.bottle-visual img { width: 94px; height: 86px; filter: none !important; opacity: .46; }
+.bottle-lede { margin: 0 0 13px; color: #7e8582; font-size: 14px; line-height: 1.5; }
+.bottle-input { min-height: 103px; border: 1px solid rgba(255,255,255,.9); border-radius: 18px; background: rgba(255,255,255,.84); color: #222725; font-size: 14px; }
+.bottle-input::placeholder { color: #9ca4a0; }
+.bottle-send { margin-top: 12px; padding: 10px; border: 0; background: #16836f; color: white; font-size: 14px; }
+.bottle-send:disabled { background: rgba(150,160,156,.3); color: #9da5a2; }
+.screen-beacon .chat-head { justify-content: center; }
+.beacon-phone-body { padding: 0 15px 22px; }
+.beacon-phone-intro { position: relative; padding: 0 0 12px; text-align: left; }
+.beacon-phone-intro::before { content: ""; position: absolute; top: 0; left: 0; width: 90px; height: 95px; border-radius: 50%; background: radial-gradient(ellipse, rgba(32,151,126,.27), transparent 72%); filter: blur(5px); }
+.beacon-phone-intro img { position: relative; width: 54px; height: 65px; margin: 0 0 8px; object-fit: contain; filter: none !important; }
+.beacon-phone-intro h2 { color: #171b19; font: 600 20px/1.2 var(--serif); }
+.beacon-phone-intro p { margin: 5px 0 0; color: #7d8581; font-size: 14px; }
+.beacon-phone-step { grid-template-columns: 20px 1fr; gap: 8px; padding: 10px 0; border-top-color: rgba(103,119,111,.16); }
+.beacon-phone-num { color: #a86a2d; font: 17px var(--serif); }
+.beacon-phone-step strong { color: #171b19; font-size: 14px; }
+.beacon-phone-step p { margin: 4px 0 7px; color: #7d8581; font-size: 12px; line-height: 1.42; }
+.beacon-phone-step button, .beacon-phone-step a { color: #16836f; font-size: 12px; }
+.beacon-phone-step button { display: inline-block; padding: 6px 11px; border-radius: 999px; background: #16836f; color: white; }
+.beacon-phone-step > div > a:not(.find-help-button) { display: block; margin: 7px 0; padding: 8px 10px; border-radius: 12px; background: rgba(255,255,255,.86); color: #777f7b; font-size: 10px; }
+.beacon-phone-step > div > a b { display: block; color: #151918; font-size: 15px; }
+.beacon-phone-step .find-help-button { display: block; margin-top: 9px; padding: 9px; border-radius: 999px; background: #16836f; color: white; text-align: center; font-weight: 600; }
+.phone-tabbar {
+  position: absolute;
+  left: 50%;
+  right: auto;
+  bottom: 8px;
+  width: 81%;
+  height: 55px;
+  min-height: 55px;
+  padding: 4px 7px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 999px;
+  background: rgba(250,253,251,.86);
+  box-shadow: 0 7px 24px rgba(54, 82, 72, .17), inset 0 0 0 1px rgba(159,192,179,.12);
+  backdrop-filter: blur(14px);
+}
+.tab-btn { min-width: 0; flex: 1; height: 100%; gap: 2px; justify-content: center; border-radius: 999px; color: #121715; }
+.tab-btn svg { width: 23px; height: 23px; color: currentColor; stroke-width: 2.1; }
+.tab-btn[data-tab="now"] svg, .tab-btn[data-tab="memory"] svg { fill: currentColor; stroke: none; }
+.tab-btn small { color: currentColor; font-size: 11px; letter-spacing: 0; }
+.tab-btn.active { background: rgba(22,131,111,.12); color: #147f6c; }
+.phone-toast { top: 46px; background: rgba(255,255,255,.94); border-color: rgba(22,131,111,.24); color: #235c51; box-shadow: 0 8px 24px rgba(54,82,72,.16); font-size: 11px; }
+
+@media (max-width: 720px) {
+  .phone-frame { height: min(680px, calc(100svh - 128px)); border-radius: 46px; }
+  .phone-screen { border-radius: 43px; }
+  .phone-status { padding-inline: 13.5%; }
+  .app-topline { margin-top: 49px; }
+  .screen-now .phone-body { padding-inline: 14px; }
+  .presence-orb { width: 140px; height: 130px; }
+  .lighthouse-mark { width: 102px; height: 102px; }
+  .screen-tides .phone-body, .screen-memory .phone-body { padding-inline: 13px; }
+  .screen-breathe .breathe-body { padding-top: 112px; }
+  .phone-tabbar { width: 82%; height: 53px; min-height: 53px; }
+}
+@media (max-height: 760px) {
+  .phone-frame { height: min(560px, calc(100svh - 154px)); }
+}
+
+/* Keep the screen details in proportion when the whole iPhone is shown smaller on desktop. */
+.phone-screen { container-type: inline-size; }
+.phone-frame { border-radius: 23px; }
+.phone-frame::before { top: 30cqw; height: 10cqw; box-shadow: 0 13cqw 0 #8d9691; }
+.phone-frame::after { top: 39cqw; height: 17cqw; }
+.phone-screen { border-radius: 20px; }
+.dynamic-island { top: 3.2cqw; width: 28cqw; height: 7.8cqw; }
+.phone-status { padding-top: 3.5cqw; font-size: 4cqw; }
+.status-icons svg { width: 15cqw; height: 4.8cqw; }
+.app-topline { min-height: 10cqw; margin: 13cqw 6cqw 2.4cqw; }
+.app-wordmark { font-size: 4.8cqw; }
+.app-wordmark-sub { margin-top: 1cqw; font-size: 1.65cqw; }
+.app-topline > .app-wordmark { font-size: 5.3cqw; }
+.app-beacon { gap: 2cqw; min-height: 8.8cqw; padding: 1cqw 3cqw; font-size: 3.4cqw; }
+.app-beacon img { width: 4.6cqw; height: 5.8cqw; }
+.phone-body { padding: 0 5.7cqw 5.5cqw; }
+.screen-sub { margin: 1.7cqw .4cqw 3.4cqw; font-size: 3.8cqw; }
+.screen-now .phone-body { padding: 0 5.7cqw 25cqw; }
+.presence-orb { width: 49cqw; height: 46cqw; margin: 0 auto .7cqw; }
+.orb-glow { inset: -5cqw -7cqw -4cqw; filter: blur(3.5cqw); }
+.lighthouse-mark { width: 27cqw; height: 27cqw; }
+.app-greeting { margin: 0 0 3.4cqw; font-size: 4.5cqw; line-height: 1.28; }
+.checkin-card { margin-bottom: 3cqw; padding: 4cqw 4.3cqw 3.4cqw; border-radius: 5.3cqw; }
+.checkin-title { font-size: 3.7cqw; line-height: 1.42; }
+.checkin-subtitle { margin-top: 1.7cqw; font-size: 3.2cqw; line-height: 1.38; }
+.checkin-button { margin-top: 3cqw; padding: 1.8cqw 4.2cqw; font-size: 3.6cqw; line-height: 1.25; }
+.app-actions { gap: 2.5cqw; }
+.app-action { min-height: 18cqw; padding: 2.2cqw 1cqw; gap: 1.1cqw; border-radius: 4.6cqw; }
+.app-action > span { font-size: 3.35cqw; }
+.app-action .action-icon { width: 5.8cqw; height: 5.8cqw; flex-basis: 5.8cqw; }
+.bottle-reply-card { gap: 3cqw; min-height: 13.4cqw; margin: 3.5cqw 0 1.2cqw; padding: 2cqw 3.5cqw; border-radius: 4.5cqw; }
+.bottle-reply-card > svg { width: 6.4cqw; height: 6.4cqw; }
+.bottle-reply-card strong { font-size: 3.5cqw; }
+.reply-chevron { font-size: 6.4cqw; }
+.phone-recent { padding-top: 3.5cqw; }
+.phone-section-title { margin-bottom: 1.4cqw; font-size: 4.3cqw; }
+.recent-empty { margin: 3cqw 0 3.5cqw; padding: 2.2cqw 0; font-size: 3.5cqw; }
+.presence-status { gap: 1.2cqw; font-size: 3.2cqw; }
+.presence-status i { width: 1.7cqw; height: 1.7cqw; }
+.vessel-log-row { grid-template-columns: 11cqw 5.2cqw 1fr; gap: 2cqw; min-height: 7.5cqw; font-size: 2.8cqw; }
+.vessel-log-row .log-time { font-size: 2.7cqw; }
+.vessel-log-row .log-mark { font-size: 3.5cqw; }
+.screen-tides .phone-body, .screen-memory .phone-body { padding: 0 5.3cqw 24cqw; }
+.screen-tides .screen-sub { margin: 1.7cqw 0 3.1cqw; font-size: 3.7cqw; }
+.mini-chart-card { margin-bottom: 3cqw; padding: 4cqw 4cqw 3cqw; border-radius: 5.3cqw; }
+.mini-chart-head { gap: .8cqw 1.7cqw; margin-bottom: 2.4cqw; }
+.mini-chart-head strong { font-size: 3.7cqw; }
+.chart-metrics { font-size: 2.8cqw; line-height: 1.3; }
+.tide-chart-layout { grid-template-columns: 3.8cqw 1fr; gap: 1cqw; height: 33cqw; }
+.chart-y-labels { padding-bottom: 5cqw; font-size: 2.7cqw; }
+.mini-days { margin: .7cqw .3cqw 0 5cqw; font-size: 2.7cqw; }
+.chart-footnote { margin: 2.7cqw .3cqw 0; font-size: 2.8cqw; line-height: 1.35; }
+.tides-checkin-button { margin: 3cqw auto 5.3cqw; padding: 2.2cqw 4.3cqw; }
+.weekly-letter { padding: 4cqw 4.3cqw; border-radius: 5.3cqw; }
+.weekly-letter h3 { margin-bottom: 2cqw; font-size: 4.6cqw; }
+.weekly-letter p { margin-bottom: 3cqw; font-size: 3.7cqw; line-height: 1.52; }
+.memory-item { gap: 2.3cqw; padding: 2.5cqw 3cqw; margin-bottom: 2cqw; }
+.memory-item p { font-size: 3.3cqw; }
+.memory-tag { padding: .8cqw 1.6cqw; font-size: 2.2cqw; }
+.memory-forget { padding: 1cqw 2cqw; font-size: 2.5cqw; }
+.screen-checkin .checkin-toolbar { gap: 2.5cqw; margin: 14cqw 5.3cqw 2cqw; }
+.checkin-toolbar > button { padding: 2.5cqw 4cqw; font-size: 3.5cqw; }
+.checkin-form-body { padding: 0 5.3cqw 6cqw; }
+.checkin-screen-title { margin: 2cqw 0 4.5cqw; font-size: 7cqw; }
+.checkin-form-question, .body-feeling-question { padding: 3.4cqw 3.7cqw 2.2cqw; font-size: 3.5cqw; }
+.weather-options { padding: .6cqw 3.2cqw 3.2cqw; border-radius: 4.8cqw; }
+.weather-choice { min-height: 15cqw; border: 1px solid rgba(118,128,123,.28); border-radius: 3.6cqw; background: rgba(255,255,255,.72); color: #828784; }
+.weather-choice.on { border-color: #168673; background: rgba(22,131,111,.09); color: #168673; }
+.weather-symbol { font-size: 5cqw; }
+.weather-symbol svg { width: 5.3cqw; height: 5.3cqw; }
+.weather-label { font-size: 2.9cqw; }
+.body-feeling-question { margin-top: 3.4cqw; padding-bottom: 2.2cqw; }
+.body-options { padding: 0 3.2cqw 3.2cqw; border-radius: 4.8cqw; }
+.body-choice { min-height: 9.7cqw; font-size: 2.9cqw; }
+.checkin-note { min-height: 22cqw; margin-top: 3.7cqw; border-radius: 4.8cqw; font-size: 3.4cqw; }
+.screen-chat .chat-head, .screen-bottle .chat-head, .screen-beacon .chat-head { min-height: 15cqw; padding: 10cqw 4cqw 2cqw; }
+.chat-back { left: 4cqw; top: 11cqw; width: 10.5cqw; height: 10.5cqw; }
+.chat-back svg { width: 5.8cqw; height: 5.8cqw; }
+.chat-back.bottle-close { right: 3.7cqw; top: 11.5cqw; width: 8.5cqw; height: 8.5cqw; }
+.chat-title { font-size: 4.6cqw; }
+.screen-chat .mode-chips { gap: 1.6cqw; padding: 2cqw 4cqw 1.6cqw; }
+.mode-chip { padding: 1.8cqw 2.8cqw; font-size: 3.2cqw; }
+.chat-scroll { padding: 3cqw 4cqw; }
+.chat-empty { font-size: 4cqw; }
+.bubble { padding: 2.4cqw 3.2cqw; border-radius: 3.7cqw; font-size: 3.2cqw; }
+.chat-footer-note { font-size: 2.8cqw; }
+.message-limit { min-height: 8.8cqw; padding: 1.3cqw 3.5cqw; font-size: 2.9cqw; }
+.chat-disclaimer { padding: 1.3cqw 2.5cqw 1.5cqw; font-size: 2.5cqw; }
+.chat-input { gap: 2.3cqw; margin: 0 3cqw 3.3cqw; padding: 2.2cqw 2.5cqw 2.2cqw 3.5cqw; }
+.chat-input input { height: 10cqw; font-size: 3.6cqw; }
+.chat-mic { width: 6.5cqw; height: 7.5cqw; }
+.chat-mic svg { width: 5.8cqw; height: 5.8cqw; }
+.chat-send { width: 10cqw; height: 10cqw; }
+.chat-send svg { width: 5cqw; height: 5cqw; }
+.screen-breathe .breathe-body { padding: 39cqw 7cqw 8cqw; }
+.overlay-close { top: 12cqw; right: 6.5cqw; font-size: 8cqw; }
+.breath-stage { gap: 4.5cqw; }
+.breath-orb, .breath-orb.small { width: 49cqw; height: 56cqw; }
+.breath-orb img { width: 38cqw; height: 39cqw; }
+.breath-halo { inset: -4cqw -5cqw; filter: blur(3cqw); }
+.breath-caption { min-height: 20cqw; gap: 1cqw; }
+.breath-phase { font-size: 5.8cqw; }
+.breath-count { margin-top: 6.8cqw; font-size: 4cqw; }
+.breath-dots { gap: 1.8cqw; margin-top: 12cqw; }
+.breath-dots i { width: 2.2cqw; height: 2.2cqw; }
+.breath-stop { margin-top: 14cqw; padding: 2.4cqw 5.4cqw; font-size: 3.7cqw; }
+.breathe-intro { max-width: 72cqw; font-size: 3.4cqw; }
+.screen-bottle .chat-head { min-height: 18cqw; padding-top: 13cqw; }
+.screen-bottle .phone-body { padding: 4cqw 5.3cqw; }
+.bottle-visual { height: 29cqw; margin-bottom: 3.2cqw; border-radius: 4.8cqw; }
+.bottle-visual img { width: 25cqw; height: 23cqw; }
+.bottle-lede { margin-bottom: 3.5cqw; font-size: 3.7cqw; }
+.bottle-input { min-height: 27cqw; border-radius: 4.8cqw; font-size: 3.6cqw; }
+.bottle-send { margin-top: 3.2cqw; padding: 2.7cqw; font-size: 3.7cqw; }
+.beacon-phone-body { padding: 0 5.3cqw 6cqw; }
+.beacon-phone-intro { padding-bottom: 3.2cqw; }
+.beacon-phone-intro::before { width: 24cqw; height: 25cqw; filter: blur(1.3cqw); }
+.beacon-phone-intro img { width: 14.5cqw; height: 17cqw; margin-bottom: 2cqw; }
+.beacon-phone-intro h2 { font-size: 5.3cqw; }
+.beacon-phone-intro p { margin-top: 1.3cqw; font-size: 3.7cqw; }
+.beacon-phone-step { grid-template-columns: 5.4cqw 1fr; gap: 2.1cqw; padding: 2.7cqw 0; }
+.beacon-phone-num { font-size: 4.5cqw; }
+.beacon-phone-step strong { font-size: 3.7cqw; }
+.beacon-phone-step p { margin: 1.1cqw 0 1.8cqw; font-size: 3.2cqw; }
+.beacon-phone-step button, .beacon-phone-step a { font-size: 3.2cqw; }
+.beacon-phone-step button { padding: 1.6cqw 2.9cqw; }
+.beacon-phone-step > div > a:not(.find-help-button) { margin: 1.8cqw 0; padding: 2.1cqw 2.6cqw; border-radius: 3.2cqw; font-size: 2.7cqw; }
+.beacon-phone-step > div > a b { font-size: 4cqw; }
+.beacon-phone-step .find-help-button { margin-top: 2.4cqw; padding: 2.4cqw; }
+.phone-tabbar { bottom: 3cqw; width: 65cqw; height: 14cqw; min-height: 14cqw; padding: 1cqw 1.8cqw; }
+.tab-btn { gap: .5cqw; border-radius: 99cqw; }
+.tab-btn svg { width: 6cqw; height: 6cqw; }
+.tab-btn small { font-size: 3.1cqw; }
+.phone-toast { top: 12cqw; padding: 2cqw 4cqw; font-size: 3cqw; }
+
 </style>
 </head>
 <body>
@@ -915,7 +1368,7 @@ body { background: #07191d; }
     <!-- ══════════════ TOPBAR ══════════════ -->
     <header class="topbar">
       <a class="brand" href="#top" aria-label="Lightvessel home">
-        <span class="brand-mark"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""></span>
+        <span class="brand-mark"><img data-lightvessel-mark src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iTGlnaHR2ZXNzZWwgYmVhY29uIj4KICA8ZyBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiBmaWxsPSIjQTg2QTJEIiBzdHJva2U9IiNBODZBMkQiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt=""></span>
         <span>LIGHTVESSEL</span>
       </a>
       <nav class="main-nav" aria-label="Main navigation">
@@ -962,13 +1415,6 @@ body { background: #07191d; }
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.8 12.8c0-2.3 1.9-3.4 2-3.5a4.3 4.3 0 0 0-3.4-1.8c-1.4-.2-2.7.8-3.4.8-.7 0-1.8-.8-3-.8a4.5 4.5 0 0 0-3.8 2.3c-1.6 2.8-.4 7 1.1 9.3.7 1.1 1.5 2.4 2.7 2.4 1.1 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 1.9-1.1 2.6-2.3a10 10 0 0 0 1.2-2.5 4 4 0 0 1-2-3.9ZM14.5 6.1a4 4 0 0 0 .9-2.8 4.1 4.1 0 0 0-2.6 1.3 3.8 3.8 0 0 0-1 2.7 3.4 3.4 0 0 0 2.7-1.2Z"/></svg>
               <span><small>Download on the</small><strong>App Store</strong></span>
             </a>
-            <span class="hero-note">
-              <span class="en">3-day trial for eligible accounts</span><span class="zh" hidden>符合资格时可试用 3 天</span>
-              <span class="note-separator">·</span>
-              <span class="en">No ads</span><span class="zh" hidden>没有广告</span>
-              <span class="note-separator">·</span>
-              <span class="en">Made for iPhone</span><span class="zh" hidden>为 iPhone 打造</span>
-            </span>
           </div>
           <div class="hero-signature">
             <span class="signature-line"></span>
@@ -978,23 +1424,23 @@ body { background: #07191d; }
         </div>
 
         <!-- Interactive phone demo -->
-          <div class="hero-art" aria-label="Lightvessel app preview in iPhone 18 Pro Max proportions">
-          <div class="phone-hint"><span class="en">iPhone 18 Pro Max · Interactive preview · sample data</span><span class="zh" hidden>iPhone 18 Pro Max · 可交互预览 · 示例数据</span></div>
+        <div class="hero-art" aria-label="Lightvessel app preview">
+          <div class="phone-hint"><span class="en">Tap to explore · sample data</span><span class="zh" hidden>可点击试用 · 示例数据</span></div>
           <div class="phone-frame">
             <div class="phone-screen">
               <div class="dynamic-island" aria-hidden="true"></div>
-              <div class="phone-status"><span>9:41</span><span class="status-icons" aria-hidden="true"><svg viewBox="0 0 40 14"><path d="M1 12V9m4 3V7m4 5V5m4 7V3M20 5a8 8 0 0 1 11 0M22.5 7.5a4.5 4.5 0 0 1 6 0M25 10a1.3 1.3 0 0 1 1 0"/><rect x="34" y="4" width="5" height="7" rx="1.2"/><path d="M35.3 6h2.4"/></svg></span></div>
+              <div class="phone-status"><span>17:26</span><span class="status-icons" aria-hidden="true"><svg viewBox="0 0 40 14"><path d="M1 12V9m4 3V7m4 5V5m4 7V3M20 5a8 8 0 0 1 11 0M22.5 7.5a4.5 4.5 0 0 1 6 0M25 10a1.3 1.3 0 0 1 1 0"/><rect x="34" y="4" width="5" height="7" rx="1.2"/><path d="M35.3 6h2.4"/></svg></span></div>
 
               <!-- NOW SCREEN -->
               <div class="app-screen screen-now active" data-screen="now">
                 <div class="app-topline">
                   <span class="app-heading"><span class="app-wordmark">Lightvessel</span><span class="app-wordmark-sub">A LIGHT AT SEA</span></span>
-                  <span class="app-header-actions"><button type="button" class="app-settings" aria-label="Settings" data-action="settings">⚙</button><button type="button" class="app-beacon" data-action="beacon" aria-label="Open Beacon"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></button></span>
+                  <span class="app-header-actions"><button type="button" class="app-beacon" data-action="beacon" aria-label="Open Beacon"><img data-lightvessel-mark src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iTGlnaHR2ZXNzZWwgYmVhY29uIj4KICA8ZyBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiBmaWxsPSIjQTg2QTJEIiBzdHJva2U9IiNBODZBMkQiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></button></span>
                 </div>
                 <div class="phone-body">
                   <div class="presence-orb" role="button" tabindex="0" data-action="breathe" aria-label="Start breathing">
-                    <span class="orb-glow"></span><span class="orb-ring ring-a"></span><span class="orb-ring ring-b"></span>
-                    <span class="lighthouse-mark"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiNBODZBMkQiIHN0cm9rZT0iI0E4NkEyRCIgc3Ryb2tlLXdpZHRoPSIzMiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik00MDMuNTI0MjY3IDE0Ni4yOTU0NjdoMTgwLjY2NzczM2wtMTguMDU2NTMzIDE0Ni4yOTU0NjZINDIxLjYxNDkzM3oiLz4KICAgIDxwYXRoIGQ9Ik00MzAuNjI2MTMzIDE2OC4yNDMyaDEyNi40NjRsLTEyLjYyOTMzMyAxMDIuNEg0NDMuMjU1NDY3eiIvPgogICAgPHBhdGggZD0iTTQ0Ny44OTc2IDIwNy4yNTc2aDkxLjk1NTJMNTI0LjUyNjkzMyAyNTZINDYzLjE4OTMzM3oiLz4KICA8L2c+Cjwvc3ZnPgo=" alt=""></span>
+                    <span class="orb-glow"></span>
+                    <span class="lighthouse-mark"><img data-lightvessel-mark src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iTGlnaHR2ZXNzZWwgYmVhY29uIj4KICA8ZyBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiBmaWxsPSIjQTg2QTJEIiBzdHJva2U9IiNBODZBMkQiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Lightvessel beacon"></span>
                   </div>
                   <p class="app-greeting">
                     <span id="greetingEn" class="en">Good evening.<br>How are you doing tonight?</span>
@@ -1023,54 +1469,51 @@ body { background: #07191d; }
                       <span><span class="en">Bottle</span><span class="zh" hidden>漂流瓶</span></span>
                     </div>
                   </div>
+                  <div class="bottle-reply-card" role="note">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h17v11h-17zM4 7l8 6 8-6"/></svg>
+                    <strong><span class="en">Your bottle got a reply</span><span class="zh" hidden>你的漂流瓶收到回信了</span></strong>
+                    <span class="reply-chevron" aria-hidden="true">›</span>
+                  </div>
                   <section class="phone-recent">
-                    <div class="phone-section-title"><span class="en">Recent State</span><span class="zh" hidden>最近的状态</span><span class="sample-label"><span class="en">EXAMPLE</span><span class="zh" hidden>示例</span></span></div>
-                    <div class="recent-state-card"><span class="recent-state-mark">≈</span><p><strong><span id="recentTitleEn" class="en">A little more steady</span><span id="recentTitleZh" class="zh" hidden>慢慢平稳了一些</span></strong><span id="recentBodyEn" class="en">A few rough moments passed sooner this week.</span><span id="recentBodyZh" class="zh" hidden>这周有几次起伏，比之前更快地过去了。</span></p></div>
-                    <div class="phone-section-title log-title"><span class="en">Vessel Log</span><span class="zh" hidden>小船日志</span></div>
-                    <div class="vessel-log-rows" id="vesselLogRows">
-                      <div class="vessel-log-row"><span class="log-time">8:42</span><span class="log-mark">≈</span><span><span class="en">Sea conditions noted</span><span class="zh" hidden>记下今天的海况</span></span></div>
-                      <div class="vessel-log-row"><span class="log-time">8:16</span><span class="log-mark">◌</span><span><span class="en">A moment to breathe</span><span class="zh" hidden>跟着灯光呼吸</span></span></div>
-                    </div>
+                    <div class="phone-section-title"><span class="en">Recent State</span><span class="zh" hidden>最近的状态</span></div>
+                    <p class="recent-empty"><span class="en">A few more check-ins, and I’ll start to see patterns.</span><span class="zh" hidden>再记录几次，我就能开始看见一些变化。</span></p>
+                    <div class="phone-section-title log-title"><span class="en">Vessel’s Log</span><span class="zh" hidden>船上的日志</span><span class="presence-status"><i></i><span class="en">I’m here</span><span class="zh" hidden>我在这里</span></span></div>
+                    <div class="vessel-log-rows" id="vesselLogRows"></div>
                   </section>
                 </div>
               </div>
 
               <!-- TIDES SCREEN -->
               <div class="app-screen screen-tides" data-screen="tides">
-                <div class="app-topline"><span class="app-wordmark"><span class="en">Tides</span><span class="zh" hidden>潮汐</span></span><span class="app-header-actions"><button type="button" class="app-settings" aria-label="Settings" data-action="settings">⚙</button><button type="button" class="app-beacon" data-action="beacon" aria-label="Open Beacon"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></button></span></div>
+                <div class="app-topline"><span class="app-wordmark"><span class="en">Tides</span><span class="zh" hidden>潮汐</span></span><span class="app-header-actions"><button type="button" class="app-beacon" data-action="beacon" aria-label="Open Beacon"><img data-lightvessel-mark src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iTGlnaHR2ZXNzZWwgYmVhY29uIj4KICA8ZyBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiBmaWxsPSIjQTg2QTJEIiBzdHJva2U9IiNBODZBMkQiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></button></span></div>
                 <div class="phone-body">
                   <p class="screen-sub"><span class="en">Feelings aren’t a problem to solve — they’re a sea that rises and falls.</span><span class="zh" hidden>情绪不是要解决的问题，是一片会涨落的海。</span></p>
                   <div class="mini-chart-card">
-                    <div class="mini-chart-head"><span><span class="en">Recent sea conditions · 14 days</span><span class="zh" hidden>近 14 天海况</span></span><span class="sample-label"><span class="en">EXAMPLE</span><span class="zh" hidden>示例</span></span></div>
-                    <svg viewBox="0 0 300 90" class="mini-chart" preserveAspectRatio="none" aria-hidden="true">
-                      <defs><linearGradient id="miniFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#68c4b3" stop-opacity=".25"/><stop offset="1" stop-color="#68c4b3" stop-opacity="0"/></linearGradient></defs>
-                      <path id="miniArea" d="M0,64 C22,54 30,70 52,60 S82,40 105,50 S135,66 160,48 S185,34 210,45 S240,58 265,40 L300,32 L300,90 L0,90 Z" fill="url(#miniFill)"/>
-                      <path id="miniLine" d="M0,64 C22,54 30,70 52,60 S82,40 105,50 S135,66 160,48 S185,34 210,45 S240,58 265,40 L300,32" fill="none" stroke="#76caba" stroke-width="2" stroke-linecap="round"/>
-                      <circle cx="52" cy="60" r="3.1" fill="#f5c77f"/><circle cx="105" cy="50" r="3.1" fill="#f5c77f"/><circle cx="160" cy="48" r="3.1" fill="#f5c77f"/><circle cx="210" cy="45" r="3.1" fill="#f5c77f"/>
-                      <circle id="miniTodayDot" cx="300" cy="32" r="3.4" fill="#f5c77f" class="today-dot" opacity="0"/>
-                    </svg>
-                    <div class="mini-days"><span><span class="en">14d ago</span><span class="zh" hidden>14 天前</span></span><span><span class="en">11d</span><span class="zh" hidden>11 天</span></span><span><span class="en">8d</span><span class="zh" hidden>8 天</span></span><span><span class="en">5d</span><span class="zh" hidden>5 天</span></span><span><span class="en">2d</span><span class="zh" hidden>2 天</span></span><span class="today-label"><span class="en">today</span><span class="zh" hidden>今天</span></span></div>
+                    <div class="mini-chart-head"><strong><span class="en">Tide levels, last 14 days</span><span class="zh" hidden>过去 14 天的潮位</span></strong><span class="chart-metrics"><span id="chartMetricEn" class="en">7-day avg 5.0 · Low 5.0 (9/13)</span><span id="chartMetricZh" class="zh" hidden>7 日均值 5.0 · 最低 5.0（9/13）</span></span></div>
+                    <div class="tide-chart-layout">
+                      <div class="chart-y-labels" aria-hidden="true"><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span></div>
+                      <svg viewBox="0 0 300 90" class="mini-chart" preserveAspectRatio="none" aria-hidden="true">
+                        <g class="chart-grid"><path d="M0 4H300M0 20H300M0 36H300M0 52H300M0 68H300"/><path class="chart-grid-vertical" d="M0 4V76M60 4V76M120 4V76M180 4V76M240 4V76"/></g>
+                        <g class="chart-empty-days"><circle cx="10" cy="82" r="2.2"/><circle cx="31" cy="82" r="2.2"/><circle cx="52" cy="82" r="2.2"/><circle cx="73" cy="82" r="2.2"/><circle cx="94" cy="82" r="2.2"/><circle cx="115" cy="82" r="2.2"/><circle cx="136" cy="82" r="2.2"/><circle cx="157" cy="82" r="2.2"/><circle cx="178" cy="82" r="2.2"/><circle cx="199" cy="82" r="2.2"/><circle cx="220" cy="82" r="2.2"/><circle cx="262" cy="82" r="2.2"/></g>
+                        <circle id="miniTodayDot" cx="270" cy="4" r="3.1" fill="#168673" class="today-dot" opacity="1"/>
+                      </svg>
+                    </div>
+                    <div class="mini-days"><span>9/1</span><span>9/4</span><span>9/7</span><span>9/10</span><span>9/13</span></div>
+                    <p class="chart-footnote"><span class="en">Tide levels 1–5 come from your daily check-ins · never used to train AI models</span><span class="zh" hidden>潮位 1–5 来自每日记录 · 不会用于训练 AI 模型</span></p>
                   </div>
-                  <div class="mini-card letter-card">
-                    <span class="mini-card-icon">✳</span>
-                    <p><strong><span class="en">This Week’s Letter</span><span class="zh" hidden>这一周的信</span></strong>
-                    <span class="en">“Some things make sense only after the tide turns.”</span>
-                    <span class="zh" hidden>“有些起伏，走过之后才看得出方向。”</span></p>
-                    <span class="mini-arrow">↗</span>
+                  <button type="button" class="checkin-button tides-checkin-button" data-action="checkin"><span class="en">Log Sea Conditions</span><span class="zh" hidden>登记海况</span></button>
+                  <div class="weekly-letter">
+                    <h3><span class="en">This Week’s Letter</span><span class="zh" hidden>这一周的信</span></h3>
+                    <p class="en">The horizon has been quiet this week, with no particular marks left on the sand. Sometimes the water just drifts in silence, not needing to crash against the shore or pull back to prove it’s moving. You don’t have to keep a log of the waves to acknowledge they exist; even when the tide feels still, the ocean is holding its own depth.</p>
+                    <p class="en">If you find yourself wandering down to the water’s edge next week, try simply picking up a stone that catches your eye—just to feel its weight and temperature, and nothing more. The light here remains steady, regardless of the quiet.</p>
+                    <p class="zh" hidden>这一周的海平线很安静，沙滩上没有留下特别的痕迹。有时海水只是静静漂流，不需要撞上岸，也不用退去来证明它仍在流动。你不必记录每一道浪，才能承认它们存在；即使潮汐看起来静止，海也自有深度。</p>
                   </div>
-                  <div class="mini-card pattern-card">
-                    <span class="mini-card-icon">◌</span>
-                    <p><strong><span class="en">Patterns I’ve noticed</span><span class="zh" hidden>我注意到的规律</span></strong>
-                    <span class="en">“Over time, a few connections can become easier to notice.”</span>
-                    <span class="zh" hidden>“记录多一些，也许会慢慢看见此前没留意的关联。”</span></p>
-                  </div>
-                  <p class="screen-footnote"><span class="privacy-dot"></span><span class="en">Your check-ins stay on your device</span><span class="zh" hidden>心情记录只留在你的设备上</span></p>
                 </div>
               </div>
 
               <!-- MEMORY SCREEN -->
               <div class="app-screen screen-memory" data-screen="memory">
-                <div class="app-topline"><span class="app-wordmark"><span class="en">Memory</span><span class="zh" hidden>记忆</span></span><span class="app-header-actions"><button type="button" class="app-settings" aria-label="Settings" data-action="settings">⚙</button><button type="button" class="app-beacon" data-action="beacon" aria-label="Open Beacon"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></button></span></div>
+                <div class="app-topline"><span class="app-wordmark"><span class="en">Memory</span><span class="zh" hidden>记忆</span></span><span class="app-header-actions"><button type="button" class="app-beacon" data-action="beacon" aria-label="Open Beacon"><img data-lightvessel-mark src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iTGlnaHR2ZXNzZWwgYmVhY29uIj4KICA8ZyBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiBmaWxsPSIjQTg2QTJEIiBzdHJva2U9IiNBODZBMkQiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt=""><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></button></span></div>
                 <div class="phone-body">
                   <p class="screen-sub"><span class="en">See what it remembers. Ask it to forget any item.</span><span class="zh" hidden>它记得什么，你都看得见；每一条都可以让它忘记。</span></p>
                   <span class="sample-label memory-sample"><span class="en">EXAMPLE MEMORIES</span><span class="zh" hidden>示例记忆</span></span>
@@ -1085,17 +1528,14 @@ body { background: #07191d; }
 
               <!-- CHECK-IN SHEET -->
               <div class="app-screen screen-checkin" data-screen="checkin" aria-hidden="true">
-                <div class="chat-head">
-                  <button class="chat-back" type="button" data-action="back-now" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                  <span class="chat-title"><span class="en">Sea Conditions</span><span class="zh" hidden>登记海况</span></span>
-                </div>
+                <div class="checkin-toolbar"><button type="button" data-action="back-now"><span class="en">Cancel</span><span class="zh" hidden>取消</span></button><button class="checkin-save-top" type="button" data-action="save-checkin" disabled><span class="en">Log Into the Tides</span><span class="zh" hidden>记入潮汐</span></button></div>
                 <div class="phone-body checkin-form-body">
+                  <h2 class="checkin-screen-title"><span class="en">Log Sea Conditions</span><span class="zh" hidden>登记海况</span></h2>
                   <p class="checkin-form-question"><span class="en">What’s the weather in your inner sea?</span><span class="zh" hidden>今天的内海是什么天气？</span></p>
                   <div class="weather-options" id="weatherOptions"></div>
                   <p class="body-feeling-question"><span class="en">How does your body feel?</span><span class="zh" hidden>身体现在的感觉</span></p>
                   <div class="body-options" id="bodyOptions"></div>
                   <textarea class="checkin-note" id="checkinNote" rows="2" maxlength="240"></textarea>
-                  <button class="checkin-submit" type="button" data-action="save-checkin" disabled><span class="en">Log Sea Conditions</span><span class="zh" hidden>登记海况</span></button>
                 </div>
               </div>
 
@@ -1105,14 +1545,14 @@ body { background: #07191d; }
                   <button class="chat-back" type="button" data-action="back-now" aria-label="Back">
                     <svg viewBox="0 0 24 24"><path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </button>
-                  <span class="chat-title"><span class="en">Lightvessel · Talk</span><span class="zh" hidden>Lightvessel · 对话</span></span>
-                  <span class="chat-mode-dot"></span>
+                  <span class="chat-title"><span class="en">The Shallows</span><span class="zh" hidden>浅海</span></span>
                 </div>
                 <div class="mode-chips" id="modeChips"></div>
-                <p class="chat-demo-note"><span class="en">Sample conversation · replies are scripted</span><span class="zh" hidden>示例对话 · 回复为预设内容</span></p>
-                <div class="chat-scroll" id="chatScroll"></div>
-                <div class="chat-suggest" id="chatSuggest"></div>
+                <div class="chat-scroll" id="chatScroll"><p class="chat-empty"><span class="en">What’s on your mind today?</span><span class="zh" hidden>今天有什么在你心上？</span></p></div>
+                <div class="chat-suggest" id="chatSuggest" hidden></div>
+                <div class="chat-footer-note"><span class="message-limit"><span class="en">✦ &nbsp;16 free messages left</span><span class="zh" hidden>✦ &nbsp;还可免费发送 16 条</span><a href="#pricing"><span class="en">Upgrade</span><span class="zh" hidden>升级</span></a></span><span class="chat-disclaimer"><span class="en">✦ &nbsp;AI can make mistakes and can’t replace professional advice</span><span class="zh" hidden>✦ &nbsp;AI 可能出错，不能替代专业建议</span></span></div>
                 <form class="chat-input" id="chatForm">
+                  <button class="chat-mic" type="button" aria-label="Voice input"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-3 0h6"/></svg></button>
                   <input id="chatText" type="text" autocomplete="off" maxlength="120">
                   <button class="chat-send" type="submit" aria-label="Send">
                     <svg viewBox="0 0 24 24"><path d="M4 12l16-7-4 14-4.5-4.5L4 12z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
@@ -1123,26 +1563,26 @@ body { background: #07191d; }
               <!-- BEACON OVERLAY -->
               <div class="app-screen screen-beacon" data-screen="beacon" aria-hidden="true">
                 <div class="chat-head">
-                  <button class="chat-back" type="button" data-action="back-now" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <button class="chat-back bottle-close" type="button" data-action="back-now" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
                   <span class="chat-title"><span class="en">Beacon</span><span class="zh" hidden>灯塔</span></span>
                 </div>
                 <div class="phone-body beacon-phone-body">
                   <div class="beacon-phone-intro">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt="">
-                    <h2><span class="en">A small light<br>for a hard moment.</span><span class="zh" hidden>难熬的时候，<br>先找到一点光。</span></h2>
-                    <p><span class="en">You don’t have to figure everything out right now.</span><span class="zh" hidden>现在不必想清楚所有事情。</span></p>
+                    <img data-lightvessel-mark src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iTGlnaHR2ZXNzZWwgYmVhY29uIj4KICA8ZyBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiBmaWxsPSIjQTg2QTJEIiBzdHJva2U9IiNBODZBMkQiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="">
+                    <h2><span class="en">Right now, let some light in</span><span class="zh" hidden>此刻，让一点光照进来</span></h2>
+                    <p><span class="en">This part, you don’t have to walk alone.</span><span class="zh" hidden>这一段路，你不必独自走。</span></p>
                   </div>
-                  <article class="beacon-phone-step"><span class="beacon-phone-num">01</span><div><strong><span class="en">Find your footing</span><span class="zh" hidden>先让身体落地</span></strong><p><span class="en">Try a guided breath, if it helps.</span><span class="zh" hidden>如果有帮助，跟着灯光呼吸一会儿。</span></p><button type="button" data-action="breathe"><span class="en">Breathe with the light</span><span class="zh" hidden>跟着灯光呼吸</span> ↗</button></div></article>
-                  <article class="beacon-phone-step"><span class="beacon-phone-num">02</span><div><strong><span class="en">Reach one person</span><span class="zh" hidden>联系一个信任的人</span></strong><p><span class="en">“I’m having a hard time. Can you stay with me for a few minutes?”</span><span class="zh" hidden>“我现在有些难熬，你能陪我一会儿吗？”</span></p><button type="button" data-action="copy-ask"><span class="en">Copy a message</span><span class="zh" hidden>复制求助短信</span></button></div></article>
-                  <article class="beacon-phone-step"><span class="beacon-phone-num">03</span><div><strong><span class="en">Find trained support</span><span class="zh" hidden>寻找专业支持</span></strong><p><span class="en">Support differs by region. Find a local helpline.</span><span class="zh" hidden>各地支持方式不同，查找你所在地的求助热线。</span></p><a href="https://findahelpline.com" target="_blank" rel="noreferrer"><span class="en">Find local help ↗</span><span class="zh" hidden>查找当地支持 ↗</span></a></div></article>
+                  <article class="beacon-phone-step"><span class="beacon-phone-num">1</span><div><strong><span class="en">Land first</span><span class="zh" hidden>先让自己落地</span></strong><p><span class="en">When emotion peaks, bring the body back first. Try sixty seconds of breathing, exhale longer than inhale.</span><span class="zh" hidden>情绪涌上来时，先让身体回到当下。试着呼吸六十秒，呼气比吸气更长。</span></p><button type="button" data-action="breathe"><span class="en">Do a breathing exercise</span><span class="zh" hidden>做一次呼吸练习</span></button></div></article>
+                  <article class="beacon-phone-step"><span class="beacon-phone-num">2</span><div><strong><span class="en">Tell one real person</span><span class="zh" hidden>告诉一个真实的人</span></strong><p><span class="en">You don’t need to explain it all — one sentence is enough. The one below can be sent to anyone you trust.</span><span class="zh" hidden>不用解释全部——一句话就够了。你可以把下面这句话发给信任的人。</span></p><button type="button" data-action="copy-ask"><span class="en">Copy this message</span><span class="zh" hidden>复制这条消息</span></button></div></article>
+                  <article class="beacon-phone-step"><span class="beacon-phone-num">3</span><div><strong><span class="en">Let someone trained catch you</span><span class="zh" hidden>让受过训练的人接住你</span></strong><p><span class="en">They’re trained for this. They really can help.</span><span class="zh" hidden>他们受过专业训练，真的可以提供帮助。</span></p><a href="tel:988"><span class="en">United States · 988 Suicide &amp; Crisis Lifeline<br><b>988</b></span><span class="zh" hidden>美国 · 988 自杀与危机生命线<br><b>988</b></span></a><a href="tel:116123"><span class="en">United Kingdom &amp; Ireland · Samaritans<br><b>116 123</b></span><span class="zh" hidden>英国与爱尔兰 · Samaritans<br><b>116 123</b></span></a><a class="find-help-button" href="https://findahelpline.com" target="_blank" rel="noreferrer"><span class="en">Find Help Now ↗</span><span class="zh" hidden>立即寻找帮助 ↗</span></a></div></article>
                 </div>
               </div>
 
               <!-- BOTTLE OVERLAY -->
               <div class="app-screen screen-bottle" data-screen="bottle" aria-hidden="true">
                 <div class="chat-head">
-                  <button class="chat-back" type="button" data-action="back-now" aria-label="Back">
-                    <svg viewBox="0 0 24 24"><path d="M14 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <button class="chat-back bottle-close" type="button" data-action="back-now" aria-label="Close">
+                    <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
                   </button>
                   <span class="chat-title"><span class="en">Message in a Bottle</span><span class="zh" hidden>漂流瓶</span></span>
                 </div>
@@ -1161,11 +1601,12 @@ body { background: #07191d; }
 
               <!-- BREATHE OVERLAY -->
               <div class="app-screen screen-breathe" data-screen="breathe" aria-hidden="true">
+                <button class="overlay-close" type="button" data-action="back-now" aria-label="Close">×</button>
                 <div class="phone-body breathe-body">
                   <div class="breath-stage" id="phoneBreath">
                     <div class="breath-orb small" aria-hidden="true">
-                      <span class="breath-halo halo-a"></span><span class="breath-halo halo-b"></span>
-                      <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt="">
+                      <span class="breath-halo halo-a"></span>
+                      <img data-lightvessel-mark src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iTGlnaHR2ZXNzZWwgYmVhY29uIj4KICA8ZyBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiBmaWxsPSIjQTg2QTJEIiBzdHJva2U9IiNBODZBMkQiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="">
                     </div>
                     <div class="breath-caption">
                       <strong class="breath-phase" data-phase-ready><span class="en">Get ready</span><span class="zh" hidden>准备</span></strong>
@@ -1173,6 +1614,7 @@ body { background: #07191d; }
                       <strong class="breath-phase" data-phase-hold hidden><span class="en">Hold</span><span class="zh" hidden>停留</span></strong>
                       <strong class="breath-phase" data-phase-out hidden><span class="en">Exhale</span><span class="zh" hidden>呼气</span></strong>
                       <span class="breath-count" hidden>4</span>
+                      <span class="breath-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
                       <span class="breath-cycles" hidden><span class="en">Cycle</span><span class="zh" hidden>第</span>&nbsp;<b>1</b></span>
                     </div>
                     <button class="breath-stop" type="button" data-action="stop-breathe" hidden>
@@ -1188,11 +1630,11 @@ body { background: #07191d; }
 
               <div class="phone-tabbar">
                 <button class="tab-btn active" type="button" data-tab="now">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12a7 7 0 1 1 14 0 7 7 0 0 1-14 0zm4.5 0a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><g><circle cx="12" cy="4.4" r="2.15"/><circle cx="17.35" cy="7.45" r="2.15"/><circle cx="17.35" cy="13.7" r="2.15"/><circle cx="12" cy="16.75" r="2.15"/><circle cx="6.65" cy="13.7" r="2.15"/><circle cx="6.65" cy="7.45" r="2.15"/><circle cx="12" cy="10.55" r="2.15"/></g></svg>
                   <small><span class="en">Now</span><span class="zh" hidden>此刻</span></small>
                 </button>
                 <button class="tab-btn" type="button" data-tab="tides">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13c2.4-3.2 4.8-3.2 7.2 0s4.8 3.2 7.2 0 3.2-2.8 3.6-3"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7c2.4-2.6 4.8-2.6 7.2 0s4.8 2.6 7.2 0 3.2-2.3 3.6-2M3 12c2.4-2.6 4.8-2.6 7.2 0s4.8 2.6 7.2 0 3.2-2.3 3.6-2M3 17c2.4-2.6 4.8-2.6 7.2 0s4.8 2.6 7.2 0 3.2-2.3 3.6-2"/></svg>
                   <small><span class="en">Tides</span><span class="zh" hidden>潮汐</span></small>
                 </button>
                 <button class="tab-btn" type="button" data-tab="memory">
@@ -1325,7 +1767,7 @@ body { background: #07191d; }
           <button class="memory-preview-link" type="button" data-action="show-memory"><span class="en">Open Memory in the phone preview</span><span class="zh" hidden>在手机预览中打开「记忆」</span><span aria-hidden="true">↗</span></button>
         </div>
         <div class="boundaries-card">
-          <div class="boundaries-card-head"><span class="boundary-mark"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""></span><div><span class="en">A few things to know</span><span class="zh" hidden>关于这位陪伴者</span><small><span class="en">MY BOUNDARIES</span><span class="zh" hidden>我的边界</span></small></div></div>
+          <div class="boundaries-card-head"><span class="boundary-mark"><img data-lightvessel-mark src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iTGlnaHR2ZXNzZWwgYmVhY29uIj4KICA8ZyBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiBmaWxsPSIjQTg2QTJEIiBzdHJva2U9IiNBODZBMkQiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt=""></span><div><span class="en">A few things to know</span><span class="zh" hidden>关于这位陪伴者</span><small><span class="en">MY BOUNDARIES</span><span class="zh" hidden>我的边界</span></small></div></div>
           <p><span class="en">No judgment, and no rushing to advise. It listens first.</span><span class="zh" hidden>不评判，也不急着给建议——先听你说完。</span></p>
           <p><span class="en">It’s AI, can make mistakes, and isn’t a substitute for professional care.</span><span class="zh" hidden>它是 AI，会犯错，也不能替代专业帮助。</span></p>
           <p><span class="en">You can ask it to forget any saved memory.</span><span class="zh" hidden>你可以随时让它忘记任何一条已保存的记忆。</span></p>
@@ -1348,7 +1790,7 @@ body { background: #07191d; }
             <div class="breath-demo" id="ritualBreath">
               <div class="breath-orb" aria-hidden="true">
                 <span class="breath-halo halo-a"></span><span class="breath-halo halo-b"></span>
-                <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt="">
+                <img data-lightvessel-mark src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iTGlnaHR2ZXNzZWwgYmVhY29uIj4KICA8ZyBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiBmaWxsPSIjQTg2QTJEIiBzdHJva2U9IiNBODZBMkQiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="">
               </div>
               <div class="breath-caption">
                 <strong class="breath-phase" data-phase-ready><span class="en">Ready when you are</span><span class="zh" hidden>准备好了就开始</span></strong>
@@ -1445,7 +1887,7 @@ body { background: #07191d; }
           <span class="meaning-glow"></span>
           <span class="meaning-orbit orbit-one"></span>
           <span class="meaning-orbit orbit-two"></span>
-          <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt="">
+          <img data-lightvessel-mark src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iTGlnaHR2ZXNzZWwgYmVhY29uIj4KICA8ZyBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiBmaWxsPSIjQTg2QTJEIiBzdHJva2U9IiNBODZBMkQiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="">
         </div>
         <div class="meaning-text">
           <div class="section-kicker"><span>06</span><span class="kicker-rule"></span><span class="en">WHY “LIGHTVESSEL”</span><span class="zh" hidden>为什么叫 LIGHTVESSEL</span></div>
@@ -1576,7 +2018,7 @@ body { background: #07191d; }
       <section class="closing section-frame reveal">
         <div class="closing-light">
           <span></span><span></span><span></span>
-          <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt="">
+          <img data-lightvessel-mark src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iTGlnaHR2ZXNzZWwgYmVhY29uIj4KICA8ZyBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiBmaWxsPSIjQTg2QTJEIiBzdHJva2U9IiNBODZBMkQiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="">
         </div>
         <p class="closing-overline">
           <span class="en">The sea is wide. You don’t have to drift alone.</span>
@@ -1596,7 +2038,7 @@ body { background: #07191d; }
     <!-- ══════════════ FOOTER ══════════════ -->
     <footer class="footer section-frame">
       <a class="brand footer-brand" href="#top">
-        <span class="brand-mark"><img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9IiMxNzdGNkIiIHN0cm9rZT0iIzE3N0Y2QiIgc3Ryb2tlLXdpZHRoPSI0MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0zNDkuMjg2NCAyODUuOTAwOGgzNi4xODEzMzNWMTAyLjRIMzQ5LjI1MjI2N3pNNjAyLjI0ODUzMyAyOTMuMjA1MzMzaDM2LjE4MTMzNFYxMDkuNzA0NTMzaC0zNi4xODEzMzR6Ii8+CiAgICA8cGF0aCBkPSJNMzI5LjgzMDQgMzQxLjMzMzMzM2gzMzMuNjUzMzMzVjI1NkgzMjkuODMwNHoiLz4KICAgIDxwYXRoIGQ9Ik00ODEuNiA0MlE0OTcuNiAyOCA1MTMuNiA0Mkw2NDcgMTA5UTY1My45ODQgMTEzIDY1My45ODQgMTIyVjE0M1E2NTMuOTg0IDE1MiA2NDQuOTg0IDE1MkgzNTAuMjE2UTM0MS4yMTYgMTUyIDM0MS4yMTYgMTQzVjEyMlEzNDEuMjE2IDExMyAzNDguMjE2IDEwOXpNNjIyLjcyIDQxNmwtNy44NC0yNGgtMjM0LjU2bC0yMy40NTYgOTJ6TTMzMy40MDggNTcybC0yNy4zNiAxMTIgMzU5LjY0OC05Ni0yMy40NTYtMTAwek03MTIuNjQgNzYwbC0yNy4zOTItOTYtNDAyLjY1NiAxMDQtMzEuMjY0IDExMnpNMjMxLjc3NiA5NjhsLTcuODQgMjRoNTQ3LjMyOGwtMzkuMDcyLTE1Ni4wMzJ6Ii8+CiAgPC9nPgo8L3N2Zz4K" alt=""></span>
+        <span class="brand-mark"><img data-lightvessel-mark src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iTGlnaHR2ZXNzZWwgYmVhY29uIj4KICA8ZyBmaWxsPSIjMTc3RjZCIiBzdHJva2U9IiMxNzdGNkIiIHN0cm9rZS13aWR0aD0iNDAiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzQ5LjI4NjQgMjg1LjkwMDhoMzYuMTgxMzMzVjEwMi40SDM0OS4yNTIyNjd6TTYwMi4yNDg1MzMgMjkzLjIwNTMzM2gzNi4xODEzMzRWMTA5LjcwNDUzM2gtMzYuMTgxMzM0eiIvPgogICAgPHBhdGggZD0iTTMyOS44MzA0IDM0MS4zMzMzMzNoMzMzLjY1MzMzM1YyNTZIMzI5LjgzMDR6Ii8+CiAgICA8cGF0aCBkPSJNNDgxLjYgNDJRNDk3LjYgMjggNTEzLjYgNDJMNjQ3IDEwOVE2NTMuOTg0IDExMyA2NTMuOTg0IDEyMlYxNDNRNjUzLjk4NCAxNTIgNjQ0Ljk4NCAxNTJIMzUwLjIxNlEzNDEuMjE2IDE1MiAzNDEuMjE2IDE0M1YxMjJRMzQxLjIxNiAxMTMgMzQ4LjIxNiAxMDl6TTYyMi43MiA0MTZsLTcuODQtMjRoLTIzNC41NmwtMjMuNDU2IDkyek0zMzMuNDA4IDU3MmwtMjcuMzYgMTEyIDM1OS42NDgtOTYtMjMuNDU2LTEwMHpNNzEyLjY0IDc2MGwtMjcuMzkyLTk2LTQwMi42NTYgMTA0LTMxLjI2NCAxMTJ6TTIzMS43NzYgOTY4bC03Ljg0IDI0aDU0Ny4zMjhsLTM5LjA3Mi0xNTYuMDMyeiIvPgogIDwvZz4KICA8cGF0aCBkPSJNNDAzLjUyNDI2NyAxNDYuMjk1NDY3aDE4MC42Njc3MzNsLTE4LjA1NjUzMyAxNDYuMjk1NDY2SDQyMS42MTQ5MzN6IiBmaWxsPSIjQTg2QTJEIiBzdHJva2U9IiNBODZBMkQiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt=""></span>
         <span>LIGHTVESSEL</span>
       </a>
       <p class="footer-note"><span class="en">A vessel for life’s tides.</span><span class="zh" hidden>一艘陪你看潮起潮落的船。</span></p>
@@ -1630,7 +2072,6 @@ const L = {
     bottlePlaceholder: "One sentence is enough…",
     forget: "Forget",
     forgetConfirm: "Confirm?",
-    settingsPreview: "Settings are available in the iPhone app.",
     copiedAsk: "Message copied — send it to someone you trust.",
     checkinLogged: (w) => `${w} · recorded`,
     checkinQuestion: "What’s the weather in your inner sea?",
@@ -1691,7 +2132,6 @@ const L = {
     bottlePlaceholder: "一句话就够了……",
     forget: "忘记",
     forgetConfirm: "确定？",
-    settingsPreview: "设置请在 iPhone App 中体验。",
     copiedAsk: "求助短信已复制，可以发给你信任的人。",
     checkinLogged: (w) => `${w} · 已记录`,
     checkinQuestion: "今天的内海是什么天气？",
@@ -1972,17 +2412,17 @@ function addVesselLogRow({ en, zh, mark = "≈" }) {
 }
 
 function updateDemoChart(score) {
-  const y = Math.max(20, Math.min(82, 88 - score * 13));
-  const line = `M0,64 C22,54 30,70 52,60 S82,40 105,50 S135,66 160,48 S185,34 210,45 S240,58 265,40 Q282,${(40 + y) / 2} 300,${y.toFixed(1)}`;
-  const lineEl = $("#miniLine");
-  const areaEl = $("#miniArea");
+  const y = Math.max(4, Math.min(68, 84 - score * 16));
   const dot = $("#miniTodayDot");
-  if (lineEl) lineEl.setAttribute("d", line);
-  if (areaEl) areaEl.setAttribute("d", `${line} L300,90 L0,90 Z`);
   if (dot) {
+    dot.setAttribute("cx", "292");
     dot.setAttribute("cy", y.toFixed(1));
     dot.setAttribute("opacity", "1");
   }
+  const enMetric = $("#chartMetricEn");
+  const zhMetric = $("#chartMetricZh");
+  if (enMetric) enMetric.textContent = `Today’s entry · ${score.toFixed(1)}`;
+  if (zhMetric) zhMetric.textContent = `今天的记录 · ${score.toFixed(1)}`;
 }
 
 function renderCheckinChoices() {
@@ -2028,7 +2468,7 @@ function renderCheckinChoices() {
 
   const note = $("#checkinNote");
   if (note) note.placeholder = L[lang].checkinNote;
-  const submit = $(".checkin-submit");
+  const submit = $(".checkin-save-top");
   if (submit) submit.disabled = !selectedWeather;
 }
 
@@ -2053,7 +2493,7 @@ function saveCheckin() {
 
   const weatherScore = { storm: 1, rain: 2, fog: 2.5, cloudy: 3, breeze: 3.5, sunny: 4, aurora: 5 }[selectedWeather];
   const bodyModifier = { light: 0.4, steady: 0, tense: -0.3, heavy: -0.5, noisy: -0.4, numb: -0.6 }[selectedBodyFeeling] || 0;
-  const score = Math.round(Math.max(0.5, Math.min(5, weatherScore + bodyModifier)) * 10) / 10;
+  const score = Math.round(Math.max(1, Math.min(5, weatherScore + bodyModifier)) * 10) / 10;
 
   $("#checkinTitleEn").textContent = `Today · ${weatherEn}`;
   $("#checkinTitleZh").textContent = `今天 · ${weatherZh}`;
@@ -2061,13 +2501,13 @@ function saveCheckin() {
   $("#checkinSubtitleZh").textContent = bodyZh ? `身体 · ${bodyZh}` : (noteValue || "今天的海况已记下，只保存在本机。");
   $("#checkinHomeButton .en").textContent = "Edit today’s entry";
   $("#checkinHomeButton .zh").textContent = "修改今天的记录";
-  $("#recentTitleEn").textContent = `Logged · ${weatherEn}`;
-  $("#recentTitleZh").textContent = `已记录 · ${weatherZh}`;
-  $("#recentBodyEn").textContent = bodyEn ? `Body · ${bodyEn}` : (noteValue || "A note from today.");
-  $("#recentBodyZh").textContent = bodyZh ? `身体 · ${bodyZh}` : (noteValue || "今天留下的一笔。");
+  const recentEn = $(".recent-empty .en");
+  const recentZh = $(".recent-empty .zh");
+  if (recentEn) recentEn.textContent = `Today’s sea conditions: ${weatherEn.toLowerCase()}. A few more check-ins will help reveal patterns.`;
+  if (recentZh) recentZh.textContent = `今天的海况：${weatherZh}。再记录几次，就能慢慢看见变化。`;
   updateDemoChart(score);
   addVesselLogRow({ en: `Sea conditions · ${weatherEn}`, zh: `登记海况 · ${weatherZh}` });
-  showScreen("now");
+  showScreen(returnScreen);
   phoneToast(L[lang].checkinLogged(lang === "en" ? weatherEn : weatherZh));
 }
 
@@ -2162,7 +2602,14 @@ function renderChat() {
   const scroll = $("#chatScroll");
   if (!scroll) return;
   scroll.innerHTML = "";
-  chatMsgs.forEach((m) => scroll.appendChild(bubbleEl(m)));
+  if (chatMsgs.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "chat-empty";
+    empty.textContent = lang === "en" ? "What’s on your mind today?" : "今天有什么在你心上？";
+    scroll.appendChild(empty);
+  } else {
+    chatMsgs.forEach((m) => scroll.appendChild(bubbleEl(m)));
+  }
   scroll.scrollTop = scroll.scrollHeight;
 }
 
@@ -2203,7 +2650,7 @@ function sendUserMessage(text) {
 
 function resetChat(mode) {
   chatMode = mode;
-  chatMsgs = [{ role: "ai", kind: "guidance", en: L.en.modes[mode].guidance, zh: L.zh.modes[mode].guidance }];
+  chatMsgs = [];
   renderModeChips();
   renderSuggestions();
   renderChat();
@@ -2227,14 +2674,8 @@ function renderSuggestions() {
   const wrap = $("#chatSuggest");
   if (!wrap) return;
   wrap.innerHTML = "";
-  L[lang].modes[chatMode].chips.forEach((text) => {
-    const chip = document.createElement("button");
-    chip.type = "button";
-    chip.className = "suggest-chip";
-    chip.textContent = text;
-    chip.addEventListener("click", () => sendUserMessage(text));
-    wrap.appendChild(chip);
-  });
+  wrap.innerHTML = "";
+  wrap.hidden = true;
 }
 
 $("#chatForm")?.addEventListener("submit", (e) => {
@@ -2309,8 +2750,6 @@ document.addEventListener("click", (e) => {
     if (chatMsgs.length === 0) resetChat(chatMode);
   } else if (action === "beacon") {
     showScreen("beacon");
-  } else if (action === "settings") {
-    phoneToast(L[lang].settingsPreview);
   } else if (action === "show-memory") {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setTimeout(() => showScreen("memory"), 420);
