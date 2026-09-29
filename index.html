@@ -1463,18 +1463,15 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
   .phone-hint { top: -28px; }
 }
 
-/* Let the beacon's sweep begin at the light source and travel across the sea. */
-.hero-sea .sea-moon {
-  box-shadow: 0 0 24px 7px rgba(246, 204, 132, .32), 0 0 82px 22px rgba(246, 204, 132, .17);
-}
+/* A soft, slow beam sweeps the sea from an implied source. */
 .sea-light-beam {
-  top: 63px;
-  right: calc(8.5% + 21px);
+  top: 85px;
+  right: calc(16% + 21px);
   width: min(1120px, 100vw);
   height: min(940px, 112svh);
   background: conic-gradient(at 100% 0%, transparent 195deg, rgba(242,199,126,.06) 205deg, rgba(242,199,126,.22) 217deg, rgba(242,199,126,.36) 230deg, rgba(242,199,126,.27) 243deg, rgba(242,199,126,.08) 256deg, transparent 267deg);
   transform-origin: 100% 0%;
-  animation: lightvesselBeamSweep 13s ease-in-out infinite alternate;
+  animation: lightvesselBeamSweep 24s ease-in-out infinite alternate;
   -webkit-mask-image: radial-gradient(circle farthest-corner at 100% 0%, #000 0%, #000 58%, rgba(0,0,0,.88) 78%, transparent 100%);
   mask-image: radial-gradient(circle farthest-corner at 100% 0%, #000 0%, #000 58%, rgba(0,0,0,.88) 78%, transparent 100%);
   filter: blur(13px);
@@ -1557,7 +1554,7 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
 .bottle-card .ritual-button:hover { border-color: transparent; background: #116e5d; }
 
 @media (max-width: 720px) {
-  .sea-light-beam { right: calc(8.5% + 21px); width: 136vw; height: 108svh; }
+  .sea-light-beam { right: calc(16% + 21px); width: 136vw; height: 108svh; }
 }
 @media (prefers-reduced-motion: reduce) {
   .sea-light-beam, .meaning-mark .meaning-glow { animation: none; }
@@ -1596,7 +1593,6 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
       <!-- ══════════════ HERO ══════════════ -->
       <section class="hero section-frame">
         <div class="hero-sea" aria-hidden="true">
-          <span class="sea-moon"></span>
           <span class="sea-star star-a">✳</span><span class="sea-star star-b">✦</span><span class="sea-star star-c">✳</span>
           <span class="sea-arc arc-back"></span>
           <span class="sea-arc arc-front"></span>
