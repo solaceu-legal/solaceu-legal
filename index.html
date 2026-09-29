@@ -1463,6 +1463,106 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
   .phone-hint { top: -28px; }
 }
 
+/* Let the beacon's sweep begin at the light source and travel across the sea. */
+.hero-sea .sea-moon {
+  box-shadow: 0 0 24px 7px rgba(246, 204, 132, .32), 0 0 82px 22px rgba(246, 204, 132, .17);
+}
+.sea-light-beam {
+  top: 63px;
+  right: calc(8.5% + 21px);
+  width: min(1120px, 100vw);
+  height: min(940px, 112svh);
+  background: conic-gradient(at 100% 0%, transparent 195deg, rgba(242,199,126,.06) 205deg, rgba(242,199,126,.22) 217deg, rgba(242,199,126,.36) 230deg, rgba(242,199,126,.27) 243deg, rgba(242,199,126,.08) 256deg, transparent 267deg);
+  transform-origin: 100% 0%;
+  animation: lightvesselBeamSweep 13s ease-in-out infinite alternate;
+  -webkit-mask-image: radial-gradient(circle farthest-corner at 100% 0%, #000 0%, #000 58%, rgba(0,0,0,.88) 78%, transparent 100%);
+  mask-image: radial-gradient(circle farthest-corner at 100% 0%, #000 0%, #000 58%, rgba(0,0,0,.88) 78%, transparent 100%);
+  filter: blur(13px);
+  opacity: 1;
+}
+@keyframes lightvesselBeamSweep {
+  from { transform: rotate(-31deg); }
+  to { transform: rotate(31deg); }
+}
+.meaning-mark .meaning-glow {
+  display: block !important;
+  inset: -22% -20%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 48%, rgba(222,169,82,.2) 0%, rgba(36,143,118,.28) 31%, rgba(74,169,143,.2) 53%, transparent 77%);
+  filter: blur(17px);
+  animation: beaconHaze 7s ease-in-out infinite alternate;
+}
+.meaning-signoff > span:last-child { color: var(--gold); font-size: 24px; line-height: 1; }
+
+/* Match the app's sea-glass message composer, with its bottle and wave mark. */
+.bottle-card .bottle-demo {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.bottle-compose {
+  position: relative;
+  min-height: 126px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.82);
+  border-radius: 17px;
+  background: linear-gradient(145deg, #f0f5f2 0%, #e2eeea 100%);
+  box-shadow: 0 6px 20px rgba(0,0,0,.12);
+}
+.bottle-card .bottle-art {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  width: 118px;
+  height: 78px;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+  opacity: .33;
+  filter: brightness(0) saturate(100%) invert(56%) sepia(26%) saturate(850%) hue-rotate(119deg) brightness(88%) contrast(90%);
+  pointer-events: none;
+}
+.bottle-card .bottle-input {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  min-height: 126px;
+  padding: 16px 57px 16px 16px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #27332e;
+  font: 13px/1.6 var(--sans);
+  resize: none;
+  outline: none;
+}
+.bottle-card .bottle-input::placeholder { color: #89948f; }
+.bottle-card .bottle-input:focus-visible { box-shadow: inset 0 0 0 2px rgba(22,131,111,.28); }
+.bottle-mic {
+  position: absolute;
+  z-index: 3;
+  right: 12px;
+  bottom: 12px;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 50%;
+  background: #16836f;
+  color: #fff;
+}
+.bottle-mic svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.bottle-card .ritual-button { border-color: transparent; background: #16836f; color: #fff; }
+.bottle-card .ritual-button:hover { border-color: transparent; background: #116e5d; }
+
+@media (max-width: 720px) {
+  .sea-light-beam { right: calc(8.5% + 21px); width: 136vw; height: 108svh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sea-light-beam, .meaning-mark .meaning-glow { animation: none; }
+}
+
 </style>
 </head>
 <body>
@@ -1704,7 +1804,13 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
                 <span class="bottle-dots">····</span>
                 <span class="gold"><span class="en">7:30 AM</span><span class="zh" hidden>明早 7:30</span></span>
               </div>
-              <textarea class="bottle-input" id="ritualBottleInput" rows="2" maxlength="240" placeholder="A line is enough — or none at all"></textarea>
+              <div class="bottle-compose">
+                <img class="bottle-art" src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDE3MCAxMDI0IDY5MCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0zNjUuMjI2NjY3IDY2My44OTMzMzNjOC41MzMzMzMgMS43MDY2NjcgMTUuMzYgMy40MTMzMzMgMjMuODkzMzMzIDUuMTIgOC41MzMzMzMgMS43MDY2NjcgMTUuMzYgMy40MTMzMzMgMjMuODkzMzMzIDUuMTIgOC41MzMzMzMgMS43MDY2NjcgMTUuMzYgMy40MTMzMzMgMjMuODkzMzM0IDYuODI2NjY3IDguNTMzMzMzIDEuNzA2NjY3IDE3LjA2NjY2NyA1LjEyIDI1LjYgOC41MzMzMzMgNi44MjY2NjcgMS43MDY2NjcgMTUuMzYgNS4xMiAyMi4xODY2NjYgNi44MjY2NjcgMy40MTMzMzMgMS43MDY2NjcgNi44MjY2NjcgMS43MDY2NjcgOC41MzMzMzQgMy40MTMzMzNsMTAuMjQgMy40MTMzMzRjNi44MjY2NjcgMS43MDY2NjcgMTUuMzYgMy40MTMzMzMgMjIuMTg2NjY2IDYuODI2NjY2IDMwLjcyIDguNTMzMzMzIDU5LjczMzMzMyAxMy42NTMzMzMgOTAuNDUzMzM0IDE4Ljc3MzMzNCAxNS4zNiAxLjcwNjY2NyAzMC43MiAzLjQxMzMzMyA0NC4zNzMzMzMgNS4xMiA1LjEyIDAgMTAuMjQgMCAxNS4zNiAxLjcwNjY2NiA2LjgyNjY2NyAwIDExLjk0NjY2Ny0xLjcwNjY2NyAxNS4zNi02LjgyNjY2NiA0Ni4wOC01MS4yIDg1LjMzMzMzMy05NS41NzMzMzMgOTAuNDUzMzMzLTEwMi40IDE3LjA2NjY2Ny0xOC43NzMzMzMtNi44MjY2NjctMTEwLjkzMzMzMy02LjgyNjY2Ni0xMTAuOTMzMzM0bDEzNC44MjY2NjYtMTUxLjg5MzMzMy0yMC40OC0xNy4wNjY2NjcgMjIuMTg2NjY3LTIzLjg5MzMzM2MyMC40OCAxNy4wNjY2NjcgMzIuNDI2NjY3IDguNTMzMzMzIDQ2LjA4LTYuODI2NjY3IDEzLjY1MzMzMy0xNy4wNjY2NjcgMTcuMDY2NjY3LTMyLjQyNjY2NyA2LjgyNjY2Ny00Mi42NjY2NjZsLTc4LjUwNjY2Ny02OC4yNjY2NjdjLTEwLjI0LTEwLjI0LTMyLjQyNjY2Ny04LjUzMzMzMy00Ni4wOCA2LjgyNjY2Ny0xMy42NTMzMzMgMTcuMDY2NjY3LTE3LjA2NjY2NyAzNC4xMzMzMzMtNi44MjY2NjcgNDIuNjY2NjY2bC0yMi4xODY2NjYgMjMuODkzMzM0LTIwLjQ4LTE3LjA2NjY2Ny0xMjkuNzA2NjY3IDE0OC40OHMtOTMuODY2NjY3LTExLjk0NjY2Ny0xMTAuOTMzMzMzIDYuODI2NjY3TDMzNi4yMTMzMzMgNjU3LjA2NjY2N2wtMS43MDY2NjYgMS43MDY2NjZjMS43MDY2NjcgMCA1LjEyIDAgNi44MjY2NjYgMS43MDY2NjcgOC41MzMzMzMgMCAxNy4wNjY2NjcgMS43MDY2NjcgMjMuODkzMzM0IDMuNDEzMzMzeiIgZmlsbD0iI2RiZGJkYiI+PC9wYXRoPjxwYXRoIGQ9Ik05NzEuMDkzMzMzIDcwMS40NGMtMTEuOTQ2NjY3IDYuODI2NjY3LTI3LjMwNjY2NyAxNS4zNi00NC4zNzMzMzMgMjIuMTg2NjY3cy0zNy41NDY2NjcgMTUuMzYtNTkuNzMzMzMzIDIyLjE4NjY2NmMtMTEuOTQ2NjY3IDMuNDEzMzMzLTIyLjE4NjY2NyA2LjgyNjY2Ny0zNS44NCA4LjUzMzMzNC0xMS45NDY2NjcgMy40MTMzMzMtMjUuNiA1LjEyLTM3LjU0NjY2NyA2LjgyNjY2Ni0xMy42NTMzMzMgMS43MDY2NjctMjcuMzA2NjY3IDMuNDEzMzMzLTQwLjk2IDMuNDEzMzM0LTEzLjY1MzMzMyAwLTI3LjMwNjY2NyAxLjcwNjY2Ny00Mi42NjY2NjcgMS43MDY2NjYtMTMuNjUzMzMzIDAtMjkuMDEzMzMzIDAtNDQuMzczMzMzLTEuNzA2NjY2LTE1LjM2LTEuNzA2NjY3LTI5LjAxMzMzMy0zLjQxMzMzMy00NC4zNzMzMzMtNS4xMi0zMC43Mi01LjEyLTU5LjczMzMzMy0xMC4yNC05MC40NTMzMzQtMTguNzczMzM0LTYuODI2NjY3LTEuNzA2NjY3LTE1LjM2LTMuNDEzMzMzLTIyLjE4NjY2Ni02LjgyNjY2NmwtMTMuNjUzMzM0LTMuNDEzMzM0Yy0zLjQxMzMzMy0xLjcwNjY2Ny02LjgyNjY2Ny0xLjcwNjY2Ny0xMS45NDY2NjYtMy40MTMzMzMtOC41MzMzMzMtMS43MDY2NjctMTUuMzYtNS4xMi0yMy44OTMzMzQtNi44MjY2NjctOC41MzMzMzMtMS43MDY2NjctMTUuMzYtNS4xMi0yMy44OTMzMzMtNi44MjY2NjYtOC41MzMzMzMtMS43MDY2NjctMTUuMzYtNS4xMi0yMy44OTMzMzMtNi44MjY2NjctOC41MzMzMzMtMS43MDY2NjctMTUuMzYtMy40MTMzMzMtMjMuODkzMzM0LTUuMTItOC41MzMzMzMtMS43MDY2NjctMTUuMzYtMy40MTMzMzMtMjMuODkzMzMzLTUuMTItOC41MzMzMzMtMS43MDY2NjctMTUuMzYtMy40MTMzMzMtMjMuODkzMzMzLTMuNDEzMzMzLTguNTMzMzMzLTEuNzA2NjY3LTE1LjM2LTEuNzA2NjY3LTIzLjg5MzMzNC0zLjQxMzMzNC04LjUzMzMzMy0xLjcwNjY2Ny0xNS4zNi0xLjcwNjY2Ny0yMy44OTMzMzMtMS43MDY2NjYtMTEuOTQ2NjY3LTUuMTItMjUuNi01LjEyLTQwLjk2LTUuMTItMjkuMDEzMzMzIDAtNTYuMzIgMS43MDY2NjctODEuOTIgNS4xMi0yNS42IDMuNDEzMzMzLTQ3Ljc4NjY2NyA4LjUzMzMzMy02OC4yNjY2NjcgMTUuMzYtMTguNzczMzMzIDYuODI2NjY3LTM1Ljg0IDEzLjY1MzMzMy00OS40OTMzMzMgMjIuMTg2NjY2LTExLjk0NjY2NyA2LjgyNjY2Ny0yMi4xODY2NjcgMTUuMzYtMjcuMzA2NjY3IDIwLjQ4bC04LjUzMzMzMyA4LjUzMzMzNCAxMC4yNC01LjEyYzYuODI2NjY3LTMuNDEzMzMzIDE3LjA2NjY2Ny02LjgyNjY2NyAzMC43Mi0xMC4yNCAxMy42NTMzMzMtMy40MTMzMzMgMzAuNzItNi44MjY2NjcgNDkuNDkzMzMzLTguNTMzMzM0IDE4Ljc3MzMzMy0xLjcwNjY2NyA0MC45Ni0zLjQxMzMzMyA2NC44NTMzMzQtMS43MDY2NjYgMjMuODkzMzMzIDAgNDkuNDkzMzMzIDMuNDEzMzMzIDc1LjA5MzMzMyA2LjgyNjY2NiAxMy42NTMzMzMgMS43MDY2NjcgMjcuMzA2NjY3IDUuMTIgNDAuOTYgNi44MjY2NjdsMjAuNDggNS4xMiAyMC40OCA1LjEyYzI5LjAxMzMzMyA2LjgyNjY2NyA1OC4wMjY2NjcgMTUuMzYgODcuMDQgMjUuNiA2LjgyNjY2NyAxLjcwNjY2NyAxNS4zNiA1LjEyIDIyLjE4NjY2NyA2LjgyNjY2NyA2LjgyNjY2NyAzLjQxMzMzMyAxNS4zNiA1LjEyIDIyLjE4NjY2NiA4LjUzMzMzM3MxNy4wNjY2NjcgNS4xMiAyMy44OTMzMzQgOC41MzMzMzNjOC41MzMzMzMgMS43MDY2NjcgMTcuMDY2NjY3IDUuMTIgMjMuODkzMzMzIDYuODI2NjY3IDE3LjA2NjY2NyA1LjEyIDMyLjQyNjY2NyA4LjUzMzMzMyA0OS40OTMzMzMgMTEuOTQ2NjY3bDI1LjYgNS4xMmM4LjUzMzMzMyAxLjcwNjY2NyAxNy4wNjY2NjcgMS43MDY2NjcgMjUuNiAzLjQxMzMzMyAzNC4xMzMzMzMgMy40MTMzMzMgNjYuNTYgNS4xMiA5OC45ODY2NjcgMS43MDY2NjcgMTUuMzYtMS43MDY2NjcgMzIuNDI2NjY3LTMuNDEzMzMzIDQ3Ljc4NjY2Ny01LjEyIDE1LjM2LTMuNDEzMzMzIDMwLjcyLTUuMTIgNDQuMzczMzMzLTEwLjI0IDEzLjY1MzMzMy0zLjQxMzMzMyAyNy4zMDY2NjctOC41MzMzMzMgNDAuOTYtMTMuNjUzMzM0IDEzLjY1MzMzMy01LjEyIDI1LjYtMTAuMjQgMzcuNTQ2NjY3LTE1LjM2IDIyLjE4NjY2Ny0xMS45NDY2NjcgNDIuNjY2NjY3LTIzLjg5MzMzMyA1OS43MzMzMzMtMzUuODQgMTcuMDY2NjY3LTExLjk0NjY2NyAyOS4wMTMzMzMtMjMuODkzMzMzIDM5LjI1MzMzMy0zNC4xMzMzMzMgMTAuMjQtMTAuMjQgMTcuMDY2NjY3LTE4Ljc3MzMzMyAyMi4xODY2NjctMjUuNiA1LjEyLTYuODI2NjY3IDYuODI2NjY3LTEwLjI0IDYuODI2NjY3LTEwLjI0cy0xMC4yNCA2LjgyNjY2Ny0zNC4xMzMzMzQgMjAuNDh6IiBmaWxsPSIjZGJkYmRiIj48L3BhdGg+PC9zdmc+Cg==" alt="">
+                <textarea class="bottle-input" id="ritualBottleInput" rows="2" maxlength="240" placeholder="A line is enough — or none at all"></textarea>
+                <span class="bottle-mic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3m-3 0h6"/></svg>
+                </span>
+              </div>
               <button class="ritual-button" type="button" id="ritualBottleSend">
                 <span class="en">Send it out to sea</span><span class="zh" hidden>放归大海</span>
               </button>
@@ -1814,6 +1920,7 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
             <span>“</span>
             <span class="en">Through every tide, there is room to pause.</span>
             <span class="zh" hidden>潮起潮落，你都可以在这里停一停。</span>
+            <span aria-hidden="true">”</span>
           </div>
         </div>
       </section>
@@ -2224,15 +2331,6 @@ function makeBreath(root, opts = {}) {
   }
   return { start, stop, isRunning: () => running };
 }
-
-/* phone breathing — six 4·4·6 rounds, matching the app */
-const phoneBreath = makeBreath($("#phoneBreath"), {
-  autoCycles: 6,
-  onDone: () => {
-    phoneToast(L[lang].breathDone);
-    showScreen(returnScreen);
-  },
-});
 
 /* ritual breathing — six guided 4·4·6 rounds, matching the app */
 const ritualBreathToast = $("#ritualBreathToast");
