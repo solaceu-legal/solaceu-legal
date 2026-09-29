@@ -883,7 +883,7 @@ body { background: #07191d; }
 }
 
 /* A slow, restrained sweep from the beacon light, inspired by the reference demo. */
-.hero-sea { display: block; z-index: 0; overflow: hidden; clip-path: inset(0); }
+.hero-sea { display: block; z-index: 0; left: calc((100vw - 100%) / -2); right: calc((100vw - 100%) / -2); overflow: hidden; clip-path: inset(0); }
 .hero-sea .sea-moon { display: block !important; top: 42px; right: 8.5%; }
 .hero-sea .sea-light-beam { display: block !important; }
 .sea-light-beam {
@@ -1464,22 +1464,29 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
 }
 
 /* A soft, slow beam sweeps the sea from an implied source. */
+@property --beam-turn {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
 .sea-light-beam {
-  top: 85px;
-  right: calc(16% + 21px);
-  width: min(860px, 75vw);
-  height: min(940px, 112svh);
-  background: conic-gradient(at 100% 0%, transparent 195deg, rgba(242,199,126,.06) 205deg, rgba(242,199,126,.22) 217deg, rgba(242,199,126,.36) 230deg, rgba(242,199,126,.27) 243deg, rgba(242,199,126,.08) 256deg, transparent 267deg);
-  transform-origin: 100% 0%;
+  inset: 0;
+  width: auto;
+  height: auto;
+  --beam-source-x: 73%;
+  --beam-source-y: 45%;
+  background: conic-gradient(from calc(230deg + var(--beam-turn)) at var(--beam-source-x) var(--beam-source-y), transparent 0deg, rgba(242,199,126,.06) 10deg, rgba(242,199,126,.22) 22deg, rgba(242,199,126,.36) 35deg, rgba(242,199,126,.27) 48deg, rgba(242,199,126,.08) 61deg, transparent 72deg);
+  transform: none;
+  transform-origin: center;
   animation: lightvesselBeamSweep 24s ease-in-out infinite alternate;
-  -webkit-mask-image: radial-gradient(circle farthest-corner at 100% 0%, #000 0%, #000 58%, rgba(0,0,0,.88) 78%, transparent 100%);
-  mask-image: radial-gradient(circle farthest-corner at 100% 0%, #000 0%, #000 58%, rgba(0,0,0,.88) 78%, transparent 100%);
-  filter: blur(13px);
+  -webkit-mask-image: radial-gradient(ellipse 160% 220% at var(--beam-source-x) var(--beam-source-y), #000 0%, #000 55%, rgba(0,0,0,.68) 78%, transparent 100%);
+  mask-image: radial-gradient(ellipse 160% 220% at var(--beam-source-x) var(--beam-source-y), #000 0%, #000 55%, rgba(0,0,0,.68) 78%, transparent 100%);
+  filter: blur(20px);
   opacity: 1;
 }
 @keyframes lightvesselBeamSweep {
-  from { transform: rotate(-31deg); }
-  to { transform: rotate(31deg); }
+  from { --beam-turn: -31deg; }
+  to { --beam-turn: 31deg; }
 }
 .meaning-mark .meaning-glow {
   display: block !important;
@@ -1554,12 +1561,14 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
 .bottle-card .ritual-button:hover { border-color: transparent; background: #116e5d; }
 
 @media (max-width: 720px) {
-  .sea-light-beam { right: calc(16% + 21px); width: min(280px, 72vw); height: 108svh; }
+  .sea-light-beam { --beam-source-x: 82%; --beam-source-y: 88px; opacity: .72; }
 }
 @media (prefers-reduced-motion: reduce) {
   .sea-light-beam, .meaning-mark .meaning-glow { animation: none; }
+  .sea-light-beam { --beam-turn: 0deg; }
 }
 
+/* Keep hero copy comfortably inside the frame while the beam sweeps past. */
 .hero-copy { box-sizing: border-box; padding-inline-start: clamp(18px, 1.8vw, 28px); }
 </style>
 </head>
