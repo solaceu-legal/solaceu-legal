@@ -428,7 +428,8 @@ h1 em, h2 em, h3 em { color: var(--teal-bright); font-style: normal; }
   .section-frame { width: calc(100% - 40px); }
   .topbar { width: calc(100% - 36px); height: 70px; }
   .brand { font-size: 10px; letter-spacing: .15em; gap: 7px; }
-  .main-nav { display: none; }
+  .main-nav { display: flex; gap: 0; }
+  .main-nav > a:not(.nav-support) { display: none; }
   .header-actions { gap: 10px; }
   .hero { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 48px 0 66px; }
   .hero h1 { font-size: clamp(38px, 10.5vw, 54px); }
