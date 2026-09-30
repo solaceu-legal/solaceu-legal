@@ -41,6 +41,15 @@ html[lang="zh-Hans"] .en:not([hidden]) { display: none; }
 .header-actions { display: flex; align-items: center; gap: 18px; }
 .language-button { color: #c5d2ce; font-size: 12px; letter-spacing: .12em; padding: 10px 4px; transition: color .2s; }
 .language-button:hover { color: var(--gold); }
+.footer-links { flex-wrap: wrap; }
+.seo-content { max-width: 800px; margin: 0 auto; padding: 64px 24px 32px; color: #adbfbb; font-size: 17px; line-height: 1.85; }
+.seo-content h1 { color: #e4eee8; font-size: clamp(32px, 5vw, 52px); line-height: 1.2; margin: 20px 0 32px; }
+.seo-content h2 { color: #e4eee8; font-size: 25px; line-height: 1.35; margin: 40px 0 16px; }
+.seo-content p, .seo-content ol { margin-bottom: 22px; }
+.seo-content ol { padding-left: 24px; }
+.seo-content a { color: #79cdb8; text-decoration: underline; text-underline-offset: 4px; }
+.seo-content .seo-download { display: inline-block; padding: 12px 20px; background: #79cdb8; color: #07191e; border-radius: 8px; font-weight: 600; text-decoration: none; }
+.seo-footer { padding-top: 0; font-size: 13px; }
 .header-download { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border: 1px solid rgba(190, 222, 210, .28); border-radius: 100px; color: #ecf3ef; font-size: 13px; transition: background .2s, border-color .2s; }
 .header-download:hover { background: rgba(119, 198, 179, .12); border-color: var(--teal); }
 .header-download > span:last-child:not(:only-child) { color: var(--gold); font-size: 15px; }

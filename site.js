@@ -120,7 +120,7 @@ const L = {
   },
 };
 
-let lang = "en";
+let lang = document.documentElement.lang === "zh-Hans" ? "zh" : "en";
 const t = (key) => L[lang][key];
 
 function updateGreeting() {
@@ -634,9 +634,7 @@ function renderDynamic() {
 
 /* ───────────────────────── language button ───────────────────────── */
 
-$(".language-button")?.addEventListener("click", () => {
-  setLang(lang === "en" ? "zh" : "en");
-});
+// Locale links navigate to static URLs, so language and search metadata agree.
 
 /* ───────────────────────── scroll reveal ───────────────────────── */
 
@@ -712,8 +710,6 @@ $$('a[href="https://apps.apple.com/app/id6800191641"]').forEach((link, index) =>
 });
 
 (function boot() {
-  let stored = null;
-  try { stored = localStorage.getItem("lv-lang"); } catch (e) { /* noop */ }
   showScreen("now");
-  setLang(stored === "zh" ? "zh" : "en");
+  setLang(document.documentElement.lang === "zh-Hans" ? "zh" : "en");
 })();
