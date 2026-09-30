@@ -50,6 +50,10 @@ html[lang="zh-Hans"] .en:not([hidden]) { display: none; }
 .seo-content a { color: #79cdb8; text-decoration: underline; text-underline-offset: 4px; }
 .seo-content .seo-download { display: inline-block; padding: 12px 20px; background: #79cdb8; color: #07191e; border-radius: 8px; font-weight: 600; text-decoration: none; }
 .seo-footer { padding-top: 0; font-size: 13px; }
+.seo-screenshot { margin: 32px 0; text-align: center; }
+.seo-screenshot img { display: block; width: min(70vw, 280px); height: auto; margin: 0 auto; border-radius: 24px; }
+.seo-screenshot figcaption { margin-top: 12px; font-size: 14px; }
+.topbar nav { text-align: right; line-height: 1.7; }
 .header-download { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border: 1px solid rgba(190, 222, 210, .28); border-radius: 100px; color: #ecf3ef; font-size: 13px; transition: background .2s, border-color .2s; }
 .header-download:hover { background: rgba(119, 198, 179, .12); border-color: var(--teal); }
 .header-download > span:last-child:not(:only-child) { color: var(--gold); font-size: 15px; }
