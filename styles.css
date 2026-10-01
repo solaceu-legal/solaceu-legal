@@ -1674,3 +1674,30 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
   .product-slide.is-active { animation: none; }
   .qr-card { transition: none; }
 }
+
+/* Shared shell and reading layout for every content page, in both languages. */
+.content-header { gap: 28px; height: auto; min-height: 88px; padding: 20px 0; flex-wrap: wrap; }
+.content-nav { display: flex; justify-content: flex-end; gap: 24px; margin-left: auto; font-size: 13px; color: var(--muted); }
+.content-header a { text-decoration: none; }
+.content-nav a:hover, .content-nav a[aria-current="page"] { color: var(--teal-bright); }
+.content-header .language-button { flex-shrink: 0; }
+.content-page .seo-content { padding-top: 56px; padding-bottom: 48px; overflow-wrap: anywhere; }
+.content-page .seo-content h1 { font-family: var(--serif); }
+.content-page .reading-page h1 { font-size: clamp(30px, 4vw, 40px); line-height: 1.4; margin: 0 0 20px; }
+.content-page .seo-content h2 { font-size: 25px; line-height: 1.5; }
+.content-page .seo-content strong { color: var(--ink); }
+.content-page .muted, .content-maintenance { color: var(--faint); font-size: 14px; }
+.content-page .note, .content-page .warn { margin: 24px 0; padding: 16px 20px; background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--teal); border-radius: 8px; }
+.content-footer { max-width: 752px; margin: 0 auto; padding: 24px 0 48px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; color: var(--faint); font-size: 13px; }
+.content-footer p { margin: 0; }
+.content-footer nav { display: flex; gap: 20px; }
+.content-footer a { color: var(--muted); text-decoration: none; }
+.content-page a:focus-visible { outline: 2px solid var(--teal-bright); outline-offset: 5px; border-radius: 2px; }
+@media (max-width: 720px) {
+  .content-header { min-height: 70px; padding: 18px 0 14px; gap: 18px; }
+  .content-header .language-button { margin-left: auto; }
+  .content-nav { order: 3; width: 100%; margin: 0; justify-content: flex-start; flex-wrap: wrap; gap: 8px 20px; font-size: 12px; }
+  .content-page .seo-content { padding: 36px 22px 32px; font-size: 16px; }
+  .content-page .seo-content h2 { font-size: 23px; margin-top: 32px; }
+  .content-footer { margin: 0 22px; padding-bottom: 32px; }
+}
