@@ -2,6 +2,11 @@
 (function () {
   "use strict";
   const campaignKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+  // The app's default WKWebView has AppleWebKit but no Safari product token.
+  // Also suppress statistics if a reader follows a legal-page link inside it.
+  const userAgent = window.navigator.userAgent;
+  const embeddedAppleWebView = /AppleWebKit/.test(userAgent) &&
+    /iPhone|iPad|iPod|Macintosh/.test(userAgent) && !/Safari\//.test(userAgent);
 
   function cleanUrl(value, keepCampaign) {
     if (!value) return value;
@@ -22,6 +27,7 @@
   }
 
   window.lightvesselBeforeSend = function (_type, payload) {
+    if (embeddedAppleWebView) return false;
     const result = { ...payload };
     result.url = cleanUrl(payload.url, true);
     result.referrer = cleanUrl(payload.referrer, false);
