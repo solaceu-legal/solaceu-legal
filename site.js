@@ -657,6 +657,36 @@ if ("IntersectionObserver" in window && revealEls.length) {
 
 /* ───────────────────────── boot ───────────────────────── */
 
+/* Anchor the desktop beam to the device, independent of viewport width. */
+(function anchorHeroBeam() {
+  const hero = $(".hero");
+  const sea = $(".hero-sea", hero || document);
+  const carousel = $(".product-carousel", hero || document);
+  if (!hero || !sea || !carousel) return;
+  const desktop = window.matchMedia("(min-width: 721px)");
+
+  function updateSource() {
+    if (!desktop.matches) {
+      sea.style.removeProperty("--phone-center-x");
+      sea.style.removeProperty("--phone-center-y");
+      return;
+    }
+    const phone = $(".product-slide:not([hidden]) .static-phone", carousel);
+    if (!phone) return;
+    const device = phone.getBoundingClientRect();
+    const background = sea.getBoundingClientRect();
+    sea.style.setProperty("--phone-center-x", `${device.left + device.width / 2 - background.left}px`);
+    sea.style.setProperty("--phone-center-y", `${device.top + device.height / 2 - background.top}px`);
+  }
+
+  updateSource();
+  window.addEventListener("resize", updateSource, { passive: true });
+  if ("ResizeObserver" in window) {
+    const observer = new ResizeObserver(updateSource);
+    [hero, sea, carousel].forEach((element) => observer.observe(element));
+  }
+})();
+
 /* Automatically cycle through the real app screenshots. */
 (function productCarousel() {
   const carousel = $(".product-carousel");

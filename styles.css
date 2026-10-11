@@ -1476,8 +1476,8 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
   inset: 0;
   width: auto;
   height: auto;
-  --beam-source-x: 73%;
-  --beam-source-y: 45%;
+  --beam-source-x: var(--phone-center-x, 73%);
+  --beam-source-y: var(--phone-center-y, 45%);
   background: conic-gradient(from calc(230deg + var(--beam-turn)) at var(--beam-source-x) var(--beam-source-y), transparent 0deg, rgba(242,199,126,.06) 10deg, rgba(242,199,126,.22) 22deg, rgba(242,199,126,.36) 35deg, rgba(242,199,126,.27) 48deg, rgba(242,199,126,.08) 61deg, transparent 72deg);
   transform: none;
   transform-origin: center;
