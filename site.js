@@ -723,22 +723,6 @@ if ("IntersectionObserver" in window && revealEls.length) {
   restart();
 })();
 
-/* A local QR image keeps downloads fast and avoids a third-party QR service. */
-$$('a[href="https://apps.apple.com/app/id6800191641"]').forEach((link, index) => {
-  const wrapper = document.createElement("span");
-  wrapper.className = "download-qr";
-  link.before(wrapper);
-  wrapper.append(link);
-  link.classList.add("download-link");
-  const card = document.createElement("span");
-  card.className = "qr-card";
-  card.id = `download-qr-${index}`;
-  card.setAttribute("role", "tooltip");
-  card.innerHTML = '<img src="/assets/app-store-qr.png" width="164" height="164" alt="App Store download QR code" decoding="async"><p><span class="en">Scan to download</span><span class="zh" hidden>扫码下载</span><small><span class="en">Open your iPhone camera</span><span class="zh" hidden>使用 iPhone 相机扫一扫</span></small></p>';
-  link.setAttribute("aria-describedby", card.id);
-  wrapper.append(card);
-});
-
 (function boot() {
   showScreen("now");
   setLang(document.documentElement.lang === "zh-Hans" ? "zh" : "en");

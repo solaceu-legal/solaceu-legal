@@ -1642,21 +1642,13 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
 .product-slide.is-active { animation: productFade .4s ease; }
 .slide-caption { position: absolute; bottom: 4px; left: 0; width: 100%; margin: 0; color: #b5cdc3; text-align: center; font-size: 14px; }
 .download-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-.download-qr { position: relative; display: inline-flex; max-width: 100%; }
-.qr-card { position: absolute; z-index: 30; top: calc(100% + 12px); left: 50%; transform: translate(-50%, -5px); width: 196px; padding: 15px; border: 1px solid rgba(173,210,196,.25); border-radius: 16px; background: #10282b; box-shadow: 0 16px 40px rgba(0,0,0,.35); text-align: center; opacity: 0; visibility: hidden; transition: opacity .16s, transform .16s, visibility .16s; }
-.qr-card::before { content: ""; position: absolute; bottom: 100%; left: 0; right: 0; height: 15px; }
-.qr-card img { display: block; width: 164px; height: 164px; border-radius: 8px; background: white; }
-.qr-card p { margin: 11px 0 0; color: #e0ebe5; font-size: 14px; line-height: 1.4; }
-.qr-card small { display: block; margin-top: 4px; color: #a9c2b8; font-size: 12px; }
-.header-actions .qr-card { left: auto; right: 0; transform: translateY(-5px); }
-.download-qr:focus-within .qr-card { visibility: visible; opacity: 1; transform: translate(-50%, 0); }
-.header-actions .download-qr:focus-within .qr-card { transform: translateY(0); }
-.closing .qr-card { top: auto; bottom: calc(100% + 12px); }
-.closing .qr-card::before { bottom: auto; top: 100%; }
-.closing { overflow: visible; }
-@media (hover: hover) and (pointer: fine) {
-  .download-qr:hover .qr-card { visibility: visible; opacity: 1; transform: translate(-50%, 0); }
-  .header-actions .download-qr:hover .qr-card { transform: translateY(0); }
+/* Fixed to the viewport, so section clipping cannot cut off the QR card. */
+.download-qr-card { position: fixed; z-index: 100; width: 222px; max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); overflow: auto; padding: 20px; border: 1px solid rgba(173,210,196,.25); border-radius: 16px; background: #10282b; box-shadow: 0 16px 40px rgba(0,0,0,.35); text-align: center; color: #e0ebe5; }
+.download-qr-card img { width: 180px; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px; background: white; }
+.download-qr-card p { margin: 14px 0 0; font-size: 15px; line-height: 1.45; font-weight: 600; }
+.download-qr-card small { display: block; margin-top: 7px; color: #a9c2b8; font-size: 12px; line-height: 1.6; }
+@media (max-width: 720px), (hover: none), (pointer: coarse) {
+  .download-qr-card { display: none; }
 }
 @media (max-width: 720px) {
   .product-carousel { height: min(800px, calc(100svh - 50px)); min-height: 0; }
@@ -1666,13 +1658,9 @@ img[src$="assets/lighthouse.svg"], img[data-lightvessel-mark] { filter: none !im
   .product-carousel { height: calc(100svh - 110px); min-height: 0; }
   .product-carousel .static-phone { height: min(560px, calc(100svh - 160px)); top: calc(50% - 18px); }
 }
-@media (hover: none) {
-  .download-qr .qr-card { display: none; }
-}
 @keyframes productFade { from { opacity: .3; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
   .product-slide.is-active { animation: none; }
-  .qr-card { transition: none; }
 }
 
 /* Shared shell and reading layout for every content page, in both languages. */
